@@ -1,0 +1,87 @@
+{
+  "stage": "4.13",
+  "version": "1.0",
+  "status": "CONSOLE_PILOT_PROTOCOL_ONLY_NO_RUNTIME_TRIAL",
+  "site": {
+    "map": "Livonia",
+    "mission": "dayzOffline.enoch",
+    "candidate_center_x": 9000,
+    "candidate_center_z": 7800,
+    "design_yaw_degrees": 120,
+    "terrain_not_yet_verified": true
+  },
+  "source_pilot": "dist/stage4_6_preflight/zone47_micro_pilot_plan.json",
+  "rollout": [
+    {
+      "phase": "P1",
+      "object_count": 1,
+      "marker_ids": [
+        "checkpoint_01"
+      ],
+      "note": "One low-impact placement, check before any expansion"
+    },
+    {
+      "phase": "P3",
+      "object_count": 3,
+      "marker_ids": [
+        "checkpoint_01",
+        "woods_01",
+        "service_01"
+      ],
+      "note": "Prior one plus two additional marker locations"
+    },
+    {
+      "phase": "P5",
+      "object_count": 5,
+      "marker_ids": [
+        "checkpoint_01",
+        "woods_01",
+        "service_01",
+        "logistics_02",
+        "hq_02"
+      ],
+      "note": "All five test markers, not the full 26-element plan"
+    }
+  ],
+  "preflight": {
+    "private_server_owner_authorization_required": true,
+    "playstation_build_match_required": true,
+    "actual_ground_and_obstacle_survey_required": true,
+    "ground_Y_for_each_test_object_required": true,
+    "console_class_name_validation_required": true,
+    "provider_backup_timestamp_check_required": true,
+    "restore_mechanism_verified_required": true,
+    "config_copies_before_edit_required": true,
+    "protect_players_and_persistence": true
+  },
+  "acceptance": {
+    "required_restart_observations_per_phase": 2,
+    "required_platforms_for_claiming_ps4_ps5": [
+      "PS4",
+      "PS5"
+    ],
+    "no_fixed_frame_rate_claim": true,
+    "observed_rubberbanding_and_stutters_must_be_absent_or_acceptable": true,
+    "each_test_object_must_be_visually_observed": true,
+    "collision_entrances_and_exits_must_be_walked": true,
+    "route_bypass_cannot_be_declared_tested_from_graph_only": true
+  },
+  "provider_backup_limits": {
+    "basis_url": "https://server.nitrado.net/en-US/guides/backup%20restore%20on%20dayz",
+    "provider_states_24h_backups_are_automatic": true,
+    "provider_states_manual_console_FTP_backups_not_supported": true,
+    "restoring_may_change_server_IP": true,
+    "backup_must_be_checked_for_actual_availability_before_test": true
+  },
+  "official_docs": {
+    "object_spawner": "https://community.bistudio.com/wiki/DayZ:Object_Spawner",
+    "gameplay_settings": "https://community.bistudio.com/wiki/DayZ:Gameplay_Settings"
+  },
+  "safety": {
+    "no_live_Nitrado_connection": true,
+    "no_deployment_artifacts": true,
+    "no_credentials_or_private_server_logs_in_GitHub": true,
+    "no_evidence_of_any_current_runtime_tests": true,
+    "automatic_deployment_allowed": false
+  }
+}
