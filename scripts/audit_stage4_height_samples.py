@@ -10,6 +10,8 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
+from datetime import datetime
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -26,6 +28,19 @@ def finite(value:object,name:str,lower:float=-200,upper:float=1500)->float:
     require(type(value) in (float,int) and math.isfinite(value) and lower<=value<=upper,
             name+" must be a finite measured number within declared sanity bounds")
     return float(value)
+
+def valid_captured_utc(value: object) -> bool:
+    """Require a real ISO-8601 UTC instant, not an arbitrary 16-char string."""
+    if not isinstance(value, str) or re.fullmatch(
+        r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z", value
+    ) is None:
+        return False
+    try:
+        datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError:
+        return False
+    return True
+
 
 def analyze(data:dict,reference:dict,region_name:str)->dict:
     region=next((x for x in reference["regions"] if x["region"]==region_name),None)
@@ -67,10 +82,10 @@ def analyze(data:dict,reference:dict,region_name:str)->dict:
     game=meta.get("dayz_game_build")
     captured=meta.get("captured_utc")
     ref=meta.get("evidence_reference")
-    provenance_complete=(method in EXPECTED_METHODS and
+    provenance_complete=(isinstance(method,str) and method in EXPECTED_METHODS and
                          isinstance(game,str) and len(game.strip())>=5 and
-                         isinstance(captured,str) and len(captured.strip())>=16
-                         and isinstance(ref,str) and len(ref.strip())>=12)
+                         valid_captured_utc(captured) and
+                         isinstance(ref,str) and len(ref.strip())>=12)
     complete=(len(missing)==0 and provenance_complete)
     grades=[]
     if complete:
@@ -110,7 +125,7 @@ def analyze(data:dict,reference:dict,region_name:str)->dict:
         "provided_y_count":len(yvalues),"expected_y_count":182,
         "missing_ids":[kind+":"+id for kind,id in missing][:182],
         "provenance_complete":provenance_complete,
-        "observed_surface_method":method if method in EXPECTED_METHODS else None,
+        "observed_surface_method":method if isinstance(method,str) and method in EXPECTED_METHODS else None,
         "observed_game_build":game if provenance_complete else None,
         "grade_sample_pairs":len(grades),
         "max_local_grid_grade_degrees":round(max_angle,3) if max_angle is not None else None,

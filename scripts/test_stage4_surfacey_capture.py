@@ -5,7 +5,7 @@ import json
 import tempfile
 from pathlib import Path
 from build_stage4_surfacey_snippet import build
-from import_stage4_surfacey_log import convert
+from import_stage4_surfacey_log import convert, MAX_LOG_BYTES
 from prepare_stage4_height_capture import OUT
 
 def test()->None:
@@ -41,6 +41,51 @@ def test()->None:
             "SYNTHETIC_TEST_ONLY","2026-10-30T00:00:00Z","UNIT_TEST_NOT_REAL_DAYZ")
         except ValueError as exc:assert "Incomplete" in str(exc)
         else:raise AssertionError("Incomplete log accepted")
+        # A valid-looking sample prefix must not be accepted if its numeric
+        # suffix is truncated or polluted with extra text.
+        def invalid_capture(label:str, changed:str, expected:str)->None:
+            hostile=dir/(label+".txt")
+            hostile.write_text("\n".join([changed]+lines[1:]),encoding="utf-8")
+            dest=dir/(label+".json")
+            try:
+                convert(hostile,OUT/"central_surfaceY_empty.json",dest,
+                        "SYNTHETIC_TEST_ONLY","2026-10-30T00:00:00Z","UNIT_TEST_NOT_REAL_DAYZ")
+            except ValueError as exc:
+                assert expected in str(exc),(expected,str(exc))
+                assert not dest.exists()
+            else:
+                raise AssertionError("Malformed log was accepted: "+label)
+        invalid_capture("trailing_junk",lines[0]+"corrupted",
+                        "Malformed or truncated")
+        invalid_capture("double_marker",lines[0]+" "+lines[0],
+                        "Invalid SurfaceY record line")
+        invalid_capture("broken_coordinate",lines[0].replace("Z47_ALT|","Z47_ALT|GRID|"),
+                        "Malformed or truncated")
+
+        # Previously completed private captures must not be silently replaced.
+        try:
+            convert(log,OUT/"central_surfaceY_empty.json",out,
+                    "SYNTHETIC_TEST_ONLY","2026-10-30T00:00:00Z","UNIT_TEST_NOT_REAL_DAYZ")
+        except ValueError as exc: assert "already exists" in str(exc)
+        else: raise AssertionError("Existing capture overwritten")
+
+        # A real or synthetic populated dataset MUST NOT be saved in this
+        # public repository (including ignored dist/).
+        leaked=OUT/"private_reality_must_not_exist.json"
+        try:
+            convert(log,OUT/"central_surfaceY_empty.json",leaked,
+                    "SYNTHETIC_TEST_ONLY","2026-10-30T00:00:00Z","UNIT_TEST_NOT_REAL_DAYZ")
+        except ValueError as exc: assert "inside public repository" in str(exc)
+        else: raise AssertionError("Private capture was permitted into repository")
+        assert not leaked.exists()
+
+        huge=dir/"oversized.txt"
+        huge.write_bytes(b"X"*(MAX_LOG_BYTES+1))
+        try:
+            convert(huge,OUT/"central_surfaceY_empty.json",dir/"huge.json",
+                    "SYNTHETIC_TEST_ONLY","2026-10-30T00:00:00Z","UNIT_TEST_NOT_REAL_DAYZ")
+        except ValueError as exc: assert "Oversized" in str(exc)
+        else: raise AssertionError("Oversized SurfaceY log accepted")
     print("PASS: optional 182-point PC runtime snippet and synthetic log importer.")
     print("NO DayZ runtime executed and NO fabricated height files published.")
 

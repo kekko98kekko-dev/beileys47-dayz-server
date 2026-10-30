@@ -84,3 +84,9 @@ Il risultato contiene `README.md`, `config/`, `scripts/`, `docs/` e `dist/` (ant
 **Test automatici:** ripristino completo, confronto byte per byte, rifiuto di archivi manomessi, mancanti, con path traversal o duplicati, e blocco della sovrascrittura. Nessuna installazione sul server.
 
 Il file `.zip.sha256` è un asset **separato** scaricabile dalla stessa GitHub Release. Il comando ne verifica l'hash prima di estrarre. Senza `--sha256-file` il ripristino funziona, ma verifica soltanto gli hash interni allo ZIP. Per un controllo di autenticità, confrontare il checksum anche con una fonte indipendentemente affidabile.
+
+## Quinta revisione — Protezione da creazione concorrente
+
+Il sistema di ripristino prepara inizialmente i file in una cartella temporanea e ora **riserva il nome della cartella di destinazione usando la creazione esclusiva della directory**. La sola verifica `exists()` seguita da `rename()` poteva avere una finestra di concorrenza su Linux: rinominare sopra una directory vuota esistente non garantisce lo stesso comportamento di Windows. La nuova procedura rifiuta una destinazione creata nel frattempo e non la cancella. Un'interruzione durante il trasferimento provoca la pulizia della cartella temporanea e della nuova destinazione gestita dallo script.
+
+**Limite:** il trasferimento finale dei file avviene in più operazioni; non è garantita visibilità atomica dell'intero albero in caso di arresto forzato della macchina. Verificare il completamento del comando prima di usare la directory ripristinata. I test includono simulazioni di creazione concorrente e fallimento del trasferimento.
