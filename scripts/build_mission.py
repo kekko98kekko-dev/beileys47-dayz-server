@@ -13,6 +13,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 ROOT = Path(__file__).resolve().parents[1]
 UPSTREAM_COMMIT = "f220b2918b1d79a5055b1ee9be70c0ec1516e876"
 UPSTREAM_BASE = (
@@ -140,8 +142,8 @@ def run(output: Path, source_dir: Path | None) -> None:
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipout:
         for path in FILES:
             dest = out_mission / path
-            zipout.write(dest, arcname=f"dayzOffline.enoch/{path}")
-        zipout.write(output / "change_report.json", arcname="change_report.json")
+            add_bytes(zipout, f"dayzOffline.enoch/{path}", dest.read_bytes())
+        add_bytes(zipout, "change_report.json", (output / "change_report.json").read_bytes())
     print(json.dumps(report, indent=2, ensure_ascii=False))
     print(f"Stage-1 preview ready: {archive}")
 
