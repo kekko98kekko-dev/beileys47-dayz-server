@@ -88,6 +88,8 @@ jobs:
         run: python scripts/test_stage4_footprints.py
 
       - name: Verify pinned DayZ 1.30 official stable CE release provenance
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/check_stage4_release_gate.py
 
       - name: Prove console compatibility gate stays blocked without real Nitrado tests

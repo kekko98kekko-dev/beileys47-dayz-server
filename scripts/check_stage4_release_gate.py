@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -17,13 +19,27 @@ API="https://api.github.com/repos/BohemiaInteractive/DayZ-Central-Economy/"
 
 def get_json(url:str)->dict:
     if not url.startswith(API):raise ValueError("Only approved official CE API is allowed")
-    req=urllib.request.Request(url,headers={
+    headers={
         "Accept":"application/vnd.github+json",
         "User-Agent":"BEILEYS47-DayZ-ReadOnly-Baseline-Gate/1.0",
         "X-GitHub-Api-Version":"2022-11-28"
-    })
-    with urllib.request.urlopen(req,timeout=45) as response:
-        raw=response.read(1000001)
+    }
+    # GitHub Actions supplies its ephemeral, read-only token. Never print,
+    # persist or publish it; the unauthenticated API limit is much lower.
+    token=os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if token:
+        headers["Authorization"]="Bearer "+token
+    req=urllib.request.Request(url,headers=headers)
+    try:
+        with urllib.request.urlopen(req,timeout=45) as response:
+            raw=response.read(1000001)
+    except urllib.error.HTTPError as exc:
+        if exc.code in (403,429):
+            raise RuntimeError(
+                "GitHub official CE API rate limited; source check NOT verified. "
+                "Provide an ephemeral GITHUB_TOKEN through the CI environment."
+            ) from None
+        raise
     if len(raw)>1000000:raise ValueError("Oversized official API response")
     return json.loads(raw)
 

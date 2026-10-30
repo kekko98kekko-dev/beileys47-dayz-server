@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
+from unittest import mock
+from check_stage4_release_gate import get_json, API
 
 ROOT=Path(__file__).resolve().parents[1]
 REPORT=ROOT/"dist/compatibility/stage4_release_gate_report.json"
@@ -30,6 +33,21 @@ def main()->None:
     assert r["live_ps4_ps5_compatibility_checked"] is False
     assert r["deploy_allowed"] is False and r["release_ready"] is False
     assert len(r["human_checks_required"])>=4
-    print("PASS: stable-tag source provenance data consistent; NO PS5/Nitrado compatibility claim.")
+    # Offline, isolated test: prove Authorization is applied to the OFFICIAL
+    # CE API only; never persist the ephemeral CI token in a report.
+    class FakeReply:
+        def __enter__(self): return self
+        def __exit__(self,*_):return False
+        def read(self,*_):return b'{"ok": true}'
+    seen=[]
+    def fake_open(request,timeout):
+        seen.append(request.get_header("Authorization"))
+        return FakeReply()
+    with mock.patch.dict(os.environ,{"GITHUB_TOKEN":"SYNTHETIC_TEST_TOKEN_ONLY","GH_TOKEN":""}):
+        with mock.patch("urllib.request.urlopen",side_effect=fake_open):
+            assert get_json(API+"commits/master")=={"ok":True}
+    assert seen==["Bearer SYNTHETIC_TEST_TOKEN_ONLY"]
+    assert "SYNTHETIC_TEST_TOKEN_ONLY" not in REPORT.read_text(encoding="utf-8")
+    print("PASS: stable-tag source provenance and isolated read-only token authentication; NO console compatibility claim.")
 
 if __name__=="__main__":main()
