@@ -42,8 +42,10 @@ def load_types(path: Path) -> dict[str, ET.Element]:
             except ValueError as exc:
                 raise ValueError(f"STAGE5_BLOCKED: Noninteger {name}.{field}") from exc
             need(number >= 0, f"Negative {name}.{field}")
-        need(int(node.findtext("min")) <= int(node.findtext("nominal")),
-             f"Invalid minimum for {name}")
+        # Vanilla CE contains intentionally disabled/inert entries for which
+        # min may exceed nominal (for example some mushrooms). Do not mistake
+        # such untouched official classes for our own unsafe changes.
+        # Modified active classes are checked strictly in the audit below.
         items[name] = node
     need(len(items) >= 100, "CE item inventory suspiciously short")
     return items
