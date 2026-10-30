@@ -33,6 +33,7 @@ SOURCE_PATHS = [
     "docs/STAGE3.md",
     "docs/STAGE4_ZONE47.md",
     "docs/STAGE4_SITE_SCREEN.md",
+    "docs/STAGE4_SITE_SHORTLIST.md",
     "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
     "mission/README.md",
