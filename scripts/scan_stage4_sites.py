@@ -20,9 +20,9 @@ from xml.sax.saxutils import escape
 ROOT=Path(__file__).resolve().parents[1]
 RULES=ROOT/"config/stage4_site_screening_rules.json"
 OUT=ROOT/"dist/stage4_site_screening"
-SOURCE_FILES=("mapgrouppos.xml","cfgplayerspawnpoints.xml","cfgeventspawns.xml")
+SOURCE_FILES=("mapgrouppos.xml","cfgplayerspawnpoints.xml","cfgeventspawns.xml","db/events.xml")
 BASE="https://raw.githubusercontent.com/BohemiaInteractive/DayZ-Central-Economy/"
-ALLOWED_MAX_BYTES={"mapgrouppos.xml":1_200_000,"cfgplayerspawnpoints.xml":100_000,"cfgeventspawns.xml":200_000}
+ALLOWED_MAX_BYTES={"mapgrouppos.xml":1_200_000,"cfgplayerspawnpoints.xml":100_000,"cfgeventspawns.xml":200_000,"db/events.xml":800_000}
 
 
 def require(condition:bool, reason:str)->None:
@@ -70,13 +70,17 @@ def read_positions(roots:dict[str,ET.Element],fresh_groups:list[str],prefixes:li
             spawn.append((float(pos.get("x")),float(pos.get("z")),name))
     require(len(spawn)>=8,"Too few Stage 1 spawn positions")
 
+    active_root=roots["db/events.xml"]
+    require(active_root.tag=="events","Event definition root mismatch")
+    active_event_names={e.get("name") for e in active_root.findall("event") if e.findtext("active")=="1"}
+    require(len(active_event_names)>30,"Unexpected number of active events")
     root=roots["cfgeventspawns.xml"]
     require(root.tag=="eventposdef","Event spawn root mismatch")
     event=[]
     counts=Counter()
     for item in root.findall("event"):
         name=item.get("name","")
-        if not any(name.startswith(p) for p in prefixes):
+        if name not in active_event_names or not any(name.startswith(p) for p in prefixes):
             continue
         for pos in item.findall("pos"):
             x=float(pos.get("x"));z=float(pos.get("z"))
