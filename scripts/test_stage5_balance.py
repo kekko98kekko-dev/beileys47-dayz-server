@@ -55,14 +55,19 @@ def test() -> None:
                       if x.get("name") not in approved and x.get("name") != "UndergroundStash")
         target.find("nominal").text = str(int(target.findtext("nominal")) + 1)
         tree.write(stage2_xml, encoding="utf-8", xml_declaration=True)
+        # The inheritance guard fires first unless Stage 3 is mutated too.
+        # Copy exactly to Stage 3 to independently exercise the unauthorized
+        # Stage 2 edit detector, not just the Stage 2→3 byte guard.
+        stage3_xml = tmp / "stage3/dayzOffline.enoch/db/types.xml"
+        original_stage3 = stage3_xml.read_bytes()
+        stage3_xml.write_bytes(stage2_xml.read_bytes())
         # Must never write or replace a report for rejected data.
         result_path.unlink()
         reject(lambda: build(tmp, result_path), "Unauthorized Stage 2 CE change")
         assert not result_path.exists()
         stage2_xml.write_bytes(original_xml)
+        stage3_xml.write_bytes(original_stage3)
 
-        stage3_xml = tmp / "stage3/dayzOffline.enoch/db/types.xml"
-        original_stage3 = stage3_xml.read_bytes()
         stage3_xml.write_bytes(original_stage3 + b"\n")
         reject(lambda: build(tmp, result_path), "Stage 3 must inherit Stage 2")
         assert not result_path.exists()
