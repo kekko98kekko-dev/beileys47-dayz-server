@@ -9,6 +9,7 @@ GitHub conserva *nella normale cronologia Git*, finché il repository esiste, re
 Il workflow costruisce un file separato chiamato **beileys47-recovery-kit**, contenente **beileys47-recovery-kit.zip**, con:
 - sorgenti e documentazione del repository alla specifica revisione;
 - preview ZIP Stage 1, Stage 2 e Stage 3, relativi rapporti e piano Nitrado Stage 2 **di sola simulazione**;
+- progetto ZONA 47 Stage 4 con schema SVG, file concettuali (non installabili) e audit;
 - script di preflight che non può eseguire upload o riavviare il server;
 - **MANIFEST_SHA256.json** con gli hash dei file (verificati nel workflow).
 
