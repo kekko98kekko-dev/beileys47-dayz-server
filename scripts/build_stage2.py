@@ -14,6 +14,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from build_mission import UPSTREAM_BASE, UPSTREAM_COMMIT, run as run_stage1
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,7 +50,11 @@ def parse_xml(raw: bytes, label: str) -> ET.Element:
 def update_type_values(root: ET.Element, rules: dict) -> list[dict]:
     if root.tag != "types":
         raise ValueError("Unexpected types.xml root")
-    items = {node.get("name"): node for node in root.findall("type")}
+    raw_items = root.findall("type")
+    item_names = [node.get("name") for node in raw_items]
+    if not item_names or None in item_names or len(item_names) != len(set(item_names)):
+        raise ValueError("Duplicate or unnamed CE loot type")
+    items = dict(zip(item_names, raw_items))
     missing = set(rules["required_item_types"]) - set(items)
     if missing:
         raise ValueError(f"Official types missing: {sorted(missing)}")
@@ -91,12 +97,30 @@ def update_type_values(root: ET.Element, rules: dict) -> list[dict]:
 def update_vehicles(root: ET.Element, rules: dict) -> list[dict]:
     if root.tag != "spawnabletypes":
         raise ValueError("Unexpected cfgspawnabletypes.xml root")
-    vehicles = {node.get("name"): node for node in root.findall("type")}
+    # Vanilla cfgspawnabletypes.xml can legitimately contain repeated
+    # entries for other classes. Fail only if OUR edited car types are
+    # ambiguous; never rewrite or deduplicate unrelated original content.
+    targets = set(rules["vehicle_attachment_rules"])
+    vehicles = {}
+    for node in root.findall("type"):
+        name = node.get("name")
+        if name in targets:
+            if name in vehicles:
+                raise ValueError(f"Duplicate target vehicle attachment type: {name}")
+            vehicles[name] = node
     report = []
     for name, options in rules["vehicle_attachment_rules"].items():
         if name not in vehicles:
             raise ValueError(f"Official vehicle cfg missing: {name}")
         vehicle = vehicles[name]
+        wheel_target = options["wheel_chance_first_four"]
+        repair_target = options["repair_part_chance_floor"]
+        if (type(wheel_target) not in (float,int) or not math.isfinite(wheel_target)
+                or not 0 <= wheel_target <= 1
+                or type(repair_target) not in (float,int)
+                or not math.isfinite(repair_target)
+                or not 0 <= repair_target <= 1):
+            raise ValueError("Nonfinite or invalid vehicle probability rule")
         changed = []
         wheel_count = 0
         repair_part_count = 0
@@ -106,7 +130,9 @@ def update_vehicles(root: ET.Element, rules: dict) -> list[dict]:
                 if "Wheel" in partname and wheel_count < 4:
                     # Modify only four main wheels; keep spare wheel probability untouched.
                     old = float(item.attrib["chance"])
-                    new = max(old, float(options["wheel_chance_first_four"]))
+                    if not math.isfinite(old) or not 0 <= old <= 1:
+                        raise ValueError("Nonfinite or invalid original wheel chance")
+                    new = max(old, wheel_target)
                     if new > 1:
                         raise ValueError("Invalid wheel probability")
                     item.set("chance", f"{new:.2f}")
@@ -114,7 +140,9 @@ def update_vehicles(root: ET.Element, rules: dict) -> list[dict]:
                     wheel_count += 1
                 elif partname in {"SparkPlug", "CarBattery", "CarRadiator"}:
                     old = float(item.attrib["chance"])
-                    new = max(old, float(options["repair_part_chance_floor"]))
+                    if not math.isfinite(old) or not 0 <= old <= 1:
+                        raise ValueError("Nonfinite or invalid original repair part chance")
+                    new = max(old, repair_target)
                     if new > 1:
                         raise ValueError("Invalid repair part probability")
                     item.set("chance", f"{new:.2f}")
@@ -203,8 +231,8 @@ def build(output_dir: Path, source_dir: Path | None) -> None:
     zip_path = outdir / "beileys47-livonia-stage2-preview.zip"
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as archive:
         for path in STAGE2_FILES:
-            archive.write(result_root / path, arcname=f"dayzOffline.enoch/{path}")
-        archive.write(report_path, arcname="change_report.json")
+            add_bytes(archive, f"dayzOffline.enoch/{path}", (result_root / path).read_bytes())
+        add_bytes(archive, "change_report.json", report_path.read_bytes())
     print("Stage 2 built and syntax validated.")
     print("Important: no server compatibility, gameplay or persistence testing performed.")
     print("Preview ZIP:", zip_path)

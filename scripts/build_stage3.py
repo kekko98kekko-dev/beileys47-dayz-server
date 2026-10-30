@@ -15,6 +15,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from build_mission import UPSTREAM_BASE, UPSTREAM_COMMIT
 from build_stage2 import STAGE2_FILES, build as build_stage2
 
@@ -123,11 +125,13 @@ def make_messages(root: ET.Element, rules: dict) -> list[dict]:
 
 
 def build(output: Path, source_dir: Path | None) -> None:
+    # Always regenerate dependencies from the pinned upstream and CURRENT
+    # rules. Existence of an older Stage 2 tree does not prove freshness.
+    # Otherwise a changed rules file can silently ship stale Stage 2 output.
+    build_stage2(output, source_dir)
     stage2 = output / "stage2/dayzOffline.enoch"
     if not all((stage2 / p).is_file() for p in STAGE2_FILES):
-        build_stage2(output, source_dir)
-    if not all((stage2 / p).is_file() for p in STAGE2_FILES):
-        raise ValueError("Stage 2 build must be present")
+        raise ValueError("Stage 2 regeneration did not produce every expected file")
     rules = json.loads((ROOT / "config/stage3_rules.json").read_text(encoding="utf-8"))
     if rules.get("stage") != 3:
         raise ValueError("Stage 3 rules require stage=3")
@@ -163,8 +167,8 @@ def build(output: Path, source_dir: Path | None) -> None:
     archive = outdir / "beileys47-livonia-stage3-preview.zip"
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipped:
         for path in STAGE3_FILES:
-            zipped.write(dest / path, arcname=f"dayzOffline.enoch/{path}")
-        zipped.write(report_path, arcname="change_report.json")
+            add_bytes(zipped, f"dayzOffline.enoch/{path}", (dest / path).read_bytes())
+        add_bytes(zipped, "change_report.json", report_path.read_bytes())
     print(f"Stage 3 PREVIEW: {archive}")
     print("Changed only 2 dynamic events + 3 non-shutdown announcements.")
     print("NO runtime tests; NO Nitrado access or deployment.")

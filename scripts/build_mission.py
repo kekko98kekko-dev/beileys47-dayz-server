@@ -13,6 +13,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 ROOT = Path(__file__).resolve().parents[1]
 UPSTREAM_COMMIT = "f220b2918b1d79a5055b1ee9be70c0ec1516e876"
 UPSTREAM_BASE = (
@@ -96,7 +98,11 @@ def modify_spawns(root: ET.Element, rules: dict) -> dict:
     bubbles = fresh.find("generator_posbubbles")
     if bubbles is None:
         raise ValueError("Missing fresh spawn bubbles")
-    groups = {node.get("name"): node for node in bubbles.findall("group")}
+    group_nodes = bubbles.findall("group")
+    group_names = [node.get("name") for node in group_nodes]
+    if not group_names or None in group_names or len(group_names) != len(set(group_names)):
+        raise ValueError("Duplicate, unnamed or missing official fresh spawn group")
+    groups = dict(zip(group_names, group_nodes))
     selected = rules["fresh_spawn_groups"]
     if not isinstance(selected, list) or len(selected) < 2 or len(selected) != len(set(selected)):
         raise ValueError("Choose at least two unique spawn groups")
@@ -140,8 +146,8 @@ def run(output: Path, source_dir: Path | None) -> None:
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipout:
         for path in FILES:
             dest = out_mission / path
-            zipout.write(dest, arcname=f"dayzOffline.enoch/{path}")
-        zipout.write(output / "change_report.json", arcname="change_report.json")
+            add_bytes(zipout, f"dayzOffline.enoch/{path}", dest.read_bytes())
+        add_bytes(zipout, "change_report.json", (output / "change_report.json").read_bytes())
     print(json.dumps(report, indent=2, ensure_ascii=False))
     print(f"Stage-1 preview ready: {archive}")
 
