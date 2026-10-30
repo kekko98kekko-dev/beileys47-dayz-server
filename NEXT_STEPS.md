@@ -9,6 +9,10 @@
 - [x] Stage 3 PREVIEW: elicotteri/convogli dinamici e messaggi di benvenuto/identità, solo test statici.
 - [x] Stage 4 DESIGN: ZONA 47 narrative blueprint, 8 sectors, 3 entries, 26 local symbolic placements; no fake world coordinates.
 - [x] Stage 4 topological checks, offline SVG schematic and non-installable concept ZIP in Actions.
+- [x] 13 candidate asset names checked against pinned official Livonia terrain groups (NOT in-game verified).
+- [x] Fail-closed Stage 4 survey template and offline Object Spawner exporter (requires real terrain input).
+- [x] Synthetic-only negative tests: reject missing height, unknown model and absent verification.
+- [x] Document PS4/PS5 acceptance gates, performance checks, and rollback protocol.
 - [ ] Stage 4 real terrain parcel, verified assets and console-tested micro Object Spawner (NOT DONE).
 - [x] Builder automatico di XML/JSON.
 - [x] Test di regressione e controllo contenuto ZIP.
