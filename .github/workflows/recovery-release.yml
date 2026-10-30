@@ -144,6 +144,9 @@ jobs:
       - name: Generate the complete recovery archive
         run: python scripts/make_recovery_kit.py
 
+      - name: Test full offline recovery round-trip before publishing snapshot
+        run: python scripts/test_recovery_restore.py
+
       - name: Deep audit every nested archive and exact master source bytes
         run: python scripts/test_all_nested_zip_reproducibility.py
 
