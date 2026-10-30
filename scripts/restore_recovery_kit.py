@@ -45,7 +45,7 @@ def mapped_path(name: str) -> Path | None:
             any(part in ("", ".", "..") or ":" in part or
                 part.endswith((" ", ".")) or
                 any(ord(char) < 32 for char in part) or
-                re.fullmatch(r"(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\\..*)?", part, re.I)
+                re.fullmatch(r"(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:[.].*)?", part, re.I)
                 for part in parts)):
         raise ValueError(f"Unsafe ZIP member path (including Windows rules): {name!r}")
     if name.startswith("repository/"):
