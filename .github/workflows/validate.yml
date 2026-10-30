@@ -120,6 +120,11 @@ jobs:
           python scripts/stress_test_stage4_pvp_routes.py
           python scripts/test_stage4_pvp_routes.py
 
+      - name: Generate Stage 4.8 PlayStation X/Z reconnaissance guide (NO real Y)
+        run: |
+          python scripts/build_stage4_8_field_recon.py
+          python scripts/test_stage4_8_field_recon.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -242,6 +247,18 @@ jobs:
             dist/stage4_7_route_balance/pvp_route_stress_report.json
             dist/stage4_7_route_balance/sector_lockout_matrix.csv
             dist/stage4_7_route_balance/beileys47-route-stress-design-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.8 unverified field reconnaissance dossier
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-zone47-field-recon
+          path: |
+            dist/stage4_8_field_recon/central_field_recon.json
+            dist/stage4_8_field_recon/central_waypoints.csv
+            dist/stage4_8_field_recon/central_route_links.csv
+            dist/stage4_8_field_recon/beileys47-world-xz-field-guide-only.zip
           if-no-files-found: error
           retention-days: 90
 
