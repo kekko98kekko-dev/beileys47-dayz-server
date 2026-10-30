@@ -39,7 +39,7 @@ def mapped_path(name: str) -> Path | None:
     if name == "README_RECOVERY.txt":
         return Path("README_RECOVERY.txt")
     path = PurePosixPath(name)
-    if (not name or "\\\\" in name or path.is_absolute()
+    if (not name or chr(92) in name or path.is_absolute()
             or path.as_posix() != name or
             any(part in ("", ".", "..") for part in name.split("/"))):
         raise ValueError(f"Unsafe ZIP member path: {name!r}")
