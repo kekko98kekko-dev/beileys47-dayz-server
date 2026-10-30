@@ -65,6 +65,16 @@ def test()->None:
     no_provenance=copy.deepcopy(flat)
     no_provenance["measurement"]["evidence_reference"]=None
     assert analyze(no_provenance,reference,region)["provenance_complete"] is False
+    for invalid_timestamp in ("2026-02-30T00:00:00Z", "not-a-valid-utc-time",
+                              "2026-10-30T00:00:00+01:00", None):
+        malformed=copy.deepcopy(flat)
+        malformed["measurement"]["captured_utc"]=invalid_timestamp
+        result=analyze(malformed,reference,region)
+        assert result["provenance_complete"] is False
+        assert result["status"]=="BLOCKED_MISSING_MEASUREMENTS_OR_PROVENANCE"
+    wrong_method=copy.deepcopy(flat)
+    wrong_method["measurement"]["method"]=["DayZ_CGame_SurfaceY"]
+    assert analyze(wrong_method,reference,region)["provenance_complete"] is False
 
     bad=copy.deepcopy(flat)
     bad["points"][0]["x"]+=100
