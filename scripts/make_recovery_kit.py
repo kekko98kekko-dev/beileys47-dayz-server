@@ -43,6 +43,7 @@ SOURCE_PATHS = [
     "docs/STAGE4_REAL_ALTITUDE.md",
     "docs/STAGE4_6_SPAWNER_PREFLIGHT.md",
     "docs/STAGE4_7_PVP_ROUTE_STRESS.md",
+    "docs/STAGE4_8_FIELD_RECON.md",
     "docs/STAGE4_SITE_SHORTLIST.md",
     "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
@@ -69,6 +70,8 @@ SOURCE_PATHS = [
     "scripts/test_stage4_6_pilot_preflight.py",
     "scripts/stress_test_stage4_pvp_routes.py",
     "scripts/test_stage4_pvp_routes.py",
+    "scripts/build_stage4_8_field_recon.py",
+    "scripts/test_stage4_8_field_recon.py",
     "scripts/check_stage4_release_gate.py",
     "scripts/test_stage4_release_gate.py",
     "scripts/audit_stage4_assets.py",
@@ -119,6 +122,10 @@ PREVIEW_PATHS = [
     "dist/stage4_7_route_balance/pvp_route_stress_report.json",
     "dist/stage4_7_route_balance/sector_lockout_matrix.csv",
     "dist/stage4_7_route_balance/beileys47-route-stress-design-only.zip",
+    "dist/stage4_8_field_recon/central_field_recon.json",
+    "dist/stage4_8_field_recon/central_waypoints.csv",
+    "dist/stage4_8_field_recon/central_route_links.csv",
+    "dist/stage4_8_field_recon/beileys47-world-xz-field-guide-only.zip",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 

@@ -13,6 +13,8 @@
 - [x] Fail-closed Stage 4 survey template and offline Object Spawner exporter (requires real terrain input).
 - [x] Synthetic-only negative tests: reject missing height, unknown model and absent verification.
 - [x] Document PS4/PS5 acceptance gates, performance checks, and rollback protocol.
+- [x] Stage 4.8 11 provisional X/Z waypoints and 16 paper-route segments for PS4/PS5 reconnaissance; correct misleading legacy directional entry labels.
+- [ ] Stage 4.8 verify physical paths and DayZ terrain Y in game; no PlayStation or Nitrado visit yet (NOT DONE).
 - [x] Stage 4.7 PvP schematic graph stress: identified east access failure under checkpoint+logistics lockdown; planned service-to-secret bypass; 0/45 conceptual two-sector lockouts after route amendment.
 - [ ] Verify east bypass and all 16 proposed paths in actual Livonia terrain on PlayStation (NOT DONE).
 - [x] Stage 4.6 official Bohemia Object Spawner schema checked; center-only world coordinates enforced; five-prop non-deployable prototype plan; synthetic and negative tests.
