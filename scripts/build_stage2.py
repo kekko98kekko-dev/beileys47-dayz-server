@@ -14,6 +14,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from build_mission import UPSTREAM_BASE, UPSTREAM_COMMIT, run as run_stage1
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -203,8 +205,8 @@ def build(output_dir: Path, source_dir: Path | None) -> None:
     zip_path = outdir / "beileys47-livonia-stage2-preview.zip"
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as archive:
         for path in STAGE2_FILES:
-            archive.write(result_root / path, arcname=f"dayzOffline.enoch/{path}")
-        archive.write(report_path, arcname="change_report.json")
+            add_bytes(archive, f"dayzOffline.enoch/{path}", (result_root / path).read_bytes())
+        add_bytes(archive, "change_report.json", report_path.read_bytes())
     print("Stage 2 built and syntax validated.")
     print("Important: no server compatibility, gameplay or persistence testing performed.")
     print("Preview ZIP:", zip_path)
