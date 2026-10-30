@@ -1,0 +1,22 @@
+{
+  "required_items": [
+    "BandageDressing",
+    "TetracyclineAntibiotics",
+    "VitaminBottle"
+  ],
+  "loot_multipliers": {
+    "BandageDressing": 1.35,
+    "TetracyclineAntibiotics": 1.2,
+    "VitaminBottle": 1.2,
+    "SodaCan_Cola": 1.4,
+    "PeachesCan": 1.4,
+    "BakedBeansCan": 1.4,
+    "Rice": 1.3,
+    "PurificationTablets": 1.2
+  },
+  "fresh_spawn_groups": [
+    "Brena",
+    "Sobotka",
+    "Kolembrody"
+  ]
+}
