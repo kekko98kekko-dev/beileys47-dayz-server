@@ -14,6 +14,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from scan_stage4_sites import SOURCE_FILES, fetch_source, read_positions
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -163,7 +165,7 @@ def run(source_dir:Path|None=None)->dict:
     hashes={name:hashlib.sha256(payload).hexdigest() for name,payload in files.items()}
     files["sha256.json"]=(json.dumps(hashes,indent=2)+"\n").encode("utf-8")
     with zipfile.ZipFile(archive,"w",compression=zipfile.ZIP_DEFLATED) as z:
-      for name,payload in sorted(files.items()):z.writestr(name,payload)
+      for name,payload in sorted(files.items()):add_bytes(z,name,payload)
     with zipfile.ZipFile(archive) as z:
       ensure(z.testzip() is None and set(z.namelist())==set(files),"Archive integrity failure")
       for name,h in hashes.items():ensure(hashlib.sha256(z.read(name)).hexdigest()==h,"Hash mismatch")
