@@ -123,11 +123,13 @@ def make_messages(root: ET.Element, rules: dict) -> list[dict]:
 
 
 def build(output: Path, source_dir: Path | None) -> None:
+    # Always regenerate dependencies from the pinned upstream and CURRENT
+    # rules. Existence of an older Stage 2 tree does not prove freshness.
+    # Otherwise a changed rules file can silently ship stale Stage 2 output.
+    build_stage2(output, source_dir)
     stage2 = output / "stage2/dayzOffline.enoch"
     if not all((stage2 / p).is_file() for p in STAGE2_FILES):
-        build_stage2(output, source_dir)
-    if not all((stage2 / p).is_file() for p in STAGE2_FILES):
-        raise ValueError("Stage 2 build must be present")
+        raise ValueError("Stage 2 regeneration did not produce every expected file")
     rules = json.loads((ROOT / "config/stage3_rules.json").read_text(encoding="utf-8"))
     if rules.get("stage") != 3:
         raise ValueError("Stage 3 rules require stage=3")
