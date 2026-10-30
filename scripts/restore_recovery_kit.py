@@ -141,7 +141,7 @@ def verify_release_checksum(archive_path: Path, checksum_path: Path) -> None:
 
 def restore(archive_path: Path, destination: Path,
             checksum_path: Path | None = None) -> dict:
-    """All ZIP validation happens BEFORE any destination is created."""
+    """Validate everything first; exclusively reserve new destination before moving files."""
     if destination.exists() or destination.is_symlink():
         raise ValueError("Restoration requires a NEW, nonexistent destination directory")
     if not destination.parent.is_dir():
@@ -149,18 +149,30 @@ def restore(archive_path: Path, destination: Path,
     if checksum_path is not None:
         verify_release_checksum(archive_path, checksum_path)
     contents, manifest = verify_archive(archive_path)
-    # Write to temporary sibling and rename only when every write succeeded.
+    # Stage all bytes first. POSIX Path.rename(temp, destination) can replace
+    # an EMPTY existing directory in a race, even after an exists() check.
+    # Reserve the final name using exclusive mkdir instead: never replace it.
     temp = Path(tempfile.mkdtemp(prefix=".beileys47-restore-", dir=destination.parent))
+    claimed = False
     try:
         for rel, raw in contents.items():
             target = temp / rel
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(raw)
-        # Refuse to overwrite even if a different process created the path
-        # after our initial check.
-        if destination.exists() or destination.is_symlink():
-            raise ValueError("Restoration destination appeared during verification")
-        temp.rename(destination)
+        try:
+            destination.mkdir()
+        except FileExistsError as exc:
+            raise ValueError("Restoration requires a NEW, nonexistent destination directory") from exc
+        claimed = True
+        for child in temp.iterdir():
+            target = destination / child.name
+            if target.exists() or target.is_symlink():
+                raise ValueError("Restoration target changed during final transfer")
+            child.rename(target)
+    except BaseException:
+        if claimed:
+            shutil.rmtree(destination)
+        raise
     finally:
         if temp.exists():
             shutil.rmtree(temp)
