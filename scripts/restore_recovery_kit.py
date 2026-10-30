@@ -121,12 +121,33 @@ def verify_archive(archive_path: Path) -> tuple[dict[Path, bytes], dict]:
         return recovered, manifest
 
 
-def restore(archive_path: Path, destination: Path) -> dict:
+def verify_release_checksum(archive_path: Path, checksum_path: Path) -> None:
+    """Compare with the separate .zip.sha256 asset from the GitHub Release."""
+    lines = checksum_path.read_text(encoding="utf-8").splitlines()
+    if len(lines) != 1:
+        raise ValueError("Expected exactly one line in the external SHA-256 file")
+    parts = lines[0].split()
+    if (len(parts) != 2 or re.fullmatch(r"[0-9a-f]{64}", parts[0]) is None
+            or parts[1].lstrip("*").replace(chr(92), "/").split("/")[-1]
+            != archive_path.name):
+        raise ValueError("Invalid or mismatched external Release SHA-256 entry")
+    digest = hashlib.sha256()
+    with archive_path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    if digest.hexdigest() != parts[0]:
+        raise ValueError("External GitHub Release SHA-256 mismatch")
+
+
+def restore(archive_path: Path, destination: Path,
+            checksum_path: Path | None = None) -> dict:
     """All ZIP validation happens BEFORE any destination is created."""
     if destination.exists() or destination.is_symlink():
         raise ValueError("Restoration requires a NEW, nonexistent destination directory")
     if not destination.parent.is_dir():
         raise ValueError("Restoration parent directory does not exist")
+    if checksum_path is not None:
+        verify_release_checksum(archive_path, checksum_path)
     contents, manifest = verify_archive(archive_path)
     # Write to temporary sibling and rename only when every write succeeded.
     temp = Path(tempfile.mkdtemp(prefix=".beileys47-restore-", dir=destination.parent))
@@ -148,6 +169,7 @@ def restore(archive_path: Path, destination: Path) -> dict:
         "restored_file_count": len(contents),
         "baseline": manifest["baseline"],
         "destination": str(destination),
+        "external_release_checksum_verified": checksum_path is not None,
         "not_a_live_nitrado_backup": True,
         "nitrado_connection_or_gameplay_test": False,
     }
@@ -157,8 +179,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--archive", type=Path, required=True)
     parser.add_argument("--destination", type=Path, required=True)
+    parser.add_argument("--sha256-file", type=Path,
+                        help="Optional separate .zip.sha256 asset from the GitHub Release")
     args = parser.parse_args()
-    report = restore(args.archive, args.destination)
+    report = restore(args.archive, args.destination, args.sha256_file)
+    if args.sha256_file is None:
+        print("WARNING: external Release checksum not supplied; only ZIP-internal integrity verified.")
     print(json.dumps(report, indent=2))
     print("No Nitrado saves, console runtime evidence or player persistence are included.")
 
