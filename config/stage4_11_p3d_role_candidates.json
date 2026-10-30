@@ -1,0 +1,504 @@
+{
+  "stage": "4.11",
+  "status": "ROLE_MATCHED_VISUAL_SIZE_CANDIDATES_NO_CONSOLE_CLASS_PROOF",
+  "source": "https://www.dzp3dexplorer.com/api-docs.php",
+  "official_object_spawner_source": "https://community.bistudio.com/wiki/DayZ:Object_Spawner",
+  "checked_on": "2026-10-30",
+  "model_catalog_scope": "P3D Explorer 1.30 indexed metadata, ODOL v56, third party, metadata only; 180 older records on site may reuse 1.29 fallback",
+  "critical_rule": "Direct P3D paths in DayZ official Object Spawner are restricted to DZ/plants* and DZ/rocks*; these structure/furniture P3D paths are NOT authorized direct spawn paths. Console class names remain UNKNOWN.",
+  "suggested_count": 17,
+  "unique_new_p3d_models": 14,
+  "reference_model_catalog": [
+    {
+      "id": 45508,
+      "model_class": "Roadblock_Bags_EndL",
+      "p3d_path": "structures/military/Improvised/Roadblock_Bags_EndL.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45508",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.7210123538970947,
+        "y": -1.1551612615585327,
+        "z": -0.5909466743469238
+      },
+      "bbox_max": {
+        "x": 0.7210123538970947,
+        "y": 1.1551612615585327,
+        "z": 0.5909466743469238
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 45509,
+      "model_class": "Roadblock_Bags_EndR",
+      "p3d_path": "structures/military/Improvised/Roadblock_Bags_EndR.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45509",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.7098498344421387,
+        "y": -1.1457817554473877,
+        "z": -0.6188672780990601
+      },
+      "bbox_max": {
+        "x": 0.7098498344421387,
+        "y": 1.1457817554473877,
+        "z": 0.6188672780990601
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 45523,
+      "model_class": "Misc_BarbedWire",
+      "p3d_path": "structures/military/Misc/Misc_BarbedWire.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45523",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -3.3592278957366943,
+        "y": -1.0611109733581543,
+        "z": -1.0417745113372803
+      },
+      "bbox_max": {
+        "x": 3.3592278957366943,
+        "y": 1.0611109733581543,
+        "z": 1.0417745113372803
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 45549,
+      "model_class": "Misc_SupplyBox1",
+      "p3d_path": "structures/military/Misc/Misc_SupplyBox1.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45549",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.7513819932937622,
+        "y": -0.6378832459449768,
+        "z": -0.7560005187988281
+      },
+      "bbox_max": {
+        "x": 0.7513819932937622,
+        "y": 0.6378832459449768,
+        "z": 0.7560005187988281
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 45865,
+      "model_class": "Misc_RoadBarrier",
+      "p3d_path": "structures/residential/misc/Misc_RoadBarrier.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45865",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.3792034983634949,
+        "y": -1.2878758907318115,
+        "z": -5.240107536315918
+      },
+      "bbox_max": {
+        "x": 0.3792034983634949,
+        "y": 1.287875771522522,
+        "z": 5.240108013153076
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 46652,
+      "model_class": "Sign_Roadblock_Arrow",
+      "p3d_path": "structures/signs/Misc/Sign_Roadblock_Arrow.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/46652",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.0245438851416111,
+        "y": -0.4321175217628479,
+        "z": -0.4321179986000061
+      },
+      "bbox_max": {
+        "x": 0.0245438851416111,
+        "y": 0.4321175217628479,
+        "z": 0.4321179986000061
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 45520,
+      "model_class": "Misc_BagFence_3m",
+      "p3d_path": "structures/military/Misc/Misc_BagFence_3m.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45520",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -2.1482901573181152,
+        "y": -0.5626570582389832,
+        "z": -0.7797755002975464
+      },
+      "bbox_max": {
+        "x": 2.1482901573181152,
+        "y": 0.5626570582389832,
+        "z": 0.7797755002975464
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 45521,
+      "model_class": "Misc_BagFence_Corner",
+      "p3d_path": "structures/military/Misc/Misc_BagFence_Corner.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45521",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -2.151215076446533,
+        "y": -0.5626570582389832,
+        "z": -2.152475118637085
+      },
+      "bbox_max": {
+        "x": 2.151215076446533,
+        "y": 0.5626570582389832,
+        "z": 2.152475118637085
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 45871,
+      "model_class": "Misc_Table",
+      "p3d_path": "structures/residential/misc/Misc_Table.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45871",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.5824844837188721,
+        "y": -0.45367205142974854,
+        "z": -0.7371800541877747
+      },
+      "bbox_max": {
+        "x": 0.5824844837188721,
+        "y": 0.45367205142974854,
+        "z": 0.7371800541877747
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 47491,
+      "model_class": "Misc_Tire",
+      "p3d_path": "structures_bliss/industrial/Misc/Misc_Tire.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/47491",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.34744006395339966,
+        "y": -0.0864999070763588,
+        "z": -0.34765881299972534
+      },
+      "bbox_max": {
+        "x": 0.34744006395339966,
+        "y": 0.08649991452693939,
+        "z": 0.34765881299972534
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 45027,
+      "model_class": "Desk_Office",
+      "p3d_path": "structures/furniture/tables/office_desk/Desk_Office.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45027",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.905223548412323,
+        "y": -0.42026209831237793,
+        "z": -0.426455020904541
+      },
+      "bbox_max": {
+        "x": 0.905223548412323,
+        "y": 0.42026206851005554,
+        "z": 0.426455020904541
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 44985,
+      "model_class": "Desk_Globe",
+      "p3d_path": "structures/furniture/school_equipment/Desk_Globe.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/44985",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.1722240149974823,
+        "y": -0.21804681420326233,
+        "z": -0.15612614154815674
+      },
+      "bbox_max": {
+        "x": 0.1722240149974823,
+        "y": 0.21804681420326233,
+        "z": 0.15612614154815674
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 47626,
+      "model_class": "Misc_WoodenCrate",
+      "p3d_path": "structures_bliss/residential/misc/Misc_WoodenCrate.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/47626",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.4033711850643158,
+        "y": -0.34818899631500244,
+        "z": -0.7152221202850342
+      },
+      "bbox_max": {
+        "x": 0.4033711850643158,
+        "y": 0.34818899631580746,
+        "z": 0.7152221202850342
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    },
+    {
+      "id": 45550,
+      "model_class": "Misc_SupplyBox2",
+      "p3d_path": "structures/military/Misc/Misc_SupplyBox2.p3d",
+      "source_url": "https://www.dzp3dexplorer.com/v1/models/45550",
+      "odol_version": 56,
+      "bbox_min": {
+        "x": -0.7924320697784424,
+        "y": -0.8990682363510132,
+        "z": -0.5204917788505554
+      },
+      "bbox_max": {
+        "x": 0.7924320697784424,
+        "y": 0.8990682363510132,
+        "z": 0.5204917788505554
+      },
+      "runtime_object_spawner_classname": null,
+      "can_use_direct_p3d_path_in_object_spawner": false,
+      "ps4_ps5_spawning_tested": false,
+      "collision_verified": false
+    }
+  ],
+  "suggestions": {
+    "checkpoint_01": {
+      "model_id": 45508,
+      "visual_role_fit": "compact_sandbag_roadblock_left",
+      "rationale": "small barrier segment, not full checkpoint building",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "checkpoint_02": {
+      "model_id": 45509,
+      "visual_role_fit": "compact_sandbag_roadblock_right",
+      "rationale": "other matching barrier section",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "woods_01": {
+      "model_id": 45523,
+      "visual_role_fit": "broken_wire_fence",
+      "rationale": "barbed-wire fence-like environmental clutter; safety on actual path unverified",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "woods_02": {
+      "model_id": 45549,
+      "visual_role_fit": "fallen_supply_box",
+      "rationale": "small outdoor supply marker",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "service_01": {
+      "model_id": 45865,
+      "visual_role_fit": "roadside_obstacle",
+      "rationale": "long road-barrier visual option: may overblock and must be reviewed",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "service_03": {
+      "model_id": 46652,
+      "visual_role_fit": "warning_sign",
+      "rationale": "small directional warning marker",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "barracks_02": {
+      "model_id": 45520,
+      "visual_role_fit": "sandbag_line",
+      "rationale": "medium outer cover, not another barracks building",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "barracks_03": {
+      "model_id": 45521,
+      "visual_role_fit": "sandbag_corner",
+      "rationale": "corner cover near barracks shell; possible visual intrusion",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "barracks_04": {
+      "model_id": 45871,
+      "visual_role_fit": "interior_table",
+      "rationale": "an indoor story surface candidate; needs real floor height/door",
+      "placement_intent": "POSSIBLE_INTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "logistics_04": {
+      "model_id": 47491,
+      "visual_role_fit": "loose_repair_tire",
+      "rationale": "small maintenance clue; not a repair gameplay mechanic",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "hq_02": {
+      "model_id": 45521,
+      "visual_role_fit": "front_sandbag_marker",
+      "rationale": "front approach cover option, not an entry door",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "hq_03": {
+      "model_id": 45520,
+      "visual_role_fit": "rear_cover_marker",
+      "rationale": "rear approach cover, may restrict passage",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "hq_04": {
+      "model_id": 45027,
+      "visual_role_fit": "interior_desk",
+      "rationale": "indoor office cover only if actual floor/support can be verified",
+      "placement_intent": "POSSIBLE_INTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "hq_05": {
+      "model_id": 44985,
+      "visual_role_fit": "desk_globe_clue",
+      "rationale": "tiny tabletop prop only; requires elevated support, not SurfaceY-only placement",
+      "placement_intent": "POSSIBLE_INTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "ridge_02": {
+      "model_id": 45549,
+      "visual_role_fit": "retreat_supply_marker",
+      "rationale": "small uncovered supply point, not permanent safe elevated nest",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "secret_01": {
+      "model_id": 47626,
+      "visual_role_fit": "small_wooden_cache",
+      "rationale": "small concealed wooden crate",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    },
+    "secret_02": {
+      "model_id": 45550,
+      "visual_role_fit": "small_supply_clue",
+      "rationale": "small clue/supply box, must avoid easy farm exploit",
+      "placement_intent": "EXTERIOR",
+      "suggested_only": true,
+      "verified_console_object_classname": null,
+      "real_Y": null,
+      "ground_or_floor_checked": false,
+      "requires_height_and_collision_test": true
+    }
+  },
+  "approval": {
+    "all_new_model_classnames_verified": false,
+    "real_terrain_elevation_verified": false,
+    "all_model_collisions_checked": false,
+    "ps4_ps5_fps_checked": false,
+    "objects_spawned": 0,
+    "deployment_allowed": false
+  }
+}
