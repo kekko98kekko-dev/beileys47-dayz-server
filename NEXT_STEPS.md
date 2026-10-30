@@ -13,6 +13,8 @@
 - [x] Fail-closed Stage 4 survey template and offline Object Spawner exporter (requires real terrain input).
 - [x] Synthetic-only negative tests: reject missing height, unknown model and absent verification.
 - [x] Document PS4/PS5 acceptance gates, performance checks, and rollback protocol.
+- [x] Stage 4.9 13 DayZ 1.30 third-party P3D visual bounding boxes; conservative 5-prop paper-corridor clearance and proposed local shifts, no collision claims.
+- [ ] Verify actual PlayStation object class spawnability, collisions and measured Y; P3D bbox metadata is not physical proof (NOT DONE).
 - [x] Stage 4.8 11 provisional X/Z waypoints and 16 paper-route segments for PS4/PS5 reconnaissance; correct misleading legacy directional entry labels.
 - [ ] Stage 4.8 verify physical paths and DayZ terrain Y in game; no PlayStation or Nitrado visit yet (NOT DONE).
 - [x] Stage 4.7 PvP schematic graph stress: identified east access failure under checkpoint+logistics lockdown; planned service-to-secret bypass; 0/45 conceptual two-sector lockouts after route amendment.
