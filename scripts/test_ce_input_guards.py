@@ -2,10 +2,12 @@
 """Adversarial offline Central Economy source-integrity guards."""
 from __future__ import annotations
 
+import copy
 import xml.etree.ElementTree as ET
 
 from build_mission import modify_spawns
-from build_stage2 import update_type_values,update_vehicles
+from build_stage2 import update_type_values,update_vehicles,update_gameplay
+from build_stage3 import modify_events
 
 def reject(fn,expected:str)->None:
     try:fn()
@@ -50,7 +52,48 @@ def test()->None:
         reject(lambda b=broken:update_vehicles(car("0.5"),b),"invalid vehicle probability rule")
     result=update_vehicles(car("0.5"),rules)
     assert len(result)==1 and len(result[0]["parts"])==5
-    print("PASS: malformed spawn groups, duplicate CE types and nonfinite vehicle probabilities fail closed.")
+
+    # Python True == 1: semantic fields must reject JSON boolean values,
+    # not accidentally write them into DayZ XML/JSON numeric parameters.
+    loot=ET.fromstring('<types><type name="SKS"><nominal>5</nominal><min>2</min></type></types>')
+    for invalid in (True, "1.4", float("nan"), float("inf")):
+        bad={"required_item_types":["SKS"],"type_multipliers":{"SKS":invalid}}
+        reject(lambda b=bad:update_type_values(copy.deepcopy(loot),b),"invalid item multiplier")
+
+    gameplay={"GeneralData":{"disableBaseDamage":False,"disableContainerDamage":False},
+              "PlayerData":{"StaminaData":{"staminaMax":100,
+                                           "staminaKgToStaminaPercentPenalty":1.75}}}
+    good={"gameplay":{"staminaMax":105,"staminaKgToStaminaPercentPenalty":1.65,
+                      "disableBaseDamage":False,"disableContainerDamage":False}}
+    assert len(update_gameplay(copy.deepcopy(gameplay),good))==2
+    for invalid in (True, "105", float("nan"), float("inf")):
+        broken=copy.deepcopy(good)
+        broken["gameplay"]["staminaMax"]=invalid
+        reject(lambda b=broken:update_gameplay(copy.deepcopy(gameplay),b),"Invalid gameplay setting")
+    boolean_old=copy.deepcopy(gameplay)
+    boolean_old["PlayerData"]["StaminaData"]["staminaMax"]=True
+    reject(lambda:update_gameplay(boolean_old,good),"Invalid gameplay setting")
+
+    events_xml='''<events>
+      <event name="StaticHeliCrash"><active>1</active><position>fixed</position>
+        <nominal>1</nominal><children><child type="WreckA" max="1"/></children></event>
+      <event name="StaticMilitaryConvoy"><active>1</active><position>fixed</position>
+        <nominal>1</nominal></event>
+    </events>'''
+    approved={"events":{
+        "StaticHeliCrash":{"vanilla_nominal":1,"target_nominal":2,
+                           "child_type":"WreckA","vanilla_child_max":1,"target_child_max":2},
+        "StaticMilitaryConvoy":{"vanilla_nominal":1,"target_nominal":2}}}
+    assert len(modify_events(ET.fromstring(events_xml),approved))==2
+    for name,key in (("StaticHeliCrash","target_nominal"),
+                     ("StaticHeliCrash","vanilla_child_max"),
+                     ("StaticHeliCrash","target_child_max"),
+                     ("StaticMilitaryConvoy","vanilla_nominal")):
+        altered=copy.deepcopy(approved)
+        altered["events"][name][key]=True
+        reject(lambda b=altered:modify_events(ET.fromstring(events_xml),b),
+               "Invalid event integer rule")
+    print("PASS: malformed CE input, boolean-as-integer event and gameplay guards fail closed.")
     print("Tests are purely synthetic; no game engine or Nitrado is available.")
 
 if __name__=="__main__":test()
