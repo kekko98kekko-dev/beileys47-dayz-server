@@ -1,4 +1,4 @@
-name: Validate DayZ Livonia Stage 1 and Stage 2 previews
+name: Validate DayZ Livonia Stage 1, 2 and 3 previews
 
 on:
   push:
@@ -30,6 +30,12 @@ jobs:
       - name: Regression tests on generated configurations
         run: python scripts/test_stage2.py
 
+      - name: Build Stage 3 encounter/identity preview (NO deployment)
+        run: python scripts/build_stage3.py
+
+      - name: Verify Stage 3 event scope, messages and archive
+        run: python scripts/test_stage3.py
+
       - name: Independent approved-change audit against official Bohemia files
         run: python scripts/audit_stage2.py
 
@@ -43,8 +49,10 @@ jobs:
         run: |
           python -m zipfile -t dist/stage1/beileys47-livonia-stage1.zip
           python -m zipfile -t dist/stage2/beileys47-livonia-stage2-preview.zip
+          python -m zipfile -t dist/stage3/beileys47-livonia-stage3-preview.zip
           python -m json.tool dist/stage1/change_report.json > /dev/null
           python -m json.tool dist/stage2/change_report.json > /dev/null
+          python -m json.tool dist/stage3/change_report.json > /dev/null
 
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
@@ -66,6 +74,16 @@ jobs:
           path: |
             dist/stage2/beileys47-livonia-stage2-preview.zip
             dist/stage2/change_report.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 3 preview (NO deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-livonia-stage3-preview
+          path: |
+            dist/stage3/beileys47-livonia-stage3-preview.zip
+            dist/stage3/change_report.json
           if-no-files-found: error
           retention-days: 90
 
