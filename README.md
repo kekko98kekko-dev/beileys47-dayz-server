@@ -122,3 +122,7 @@ Stage 3 mantiene **identici** tutti i file Stage 2 e aggiunge:
 **Non è un deploy**: non richiede credenziali, non parla con Nitrado, non legge dati live e non sa dove risiede la missione del futuro server. L'indicatore **ready_to_deploy** resta sempre false. Il percorso reale e le API PlayStation andranno verificati solo dopo un acquisto autorizzato.
 
 [Procedura di preflight e installazione](docs/OPERATIONS.md)
+
+## Pre-purchase mission kit (manual review only)
+
+The workflow generates six Stage 3 Livonia mission candidate files with per-file SHA-256, plus a purchase-day safety checklist. **It is not approved for deployment** until version, provider backups, original files and PS5 tests have been verified. See [pre-purchase guide](docs/PREPURCHASE_MASTER.md). Stage 4/ZONA47 terrain objects remain excluded.
