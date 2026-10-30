@@ -16,6 +16,7 @@ OUT = ROOT / "dist" / "beileys47-recovery-kit.zip"
 
 SOURCE_PATHS = [
     ".github/workflows/validate.yml",
+    ".github/workflows/recovery-release.yml",
     ".gitignore",
     "README.md",
     "NEXT_STEPS.md",
@@ -40,6 +41,7 @@ SOURCE_PATHS = [
     "docs/STAGE4_SITE_SHORTLIST.md",
     "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
+    "docs/RELEASE_SNAPSHOT.md",
     "mission/README.md",
     "scripts/audit_stage2.py",
     "scripts/build_mission.py",
