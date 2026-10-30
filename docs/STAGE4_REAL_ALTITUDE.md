@@ -50,6 +50,19 @@ Lo script:
 
 Il campionamento a **20 metri** può saltare fossati, piccoli strapiombi, rocce e irregolarità nei metri intermedi. Una pendenza media accettabile non dimostra l'assenza di ostacoli né l'accessibilità dei tre ingressi. Ogni costruzione grande richiederà anche più misure sul proprio ingombro e prove dirette in gioco.
 
+## Opzione per acquisire automaticamente le 182 quote su un DayZ PC autorizzato
+
+Il nuovo script `scripts/build_stage4_surfacey_snippet.py` genera `central_surfaceY_pc_runtime_example.c`: un **esempio sorgente Enforce Script NON compilato né eseguito** da questa chat. In un ambiente DayZ PC con strumenti di scripting appropriati, una persona autorizzata dovrà integrare la funzione `Z47CaptureSurfaceY_Example()` e richiamarla una sola volta. La funzione invoca `GetGame().SurfaceY(x,z)` per ciascuno dei 182 punti centrali e stampa nel log una riga `Z47_ALT|...` per punto.
+
+Il tool `scripts/import_stage4_surfacey_log.py` converte automaticamente tali righe nel JSON di misurazione, verificando punti mancanti, duplicati e coordinate non coerenti. Esempio, da usare **solo con un log effettivamente estratto dal runtime**:
+
+```bash
+python scripts/import_stage4_surfacey_log.py --log rilievo_gioco.log --output rilievo_reale.json --game-build "VERSIONE_EFFETTIVA" --captured-utc "AAAA-MM-GGT00:00:00Z" --evidence "RIFERIMENTO_REALE_AL_RILIEVO"
+python scripts/audit_stage4_height_samples.py --input rilievo_reale.json --output audit_reale.json
+```
+
+Non installare il frammento `.c` su Nitrado PlayStation: la modalità console non supporta lo stesso scripting personalizzato del PC. La generazione del codice **non equivale** alla sua esecuzione in gioco e un log fornito da terzi non prova automaticamente che le letture siano autentiche. Servono verifiche indipendenti e prove su PS4/PS5 prima dell'Object Spawner.
+
 ## Sicurezza e CI
 
 GitHub Actions genera i template vuoti e un audit che dichiara espressamente **`BLOCKED_MISSING_MEASUREMENTS_OR_PROVENANCE`**. I test positivi e negativi usano un piano Y *matematicamente sintetico*, eliminato senza pubblicarlo: non equivale a una misura di Livonia.
