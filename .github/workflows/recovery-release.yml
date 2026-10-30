@@ -79,6 +79,9 @@ jobs:
           python scripts/prepare_stage4_height_capture.py
           python scripts/test_stage4_height_samples.py
 
+      - name: Validate optional PC SurfaceY snippet and log-importer with synthetic data
+        run: python scripts/test_stage4_surfacey_capture.py
+
       - name: Check stable 1.30 source provenance (not console runtime)
         env:
           GITHUB_TOKEN: ${{ github.token }}
