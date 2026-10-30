@@ -1,0 +1,26 @@
+{
+  "stage": 4,
+  "kind": "OFFICIAL_MISSION_BASELINE_MONITOR",
+  "project": "BEILEYS47 | DAYZ SURVIVAL WAR",
+  "map": "Livonia",
+  "target_platform": "PlayStation 4 / PlayStation 5",
+  "latest_official_playstation_stable_known_at_review": "1.30.164200",
+  "latest_official_playstation_stable_release_date": "2026-10-21",
+  "official_console_patch_reference": "https://forums.dayz.com/forum/180-console-updates/",
+  "official_baseline_release_tag": "DZ_130",
+  "pinned_ce_commit": "f220b2918b1d79a5055b1ee9be70c0ec1516e876",
+  "official_ce_repository": "BohemiaInteractive/DayZ-Central-Economy",
+  "baseline_release_reference": "https://github.com/BohemiaInteractive/DayZ-Central-Economy/releases/tag/DZ_130",
+  "review_date": "2026-10-30",
+  "target_game_build_verified_live": false,
+  "nitrado_mission_files_verified": false,
+  "platform_runtime_compatibility_confirmed": false,
+  "auto_update_official_mission_on_new_release": false,
+  "allow_install": false,
+  "warnings": [
+    "A matching official CE release tag demonstrates source provenance, NOT matching runtime build or Nitrado files.",
+    "Do not use PC Experimental patch version as PlayStation Stable version.",
+    "When the official CE master or stable tag changes, examine a reviewed diff before updating pinned baselines.",
+    "Back up the real server and verify game build/mission folder before any live deployment."
+  ]
+}
