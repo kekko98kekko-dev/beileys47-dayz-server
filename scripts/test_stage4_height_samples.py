@@ -79,7 +79,7 @@ def test()->None:
     else:raise AssertionError("NaN ground elevation was accepted")
 
     bad=copy.deepcopy(flat)
-    bad["points"][0]["id"]=bad["points"][1]["id"]
+    bad["points"][1]["id"]=bad["points"][0]["id"]
     try:analyze(bad,reference,region)
     except ValueError as e:assert "duplicate" in str(e)
     else:raise AssertionError("Duplicate point IDs accepted")
