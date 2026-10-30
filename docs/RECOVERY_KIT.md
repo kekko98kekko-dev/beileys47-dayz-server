@@ -74,7 +74,7 @@ Il recovery kit *non contiene* salvataggi mondo, personaggi, casse, auto, basi o
 Con Python 3.12 installato su Windows, aprire il Prompt nella cartella del repository BEILEYS47 e usare:
 
 ```powershell
-py scripts/restore_recovery_kit.py --archive "C:\\Backup\\beileys47-recovery-kit.zip" --destination "C:\\BEILEYS47_RECUPERATO"
+py scripts/restore_recovery_kit.py --archive "C:\\Backup\\beileys47-recovery-kit.zip" --destination "C:\\BEILEYS47_RECUPERATO" --sha256-file "C:\\Backup\\beileys47-recovery-kit.zip.sha256"
 ```
 
 Se il repository non fosse più sul PC, lo script è conservato **dentro** lo ZIP in `repository/scripts/restore_recovery_kit.py`: estrarre soltanto lo script con Esplora file, poi eseguirlo indicando lo ZIP originale e una destinazione nuova.
@@ -82,3 +82,5 @@ Se il repository non fosse più sul PC, lo script è conservato **dentro** lo ZI
 Il risultato contiene `README.md`, `config/`, `scripts/`, `docs/` e `dist/` (anteprime, non file server live). Il backup **non contiene la cartella .git** né una copia della persistenza Nitrado. Per riattivare i workflow, recuperare inoltre il repository GitHub o inizializzare un nuovo repository Git. Conservare le copie private di missione e impostazioni salvate da Nitrado separatamente: il programma non le inventa né le recupera dal provider.
 
 **Test automatici:** ripristino completo, confronto byte per byte, rifiuto di archivi manomessi, mancanti, con path traversal o duplicati, e blocco della sovrascrittura. Nessuna installazione sul server.
+
+Il file `.zip.sha256` è un asset **separato** scaricabile dalla stessa GitHub Release. Il comando ne verifica l'hash prima di estrarre. Senza `--sha256-file` il ripristino funziona, ma verifica soltanto gli hash interni allo ZIP. Per un controllo di autenticità, confrontare il checksum anche con una fonte indipendentemente affidabile.
