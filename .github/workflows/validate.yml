@@ -145,6 +145,12 @@ jobs:
           python scripts/build_stage4_12_evidence.py
           python scripts/test_stage4_12_evidence.py
 
+      - name: Create and check Stage 4.13 empty console pilot 1→3→5 acceptance packet
+        run: |
+          python scripts/build_stage4_13_console_pilot.py
+          python scripts/audit_stage4_13_console_pilot.py
+          python scripts/test_stage4_13_console_pilot.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -324,6 +330,17 @@ jobs:
             dist/stage4_12_rpt_diagnostics/class_evidence_no_runtime.json
             dist/stage4_12_rpt_diagnostics/rpt_triage_no_logs.json
             dist/stage4_12_rpt_diagnostics/beileys47-spawner-log-preflight-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.13 blank console pilot acceptance template only
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage413-blank-PS5-acceptance
+          path: |
+            dist/stage4_13_console_pilot/blank_1_3_5_console_trial.json
+            dist/stage4_13_console_pilot/console_pilot_no_evidence_audit.json
+            dist/stage4_13_console_pilot/beileys47-console-pilot-templates-only.zip
           if-no-files-found: error
           retention-days: 90
 
