@@ -31,6 +31,7 @@ SOURCE_PATHS = [
     "docs/STAGE2.md",
     "docs/STAGE3.md",
     "docs/STAGE4_ZONE47.md",
+    "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
     "mission/README.md",
     "scripts/audit_stage2.py",
