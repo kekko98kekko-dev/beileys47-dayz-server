@@ -39,6 +39,7 @@ SOURCE_PATHS = [
     "docs/STAGE4_FOOTPRINT.md",
     "docs/STAGE4_RELEASE_COMPATIBILITY.md",
     "docs/STAGE4_TERRAIN_SURVEY.md",
+    "docs/STAGE4_REAL_ALTITUDE.md",
     "docs/STAGE4_SITE_SHORTLIST.md",
     "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
@@ -55,6 +56,9 @@ SOURCE_PATHS = [
     "scripts/test_stage4_footprints.py",
     "scripts/build_stage4_terrain_survey_grid.py",
     "scripts/test_stage4_terrain_grid.py",
+    "scripts/prepare_stage4_height_capture.py",
+    "scripts/audit_stage4_height_samples.py",
+    "scripts/test_stage4_height_samples.py",
     "scripts/check_stage4_release_gate.py",
     "scripts/test_stage4_release_gate.py",
     "scripts/audit_stage4_assets.py",
@@ -94,6 +98,11 @@ PREVIEW_PATHS = [
     "dist/stage4_terrain_survey/southern_east_empty_Y_grid.csv",
     "dist/stage4_terrain_survey/central_xz_survey.svg",
     "dist/stage4_terrain_survey/beileys47-zone47-terrain-survey-worksheet-only.zip",
+    "dist/stage4_height_capture/central_surfaceY_empty.json",
+    "dist/stage4_height_capture/southern_west_surfaceY_empty.json",
+    "dist/stage4_height_capture/southern_east_surfaceY_empty.json",
+    "dist/stage4_height_capture/terrain_height_audit.json",
+    "dist/stage4_height_capture/beileys47-zone47-height-capture-templates-only.zip",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
