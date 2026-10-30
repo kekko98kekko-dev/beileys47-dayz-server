@@ -32,7 +32,7 @@ def finite(value:object,name:str,lower:float=-200,upper:float=1500)->float:
 def valid_captured_utc(value: object) -> bool:
     """Require a real ISO-8601 UTC instant, not an arbitrary 16-char string."""
     if not isinstance(value, str) or re.fullmatch(
-        r"\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z", value
+        r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z", value
     ) is None:
         return False
     try:
