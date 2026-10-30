@@ -92,6 +92,11 @@ jobs:
           python scripts/stress_test_stage4_pvp_routes.py
           python scripts/test_stage4_pvp_routes.py
 
+      - name: Check Stage 4.8 PlayStation field-survey waypoint consistency
+        run: |
+          python scripts/build_stage4_8_field_recon.py
+          python scripts/test_stage4_8_field_recon.py
+
       - name: Check stable 1.30 source provenance (not console runtime)
         env:
           GITHUB_TOKEN: ${{ github.token }}
