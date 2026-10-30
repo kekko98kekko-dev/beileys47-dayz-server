@@ -40,6 +40,19 @@ Al momento il test controlla `config/profile.json`. Quando aggiungeremo XML/JSON
 - Nessuna modifica sarà inviata automaticamente al server finché non avremo collaudato un metodo autorizzato e sicuro.
 - **Non spendere per Nitrado** finché le attività preliminari non sono complete e il prezzo non è confermato.
 
+
+## Stage 1 — Anteprima già generabile
+
+✅ Il builder GitHub Actions crea automaticamente due veri XML per **Livonia**, usando un commit ufficiale Bohemia del 16 ottobre 2026:
+- `db/types.xml` — maggior disponibilità di 8 tipi di cibo/medicinali;
+- `cfgplayerspawnpoints.xml` — spawn iniziali concentrati in Brena, Sobotka e Kolembrody.
+
+Il pacchetto è nella sezione **Actions → ultimo workflow riuscito → Artifacts → beileys47-livonia-stage1-preview**.
+
+[Leggi la configurazione Stage 1](docs/STAGE1.md)
+
+**Non installare ancora questi file su un server reale senza backup e verifica della versione.** Il workflow non distribuisce nulla a Nitrado.
+
 ## Riferimenti tecnici
 
 - [Bohemia Interactive: DayZ Central Economy](https://github.com/BohemiaInteractive/DayZ-Central-Economy)
