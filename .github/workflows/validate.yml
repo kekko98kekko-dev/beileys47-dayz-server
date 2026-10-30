@@ -165,6 +165,9 @@ jobs:
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
+      - name: Deep audit every nested archive and exact master source bytes
+        run: python scripts/test_all_nested_zip_reproducibility.py
+
       - name: Upload Stage 1 preview (NO deployment)
         uses: actions/upload-artifact@v4
         with:
