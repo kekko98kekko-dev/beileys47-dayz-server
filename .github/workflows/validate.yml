@@ -110,6 +110,11 @@ jobs:
       - name: Verify optional PC SurfaceY example and synthetic log converter
         run: python scripts/test_stage4_surfacey_capture.py
 
+      - name: Validate Stage 4.6 official Object Spawner world-center contract and five-prop plan
+        run: |
+          python scripts/build_stage4_6_pilot_preflight.py
+          python scripts/test_stage4_6_pilot_preflight.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -211,6 +216,16 @@ jobs:
             dist/stage4_height_capture/terrain_height_audit.json
             dist/stage4_height_capture/central_surfaceY_pc_runtime_example.c
             dist/stage4_height_capture/beileys47-zone47-height-capture-templates-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload non-installable Stage 4.6 five-prop pilot plan
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-zone47-micro-pilot-plan
+          path: |
+            dist/stage4_6_preflight/zone47_micro_pilot_plan.json
+            dist/stage4_6_preflight/beileys47-micro-pilot-plan-only.zip
           if-no-files-found: error
           retention-days: 90
 
