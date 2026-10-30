@@ -10,7 +10,14 @@
 - [x] Test di regressione e controllo contenuto ZIP.
 - [x] Anteprima Stage 1 e Stage 2 prodotta da GitHub Actions.
 - [x] Guida operativa backup, collaudo, rollback e limitazioni PS5.
+- [x] Audit indipendente completo sulle differenze XML/JSON rispetto ai file Bohemia.
+- [x] Recovery ZIP verificato con SHA-256 e conservazione artifact fino a 90 giorni.
 - [x] Nessuna spesa, nessun accesso a Nitrado necessario.
+
+## Prima della scadenza di un futuro server Nitrado
+- [ ] Scaricare su PC l'ultimo beileys47-recovery-kit.zip (preferibilmente almeno 48 ore prima).
+- [ ] Salvare separatamente i file di missione realmente presenti sul server, se il pannello lo permette.
+- [ ] Verificare disponibilità e limiti dei backup dati persistenti nel pannello.
 
 ## Prima dell'acquisto Nitrado
 - [ ] Confermare prezzo e piano PREPAGATO di PlayStation, non PC.
@@ -38,6 +45,7 @@
 ## Collegamenti
 - [Stage 1](docs/STAGE1.md)
 - [Stage 2](docs/STAGE2.md)
+- [Recupero ZIP](docs/RECOVERY_KIT.md)
 - [Checklist e recupero](docs/OPERATIONS.md)
 - [GitHub Actions](../../actions)
 
