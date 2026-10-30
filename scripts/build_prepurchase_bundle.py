@@ -13,6 +13,8 @@ import zipfile
 import xml.etree.ElementTree as ET
 from pathlib import Path, PurePosixPath
 
+from zip_deterministic import add_bytes
+
 from build_mission import UPSTREAM_COMMIT
 from build_stage3 import STAGE3_FILES
 from build_stage4_13_console_pilot import PROTOCOL
@@ -155,7 +157,7 @@ def build(source_zip:Path=SOURCE,output:Path=PACKAGE)->dict:
     entries["SHA256_MANIFEST.json"]=(json.dumps(checksum,indent=2,ensure_ascii=False)+"\n").encode("utf-8")
     output.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(output,"w",zipfile.ZIP_DEFLATED) as z:
-        for name,payload in sorted(entries.items()):z.writestr(name,payload)
+        for name,payload in sorted(entries.items()):add_bytes(z,name,payload)
     with zipfile.ZipFile(output) as z:
         assert z.testzip() is None and set(z.namelist())==set(entries)
         verify=json.loads(z.read("SHA256_MANIFEST.json"))
