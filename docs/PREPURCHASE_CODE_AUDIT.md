@@ -40,3 +40,21 @@ Le verifiche **non** dimostrano comportamento del motore DayZ su PS4/PS5, perfor
 - Confrontare i file attivi dopo ogni riavvio e prevedere rollback, senza eliminare dati persistenti.
 
 **Conclusione:** il kit può raggiungere una qualità alta **prima dell'acquisto per le proprietà verificabili offline**, ma non può essere certificato «perfetto» in gioco senza il collaudo su un vero server.
+
+## Secondo audit: archivi annidati e alterazioni non autorizzate
+
+### D. Anche gli archivi Stage 4 e il pacchetto pre-acquisto erano non deterministici
+
+**Severità: alta per l'affidabilità dei backup.** Il Recovery Kit esterno usava già una data interna fissa, ma diversi ZIP di ZONA 47 e lo ZIP con i sei file Livonia venivano creati con `ZipFile.writestr(nome, contenuto)` usando la data/ora del runner. Questo poteva cambiare l'hash del Recovery Kit per lo **stesso commit**, perché i suoi file annidati variavano.
+
+**Correzione:** gli archivi generati Stage 4, la Stage 4.13 e il pacchetto pre-acquisto ora usano `zip_deterministic.add_bytes`. Un test dedicato ispeziona le date di tutti gli ZIP annidati nel Recovery Kit, ne verifica SHA-256 e confronta **due costruzioni consecutive** del pacchetto master e del Recovery Kit: devono essere identiche byte per byte.
+
+### E. Il controllo del pacchetto Livonia non verificava integralmente il contenuto
+
+**Severità: alta.** `build_prepurchase_bundle.py` accettava qualsiasi XML formalmente valido, purché avesse il nome giusto, e il controllo `if "base" not in notes and not event_changes` consentiva un report con modifiche mancanti se `notes` conteneva la parola «base». Un archivio Stage 3 alterato avrebbe potuto attraversare questa verifica senza che lo script se ne accorgesse.
+
+**Correzione:** la creazione del pacchetto ora verifica i valori approvati per gli eventi elicottero/convoglio, i tre messaggi e le relative dichiarazioni nel report, e confronta **tutti e sei i file byte per byte** con la Stage 3 appena generata nel runner. Le prove negative in `test_prepurchase_bundle.py` alterano nominal di un evento, testo di un messaggio, loot XML e report: il pacchetto deve rifiutarli anche se la struttura resta valida.
+
+### Limite che resta
+
+Un archivio riproducibile non certifica il corretto comportamento dell'economia DayZ. Il confronto dei sei file prova la **coerenza del pacchetto con la build appena generata**, non che quella build sia compatibile con il server PlayStation realmente noleggiato. Lo stesso vale per collisioni e quote Y di ZONA 47, che restano da misurare.
