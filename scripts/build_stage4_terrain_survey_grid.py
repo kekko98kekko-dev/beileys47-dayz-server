@@ -16,6 +16,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
+
+from zip_deterministic import add_bytes
 from xml.sax.saxutils import escape
 
 from scan_stage4_sites import fetch_source
@@ -208,7 +210,7 @@ def build()->dict:
     files["sha256_manifest.json"]=(json.dumps(manifest,indent=2)+"\n").encode()
     package=OUT/"beileys47-zone47-terrain-survey-worksheet-only.zip"
     with zipfile.ZipFile(package,"w",zipfile.ZIP_DEFLATED) as z:
-        for name,data in sorted(files.items()):z.writestr(name,data)
+        for name,data in sorted(files.items()):add_bytes(z,name,data)
     with zipfile.ZipFile(package) as z:
         checked(z.testzip() is None and set(z.namelist())==set(files),"Bad survey archive")
         for name,digest in manifest.items():
