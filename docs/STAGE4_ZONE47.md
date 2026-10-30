@@ -119,6 +119,10 @@ A complete paper audit covers **26 markers / 325 pairwise comparisons**. Exactly
 
 A third-party indexed DayZ 1.30 P3D metadata catalog provides visual bounding boxes for 14 compact models proposed for 17 symbolic roles. All 26 markers can now be evaluated against hypothetical P3D visual envelopes on paper, but **ZERO valid console Object Spawner class names have been independently confirmed**. Official DayZ Object Spawner supports raw P3D paths only for certain plant/rock folders; structures and furniture cannot be deployed from their arbitrary P3D paths. No real Y, collisions or PS5 FPS have been tested. [Stage 4.11 documentation](STAGE4_11_ROLE_MATCHED_MODELS.md).
 
+## Stage 4.12 — Official spawner failure marker and private RPT triage
+
+Bohemia's official DayZ Object Spawner documentation gives the diagnostic RPT phrase **`Object spawner failed to spawn`** for missing classes/models. The Stage 4.12 offline parser can extract counts and known identifiers from a private file without copying raw player/server log text. It does **not** infer successful spawning from absence of errors. Source-backed 13 Livonia map-group class candidates and 26 symbolic markers remain **0 verified PlayStation objects** until private field evidence is reviewed. [Stage 4.12 documentation](STAGE4_12_RPT_AND_SPAWNER_PROVENANCE.md).
+
 ## Quality gates
 
 - **Concept**: three entrances, eight readable sectors, no disconnected gameplay, route redundancy.

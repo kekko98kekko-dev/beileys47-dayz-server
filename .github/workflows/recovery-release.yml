@@ -112,6 +112,11 @@ jobs:
           python scripts/assess_stage4_11_role_model_options.py
           python scripts/test_stage4_11_role_model_options.py
 
+      - name: Generate privacy-safe Stage 4.12 offline RPT evidence templates only
+        run: |
+          python scripts/build_stage4_12_evidence.py
+          python scripts/test_stage4_12_evidence.py
+
       - name: Check stable 1.30 source provenance (not console runtime)
         env:
           GITHUB_TOKEN: ${{ github.token }}
