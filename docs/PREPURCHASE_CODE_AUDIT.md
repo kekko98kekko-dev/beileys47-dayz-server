@@ -108,3 +108,17 @@ Un archivio riproducibile non certifica il corretto comportamento dell'economia 
 **Correzione:** validazione sintattica di un vero timestamp UTC ISO-8601 e guardie esplicite sul tipo del metodo; test negativi per data invalida, offset non UTC e valore non stringa.
 
 **Limiti invariati:** nessuna quota Y reale è stata acquisita; nessuna classe Object Spawner, collisione, accessibilità, prestazione o persistenza PlayStation è stata provata.
+
+## Sesto audit — separazione tra acquisto del test e distribuzione reale
+
+### M. Report dei rilievi altimetrici in cartella pubblica
+**Severità: media/alta per riservatezza.** Il convertitore SurfaceY già proteggeva i file di cattura, ma l'analizzatore `audit_stage4_height_samples.py` poteva ancora scrivere un report di misurazioni reali nella cartella `dist/`, normalmente distribuita dagli artifact GitHub.
+
+**Correzione:** se almeno una quota Y è fornita, il report può essere salvato esclusivamente fuori dal repository, in un file nuovo non sovrascrivibile. I test avversari verificano rifiuto delle destinazioni pubbliche e delle sovrascritture, anche con misure sintetiche. I template vuoti restano distribuibili in CI.
+
+### N. Ambiguità fra «pronto da comprare» e «pronto da installare»
+**Severità: alta per l'esperienza d'acquisto.** Il flag `ready_to_deploy=false` è corretto ma poteva essere interpretato come divieto di noleggiare perfino un piccolo server per collaudo. Introdotta una distinzione documentata: **acquisto di una prova PS4/PS5 ammesso, distribuzione delle configurazioni subordinata a backup, confronto versioni e collaudo incrementale**.
+
+La scheda di acquisto specifica PlayStation 4 per PS5 retrocompatibile, 10 slot, 3 giorni prepagati quando disponibili, posizione europea e password; rammenta che un noleggio breve può non essere rimborsabile e che il Recovery Kit non contiene i salvataggi live.
+
+**Limitazione decisiva:** nessun test statico può assicurare la riuscita del primo avvio Nitrado, disponibilità del pannello, compatibilità delle missioni, collisioni, FPS, accessi o recupero del mondo dopo scadenza.

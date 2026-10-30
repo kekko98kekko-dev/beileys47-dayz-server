@@ -5,6 +5,7 @@ from __future__ import annotations
 import copy
 import json
 import math
+import tempfile
 import zipfile
 from pathlib import Path
 
@@ -75,6 +76,25 @@ def test()->None:
     wrong_method=copy.deepcopy(flat)
     wrong_method["measurement"]["method"]=["DayZ_CGame_SurfaceY"]
     assert analyze(wrong_method,reference,region)["provenance_complete"] is False
+
+    # A real measured-Y report must never appear in a public artifact
+    # directory, even if the submitted input is incomplete or synthetic.
+    with tempfile.TemporaryDirectory(prefix="beileys47-private-height-audit-") as dirname:
+        private=Path(dirname)
+        capture=private/"synthetic_only.json"
+        capture.write_text(json.dumps(flat),encoding="utf-8")
+        public=ROOT/"dist/stage4_height_capture/DO_NOT_PUBLISH_MEASURED_AUDIT.json"
+        try: run(capture,public)
+        except ValueError as e: assert "outside the public repository" in str(e)
+        else: raise AssertionError("Measured elevation report leaked to public artifacts")
+        assert not public.exists()
+        private_result=private/"measured_report.json"
+        secure=run(capture,private_result)
+        assert secure["provided_y_count"]==182
+        assert secure["deployment_allowed"] is False
+        try: run(capture,private_result)
+        except ValueError as e: assert "refuse overwrite" in str(e)
+        else: raise AssertionError("Measured report overwrote existing evidence")
 
     bad=copy.deepcopy(flat)
     bad["points"][0]["x"]+=100

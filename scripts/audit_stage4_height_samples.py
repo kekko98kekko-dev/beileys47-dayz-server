@@ -151,8 +151,22 @@ def run(input_path:Path,output_path:Path=OUT)->dict:
     data=json.loads(input_path.read_text(encoding="utf-8"))
     baseline=json.loads(GRID.read_text(encoding="utf-8"))
     report=analyze(data,baseline,data.get("region",""))
+    # The normal CI template contains no real measurements and can be
+    # published. Once ANY Y is supplied, its report may expose operational
+    # coordinates/build provenance: require a private destination and an
+    # exclusive new file so it cannot silently replace previous evidence.
+    private=report["provided_y_count"]>0
+    if private:
+        if output_path.resolve().is_relative_to(ROOT.resolve()):
+            raise ValueError("Measured terrain report must be written outside the public repository")
+        if output_path.exists() or output_path.is_symlink():
+            raise ValueError("Measured terrain report already exists; refuse overwrite")
     output_path.parent.mkdir(parents=True,exist_ok=True)
-    output_path.write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+    if private:
+        with output_path.open("x",encoding="utf-8") as stream:
+            stream.write(json.dumps(report,indent=2,ensure_ascii=False)+"\n")
+    else:
+        output_path.write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(f"Stage 4.5: {report['status']}; real Y values={report['provided_y_count']}/182; PS4/PS5 ready? NO.")
     return report
 
