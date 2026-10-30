@@ -13,7 +13,8 @@
 - [x] Fail-closed Stage 4 survey template and offline Object Spawner exporter (requires real terrain input).
 - [x] Synthetic-only negative tests: reject missing height, unknown model and absent verification.
 - [x] Document PS4/PS5 acceptance gates, performance checks, and rollback protocol.
-- [ ] Stage 4 real terrain parcel, verified assets and console-tested micro Object Spawner (NOT DONE).
+- [x] Stage 4.1 static candidate screen: terrain anchors, player spawns, and dynamic event anchors compared against pinned Livonia mission; non-deployable report.
+- [ ] Stage 4 real terrain parcel, verified slope/roads/vegetation, verified assets and console-tested Object Spawner (NOT DONE).
 - [x] Builder automatico di XML/JSON.
 - [x] Test di regressione e controllo contenuto ZIP.
 - [x] Anteprima Stage 1 e Stage 2 prodotta da GitHub Actions.
@@ -57,6 +58,7 @@
 - [Stage 2](docs/STAGE2.md)
 - [Stage 3](docs/STAGE3.md)
 - [Stage 4 ZONA 47](docs/STAGE4_ZONE47.md)
+- [Stage 4.1 Terrain screening](docs/STAGE4_SITE_SCREEN.md)
 - [Recupero ZIP](docs/RECOVERY_KIT.md)
 - [Checklist e recupero](docs/OPERATIONS.md)
 - [GitHub Actions](../../actions)

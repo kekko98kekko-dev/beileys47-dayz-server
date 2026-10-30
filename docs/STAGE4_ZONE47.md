@@ -81,6 +81,12 @@ Examples: military guard boxes, old barracks, storage containers, small nests, v
 
 The audit report is `dist/stage4/asset_evidence.json`, saved together with the design preview and recovery kit.
 
+## Automated Livonia coordinate screening (Stage 4.1)
+
+A new source-backed shortlist compares official Livonia terrain group anchors, the exact currently selected fresh-spawn groups (Brena, Sobotka and Kolembrody) and event spawn positions. Nine preliminary centers across three broad regions are screened for proximity conflicts. Each proposed X/Z is **only a coordinate for physical survey**, never approved for object placement.
+
+The report and coordinate scatter SVG are GitHub Actions artifacts. This is **not** a heightmap, aerial view or road geometry analysis. See [Stage 4.1 site-screen methodology](STAGE4_SITE_SCREEN.md).
+
 ## Quality gates
 
 - **Concept**: three entrances, eight readable sectors, no disconnected gameplay, route redundancy.
