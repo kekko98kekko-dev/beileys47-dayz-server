@@ -81,7 +81,9 @@ A versioned tactical design for a believable ruined military outpost: **8 distin
 
 **It does not contain valid DayZ world coordinates, class names, real object spawns, mission-file changes or console FPS benchmarks.** A safe, grounded PS4/PS5 map-site and asset survey must precede implementation.
 
-[ZONA 47 design guide](docs/STAGE4_ZONE47.md) · [GitHub Actions](../../actions)
+[ZONA 47 design guide](docs/STAGE4_ZONE47.md) · [PS4/PS5 testing protocol](docs/ZONE47_QA_PROTOCOL.md) · [GitHub Actions](../../actions)
+
+The Stage 4 concept also includes a **13-class candidate asset shortlist**, a blank 26-placement survey worksheet and a guarded **offline-only** Object Spawner exporter. The exporter refuses incomplete surveys; CI tests use and discard synthetic positions. No game-world coordinates or unverified objects are claimed as ready.
 
 ## Stage 3 — Survival War Encounter Identity (preview)
 
