@@ -113,6 +113,8 @@ We now have a guarded exporter: `scripts/export_zone47_spawner.py`. By default i
 
 GitHub Actions uses purely **synthetic** test coordinates to verify transforms and fails closed on missing models or heights. It deletes all synthetic files after tests; this never represents real terrain validation. Completed surveys, if any, should be stored privately on the PC, **not in the public GitHub repository**.
 
+See also [PS4/PS5 evidence and rollback protocol](ZONE47_QA_PROTOCOL.md).
+
 ## Project rules
 
 **No paid service, no game-server deployment, no destructive operation and no claim of bug-free gameplay without owner approval and live evidence.**
