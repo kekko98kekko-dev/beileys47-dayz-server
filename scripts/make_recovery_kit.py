@@ -25,6 +25,7 @@ SOURCE_PATHS = [
     "config/stage3_rules.json",
     "config/stage4_zone47_blueprint.json",
     "config/stage4_site_screening_rules.json",
+    "config/stage4_footprint_rules.json",
     "config/stage4_asset_candidates.json",
     "config/stage4_zone47_micro_layout.json",
     "docs/OPERATIONS.md",
@@ -44,6 +45,8 @@ SOURCE_PATHS = [
     "scripts/build_stage4_concept.py",
     "scripts/scan_stage4_sites.py",
     "scripts/test_stage4_sites.py",
+    "scripts/assess_stage4_footprints.py",
+    "scripts/test_stage4_footprints.py",
     "scripts/audit_stage4_assets.py",
     "scripts/prepare_zone47_survey.py",
     "scripts/export_zone47_spawner.py",
@@ -71,6 +74,9 @@ PREVIEW_PATHS = [
     "dist/stage4_site_screening/site_screen_report.json",
     "dist/stage4_site_screening/site_screen_scatter.svg",
     "dist/stage4_site_screening/beileys47-zone47-site-screen-only.zip",
+    "dist/stage4_footprint/footprint_report.json",
+    "dist/stage4_footprint/footprint_rectangles.svg",
+    "dist/stage4_footprint/beileys47-zone47-footprint-screen-only.zip",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
