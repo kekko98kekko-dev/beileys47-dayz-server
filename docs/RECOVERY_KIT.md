@@ -12,6 +12,7 @@ Il workflow costruisce un file separato chiamato **beileys47-recovery-kit**, con
 - progetto ZONA 47 Stage 4 con schema SVG, file concettuali (non installabili), audit e modello di rilievo sul terreno **vuoto**;
 - report Stage 4.1 con posizioni candidate X/Z, criteri di esclusione, visualizzazione delle coordinate e avviso **non distribuire**;
 - report Stage 4.2 con analisi del rettangolo 240 × 220 m e sei orientamenti, con limiti espliciti: **non è una verifica delle collisioni reali**;
+- report Stage 4.3 che verifica la provenienza della release ufficiale DayZ 1.30, segnala eventuali aggiornamenti Bohemia e non autorizza mai il deploy;
 - script di preflight che non può eseguire upload o riavviare il server;
 - **MANIFEST_SHA256.json** con gli hash dei file (verificati nel workflow).
 

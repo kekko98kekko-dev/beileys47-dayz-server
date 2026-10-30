@@ -87,6 +87,12 @@ jobs:
       - name: Regression-test rectangular geometry and candidate gates
         run: python scripts/test_stage4_footprints.py
 
+      - name: Verify pinned DayZ 1.30 official stable CE release provenance
+        run: python scripts/check_stage4_release_gate.py
+
+      - name: Prove console compatibility gate stays blocked without real Nitrado tests
+        run: python scripts/test_stage4_release_gate.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -152,6 +158,14 @@ jobs:
             dist/stage4_footprint/footprint_report.json
             dist/stage4_footprint/footprint_rectangles.svg
             dist/stage4_footprint/beileys47-zone47-footprint-screen-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload official source-compatibility review (NO DEPLOY)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-ce-stable-compatibility-gate
+          path: dist/compatibility/stage4_release_gate_report.json
           if-no-files-found: error
           retention-days: 90
 
