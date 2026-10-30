@@ -1,0 +1,122 @@
+name: Publish long-lived recovery snapshot
+
+# The first snapshot is published after the recovery documentation is merged
+# into main. Later releases require an explicit manual dispatch, or another
+# change to this specific documentation file.
+on:
+  push:
+    branches: [main]
+    paths:
+      - docs/RELEASE_SNAPSHOT.md
+  workflow_dispatch:
+
+concurrency:
+  group: beileys47-recovery-release-main
+  cancel-in-progress: false
+
+jobs:
+  publish-snapshot:
+    if: github.ref == 'refs/heads/main' && github.repository == 'kekko98kekko-dev/beileys47-dayz-server'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    # Only this dedicated job can create a GitHub release.
+    # The normal testing workflow retains contents: read.
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out the exact main commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate project source and profile
+        run: python scripts/validate.py
+
+      - name: Build Stage 1/2 pinned Bohemia mission previews
+        run: python scripts/build_stage2.py
+
+      - name: Validate Stage 2 and its narrow approved change scope
+        run: |
+          python scripts/test_stage2.py
+          python scripts/audit_stage2.py
+          python scripts/check_release.py dist/stage2/beileys47-livonia-stage2-preview.zip
+
+      - name: Build and independently test Stage 3
+        run: |
+          python scripts/build_stage3.py
+          python scripts/test_stage3.py
+
+      - name: Generate safe read-only Nitrado plan
+        run: python scripts/plan_nitrado.py
+
+      - name: Verify Stage 4 object candidate provenance
+        run: python scripts/audit_stage4_assets.py
+
+      - name: Create blank survey and non-deployable ZONA 47 blueprint
+        run: |
+          python scripts/prepare_zone47_survey.py
+          python scripts/build_stage4_concept.py
+          python scripts/test_zone47_export_safety.py
+
+      - name: Generate and test Livonia site/footprint screens
+        run: |
+          python scripts/scan_stage4_sites.py
+          python scripts/test_stage4_sites.py
+          python scripts/assess_stage4_footprints.py
+          python scripts/test_stage4_footprints.py
+
+      - name: Check stable 1.30 source provenance (not console runtime)
+        run: |
+          python scripts/check_stage4_release_gate.py
+          python scripts/test_stage4_release_gate.py
+
+      - name: Generate the complete recovery archive
+        run: python scripts/make_recovery_kit.py
+
+      - name: Validate recovery ZIP and create checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m zipfile -t dist/beileys47-recovery-kit.zip
+          test -s dist/beileys47-recovery-kit.zip
+          sha256sum dist/beileys47-recovery-kit.zip > dist/beileys47-recovery-kit.zip.sha256
+          sha256sum --check dist/beileys47-recovery-kit.zip.sha256
+
+      - name: Publish or re-verify this commit's GitHub Release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          TAG="snapshot-${GITHUB_SHA:0:12}"
+          ZIP="dist/beileys47-recovery-kit.zip"
+          HASH="dist/beileys47-recovery-kit.zip.sha256"
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Existing snapshot $TAG: verifying stored ZIP instead of rewriting."
+          else
+            gh release create "$TAG" "$ZIP" "$HASH" \
+              --repo "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" \
+              --title "BEILEYS47 Recovery Snapshot • ${GITHUB_SHA:0:12}" \
+              --notes-file docs/RELEASE_SNAPSHOT.md \
+              --prerelease
+          fi
+
+          mkdir -p "$RUNNER_TEMP/verify-release"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern "beileys47-recovery-kit.zip" \
+            --dir "$RUNNER_TEMP/verify-release"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern "beileys47-recovery-kit.zip.sha256" \
+            --dir "$RUNNER_TEMP/verify-release"
+          cmp "$ZIP" "$RUNNER_TEMP/verify-release/beileys47-recovery-kit.zip"
+          cmp "$HASH" "$RUNNER_TEMP/verify-release/beileys47-recovery-kit.zip.sha256"
+          echo "PASS: GitHub Release $TAG contains the exact verified recovery archive."
+          echo "This is a source/project backup, not a backup of live DayZ characters or Nitrado persistence."
