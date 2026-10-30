@@ -75,11 +75,22 @@ Il pacchetto rimane nella sezione **Actions → ultimo workflow riuscito → Art
 - [GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions)
 
 
+## Stage 3 — Survival War Encounter Identity (preview)
+
+Stage 3 mantiene **identici** tutti i file Stage 2 e aggiunge:
+- maggiore target di due eventi vanilla: elicotteri precipitati e convogli militari (3 → 4); adegua solo il limite del tipo elicottero specifico;
+- tre messaggi in italiano: benvenuto, suggerimenti survival e regole PvP, **senza shutdown**;
+- audit statico indipendente e archivio ZIP Stage 3 su GitHub Actions.
+
+**Non crea missioni automatiche, mappe personalizzate o nuovi edifici.** Eventi e annunci vanno testati sulla console PlayStation.
+
+[Stage 3: progettazione, limiti e test](docs/STAGE3.md)
+
 ## Recupero offline e nuova verifica Stage 2
 
 ✅ La pipeline controlla ora l'**intero contenuto** dei quattro file Stage 2 confrontandoli con la baseline Bohemia e applicando indipendentemente solo le variazioni consentite dalle regole JSON. Le verifiche automatiche non sostituiscono prove su PlayStation.
 
-✅ Dopo ogni build riuscita GitHub Actions genera anche l'artifact **beileys47-recovery-kit**, al cui interno si trova **beileys47-recovery-kit.zip**. Contiene scripts, regole, documentazione, preview Stage 1/2, rapporti e manifest SHA-256. I tre artifact sono conservati per 90 giorni (salvo limiti delle impostazioni repository); **non** sono backup permanenti.
+✅ Dopo ogni build riuscita GitHub Actions genera anche l'artifact **beileys47-recovery-kit**, al cui interno si trova **beileys47-recovery-kit.zip**. Contiene scripts, regole, documentazione, preview Stage 1/2/3, rapporti e manifest SHA-256. I tre artifact sono conservati per 90 giorni (salvo limiti delle impostazioni repository); **non** sono backup permanenti.
 
 **Non contiene** personaggi, basi, auto, casse né dati persistenti del server Nitrado. Prima della scadenza Nitrado, scaricare lo ZIP sul proprio PC (ideale 48 ore prima) e salvare i file live separatamente se accessibili.
 
