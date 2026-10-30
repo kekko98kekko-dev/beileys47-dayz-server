@@ -62,7 +62,8 @@ def modify_types(root: ET.Element, rules: dict) -> list[dict]:
     if missing_required:
         raise ValueError(f"Essential item classes no longer exist: {missing_required}")
     for name, multiplier in rules["loot_multipliers"].items():
-        if not isinstance(multiplier, (int, float)) or not 1.0 <= multiplier <= 2.0:
+        if (type(multiplier) not in (int, float) or not math.isfinite(multiplier)
+                or not 1.0 <= multiplier <= 2.0):
             raise ValueError(f"Invalid multiplier for {name}")
         item = lookup.get(name)
         if item is None:

@@ -60,7 +60,8 @@ def update_type_values(root: ET.Element, rules: dict) -> list[dict]:
         raise ValueError(f"Official types missing: {sorted(missing)}")
     changes = []
     for name, factor in rules["type_multipliers"].items():
-        if name not in items or not 1.0 <= float(factor) <= 1.5:
+        if (name not in items or type(factor) not in (int, float)
+                or not math.isfinite(factor) or not 1.0 <= factor <= 1.5):
             raise ValueError(f"Missing or invalid item multiplier: {name}")
         node = items[name]
         nominal, minimum = node.find("nominal"), node.find("min")
@@ -164,7 +165,9 @@ def update_gameplay(gameplay: dict, rules: dict) -> list[dict]:
     for key in ("staminaMax", "staminaKgToStaminaPercentPenalty"):
         old = stamina[key]
         target = rules["gameplay"][key]
-        if not isinstance(old, (float, int)) or not 0.5 <= target <= 150:
+        if (type(old) not in (int, float) or not math.isfinite(old)
+                or type(target) not in (int, float) or not math.isfinite(target)
+                or not 0.5 <= target <= 150):
             raise ValueError(f"Invalid gameplay setting {key}")
         stamina[key] = target
         report.append({"setting": "PlayerData.StaminaData." + key,

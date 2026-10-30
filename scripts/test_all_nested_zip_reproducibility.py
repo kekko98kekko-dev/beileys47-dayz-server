@@ -13,13 +13,25 @@ import json
 import zipfile
 
 from zip_deterministic import FIXED_ZIP_TIME
-from make_recovery_kit import ROOT,OUT,PREVIEW_PATHS,build as build_recovery
+from make_recovery_kit import (ROOT,OUT,PREVIEW_PATHS,SOURCE_PATHS,
+                               validate_source_inventory,build as build_recovery)
 from build_prepurchase_bundle import PACKAGE,build as build_review
 
 def digest(path)->str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def test()->None:
+    # Also catch a future source file being committed without inclusion in the
+    # portable long-lived recovery snapshot.
+    validate_source_inventory()
+    current=set(SOURCE_PATHS)
+    validate_source_inventory(current)
+    try:
+        validate_source_inventory(current | {"scripts/forgotten_future_source.py"})
+    except ValueError as exc:
+        assert "Recovery source inventory out of sync" in str(exc)
+    else:
+        raise AssertionError("Recovery silently omitted a tracked source")
     assert len(PREVIEW_PATHS)>15
     inner=[r for r in PREVIEW_PATHS if r.lower().endswith(".zip")]
     assert len(inner)>=10,"Recovery Kit lost embedded stage archives"

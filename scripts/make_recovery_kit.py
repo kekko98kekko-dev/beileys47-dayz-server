@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 import zipfile
 from pathlib import Path
 
@@ -205,7 +206,35 @@ def zipinfo(name: str) -> zipfile.ZipInfo:
     return info
 
 
+def validate_source_inventory(tracked: set[str] | None = None) -> None:
+    """Fail closed if a future tracked source file is missing from backups.
+
+    Git is available in GitHub Actions and the repository checkout. Ignore
+    untracked dist/ build outputs; all versioned project files must be saved.
+    """
+    if tracked is None:
+        output = subprocess.run(
+            ["git", "ls-files", "-z"], cwd=ROOT, check=True,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        ).stdout
+        tracked = {path.decode("utf-8") for path in output.split(b"\0") if path}
+    included = set(SOURCE_PATHS)
+    if len(included) != len(SOURCE_PATHS):
+        raise ValueError("Duplicate source paths in Recovery Kit inventory")
+    missing = sorted(tracked - included)
+    stale = sorted(included - tracked)
+    if missing or stale:
+        raise ValueError(
+            f"Recovery source inventory out of sync: missing={missing}, stale={stale}"
+        )
+    for rel in included:
+        path = ROOT / rel
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"Recovery source is missing or is a symlink: {rel}")
+
+
 def build() -> None:
+    validate_source_inventory()
     entries = {"README_RECOVERY.txt": README.encode("utf-8")}
     for rel in SOURCE_PATHS:
         entries["repository/" + rel] = (ROOT / rel).read_bytes()
