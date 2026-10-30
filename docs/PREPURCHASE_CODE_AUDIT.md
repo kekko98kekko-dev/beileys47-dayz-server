@@ -58,3 +58,19 @@ Le verifiche **non** dimostrano comportamento del motore DayZ su PS4/PS5, perfor
 ### Limite che resta
 
 Un archivio riproducibile non certifica il corretto comportamento dell'economia DayZ. Il confronto dei sei file prova la **coerenza del pacchetto con la build appena generata**, non che quella build sia compatibile con il server PlayStation realmente noleggiato. Lo stesso vale per collisioni e quote Y di ZONA 47, che restano da misurare.
+
+## Terzo audit: parametri numerici e inventario completo del Recovery Kit
+
+### F. Booleani JSON accettati erroneamente come interi DayZ
+
+**Severità: media/alta per la correttezza semantica.** In Python `True` è un sottotipo di `int`. Una regola CE modificata in `true` poteva superare confronti numerici e generare valori `True` nei nodi numerici degli eventi XML o parametri stamina di tipo booleano nel gameplay JSON. Inoltre i fattori loot accettavano stringhe numeriche mediante coercizione.
+
+**Correzione:** Stage 2 controlla tipi numerici esatti e finiti per fattori di loot e valori originali/obiettivo della stamina; Stage 3 impone interi veri per i nominal e i limiti dei figli degli eventi. Il test avversario aggiunge valori booleani, stringhe e non finiti.
+
+### G. Nuovi sorgenti potevano mancare nel backup senza allarme
+
+**Severità: alta per il recupero in futuro.** La lista `SOURCE_PATHS` del Recovery Kit comprende oggi tutti i 100 file versionati, ma era mantenuta manualmente. Un file importante aggiunto in futuro avrebbe potuto non entrare nel backup senza far fallire la pubblicazione.
+
+**Correzione:** il builder confronta ora l'elenco dei file tracciati da Git con l'inventario del Recovery Kit, rifiuta omissioni, riferimenti stantii, duplicati e symlink. Un test di regressione simula un nuovo sorgente tracciato ma dimenticato e ne richiede il rifiuto. Il Recovery Kit resta un backup del **progetto**, non dei salvataggi reali Nitrado.
+
+**Limite invariato:** i test offline non certificano il funzionamento su PS5, collisioni, altezza del terreno, latenza, prestazioni con giocatori o persistenza del mondo.
