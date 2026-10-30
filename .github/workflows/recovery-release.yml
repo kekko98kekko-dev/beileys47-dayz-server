@@ -141,6 +141,11 @@ jobs:
           python scripts/build_prepurchase_bundle.py
           python scripts/test_prepurchase_bundle.py
 
+      - name: Generate and independently test Stage 5 static gameplay balance report
+        run: |
+          python scripts/build_stage5_balance.py
+          python scripts/test_stage5_balance.py
+
       - name: Generate the complete recovery archive
         run: python scripts/make_recovery_kit.py
 
