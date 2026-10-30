@@ -28,6 +28,7 @@ SOURCE_PATHS = [
     "config/stage4_site_screening_rules.json",
     "config/stage4_footprint_rules.json",
     "config/stage4_release_gate.json",
+    "config/stage4_centered_export_contract.json",
     "config/stage4_asset_candidates.json",
     "config/stage4_zone47_micro_layout.json",
     "docs/OPERATIONS.md",
@@ -40,6 +41,7 @@ SOURCE_PATHS = [
     "docs/STAGE4_RELEASE_COMPATIBILITY.md",
     "docs/STAGE4_TERRAIN_SURVEY.md",
     "docs/STAGE4_REAL_ALTITUDE.md",
+    "docs/STAGE4_6_SPAWNER_PREFLIGHT.md",
     "docs/STAGE4_SITE_SHORTLIST.md",
     "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
@@ -62,6 +64,8 @@ SOURCE_PATHS = [
     "scripts/build_stage4_surfacey_snippet.py",
     "scripts/import_stage4_surfacey_log.py",
     "scripts/test_stage4_surfacey_capture.py",
+    "scripts/build_stage4_6_pilot_preflight.py",
+    "scripts/test_stage4_6_pilot_preflight.py",
     "scripts/check_stage4_release_gate.py",
     "scripts/test_stage4_release_gate.py",
     "scripts/audit_stage4_assets.py",
@@ -107,6 +111,8 @@ PREVIEW_PATHS = [
     "dist/stage4_height_capture/terrain_height_audit.json",
     "dist/stage4_height_capture/central_surfaceY_pc_runtime_example.c",
     "dist/stage4_height_capture/beileys47-zone47-height-capture-templates-only.zip",
+    "dist/stage4_6_preflight/zone47_micro_pilot_plan.json",
+    "dist/stage4_6_preflight/beileys47-micro-pilot-plan-only.zip",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
