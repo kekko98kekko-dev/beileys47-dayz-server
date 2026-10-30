@@ -1,0 +1,234 @@
+{
+  "stage": "4.10",
+  "status": "HYPOTHETICAL_ROLE_MATCHED_MODEL_OPTIONS_NO_RUNTIME_VERIFICATION",
+  "candidate_map": "Livonia",
+  "source_blueprint": "config/stage4_zone47_micro_layout.json",
+  "source_bbox": "config/stage4_9_p3d_bbox_evidence.json",
+  "reference_center_m": [
+    9000,
+    7800
+  ],
+  "corridor_buffer_internal_design_only_m": 4,
+  "visual_pair_gap_heuristic_m": 4,
+  "selected_role_matched_options": 9,
+  "unassigned_role_visual_sizes": 17,
+  "placement_options": {
+    "checkpoint_01": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "bent_barrier",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "checkpoint_02": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "bent_barrier",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "checkpoint_03": {
+      "proposed_visual_model_classname": "Land_Mil_GuardBox_Green",
+      "visual_candidate_selection_basis": "checkpoint guard structure option",
+      "placement_intent": "EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "checkpoint_guard",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "checkpoint_04": {
+      "proposed_visual_model_classname": "Land_Wreck_hb02_aban1_blue",
+      "visual_candidate_selection_basis": "abandoned vehicle story prop option",
+      "placement_intent": "EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "evacuation_trace",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "woods_01": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "broken_fence",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "woods_02": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "fallen_supply_marker",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "service_01": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "track_obstacle",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "service_02": {
+      "proposed_visual_model_classname": "Land_Container_1Aoh",
+      "visual_candidate_selection_basis": "container as side cover option",
+      "placement_intent": "EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "side_cover",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "service_03": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "breach_marker",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "barracks_01": {
+      "proposed_visual_model_classname": "Land_Mil_Barracks6_Old",
+      "visual_candidate_selection_basis": "large barracks building option",
+      "placement_intent": "EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "barracks_shell",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "barracks_02": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "barracks_cover",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "barracks_03": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "barracks_cover",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "barracks_04": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "POSSIBLE_INTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "story_trace",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "logistics_01": {
+      "proposed_visual_model_classname": "Land_Garage_Office",
+      "visual_candidate_selection_basis": "logistics depot shell option",
+      "placement_intent": "EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "depot_shell",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "logistics_02": {
+      "proposed_visual_model_classname": "Land_Container_1Bo",
+      "visual_candidate_selection_basis": "industrial container option",
+      "placement_intent": "EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "container_cover",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "logistics_03": {
+      "proposed_visual_model_classname": "Land_Container_1Bo",
+      "visual_candidate_selection_basis": "second industrial container option",
+      "placement_intent": "EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "container_cover",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "logistics_04": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "repair_trace",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "hq_01": {
+      "proposed_visual_model_classname": "Land_Mil_GuardHouse3",
+      "visual_candidate_selection_basis": "command building option",
+      "placement_intent": "EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "command_shell",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "hq_02": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "front_entry_marker",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "hq_03": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "rear_entry_marker",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "hq_04": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "POSSIBLE_INTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "interior_cover",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "hq_05": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "POSSIBLE_INTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "narrative_clue",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "ridge_01": {
+      "proposed_visual_model_classname": "Land_Mil_Fortified_Nest_Watchtower",
+      "visual_candidate_selection_basis": "overwatch structure option",
+      "placement_intent": "EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "observer_cover",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "ridge_02": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "exposed_retreat_marker",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "secret_01": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "small_cache_marker",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    },
+    "secret_02": {
+      "proposed_visual_model_classname": null,
+      "visual_candidate_selection_basis": "No role-matched P3D candidate verified; visual radius UNKNOWN",
+      "placement_intent": "UNSPECIFIED_OR_EXTERIOR",
+      "needs_in_game_validation": true,
+      "original_role": "clue_marker",
+      "status": "UNVERIFIED_NON_DEPLOYABLE_OPTION"
+    }
+  },
+  "restrictions": [
+    "All 26 master micro-layout entries must keep class_name/world_pos/scale null and verified_model false.",
+    "A P3D model name matching a DayZ terrain-group class is NOT proof of Object Spawner console spawnability.",
+    "Do not replace marker with a full-sized building merely because it belongs to the same zone.",
+    "Visual bbox radial envelopes are NOT physical collision hulls or guaranteed real navigation clearance.",
+    "An inside-marker in a building's visual disk may be a legitimate indoor decoration, not automatically a collision.",
+    "Graph links terminate at sector centers: flagged route crossings often reflect diagram endpoints, not real physical footpaths."
+  ],
+  "deploy_allowed": false
+}

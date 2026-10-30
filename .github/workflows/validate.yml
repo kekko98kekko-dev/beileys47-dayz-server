@@ -130,6 +130,11 @@ jobs:
           python scripts/assess_stage4_9_visual_envelopes.py
           python scripts/test_stage4_9_visual_envelopes.py
 
+      - name: Audit Stage 4.10 all 26 object symbols, 325 pairwise visual risks
+        run: |
+          python scripts/audit_stage4_10_all_placements.py
+          python scripts/test_stage4_10_all_placements.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -274,6 +279,18 @@ jobs:
           path: |
             dist/stage4_9_visual_envelopes/pilot_visual_clearance_report.json
             dist/stage4_9_visual_envelopes/beileys47-visual-clearance-not-deployable.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.10 full schematic 26-object audit (NOT COLLISION TESTED)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage410-26-object-review
+          path: |
+            dist/stage4_10_full_layout/full_26_layout_risk_report.json
+            dist/stage4_10_full_layout/all_26_placement_review.csv
+            dist/stage4_10_full_layout/all_325_pair_review.csv
+            dist/stage4_10_full_layout/beileys47-full-layout-paper-audit-only.zip
           if-no-files-found: error
           retention-days: 90
 

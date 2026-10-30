@@ -111,6 +111,10 @@ A read-only dossier transforms all 11 tactical nodes and 16 schematic links to t
 
 The project now records 13 third-party-indexed DayZ 1.30 P3D visual bounding boxes and evaluates a conservative yaw-independent disk around five provisional models. This identifies conceptual markers lying too close to drawn paper-route lines and suggests small X/Z offsets, **without changing the live/paper master layout or claiming physical corridors or collision geometry**. No real Y or model runtime verification exists. [Detailed Stage 4.9 notes](STAGE4_9_MODEL_VISUAL_BOUNDS.md).
 
+## Stage 4.10 — All 26 schematic placements reviewed
+
+A complete paper audit covers **26 markers / 325 pairwise comparisons**. Exactly **9** markers have role-matched P3D VISUAL model options; **17** remain size-unknown, not automatically assigned a zero radius. Indoor decoration markers are explicitly distinguished from possible exterior overlap risks. The paper graph joins sector CENTERS, so its lines are not guaranteed physical corridors. No real Y, PlayStation collision or spawnability verified. [Stage 4.10 report](STAGE4_10_FULL_LAYOUT.md).
+
 ## Quality gates
 
 - **Concept**: three entrances, eight readable sectors, no disconnected gameplay, route redundancy.

@@ -30,6 +30,7 @@ SOURCE_PATHS = [
     "config/stage4_release_gate.json",
     "config/stage4_centered_export_contract.json",
     "config/stage4_9_p3d_bbox_evidence.json",
+    "config/stage4_10_placement_roles.json",
     "config/stage4_asset_candidates.json",
     "config/stage4_zone47_micro_layout.json",
     "docs/OPERATIONS.md",
@@ -46,6 +47,7 @@ SOURCE_PATHS = [
     "docs/STAGE4_7_PVP_ROUTE_STRESS.md",
     "docs/STAGE4_8_FIELD_RECON.md",
     "docs/STAGE4_9_MODEL_VISUAL_BOUNDS.md",
+    "docs/STAGE4_10_FULL_LAYOUT.md",
     "docs/STAGE4_SITE_SHORTLIST.md",
     "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
@@ -76,6 +78,8 @@ SOURCE_PATHS = [
     "scripts/test_stage4_8_field_recon.py",
     "scripts/assess_stage4_9_visual_envelopes.py",
     "scripts/test_stage4_9_visual_envelopes.py",
+    "scripts/audit_stage4_10_all_placements.py",
+    "scripts/test_stage4_10_all_placements.py",
     "scripts/check_stage4_release_gate.py",
     "scripts/test_stage4_release_gate.py",
     "scripts/audit_stage4_assets.py",
@@ -132,6 +136,10 @@ PREVIEW_PATHS = [
     "dist/stage4_8_field_recon/beileys47-world-xz-field-guide-only.zip",
     "dist/stage4_9_visual_envelopes/pilot_visual_clearance_report.json",
     "dist/stage4_9_visual_envelopes/beileys47-visual-clearance-not-deployable.zip",
+    "dist/stage4_10_full_layout/full_26_layout_risk_report.json",
+    "dist/stage4_10_full_layout/all_26_placement_review.csv",
+    "dist/stage4_10_full_layout/all_325_pair_review.csv",
+    "dist/stage4_10_full_layout/beileys47-full-layout-paper-audit-only.zip",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 

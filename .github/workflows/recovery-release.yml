@@ -102,6 +102,11 @@ jobs:
           python scripts/assess_stage4_9_visual_envelopes.py
           python scripts/test_stage4_9_visual_envelopes.py
 
+      - name: Review all 26 Stage 4.10 schematic props and unknown model sizes
+        run: |
+          python scripts/audit_stage4_10_all_placements.py
+          python scripts/test_stage4_10_all_placements.py
+
       - name: Check stable 1.30 source provenance (not console runtime)
         env:
           GITHUB_TOKEN: ${{ github.token }}
