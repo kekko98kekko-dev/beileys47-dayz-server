@@ -39,10 +39,15 @@ def mapped_path(name: str) -> Path | None:
     if name == "README_RECOVERY.txt":
         return Path("README_RECOVERY.txt")
     path = PurePosixPath(name)
+    parts = name.split("/")
     if (not name or chr(92) in name or path.is_absolute()
             or path.as_posix() != name or
-            any(part in ("", ".", "..") for part in name.split("/"))):
-        raise ValueError(f"Unsafe ZIP member path: {name!r}")
+            any(part in ("", ".", "..") or ":" in part or
+                part.endswith((" ", ".")) or
+                any(ord(char) < 32 for char in part) or
+                re.fullmatch(r"(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\\..*)?", part, re.I)
+                for part in parts)):
+        raise ValueError(f"Unsafe ZIP member path (including Windows rules): {name!r}")
     if name.startswith("repository/"):
         parts = name.split("/")[1:]
         if not parts:
@@ -69,6 +74,7 @@ def verify_archive(archive_path: Path) -> tuple[dict[Path, bytes], dict]:
         total = 0
         paths: dict[str, Path | None] = {}
         destinations: set[Path] = set()
+        windows_destinations: set[str] = set()
         for info in infos:
             name = info.filename
             if info.is_dir() or info.file_size > MAX_FILE_BYTES or info.file_size < 0:
@@ -78,9 +84,11 @@ def verify_archive(archive_path: Path) -> tuple[dict[Path, bytes], dict]:
                 raise ValueError(f"ZIP symlink or special file forbidden: {name!r}")
             dest = mapped_path(name)
             if dest is not None:
-                if dest in destinations:
+                portable = dest.as_posix().casefold()
+                if dest in destinations or portable in windows_destinations:
                     raise ValueError(f"Colliding recovery output path: {dest}")
                 destinations.add(dest)
+                windows_destinations.add(portable)
             paths[name] = dest
             total += info.file_size
             if total > MAX_TOTAL_BYTES:
