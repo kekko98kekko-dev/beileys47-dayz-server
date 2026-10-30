@@ -82,6 +82,11 @@ jobs:
       - name: Validate optional PC SurfaceY snippet and log-importer with synthetic data
         run: python scripts/test_stage4_surfacey_capture.py
 
+      - name: Validate center-based Stage 4.6 pilot and Object Spawner guardrails
+        run: |
+          python scripts/build_stage4_6_pilot_preflight.py
+          python scripts/test_stage4_6_pilot_preflight.py
+
       - name: Check stable 1.30 source provenance (not console runtime)
         env:
           GITHUB_TOKEN: ${{ github.token }}
