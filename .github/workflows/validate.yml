@@ -54,6 +54,9 @@ jobs:
           python -m json.tool dist/stage2/change_report.json > /dev/null
           python -m json.tool dist/stage3/change_report.json > /dev/null
 
+      - name: Confirm Stage 4 candidate asset names in pinned Livonia terrain groups
+        run: python scripts/audit_stage4_assets.py
+
       - name: Validate and render Stage 4 ZONA 47 tactical concept (NO DEPLOY)
         run: python scripts/build_stage4_concept.py
 
@@ -103,6 +106,7 @@ jobs:
             dist/stage4/beileys47-zone47-design-only.zip
             dist/stage4/zone47_layout.svg
             dist/stage4/concept_audit.json
+            dist/stage4/asset_evidence.json
           if-no-files-found: error
           retention-days: 90
 
