@@ -124,6 +124,17 @@ jobs:
           python scripts/check_stage4_release_gate.py
           python scripts/test_stage4_release_gate.py
 
+      - name: Check Stage 4.13 progressive console trial gates
+        run: |
+          python scripts/build_stage4_13_console_pilot.py
+          python scripts/audit_stage4_13_console_pilot.py
+          python scripts/test_stage4_13_console_pilot.py
+
+      - name: Assemble and test pre-purchase six-file Livonia review bundle
+        run: |
+          python scripts/build_prepurchase_bundle.py
+          python scripts/test_prepurchase_bundle.py
+
       - name: Generate the complete recovery archive
         run: python scripts/make_recovery_kit.py
 
