@@ -32,7 +32,7 @@ def test()->None:
     bad_vehicles=ET.fromstring("""<spawnabletypes>
        <type name="Hatchback_02"/><type name="Hatchback_02"/>
     </spawnabletypes>""")
-    reject(lambda:update_vehicles(bad_vehicles,{"vehicle_attachment_rules":{}}),"Duplicate")
+    reject(lambda:update_vehicles(bad_vehicles,{"vehicle_attachment_rules":{"Hatchback_02":{"wheel_chance_first_four":0.9,"repair_part_chance_floor":0.75}}}),"Duplicate target")
     def car(rawchance:str)->ET.Element:
         return ET.fromstring(f"""<spawnabletypes><type name="Hatchback_02">
          <attachments>
