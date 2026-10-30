@@ -32,6 +32,7 @@ SOURCE_PATHS = [
     "scripts/build_stage2.py",
     "scripts/check_release.py",
     "scripts/make_recovery_kit.py",
+    "scripts/plan_nitrado.py",
     "scripts/test_stage2.py",
     "scripts/validate.py",
 ]
@@ -40,6 +41,7 @@ PREVIEW_PATHS = [
     "dist/stage1/change_report.json",
     "dist/stage2/beileys47-livonia-stage2-preview.zip",
     "dist/stage2/change_report.json",
+    "dist/stage2/nitrado_dry_run_plan.json",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
