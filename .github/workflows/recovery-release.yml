@@ -74,6 +74,11 @@ jobs:
           python scripts/build_stage4_terrain_survey_grid.py
           python scripts/test_stage4_terrain_grid.py
 
+      - name: Generate empty Stage 4.5 height datasets and verify importer safety
+        run: |
+          python scripts/prepare_stage4_height_capture.py
+          python scripts/test_stage4_height_samples.py
+
       - name: Check stable 1.30 source provenance (not console runtime)
         env:
           GITHUB_TOKEN: ${{ github.token }}
