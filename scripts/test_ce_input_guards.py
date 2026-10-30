@@ -5,7 +5,7 @@ from __future__ import annotations
 import copy
 import xml.etree.ElementTree as ET
 
-from build_mission import modify_spawns
+from build_mission import modify_spawns,modify_types
 from build_stage2 import update_type_values,update_vehicles,update_gameplay
 from build_stage3 import modify_events
 
@@ -52,6 +52,11 @@ def test()->None:
         reject(lambda b=broken:update_vehicles(car("0.5"),b),"invalid vehicle probability rule")
     result=update_vehicles(car("0.5"),rules)
     assert len(result)==1 and len(result[0]["parts"])==5
+
+    stage1_loot=ET.fromstring('<types><type name="BandageDressing"><nominal>5</nominal><min>2</min></type></types>')
+    for invalid in (True, "1.4", float("nan"), float("inf")):
+        stage1_rules={"required_items":["BandageDressing"],"loot_multipliers":{"BandageDressing":invalid}}
+        reject(lambda b=stage1_rules:modify_types(copy.deepcopy(stage1_loot),b),"Invalid multiplier")
 
     # Python True == 1: semantic fields must reject JSON boolean values,
     # not accidentally write them into DayZ XML/JSON numeric parameters.
