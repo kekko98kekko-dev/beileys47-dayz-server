@@ -187,7 +187,8 @@ This archive is intended for review, future implementation and history.
         "design/stage4_zone47_blueprint.json":BLUEPRINT.read_bytes(),
         "design/stage4_zone47_micro_layout.json":MICRO.read_bytes(),
         "design/zone47_layout.svg":(OUT/"zone47_layout.svg").read_bytes(),
-        "design/concept_audit.json":(OUT/"concept_audit.json").read_bytes()
+        "design/concept_audit.json":(OUT/"concept_audit.json").read_bytes(),
+        "design/asset_evidence.json":(OUT/"asset_evidence.json").read_bytes()
     }
     manifest={name:hashlib.sha256(data).hexdigest() for name,data in sorted(files.items())}
     files["SHA256_MANIFEST.json"]=(json.dumps(manifest,indent=2)+"\n").encode()
