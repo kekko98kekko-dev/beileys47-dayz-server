@@ -54,7 +54,7 @@ Il campionamento a **20 metri** può saltare fossati, piccoli strapiombi, rocce 
 
 Il nuovo script `scripts/build_stage4_surfacey_snippet.py` genera `central_surfaceY_pc_runtime_example.c`: un **esempio sorgente Enforce Script NON compilato né eseguito** da questa chat. In un ambiente DayZ PC con strumenti di scripting appropriati, una persona autorizzata dovrà integrare la funzione `Z47CaptureSurfaceY_Example()` e richiamarla una sola volta. La funzione invoca `GetGame().SurfaceY(x,z)` per ciascuno dei 182 punti centrali e stampa nel log una riga `Z47_ALT|...` per punto.
 
-Il tool `scripts/import_stage4_surfacey_log.py` converte automaticamente tali righe nel JSON di misurazione, verificando punti mancanti, duplicati e coordinate non coerenti. Esempio, da usare **solo con un log effettivamente estratto dal runtime**:
+Il tool `scripts/import_stage4_surfacey_log.py` converte automaticamente tali righe nel JSON di misurazione, verificando punti mancanti, duplicati e coordinate non coerenti. **Quinta revisione:** il parser rifiuta inoltre righe troncate, letture con caratteri estranei, registrazioni multiple nella stessa riga e log eccessivi; non sovrascrive file già esistenti né salva misure reali nel repository pubblico (nemmeno in `dist/`). Selezionare un percorso di output privato **fuori** dalla cartella del repository. La data `--captured-utc` deve essere un vero istante UTC nel formato ISO-8601, ad esempio `2026-10-30T00:00:00Z`. Esempio, da usare **solo con un log effettivamente estratto dal runtime**:
 
 ```bash
 python scripts/import_stage4_surfacey_log.py --log rilievo_gioco.log --output rilievo_reale.json --game-build "VERSIONE_EFFETTIVA" --captured-utc "AAAA-MM-GGT00:00:00Z" --evidence "RIFERIMENTO_REALE_AL_RILIEVO"
@@ -70,3 +70,6 @@ GitHub Actions genera i template vuoti e un audit che dichiara espressamente **`
 La pipeline conserva risultati, procedure e codice nel Recovery Kit e nello snapshot GitHub Releases. Non include token di accesso, non contatta Nitrado e non modifica gli XML/JSON del server.
 
 **Condizione per Stage 4.6:** acquisizione delle misure attendibili e indipendentemente confermate, valutazione delle pendenze per ogni edificio, verifica strade, vegetazione, collisioni e prestazioni PlayStation. Fino a quel punto ZONA 47 rimane un progetto con posizione preliminare, non una costruzione testata.
+
+
+Un file di log non autentica automaticamente i dati altimetrici, anche quando supera tutti i controlli di sintassi: l'approvazione PS5 e l'installazione restano bloccate.
