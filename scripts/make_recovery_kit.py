@@ -39,6 +39,9 @@ SOURCE_PATHS = [
     "scripts/build_stage3.py",
     "scripts/build_stage4_concept.py",
     "scripts/audit_stage4_assets.py",
+    "scripts/prepare_zone47_survey.py",
+    "scripts/export_zone47_spawner.py",
+    "scripts/test_zone47_export_safety.py",
     "scripts/check_release.py",
     "scripts/make_recovery_kit.py",
     "scripts/plan_nitrado.py",
@@ -58,6 +61,7 @@ PREVIEW_PATHS = [
     "dist/stage4/zone47_layout.svg",
     "dist/stage4/concept_audit.json",
     "dist/stage4/asset_evidence.json",
+    "dist/stage4/zone47_survey_template.json",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
