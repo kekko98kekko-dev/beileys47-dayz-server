@@ -15,6 +15,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 from collections import Counter
 from pathlib import Path
+
+from zip_deterministic import add_bytes
 from xml.sax.saxutils import escape
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -236,7 +238,7 @@ def run(source_dir:Path|None=None)->dict:
     sources["sha256.json"]=(json.dumps(sums,indent=2)+"\n").encode()
     archive=OUT/"beileys47-zone47-site-screen-only.zip"
     with zipfile.ZipFile(archive,"w",compression=zipfile.ZIP_DEFLATED) as z:
-        for name,data in sorted(sources.items()):z.writestr(name,data)
+        for name,data in sorted(sources.items()):add_bytes(z,name,data)
     with zipfile.ZipFile(archive) as z:
         require(z.testzip() is None and set(z.namelist())==set(sources),"Bad screening archive")
         for name,h in sums.items():require(hashlib.sha256(z.read(name)).hexdigest()==h,"Archive hash failure")
