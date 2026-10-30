@@ -200,6 +200,10 @@
       "logistics"
     ],
     [
+      "service",
+      "secret"
+    ],
+    [
       "barracks",
       "logistics"
     ],
@@ -241,7 +245,8 @@
     "spawned_loot_implemented": false,
     "objects_spawner_implemented": false,
     "player_count": "10 initial slots; encounters depend on concurrent population; no PvP guarantee",
-    "no_rare_gear_spam": true
+    "no_rare_gear_spam": true,
+    "east_escape_route_paper_only": "service → secret → hq: additional bypass against checkpoint+logistics lockdown; terrain/water/trees and sightlines NOT surveyed"
   },
   "gates": {
     "before_real_objects": [
