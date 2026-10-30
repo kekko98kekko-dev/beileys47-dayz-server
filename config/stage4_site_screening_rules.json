@@ -1,0 +1,67 @@
+{
+  "stage": 4,
+  "status": "SITE_SCREENING_ONLY_NO_TERRAIN_SURVEY",
+  "upstream_commit": "f220b2918b1d79a5055b1ee9be70c0ec1516e876",
+  "stride_metres": 200,
+  "footprint_width_metres": 240,
+  "footprint_depth_metres": 220,
+  "minimum_nearest_fresh_spawn_metres": 1800,
+  "minimum_nearest_active_event_position_metres": 350,
+  "minimum_nearest_terrain_group_metres": 240,
+  "minimum_nearest_military_group_metres": 350,
+  "maximum_nearest_military_group_metres": 1700,
+  "minimum_military_groups_within_1800m": 2,
+  "max_terrain_groups_within_230m": 0,
+  "per_region_top_n": 3,
+  "minimum_separation_between_selected_centers_metres": 400,
+  "windows": [
+    {
+      "id": "central",
+      "name": "Central military approaches",
+      "bounds_xz": [
+        5000,
+        9600,
+        6000,
+        9000
+      ],
+      "design_priority": 1
+    },
+    {
+      "id": "southern_west",
+      "name": "South-west wilderness corridor",
+      "bounds_xz": [
+        4300,
+        7500,
+        1800,
+        5600
+      ],
+      "design_priority": 2
+    },
+    {
+      "id": "southern_east",
+      "name": "South-east approaches",
+      "bounds_xz": [
+        7800,
+        11500,
+        1300,
+        5700
+      ],
+      "design_priority": 3
+    }
+  ],
+  "event_prefixes": [
+    "Vehicle",
+    "StaticHeliCrash",
+    "StaticMilitaryConvoy",
+    "StaticContaminatedArea",
+    "StaticPoliceSituation",
+    "StaticTrain"
+  ],
+  "safety_notes": [
+    "Mapgrouppos.xml lists terrain group anchors, not footprints or vegetation collision.",
+    "cfgeventspawns.xml lists positions, not complete event exclusion areas.",
+    "Height, slope, roads, climbability and real traversability are unknown.",
+    "Proximity to the current three fresh-spawn groups does not predict traffic or PvP frequency.",
+    "Any center is a candidate for in-game inspection, NOT a validated build location."
+  ]
+}
