@@ -75,6 +75,8 @@ jobs:
           python scripts/test_stage4_terrain_grid.py
 
       - name: Check stable 1.30 source provenance (not console runtime)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           python scripts/check_stage4_release_gate.py
           python scripts/test_stage4_release_gate.py
