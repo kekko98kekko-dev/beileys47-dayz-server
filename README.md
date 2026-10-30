@@ -86,3 +86,12 @@ Il pacchetto rimane nella sezione **Actions → ultimo workflow riuscito → Art
 [Guida al recupero sul PC Windows](docs/RECOVERY_KIT.md) · [GitHub Actions](../../actions)
 
 **Nessun deployment GitHub → Nitrado attivo.** È ancora obbligatorio verificare la versione del server, fare copie dei file originali e collaudare Stage 1 e Stage 2 su PS5/PS4.
+
+
+## Preflight Nitrado in sola lettura
+
+✅ Il nuovo script **scripts/plan_nitrado.py** genera un piano JSON di installazione dalla preview Stage 2 verificata: quattro file attesi, dimensioni, hash SHA-256, percorsi **relativi** e checklist delle condizioni mancanti. Il piano viene allegato allo ZIP di recupero.
+
+**Non è un deploy**: non richiede credenziali, non parla con Nitrado, non legge dati live e non sa dove risiede la missione del futuro server. L'indicatore **ready_to_deploy** resta sempre false. Il percorso reale e le API PlayStation andranno verificati solo dopo un acquisto autorizzato.
+
+[Procedura di preflight e installazione](docs/OPERATIONS.md)
