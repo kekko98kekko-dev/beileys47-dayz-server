@@ -41,13 +41,28 @@ Al momento il test controlla `config/profile.json`. Quando aggiungeremo XML/JSON
 - **Non spendere per Nitrado** finché le attività preliminari non sono complete e il prezzo non è confermato.
 
 
+## Stage 2 — Anteprima survival/PvP già generabile
+
+✅ GitHub Actions costruisce anche una Stage 2 che include tutte le modifiche Stage 1, più:
+- equipaggiamento PvP di fascia intermedia e materiali di riparazione;
+- maggior probabilità di componenti base su due modelli di auto, senza aumentare il numero dei veicoli;
+- durata obiettivo di 21 giorni per `UndergroundStash`, senza cambiare la durata di 45 giorni delle casse `WoodenCrate`;
+- stamina leggermente aumentata e minore penalità del peso;
+- test automatici di regressione e controllo di sicurezza del pacchetto ZIP.
+
+I pacchetti si trovano sotto **Actions → ultima esecuzione riuscita → Artifacts**. Scaricare `beileys47-livonia-stage2-preview`.
+
+[Configurazione Stage 2](docs/STAGE2.md) · [Checklist Nitrado e recupero](docs/OPERATIONS.md)
+
+**Anteprima verificata sintatticamente, NON testata su PS5 e NON distribuita su Nitrado.**
+
 ## Stage 1 — Anteprima già generabile
 
 ✅ Il builder GitHub Actions crea automaticamente due veri XML per **Livonia**, usando un commit ufficiale Bohemia del 16 ottobre 2026:
 - `db/types.xml` — maggior disponibilità di 8 tipi di cibo/medicinali;
 - `cfgplayerspawnpoints.xml` — spawn iniziali concentrati in Brena, Sobotka e Kolembrody.
 
-Il pacchetto è nella sezione **Actions → ultimo workflow riuscito → Artifacts → beileys47-livonia-stage1-preview**.
+Il pacchetto rimane nella sezione **Actions → ultimo workflow riuscito → Artifacts → beileys47-livonia-stage1-preview**.
 
 [Leggi la configurazione Stage 1](docs/STAGE1.md)
 
