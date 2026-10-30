@@ -2,6 +2,7 @@
 """Adversarial offline round-trip restore tests (zero Nitrado access)."""
 from __future__ import annotations
 
+import hashlib
 import json
 import tempfile
 import zipfile
@@ -29,9 +30,13 @@ def test() -> None:
     with tempfile.TemporaryDirectory(prefix="beileys47-restore-regression-") as root:
         work = Path(root)
         restored = work / "fresh"
-        result = restore(OUT, restored)
+        checksum = work / "release.zip.sha256"
+        checksum.write_text(hashlib.sha256(OUT.read_bytes()).hexdigest()
+                            + "  dist/beileys47-recovery-kit.zip\\n", encoding="utf-8")
+        result = restore(OUT, restored, checksum)
         assert result["status"] == "OFFLINE_RECOVERY_VERIFIED_AND_EXTRACTED"
         assert result["not_a_live_nitrado_backup"] is True
+        assert result["external_release_checksum_verified"] is True
         assert result["restored_file_count"] == len(contents)
         assert (restored / "scripts/restore_recovery_kit.py").is_file()
         assert (restored / "dist/stage3/beileys47-livonia-stage3-preview.zip").is_file()
@@ -40,6 +45,14 @@ def test() -> None:
             assert (restored / rel).read_bytes() == original, str(rel)
         reject(lambda: restore(OUT, restored), "NEW")
         assert (restored / "README.md").is_file()
+        wrong_checksum = work / "wrong.sha256"
+        wrong_checksum.write_text("0" * 64 + "  beileys47-recovery-kit.zip\\n", encoding="utf-8")
+        reject(lambda: restore(OUT, work / "external-mismatch", wrong_checksum),
+               "External GitHub Release SHA-256 mismatch", work / "external-mismatch")
+        wrong_name = work / "wrong-name.sha256"
+        wrong_name.write_text("0" * 64 + "  unrelated.zip\\n", encoding="utf-8")
+        reject(lambda: restore(OUT, work / "external-name", wrong_name),
+               "Invalid or mismatched external Release SHA-256 entry", work / "external-name")
 
         with zipfile.ZipFile(OUT) as source:
             entries = [(item.filename, source.read(item)) for item in source.infolist()]
