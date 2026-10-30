@@ -75,6 +75,12 @@ Il pacchetto rimane nella sezione **Actions → ultimo workflow riuscito → Art
 - [GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions)
 
 
+## Long-lived project backups
+
+In addition to the GitHub repository and expiring Actions artifacts, the repository has a dedicated **[Recovery Snapshot Releases](../../releases)** workflow. It builds and checks a complete recovery kit and publishes the ZIP with a SHA-256 checksum as a versioned GitHub Release asset. Release assets do not follow the standard 90-day Actions artifact expiration; they remain available as long as the owner keeps the release and repository (subject to platform availability).
+
+**The recovery kit is not a backup of live Nitrado world data.** The user must download a second offline copy for independent protection. [Backup/restore instructions](docs/RELEASE_SNAPSHOT.md).
+
 ## Stage 4 — ZONA 47: the signature outpost (DESIGN ONLY)
 
 A versioned tactical design for a believable ruined military outpost: **8 distinct sectors, 3 access routes and 26 symbolic placements**, with automated route redundancy and object-budget checks. GitHub Actions generates a schematic SVG and a **non-installable design-only ZIP**.
