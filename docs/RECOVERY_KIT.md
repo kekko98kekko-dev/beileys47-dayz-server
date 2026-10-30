@@ -8,7 +8,7 @@ GitHub conserva *nella normale cronologia Git*, finché il repository esiste, re
 
 Il workflow costruisce un file separato chiamato **beileys47-recovery-kit**, contenente **beileys47-recovery-kit.zip**, con:
 - sorgenti e documentazione del repository alla specifica revisione;
-- preview ZIP Stage 1 e Stage 2, relativi rapporti e piano Nitrado **di sola simulazione**;
+- preview ZIP Stage 1, Stage 2 e Stage 3, relativi rapporti e piano Nitrado Stage 2 **di sola simulazione**;
 - script di preflight che non può eseguire upload o riavviare il server;
 - **MANIFEST_SHA256.json** con gli hash dei file (verificati nel workflow).
 
@@ -33,7 +33,7 @@ Il recovery kit *non contiene* salvataggi mondo, personaggi, casse, auto, basi o
 
 ## Differenza tra ripristino e distribuzione
 
-- **Recupero:** rifare i file e conservare una copia. È quello che il workflow fa automaticamente.
+- **Recupero:** rifare i file e conservare una copia. È quello che il workflow fa automaticamente. Il piano Nitrado di sola simulazione copre Stage 2, non autorizza Stage 3.
 - **Distribuzione:** scrivere sul server Nitrado, potenzialmente interrompendo il gioco. **Non è attiva né autorizzata.**
 - **Ripristino live:** richiede file reali recuperati dal server e/o backup provider effettivamente disponibile. Lo ZIP di configurazione non basta.
 - Prima di installare Stage 2: installazione Stage 1, controlli in gioco, backup e verifica della versione console. Se la versione DayZ è diversa da quella del 16 ottobre 2026, aggiornare prima gli script e la baseline.
