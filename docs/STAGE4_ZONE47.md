@@ -115,6 +115,10 @@ The project now records 13 third-party-indexed DayZ 1.30 P3D visual bounding box
 
 A complete paper audit covers **26 markers / 325 pairwise comparisons**. Exactly **9** markers have role-matched P3D VISUAL model options; **17** remain size-unknown, not automatically assigned a zero radius. Indoor decoration markers are explicitly distinguished from possible exterior overlap risks. The paper graph joins sector CENTERS, so its lines are not guaranteed physical corridors. No real Y, PlayStation collision or spawnability verified. [Stage 4.10 report](STAGE4_10_FULL_LAYOUT.md).
 
+## Stage 4.11 — P3D visual candidates for 17 still-undefined props
+
+A third-party indexed DayZ 1.30 P3D metadata catalog provides visual bounding boxes for 14 compact models proposed for 17 symbolic roles. All 26 markers can now be evaluated against hypothetical P3D visual envelopes on paper, but **ZERO valid console Object Spawner class names have been independently confirmed**. Official DayZ Object Spawner supports raw P3D paths only for certain plant/rock folders; structures and furniture cannot be deployed from their arbitrary P3D paths. No real Y, collisions or PS5 FPS have been tested. [Stage 4.11 documentation](STAGE4_11_ROLE_MATCHED_MODELS.md).
+
 ## Quality gates
 
 - **Concept**: three entrances, eight readable sectors, no disconnected gameplay, route redundancy.

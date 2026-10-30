@@ -107,6 +107,11 @@ jobs:
           python scripts/audit_stage4_10_all_placements.py
           python scripts/test_stage4_10_all_placements.py
 
+      - name: Check Stage 4.11 role-model metadata and forbidden direct P3D spawn paths
+        run: |
+          python scripts/assess_stage4_11_role_model_options.py
+          python scripts/test_stage4_11_role_model_options.py
+
       - name: Check stable 1.30 source provenance (not console runtime)
         env:
           GITHUB_TOKEN: ${{ github.token }}

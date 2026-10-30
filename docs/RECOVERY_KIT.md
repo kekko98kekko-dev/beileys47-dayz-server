@@ -20,6 +20,7 @@ Il workflow costruisce un file separato chiamato **beileys47-recovery-kit**, con
 - Stage 4.8 con dossier ricognizione PS4/PS5: 11 waypoint X/Z, 16 collegamenti e 6 percorsi ancora da verificare sul terreno; direzioni compass precalcolate e altezze Y vuote;
 - Stage 4.9 con 13 bounding box VISIVI P3D 1.30 attribuiti a una fonte terza e analisi di margini del primo progetto a cinque elementi; NON certifica collisioni, Y o classi su PS5;
 - Stage 4.10 con tutti i 26 marker, 325 confronti geometrici schematici, 9 ingombri VISIVI ipotetici e 17 dimensioni sconosciute; nessuna collisione reale verificata;
+- Stage 4.11 con 14 nuovi P3D fonte catalogo per 17 ruoli, 26 ingombri visivi proposti, 325 confronti 2D e blocco automatico delle path P3D non ammesse dal DayZ Object Spawner; nessuna classe confermata su PS5;
 - script di preflight che non può eseguire upload o riavviare il server;
 - **MANIFEST_SHA256.json** con gli hash dei file (verificati nel workflow).
 
