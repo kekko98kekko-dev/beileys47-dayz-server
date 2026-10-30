@@ -57,8 +57,14 @@ jobs:
       - name: Confirm Stage 4 candidate asset names in pinned Livonia terrain groups
         run: python scripts/audit_stage4_assets.py
 
+      - name: Generate empty Stage 4 real-terrain survey worksheet
+        run: python scripts/prepare_zone47_survey.py
+
       - name: Validate and render Stage 4 ZONA 47 tactical concept (NO DEPLOY)
         run: python scripts/build_stage4_concept.py
+
+      - name: Test Stage 4 Object Spawner export safety (synthetic fixtures only)
+        run: python scripts/test_zone47_export_safety.py
 
       - name: Verify Stage 4 concept archive integrity
         run: |
@@ -107,6 +113,7 @@ jobs:
             dist/stage4/zone47_layout.svg
             dist/stage4/concept_audit.json
             dist/stage4/asset_evidence.json
+            dist/stage4/zone47_survey_template.json
           if-no-files-found: error
           retention-days: 90
 
