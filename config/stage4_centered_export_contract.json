@@ -1,0 +1,33 @@
+{
+  "stage": "4.6",
+  "status": "STATIC_SCREENED_CENTERS_ONLY_NEVER_TERRAIN_APPROVED",
+  "source_stage": "4.2",
+  "blueprint_width_m": 240,
+  "blueprint_depth_m": 220,
+  "site_coordinate_convention": "WORLD_CENTER_OF_BLUEPRINT",
+  "world_bounds_metres": 12800,
+  "candidates": [
+    {
+      "region": "central",
+      "world_center_x": 9000,
+      "world_center_z": 7800,
+      "screened_orientation_degrees": 120
+    },
+    {
+      "region": "southern_west",
+      "world_center_x": 4500,
+      "world_center_z": 4000,
+      "screened_orientation_degrees": 30
+    },
+    {
+      "region": "southern_east",
+      "world_center_x": 9200,
+      "world_center_z": 2900,
+      "screened_orientation_degrees": 90
+    }
+  ],
+  "source_warning": "Static anchors are points; orientations are preliminary not terrain-approved. Do not infer real ground Y or object clearance.",
+  "official_object_spawner_doc": "https://community.bohemia.net/wiki/DayZ:Object_Spawner",
+  "model_verification": "Class names in official terrain group XML are CANDIDATES, never proof of PlayStation runtime spawnability.",
+  "deployment_allowed": false
+}

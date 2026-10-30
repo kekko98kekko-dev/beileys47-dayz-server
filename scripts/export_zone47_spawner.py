@@ -32,6 +32,8 @@ def export(survey_path:Path, gameplay_path:Path, output_dir:Path) -> dict:
     blueprint=json.loads((ROOT/"config/stage4_zone47_blueprint.json").read_text(encoding="utf-8"))
     micro=json.loads((ROOT/"config/stage4_zone47_micro_layout.json").read_text(encoding="utf-8"))
     candidates=json.loads((ROOT/"config/stage4_asset_candidates.json").read_text(encoding="utf-8"))
+    site_contract=json.loads((ROOT/"config/stage4_centered_export_contract.json").read_text(encoding="utf-8"))
+    require(survey.get("version")=="2.0", "old southwest-origin survey version 1 is not accepted")
     require(survey.get("status")=="SURVEY_DATA_REVIEWED_FOR_OFFLINE_EXPORT",
             "reviewed survey status required; initial template is NOT exportable")
     flags=survey.get("confirmations",{})
@@ -41,9 +43,26 @@ def export(survey_path:Path, gameplay_path:Path, output_dir:Path) -> dict:
         require(flags.get(key) is True,f"survey evidence/confirmation missing: {key}")
     require(survey.get("map")=="Livonia", "map mismatch")
     site=survey.get("site",{})
-    x0=numeric(site.get("world_origin_x"),"world origin X",0,20000)
-    z0=numeric(site.get("world_origin_z"),"world origin Z",0,20000)
-    a=numeric(site.get("rotation_degrees"),"rotation", -360,360)
+    require(site.get("coordinate_reference")=="WORLD_CENTER_OF_BLUEPRINT",
+            "only world-center convention is accepted")
+    require("world_origin_x" not in site and "world_origin_z" not in site,
+            "ambiguous southwest-origin fields forbidden")
+    cx=numeric(site.get("world_center_x"),"world center X",0,12800)
+    cz=numeric(site.get("world_center_z"),"world center Z",0,12800)
+    a=numeric(site.get("rotation_degrees"),"rotation",-360,360)
+    require(site_contract["status"]=="STATIC_SCREENED_CENTERS_ONLY_NEVER_TERRAIN_APPROVED"
+            and site_contract["deployment_allowed"] is False,"site contract must remain deployment-blocked")
+    require(site_contract["blueprint_width_m"]==blueprint["coordinate_system"]["width"]
+            and site_contract["blueprint_depth_m"]==blueprint["coordinate_system"]["height"],
+            "screened footprint size changed")
+    chosen=[p for p in site_contract["candidates"]
+            if p["region"]==site.get("source_site_candidate") and
+               p["world_center_x"]==cx and p["world_center_z"]==cz and
+               p["screened_orientation_degrees"]==a]
+    require(len(chosen)==1,
+            "center/region/orientation mismatch against reviewed Stage 4.2 shortlist")
+    half_width=site_contract["blueprint_width_m"]/2
+    half_depth=site_contract["blueprint_depth_m"]/2
     require(isinstance(site.get("game_version"),str) and len(site["game_version"].strip())>=2,"record exact DayZ build")
     require(isinstance(site.get("survey_notes"),str) and len(site["survey_notes"].strip())>=20,"terrain survey notes required")
     require(blueprint["coordinate_system"]["world_x"] is None and not blueprint["coordinate_system"]["terrain_surveyed"],
@@ -72,10 +91,13 @@ def export(survey_path:Path, gameplay_path:Path, output_dir:Path) -> dict:
         scale=numeric(p.get("scale"),f"scale {label}",0.85,1.15)
         local=layout[label]
         lx,lz=local["local_x"],local["local_z"]
-        x=x0+ct*lx-st*lz
-        z=z0+st*lx+ct*lz
-        numeric(x,f"derived X {label}",0,20000)
-        numeric(z,f"derived Z {label}",0,20000)
+        # local (width/2,depth/2) is the REAL center specified by survey,
+        # not the lower-left rectangle corner. Prevent 150m-scale misplacing.
+        dx,dz=lx-half_width,lz-half_depth
+        x=cx+ct*dx-st*dz
+        z=cz+st*dx+ct*dz
+        numeric(x,f"derived X {label}",0,12800)
+        numeric(z,f"derived Z {label}",0,12800)
         require(all(math.hypot(x-old_x,z-old_z)>=2.5 for old_x,old_z in positions),
                 f"too-close placements may collide: {label}")
         positions.append((x,z))
@@ -97,6 +119,13 @@ def export(survey_path:Path, gameplay_path:Path, output_dir:Path) -> dict:
     warn={
         "status":"EXPERIMENTAL_OFFLINE_EXPORT_NOT_PLAYSTATION_VERIFIED",
         "site_build_reported":site["game_version"],
+        "world_center_x":cx,
+        "world_center_z":cz,
+        "coordinate_reference":"WORLD_CENTER_OF_BLUEPRINT",
+        "source_site_candidate":site["source_site_candidate"],
+        "rotation_degrees":a,
+        "site_is_provisional":True,
+        "runtime_verified":False,
         "world_positions_count":len(objects),
         "no_provider_connection":True,
         "no_live_deployment":True,

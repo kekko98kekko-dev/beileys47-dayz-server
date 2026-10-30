@@ -15,6 +15,7 @@ Il workflow costruisce un file separato chiamato **beileys47-recovery-kit**, con
 - report Stage 4.3 che verifica la provenienza della release ufficiale DayZ 1.30, segnala eventuali aggiornamenti Bohemia e non autorizza mai il deploy;
 - griglie Stage 4.4 X/Z corrette rispetto al centro della zona e modelli per misurare l'altezza Y (tutte le quote volutamente vuote), senza alcun posizionamento sul server;
 - Stage 4.5 con 182 punti per sito per acquisizione di misure DayZ Y, audit di pendenza, esempio non testato di script PC per SurfaceY e convertitore di log con test sintetici: nessuna quota reale è stata acquisita;
+- Stage 4.6 con contratto di coordinate riferite al centro, verifica del formato ufficiale Object Spawner e piano di cinque elementi X/Z non installabile;
 - script di preflight che non può eseguire upload o riavviare il server;
 - **MANIFEST_SHA256.json** con gli hash dei file (verificati nel workflow).
 

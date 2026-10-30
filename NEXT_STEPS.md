@@ -13,6 +13,8 @@
 - [x] Fail-closed Stage 4 survey template and offline Object Spawner exporter (requires real terrain input).
 - [x] Synthetic-only negative tests: reject missing height, unknown model and absent verification.
 - [x] Document PS4/PS5 acceptance gates, performance checks, and rollback protocol.
+- [x] Stage 4.6 official Bohemia Object Spawner schema checked; center-only world coordinates enforced; five-prop non-deployable prototype plan; synthetic and negative tests.
+- [ ] Stage 4.6 obtain real ground heights, verify in-game asset geometry and collision, then pilot on authorized Nitrado PS4/PS5 (NOT DONE).
 - [x] Stage 4.5 prepare 182 per-region true DayZ SurfaceY acquisition slots, slope auditor and strict incomplete/provenance fails; NO real heights yet.
 - [ ] Stage 4.5 collect and independently verify DayZ terrain Y, real roads/trees/footprints; NOT DONE.
 - [x] Stage 4.4 full-scale X/Z survey-grid conversion with corrected world-center versus southwest-origin coordinates, 156 blank Y samples per region and 26 placed conceptual markers; NO height claims.

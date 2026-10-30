@@ -95,6 +95,10 @@ The coordinate shortlist can now be cross-checked using six rotated 240 × 220 m
 
 Stage 4.4 generates exact *geometrically transformed* X/Z survey points and conceptual object positions, treating a candidate X/Z as the **world center** rather than the local southwest origin. This prevents shifting the full structure when mapping the 240 × 220 m layout. All Y heights remain **empty** and no terrain slope or road access is claimed. [Read the survey method](STAGE4_TERRAIN_SURVEY.md).
 
+## Stage 4.6 — Centered Object Spawner and pilot
+
+The experimental Object Spawner generator uses **world-center** survey v2 coordinates only. The old southwest-origin coordinates are rejected, and the selected center must match the reviewed Stage 4.2 shortlist. A five-element pilot PLAN is generated with X/Z only, zero known terrain Y heights and no installed objects. The static JSON schema follows Bohemia's official Object Spawner documentation, but actual PlayStation class support and collisions are unknown. See [Stage 4.6 preflight](STAGE4_6_SPAWNER_PREFLIGHT.md).
+
 ## Quality gates
 
 - **Concept**: three entrances, eight readable sectors, no disconnected gameplay, route redundancy.
