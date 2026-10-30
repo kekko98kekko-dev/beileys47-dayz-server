@@ -106,6 +106,7 @@ def summarize(bp:dict)->dict:
     # into a predictable choke. No claim these conceptual sectors can be
     # physically blocked or traveled in the proposed terrain.
     blocked_pairs=[x for x in pairs if not x["reachable"]]
+    assert not blocked_pairs, f"DOUBLE-SECTOR CHOKEPOINT: {blocked_pairs}"
     all_props=json.loads(MICRO.read_text(encoding="utf-8"))["asset_placements"]
     role_counts={}
     for p in all_props:
@@ -149,6 +150,7 @@ def summarize(bp:dict)->dict:
       ]
     }
     assert len(paths)==3 and len(outage_matrix)==3*7 and len(pairs)==3*15
+    assert len(bp["links"])==16, "East-side bypass missing"
     assert all(p["can_reach_hq_if_any_other_single_zone_closed"] for p in paths)
     assert report["deployment_allowed"] is False
     return report
