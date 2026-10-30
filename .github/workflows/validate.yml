@@ -125,6 +125,11 @@ jobs:
           python scripts/build_stage4_8_field_recon.py
           python scripts/test_stage4_8_field_recon.py
 
+      - name: Assess Stage 4.9 P3D visual bounding boxes and five-prop conceptual corridor
+        run: |
+          python scripts/assess_stage4_9_visual_envelopes.py
+          python scripts/test_stage4_9_visual_envelopes.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -259,6 +264,16 @@ jobs:
             dist/stage4_8_field_recon/central_waypoints.csv
             dist/stage4_8_field_recon/central_route_links.csv
             dist/stage4_8_field_recon/beileys47-world-xz-field-guide-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.9 P3D visual-envelope model survey (NOT COLLISION PROOF)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage49-model-visual-clearance
+          path: |
+            dist/stage4_9_visual_envelopes/pilot_visual_clearance_report.json
+            dist/stage4_9_visual_envelopes/beileys47-visual-clearance-not-deployable.zip
           if-no-files-found: error
           retention-days: 90
 
