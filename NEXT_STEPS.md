@@ -6,6 +6,7 @@
 - [x] File ufficiali DayZ CE Livonia ancorati al commit del 16/10/2026.
 - [x] Stage 1: cibo, medicine e spawn concentrati.
 - [x] Stage 2: loot PvP selettivo, ricambi auto, persistenza stash, stamina.
+- [x] Stage 3 PREVIEW: elicotteri/convogli dinamici e messaggi di benvenuto/identità, solo test statici.
 - [x] Builder automatico di XML/JSON.
 - [x] Test di regressione e controllo contenuto ZIP.
 - [x] Anteprima Stage 1 e Stage 2 prodotta da GitHub Actions.
@@ -34,6 +35,7 @@
 - [ ] Test su PS5 (spawn, loot, cassa e riavvio).
 - [ ] Solo se Stage 1 funziona, installazione Stage 2.
 - [ ] Test su PS5 di auto, armi, stamina, persistenza stash.
+- [ ] Solo dopo Stage 2 collaudata, testare Stage 3 (crash, convogli, messaggi, performance).
 - [ ] Verifica stabilità prestazioni con amici.
 - [ ] Solo dopo valutare accesso pubblico e pianificazione eventi.
 
@@ -46,6 +48,7 @@
 ## Collegamenti
 - [Stage 1](docs/STAGE1.md)
 - [Stage 2](docs/STAGE2.md)
+- [Stage 3](docs/STAGE3.md)
 - [Recupero ZIP](docs/RECOVERY_KIT.md)
 - [Checklist e recupero](docs/OPERATIONS.md)
 - [GitHub Actions](../../actions)

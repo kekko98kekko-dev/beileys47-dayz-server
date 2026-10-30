@@ -54,6 +54,10 @@ La relazione `change_report.json` NON va copiata nella missione.
 
 **IMPORTANTE:** `cfggameplay.json` richiede `enableCfgGameplayFile = 1`, che si imposta nel pannello Nitrado (controllarne l'effettiva disponibilità su console).
 
+## Eventuali test Stage 3
+
+Stage 3 e' una preview separata, con due file aggiuntivi: db/events.xml e db/messages.xml. Il piano statico Nitrado attuale descrive soltanto Stage 2. Dopo aver collaudato Stage 1 e Stage 2, verificare copia dei file originali, numero reale degli eventi, log, FPS e apparizione dei messaggi. Nessun caricamento o aggiornamento live e' attualmente autorizzato.
+
 ## Smoke test su PS5
 - [ ] Server accessibile da lista Community.
 - [ ] Spawn su Brena, Sobotka o Kolembrody al nuovo personaggio (ripetere più volte).

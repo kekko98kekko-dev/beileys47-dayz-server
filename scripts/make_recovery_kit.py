@@ -22,18 +22,22 @@ SOURCE_PATHS = [
     "config/profile.json",
     "config/stage1_rules.json",
     "config/stage2_rules.json",
+    "config/stage3_rules.json",
     "docs/OPERATIONS.md",
     "docs/STAGE1.md",
     "docs/STAGE2.md",
+    "docs/STAGE3.md",
     "docs/RECOVERY_KIT.md",
     "mission/README.md",
     "scripts/audit_stage2.py",
     "scripts/build_mission.py",
     "scripts/build_stage2.py",
+    "scripts/build_stage3.py",
     "scripts/check_release.py",
     "scripts/make_recovery_kit.py",
     "scripts/plan_nitrado.py",
     "scripts/test_stage2.py",
+    "scripts/test_stage3.py",
     "scripts/validate.py",
 ]
 PREVIEW_PATHS = [
@@ -42,10 +46,12 @@ PREVIEW_PATHS = [
     "dist/stage2/beileys47-livonia-stage2-preview.zip",
     "dist/stage2/change_report.json",
     "dist/stage2/nitrado_dry_run_plan.json",
+    "dist/stage3/beileys47-livonia-stage3-preview.zip",
+    "dist/stage3/change_report.json",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
-This ZIP contains versioned project sources, the Stage 1 and Stage 2
+This ZIP contains versioned project sources, the Stage 1, Stage 2 and Stage 3
 PREVIEW ZIP files and the corresponding reports. See docs/RECOVERY_KIT.md.
 
 IMPORTANT:
