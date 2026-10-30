@@ -162,6 +162,11 @@ jobs:
           python scripts/build_prepurchase_bundle.py
           python scripts/test_prepurchase_bundle.py
 
+      - name: Stage 5 offline loot economy balance and adversarial regression (NO DEPLOY)
+        run: |
+          python scripts/build_stage5_balance.py
+          python scripts/test_stage5_balance.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -198,6 +203,14 @@ jobs:
           path: |
             dist/stage3/beileys47-livonia-stage3-preview.zip
             dist/stage3/change_report.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 5 offline gameplay balance scorecard (NOT GAME FILES)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage5-static-balance-scorecard
+          path: dist/stage5_gameplay/ce_balance_scorecard.json
           if-no-files-found: error
           retention-days: 90
 
