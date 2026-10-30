@@ -10,11 +10,11 @@ Un survival con **PvP frequente**, loot aumentato in modo selettivo, veicoli acc
 
 ## Struttura
 
-- \`config/profile.json\`: specifiche e obiettivi di bilanciamento; **non è un file caricabile su DayZ**.
-- \`mission/\`: destinazione dei veri file di missione DayZ (non presenti finché non li recuperiamo da una versione compatibile).
-- \`scripts/validate.py\`: verifica sintassi XML/JSON e valori del profilo.
-- \`.github/workflows/validate.yml\`: controlli gratuiti su GitHub Actions; **nessun caricamento su Nitrado**.
-- \`NEXT_STEPS.md\`: piano operativo e verifica prerequisiti.
+- `config/profile.json`: specifiche e obiettivi di bilanciamento; **non è un file caricabile su DayZ**.
+- `mission/`: destinazione dei veri file di missione DayZ (non presenti finché non li recuperiamo da una versione compatibile).
+- `scripts/validate.py`: verifica sintassi XML/JSON e valori del profilo.
+- `.github/workflows/validate.yml`: controlli gratuiti su GitHub Actions; **nessun caricamento su Nitrado**.
+- `NEXT_STEPS.md`: piano operativo e verifica prerequisiti.
 
 ## Funzioni previste
 
@@ -27,11 +27,11 @@ Un survival con **PvP frequente**, loot aumentato in modo selettivo, veicoli acc
 
 ## Come testare i file
 
-\`\`\`sh
+```sh
 python3 scripts/validate.py
-\`\`\`
+```
 
-Al momento il test controlla \`config/profile.json\`. Quando aggiungeremo XML/JSON reali in \`mission/\`, controllerà anche **la loro sintassi e alcune incoerenze elementari**. Un test superato non dimostra che DayZ li carichi o che il gameplay sia bilanciato.
+Al momento il test controlla `config/profile.json`. Quando aggiungeremo XML/JSON reali in `mission/`, controllerà anche **la loro sintassi e alcune incoerenze elementari**. Un test superato non dimostra che DayZ li carichi o che il gameplay sia bilanciato.
 
 ## Sicurezza e costi
 
