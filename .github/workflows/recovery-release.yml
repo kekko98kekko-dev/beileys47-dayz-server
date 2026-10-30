@@ -124,6 +124,17 @@ jobs:
           python scripts/check_stage4_release_gate.py
           python scripts/test_stage4_release_gate.py
 
+      - name: Check Stage 4.13 progressive console trial gates
+        run: |
+          python scripts/build_stage4_13_console_pilot.py
+          python scripts/audit_stage4_13_console_pilot.py
+          python scripts/test_stage4_13_console_pilot.py
+
+      - name: Assemble and test pre-purchase six-file Livonia review bundle
+        run: |
+          python scripts/build_prepurchase_bundle.py
+          python scripts/test_prepurchase_bundle.py
+
       - name: Generate the complete recovery archive
         run: python scripts/make_recovery_kit.py
 
@@ -135,6 +146,9 @@ jobs:
           test -s dist/beileys47-recovery-kit.zip
           sha256sum dist/beileys47-recovery-kit.zip > dist/beileys47-recovery-kit.zip.sha256
           sha256sum --check dist/beileys47-recovery-kit.zip.sha256
+          python -m zipfile -t dist/prepurchase/beileys47-livonia-mission-review-candidate.zip
+          sha256sum dist/prepurchase/beileys47-livonia-mission-review-candidate.zip > dist/prepurchase/beileys47-livonia-mission-review-candidate.zip.sha256
+          sha256sum --check dist/prepurchase/beileys47-livonia-mission-review-candidate.zip.sha256
 
       - name: Publish or re-verify this commit's GitHub Release
         shell: bash
@@ -145,10 +159,12 @@ jobs:
           TAG="snapshot-${GITHUB_SHA:0:12}"
           ZIP="dist/beileys47-recovery-kit.zip"
           HASH="dist/beileys47-recovery-kit.zip.sha256"
+          REVIEW="dist/prepurchase/beileys47-livonia-mission-review-candidate.zip"
+          REVIEW_HASH="dist/prepurchase/beileys47-livonia-mission-review-candidate.zip.sha256"
           if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             echo "Existing snapshot $TAG: verifying stored ZIP instead of rewriting."
           else
-            gh release create "$TAG" "$ZIP" "$HASH" \
+            gh release create "$TAG" "$ZIP" "$HASH" "$REVIEW" "$REVIEW_HASH" \
               --repo "$GITHUB_REPOSITORY" \
               --target "$GITHUB_SHA" \
               --title "BEILEYS47 Recovery Snapshot • ${GITHUB_SHA:0:12}" \
@@ -165,5 +181,13 @@ jobs:
             --dir "$RUNNER_TEMP/verify-release"
           cmp "$ZIP" "$RUNNER_TEMP/verify-release/beileys47-recovery-kit.zip"
           cmp "$HASH" "$RUNNER_TEMP/verify-release/beileys47-recovery-kit.zip.sha256"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern "beileys47-livonia-mission-review-candidate.zip" \
+            --dir "$RUNNER_TEMP/verify-release"
+          gh release download "$TAG" --repo "$GITHUB_REPOSITORY" \
+            --pattern "beileys47-livonia-mission-review-candidate.zip.sha256" \
+            --dir "$RUNNER_TEMP/verify-release"
+          cmp "$REVIEW" "$RUNNER_TEMP/verify-release/beileys47-livonia-mission-review-candidate.zip"
+          cmp "$REVIEW_HASH" "$RUNNER_TEMP/verify-release/beileys47-livonia-mission-review-candidate.zip.sha256"
           echo "PASS: GitHub Release $TAG contains the exact verified recovery archive."
           echo "This is a source/project backup, not a backup of live DayZ characters or Nitrado persistence."

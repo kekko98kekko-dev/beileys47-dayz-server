@@ -13,6 +13,8 @@
 - [x] Fail-closed Stage 4 survey template and offline Object Spawner exporter (requires real terrain input).
 - [x] Synthetic-only negative tests: reject missing height, unknown model and absent verification.
 - [x] Document PS4/PS5 acceptance gates, performance checks, and rollback protocol.
+- [x] Pre-purchase master: safe six-file Livonia Stage 3 mission review kit, SHA-256 hashes, version/backup gates and full recovery archive with Stage 4.13 sources.
+- [ ] After purchase, confirm exact Nitrado console game build and live mission paths; test Stage 1 then 2 then 3 on PS5 and collect measured ZONA47 terrain Y and spawnable class evidence (NOT DONE).
 - [x] Stage 4.13 1→3→5 PlayStation staged acceptance plan with provider backup checks; no actual runtime tests.
 - [ ] Collect real PS5 terrain heights, provider backup proof, model classes and collision walkthroughs (NOT DONE).
 - [x] Stage 4.12 privacy-safe offline RPT Object Spawner error triage and 13 pinned official source-name / 26 marker evidence ledger; NO real logs or runtime class verification.

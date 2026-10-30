@@ -6,6 +6,8 @@ Questa release contiene **il kit di recupero completo dei file di progetto**, ge
 
 - `beileys47-recovery-kit.zip`: sorgenti versionati, script, documenti, configurazioni, report, preview e report di sicurezza.
 - `beileys47-recovery-kit.zip.sha256`: checksum SHA-256 per controllare che lo ZIP non sia stato alterato durante il download.
+- `beileys47-livonia-mission-review-candidate.zip`: sei file missione Stage 3 Livonia per **revisione prima dell'acquisto**, non una configurazione già testata su PS5; la Stage 4/ZONA 47 non è inclusa come file installabile.
+- `beileys47-livonia-mission-review-candidate.zip.sha256`: checksum SHA-256 del pacchetto di revisione.
 - I file sono generati dal commit del repository associato al tag della release. Non viene distribuito alcun software esterno né alcuna credenziale Nitrado.
 
 ### Attenzione: cosa NON contiene
