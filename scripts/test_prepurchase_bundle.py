@@ -84,6 +84,36 @@ def test()->None:
         temp_zip(xml,list(malicious.items()))
         with zipfile.ZipFile(xml) as z:
             deny(lambda:clean_archive(z,True),"XML entities/DTD")
+        # A well-formed XML file can be semantically dangerous: reject it
+        # even when its filename, syntax and ZIP CRC are correct.
+        wrong_events=dict(correct)
+        import xml.etree.ElementTree as ET
+        events=ET.fromstring(wrong_events["dayzOffline.enoch/db/events.xml"])
+        events.find("./event[@name='StaticHeliCrash']/nominal").text="0"
+        wrong_events["dayzOffline.enoch/db/events.xml"]=ET.tostring(events)
+        deny(lambda:validate_payload(wrong_events),"event nominal differs")
+        wrong_messages=dict(correct)
+        messages=ET.fromstring(wrong_messages["dayzOffline.enoch/db/messages.xml"])
+        messages.find("./message/text").text="HACKED MESSAGE"
+        wrong_messages["dayzOffline.enoch/db/messages.xml"]=ET.tostring(messages)
+        deny(lambda:validate_payload(wrong_messages),"messages differ")
+        fake_loot=dict(correct)
+        loot=ET.fromstring(fake_loot["dayzOffline.enoch/db/types.xml"])
+        loot.find("type/nominal").text="9999"
+        fake_loot["dayzOffline.enoch/db/types.xml"]=ET.tostring(loot)
+        deny(lambda:validate_payload(fake_loot),"differs from freshly generated")
+        fake_report=dict(correct)
+        report_changed=json.loads(fake_report["change_report.json"])
+        report_changed["event_changes"]=[]
+        fake_report["change_report.json"]=json.dumps(report_changed).encode()
+        deny(lambda:validate_payload(fake_report),"missing exactly two approved")
+        # Even if the attacker alters both the ZIP and its report to agree,
+        # the handoff must compare its raw mission bytes with fresh build.
+        mutation_zip=d/"tampered_but_well_formed.zip"
+        temp_zip(mutation_zip,sorted(fake_loot.items()))
+        with zipfile.ZipFile(mutation_zip) as z:
+            parsed=clean_archive(z,True)
+            deny(lambda:validate_payload(parsed),"differs from freshly generated")
         paths=dict(correct)
         paths["arbitrary.json"]=b"{}"
         deny(lambda:validate_payload(paths),"Stage 3 preview membership")
