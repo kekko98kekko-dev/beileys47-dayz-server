@@ -26,6 +26,16 @@ Dopo la Stage 4.10 avevamo 9 segnaposto associati a un ingombro P3D di riferimen
 | secret_01 | Misc_WoodenCrate | Piccola cache di legno |
 | secret_02 | Misc_SupplyBox2 | Indizio nascosto |
 
+## Prime interferenze visive individuate
+
+Con tutti i 26 modelli P3D **ipotetici**, i 325 confronti fra cerchi visivi restituiscono **due intersezioni** e **cinque margini inferiori a 4 m**:
+
+- Intersezioni visive: `barracks_01` + `barracks_03` (margine circa **−3,68 m**) e `barracks_01` + `barracks_04` (circa **−8,60 m**). La seconda può essere una **scelta interna intenzionale**, non necessariamente un ostacolo da spostare.
+- Vicinanze inferiori a 4 m: `barracks_01` + `barracks_02`, `hq_01` + `hq_02`, `hq_01` + `hq_03`, `hq_01` + `hq_04` e `hq_01` + `hq_05`. Le ultime due possono essere oggetti d'arredo interni.
+- Si tratta di **cerchi conservativi da bounding box visive**, non di geometria di collisione o misure reali del gioco; non viene modificato il layout master.
+
+**Priorità da verificare:** dimensioni e accessibilità di `barracks_03`, l'eventuale collocazione interna di `barracks_04` e le porte/corridoi di HQ.
+
 ## Limitazione ufficiale fondamentale
 
 La documentazione Bohemia del [DayZ Object Spawner](https://community.bistudio.com/wiki/DayZ:Object_Spawner) accetta nomi di **classi spawnabili** oppure percorsi P3D solo nelle categorie `DZ/plants*` e `DZ/rocks*`. **Non si possono usare direttamente le path `structures/...`, `structures_bliss/...` o `structures/furniture/...` dei modelli sopra come se fossero spawner validi.**
