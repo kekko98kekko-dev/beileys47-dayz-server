@@ -13,3 +13,6 @@ private/
 __pycache__/
 *.pyc
 .DS_Store
+
+# Generated preview packages (download from GitHub Actions)
+dist/
