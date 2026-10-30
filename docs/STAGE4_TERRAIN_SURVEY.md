@@ -47,6 +47,10 @@ La griglia potrà essere valutata come *rilievo reale* soltanto dopo aver acquis
 
 Finché tali verifiche mancano, **l'esportatore Object Spawner resta bloccato**, non sarà inviata alcuna modifica a Nitrado e non è possibile dire che ZONA 47 sia una base pronta.
 
+## Continuazione Stage 4.5
+
+Sono ora disponibili i modelli di acquisizione delle vere quote presso 156 punti della griglia e 26 posizioni oggetto per candidato, più un audit rigoroso delle pendenze e delle fonti. **Nessun dato altimetrico reale è stato raccolto:** le quote restano volutamente vuote. [Leggi Stage 4.5](STAGE4_REAL_ALTITUDE.md).
+
 ## Comandi, archivio e recupero
 
 Da `main`:
