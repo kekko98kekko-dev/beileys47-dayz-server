@@ -8,7 +8,8 @@ GitHub conserva *nella normale cronologia Git*, finché il repository esiste, re
 
 Il workflow costruisce un file separato chiamato **beileys47-recovery-kit**, contenente **beileys47-recovery-kit.zip**, con:
 - sorgenti e documentazione del repository alla specifica revisione;
-- preview ZIP Stage 1 e Stage 2 e relativi rapporti delle modifiche;
+- preview ZIP Stage 1 e Stage 2, relativi rapporti e piano Nitrado **di sola simulazione**;
+- script di preflight che non può eseguire upload o riavviare il server;
 - **MANIFEST_SHA256.json** con gli hash dei file (verificati nel workflow).
 
 I pacchetti Actions sono configurati per **90 giorni** (massimo standard per repository pubblici, salvo restrizioni del repository). **Scaricare e conservare sul proprio PC lo ZIP**: i 90 giorni NON sono un backup permanente. Il codice versionato rimane ricostruibile, a condizione che il commit ufficiale Bohemia bloccato resti disponibile.

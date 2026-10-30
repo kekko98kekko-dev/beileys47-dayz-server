@@ -36,6 +36,9 @@ jobs:
       - name: Strict Stage 2 preview release checks
         run: python scripts/check_release.py dist/stage2/beileys47-livonia-stage2-preview.zip
 
+      - name: Generate read-only Nitrado preflight (NO provider access)
+        run: python scripts/plan_nitrado.py
+
       - name: Verify generated ZIP integrity and reports
         run: |
           python -m zipfile -t dist/stage1/beileys47-livonia-stage1.zip

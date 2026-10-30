@@ -7,6 +7,20 @@
 - Il repository pubblico GitHub non deve contenere token Nitrado, cookie, password o log con dati privati.
 - I pacchetti generati in GitHub Actions sono **anteprime**; il supporto delle funzioni nella versione console va collaudato.
 
+## Preflight gratuito prima di Nitrado
+
+La pipeline ora crea **dist/stage2/nitrado_dry_run_plan.json** e lo inserisce nell'archivio di recupero. Questo documento elenca esattamente i quattro file XML/JSON della Stage 2, con percorso relativo, dimensioni e SHA-256, oltre alle verifiche necessarie prima di una futura installazione.
+
+Il piano mantiene **ready_to_deploy = false** e **server_mission_root = null**: nessuno conosce ancora il percorso reale del server, la versione installata o le autorizzazioni del servizio. **Non esegue richieste API, FTP, caricamenti, riavvii o eliminazioni**.
+
+### Prima di un futuro collegamento GitHub → Nitrado
+
+- Verificare con l'account PlayStation attivo se API, file manager o altro metodo siano disponibili e consentano modifiche ai file.
+- Recuperare il percorso reale della missione, senza dedurlo dal template.
+- Fare copie dei quattro file reali già presenti prima di sostituirli, e registrare hash/versione.
+- Utilizzare segreti privati e una conferma esplicita per qualunque futura operazione live.
+- Implementare rollback controllato e test con Stage 1 prima di automatizzare Stage 2.
+
 ## Primo accesso
 1. Entrare nel pannello Nitrado con 2FA.
 2. Selezionare Livonia e un nome riconoscibile come `BEILEYS47 | DAYZ ITALIA | SURVIVAL WAR`.
