@@ -97,11 +97,17 @@ def update_type_values(root: ET.Element, rules: dict) -> list[dict]:
 def update_vehicles(root: ET.Element, rules: dict) -> list[dict]:
     if root.tag != "spawnabletypes":
         raise ValueError("Unexpected cfgspawnabletypes.xml root")
-    raw_vehicles = root.findall("type")
-    vehicle_names = [node.get("name") for node in raw_vehicles]
-    if not vehicle_names or None in vehicle_names or len(vehicle_names) != len(set(vehicle_names)):
-        raise ValueError("Duplicate or unnamed vehicle attachment type")
-    vehicles = dict(zip(vehicle_names, raw_vehicles))
+    # Vanilla cfgspawnabletypes.xml can legitimately contain repeated
+    # entries for other classes. Fail only if OUR edited car types are
+    # ambiguous; never rewrite or deduplicate unrelated original content.
+    targets = set(rules["vehicle_attachment_rules"])
+    vehicles = {}
+    for node in root.findall("type"):
+        name = node.get("name")
+        if name in targets:
+            if name in vehicles:
+                raise ValueError(f"Duplicate target vehicle attachment type: {name}")
+            vehicles[name] = node
     report = []
     for name, options in rules["vehicle_attachment_rules"].items():
         if name not in vehicles:
