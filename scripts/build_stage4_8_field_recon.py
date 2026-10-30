@@ -14,6 +14,8 @@ import math
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from build_stage4_terrain_survey_grid import local_to_world
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -189,7 +191,7 @@ def build()->dict:
     hashes={name:hashlib.sha256(data).hexdigest() for name,data in sorted(files.items())}
     files["SHA256.json"]=(json.dumps(hashes,indent=2)+"\n").encode()
     with zipfile.ZipFile(OUT/"beileys47-world-xz-field-guide-only.zip","w",zipfile.ZIP_DEFLATED) as z:
-        for name,data in sorted(files.items()):z.writestr(name,data)
+        for name,data in sorted(files.items()):add_bytes(z,name,data)
     with zipfile.ZipFile(OUT/"beileys47-world-xz-field-guide-only.zip") as z:
         require(z.testzip() is None and set(z.namelist())==set(files),"Bad archive")
         for name,digest in hashes.items():
