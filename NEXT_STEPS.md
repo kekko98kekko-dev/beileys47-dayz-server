@@ -7,6 +7,9 @@
 - [x] Stage 1: cibo, medicine e spawn concentrati.
 - [x] Stage 2: loot PvP selettivo, ricambi auto, persistenza stash, stamina.
 - [x] Stage 3 PREVIEW: elicotteri/convogli dinamici e messaggi di benvenuto/identità, solo test statici.
+- [x] Stage 4 DESIGN: ZONA 47 narrative blueprint, 8 sectors, 3 entries, 26 local symbolic placements; no fake world coordinates.
+- [x] Stage 4 topological checks, offline SVG schematic and non-installable concept ZIP in Actions.
+- [ ] Stage 4 real terrain parcel, verified assets and console-tested micro Object Spawner (NOT DONE).
 - [x] Builder automatico di XML/JSON.
 - [x] Test di regressione e controllo contenuto ZIP.
 - [x] Anteprima Stage 1 e Stage 2 prodotta da GitHub Actions.
@@ -49,6 +52,7 @@
 - [Stage 1](docs/STAGE1.md)
 - [Stage 2](docs/STAGE2.md)
 - [Stage 3](docs/STAGE3.md)
+- [Stage 4 ZONA 47](docs/STAGE4_ZONE47.md)
 - [Recupero ZIP](docs/RECOVERY_KIT.md)
 - [Checklist e recupero](docs/OPERATIONS.md)
 - [GitHub Actions](../../actions)
