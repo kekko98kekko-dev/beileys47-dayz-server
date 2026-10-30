@@ -103,6 +103,10 @@ The experimental Object Spawner generator uses **world-center** survey v2 coordi
 
 A stress test of the conceptual links found that occupying **checkpoint and logistics at once** denied the eastern approach to HQ. The map concept now includes a **service → secret** stealth flank (16 schematic links total); the revised graph passes 45 two-sector-lockdown cases. **The bypass is a design proposal only, not a surveyed real trail** and cannot be assumed passable in DayZ. See [Stage 4.7 detailed report](STAGE4_7_PVP_ROUTE_STRESS.md).
 
+## Stage 4.8 — World X/Z field reconnaissance
+
+A read-only dossier transforms all 11 tactical nodes and 16 schematic links to the provisional center X 9000 / Z 7800, rotation 120°. The legacy IDs `north`, `west`, `east` are **not world compass directions** after rotation; their provisional compass bearings are computed explicitly. All terrain heights, collisions and real traversability remain unknown. [Read the field guide](STAGE4_8_FIELD_RECON.md).
+
 ## Quality gates
 
 - **Concept**: three entrances, eight readable sectors, no disconnected gameplay, route redundancy.
