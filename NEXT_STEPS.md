@@ -12,6 +12,7 @@
 - [x] Guida operativa backup, collaudo, rollback e limitazioni PS5.
 - [x] Audit indipendente completo sulle differenze XML/JSON rispetto ai file Bohemia.
 - [x] Recovery ZIP verificato con SHA-256 e conservazione artifact fino a 90 giorni.
+- [x] Piano statico di preflight Nitrado senza alcuna capacità di upload/deploy.
 - [x] Nessuna spesa, nessun accesso a Nitrado necessario.
 
 ## Prima della scadenza di un futuro server Nitrado
