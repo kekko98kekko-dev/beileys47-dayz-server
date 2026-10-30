@@ -12,7 +12,7 @@ From the pinned Bohemia Interactive DayZ-Central-Economy Livonia mission commit 
 
 - `mapgrouppos.xml` supplies *terrain group anchors*, not full dimensions of buildings or vegetation.
 - `cfgplayerspawnpoints.xml`, combined with the current Stage 1 rule names (Brena, Sobotka, Kolembrody), supplies the actual fresh-spawn position samples.
-- `cfgeventspawns.xml` supplies many dynamic event position anchors, including vehicles, helicopters, military convoys, police scenes, contaminated areas and trains.
+- `cfgeventspawns.xml` supplies dynamic event position anchors, including vehicles, helicopters, military convoys, police scenes, contaminated areas and trains. A fourth source, `db/events.xml`, is cross-checked so only **active** named events are considered.
 
 The screening never alters these upstream files. All input content hashes are recorded in the report.
 
