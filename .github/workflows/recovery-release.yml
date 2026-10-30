@@ -87,6 +87,11 @@ jobs:
           python scripts/build_stage4_6_pilot_preflight.py
           python scripts/test_stage4_6_pilot_preflight.py
 
+      - name: Audit PvP graph routes and two-sector lockdown regression
+        run: |
+          python scripts/stress_test_stage4_pvp_routes.py
+          python scripts/test_stage4_pvp_routes.py
+
       - name: Check stable 1.30 source provenance (not console runtime)
         env:
           GITHUB_TOKEN: ${{ github.token }}

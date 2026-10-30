@@ -115,6 +115,11 @@ jobs:
           python scripts/build_stage4_6_pilot_preflight.py
           python scripts/test_stage4_6_pilot_preflight.py
 
+      - name: Stress-test conceptual PvP routes against single and double sector lockdown
+        run: |
+          python scripts/stress_test_stage4_pvp_routes.py
+          python scripts/test_stage4_pvp_routes.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -226,6 +231,17 @@ jobs:
           path: |
             dist/stage4_6_preflight/zone47_micro_pilot_plan.json
             dist/stage4_6_preflight/beileys47-micro-pilot-plan-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.7 conceptual PvP route resilience report
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-zone47-pvp-route-stress
+          path: |
+            dist/stage4_7_route_balance/pvp_route_stress_report.json
+            dist/stage4_7_route_balance/sector_lockout_matrix.csv
+            dist/stage4_7_route_balance/beileys47-route-stress-design-only.zip
           if-no-files-found: error
           retention-days: 90
 
