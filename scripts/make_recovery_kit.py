@@ -112,6 +112,8 @@ SOURCE_PATHS = [
     "scripts/test_zone47_export_safety.py",
     "scripts/check_release.py",
     "scripts/make_recovery_kit.py",
+    "scripts/restore_recovery_kit.py",
+    "scripts/test_recovery_restore.py",
     "scripts/plan_nitrado.py",
     "scripts/test_stage2.py",
     "scripts/test_stage3.py",

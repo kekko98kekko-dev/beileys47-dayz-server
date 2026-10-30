@@ -74,3 +74,13 @@ Un archivio riproducibile non certifica il corretto comportamento dell'economia 
 **Correzione:** il builder confronta ora l'elenco dei file tracciati da Git con l'inventario del Recovery Kit, rifiuta omissioni, riferimenti stantii, duplicati e symlink. Un test di regressione simula un nuovo sorgente tracciato ma dimenticato e ne richiede il rifiuto. Il Recovery Kit resta un backup del **progetto**, non dei salvataggi reali Nitrado.
 
 **Limite invariato:** i test offline non certificano il funzionamento su PS5, collisioni, altezza del terreno, latenza, prestazioni con giocatori o persistenza del mondo.
+
+## Quarto audit: recupero verificabile con ricostruzione della cartella
+
+### H. Archivio recuperabile, ma ripristino manuale non verificato
+
+**Severità: alta per continuità del progetto.** La presenza di sorgenti e SHA-256 dentro un Recovery Kit non dimostrava che si potesse ricostruire un albero ordinato e coerente su un PC nuovo, evitando file omessi e sovrascritture accidentali.
+
+**Correzione:** aggiunto `scripts/restore_recovery_kit.py`, ripristino atomico in una cartella inesistente con verifica preventiva completa del manifesto, CRC, SHA-256, percorsi, duplicati, dimensioni e symlink. Le anteprime `previews/*` vengono ricollocate in `dist/*`. Il test `scripts/test_recovery_restore.py` esegue il round-trip e simula archivi corrotti, duplicati, mancanti e traversal. Test eseguito anche prima della pubblicazione delle GitHub Releases.
+
+**Limiti:** la funzionalità ripristina file, non dati del mondo Nitrado, e non sostituisce una prova reale su PS5. Nessun file viene automaticamente distribuito al provider.
