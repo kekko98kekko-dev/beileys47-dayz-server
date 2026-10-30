@@ -98,7 +98,11 @@ def modify_spawns(root: ET.Element, rules: dict) -> dict:
     bubbles = fresh.find("generator_posbubbles")
     if bubbles is None:
         raise ValueError("Missing fresh spawn bubbles")
-    groups = {node.get("name"): node for node in bubbles.findall("group")}
+    group_nodes = bubbles.findall("group")
+    group_names = [node.get("name") for node in group_nodes]
+    if not group_names or None in group_names or len(group_names) != len(set(group_names)):
+        raise ValueError("Duplicate, unnamed or missing official fresh spawn group")
+    groups = dict(zip(group_names, group_nodes))
     selected = rules["fresh_spawn_groups"]
     if not isinstance(selected, list) or len(selected) < 2 or len(selected) != len(set(selected)):
         raise ValueError("Choose at least two unique spawn groups")
