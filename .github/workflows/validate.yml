@@ -107,6 +107,9 @@ jobs:
       - name: Test height audit using isolated synthetic samples and fail-closed real data gate
         run: python scripts/test_stage4_height_samples.py
 
+      - name: Verify optional PC SurfaceY example and synthetic log converter
+        run: python scripts/test_stage4_surfacey_capture.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -206,6 +209,7 @@ jobs:
             dist/stage4_height_capture/southern_west_surfaceY_empty.json
             dist/stage4_height_capture/southern_east_surfaceY_empty.json
             dist/stage4_height_capture/terrain_height_audit.json
+            dist/stage4_height_capture/central_surfaceY_pc_runtime_example.c
             dist/stage4_height_capture/beileys47-zone47-height-capture-templates-only.zip
           if-no-files-found: error
           retention-days: 90
