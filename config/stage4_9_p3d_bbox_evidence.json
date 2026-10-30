@@ -1,0 +1,277 @@
+{
+  "stage": "4.9",
+  "version": "1.0",
+  "status": "THIRD_PARTY_P3D_VISUAL_BBOX_METADATA_NOT_COLLISION_PROOF",
+  "source": "DayZ P3D Explorer Public API v1 (third party) https://www.dzp3dexplorer.com/api-docs.php",
+  "source_dataset_description": "DayZ 1.30 ODOL v56 indexing (source website reports some older data fallback)",
+  "checked_on": "2026-10-30",
+  "kind": "P3D MODEL_VISUAL_ENVELOPE_ONLY",
+  "notes": [
+    "Dimensions describe P3D metadata model bounding box, NOT actual physics collision, class spawnability or PlayStation performance.",
+    "'Land_'+basename matching is a strong name lead, but not proof an object class maps to this model in the current console server.",
+    "Each bounding radius is computed from absolute bbox X/Z extrema relative to object origin and is yaw invariant, conservative for a visual envelope.",
+    "No game models are downloaded, only public numeric metadata. No actual Livonia surface heights are available. Still need legal/provider checks."
+  ],
+  "models": [
+    {
+      "candidate_dayz_terrain_classname": "Land_Mil_GuardBox_Green",
+      "p3d_explorer_id": 47566,
+      "p3d_model_class": "Mil_GuardBox_Green",
+      "p3d_path": "structures_bliss/military/Houses/Mil_GuardBox_Green.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/47566",
+      "bbox_min": {
+        "x": -1.3227851390838623,
+        "y": -2.783144950866699,
+        "z": -2.2799105644226074
+      },
+      "bbox_max": {
+        "x": 1.3227851390838623,
+        "y": 2.783144950866699,
+        "z": 2.2799105644226074
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Wreck_hb02_aban1_blue",
+      "p3d_explorer_id": 47409,
+      "p3d_model_class": "wreck_hb02_aban1_blue",
+      "p3d_path": "structures/wrecks/Vehicles/wreck_hb02_aban1_blue.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/47409",
+      "bbox_min": {
+        "x": -1.2763652801513672,
+        "y": -1.109580636024475,
+        "z": -2.905052661895752
+      },
+      "bbox_max": {
+        "x": 1.2763652801513672,
+        "y": 1.109580636024475,
+        "z": 2.905052661895752
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Mil_Fortified_Nest_Small",
+      "p3d_explorer_id": 45482,
+      "p3d_model_class": "Mil_Fortified_Nest_Small",
+      "p3d_path": "structures/military/Improvised/Mil_Fortified_Nest_Small.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/45482",
+      "bbox_min": {
+        "x": -2.5006601810455322,
+        "y": -1.2853984832763672,
+        "z": -2.291560173034668
+      },
+      "bbox_max": {
+        "x": 2.5006601810455322,
+        "y": 1.2853984832763672,
+        "z": 2.291560173034668
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Guardhouse",
+      "p3d_explorer_id": 45220,
+      "p3d_model_class": "GuardHouse",
+      "p3d_path": "structures/industrial/Houses/GuardHouse.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/45220",
+      "bbox_min": {
+        "x": -3.3102002143859863,
+        "y": -2.408677101135254,
+        "z": -1.8953711986541748
+      },
+      "bbox_max": {
+        "x": 3.3102002143859863,
+        "y": 2.408677101135254,
+        "z": 1.8953711986541748
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Container_1Aoh",
+      "p3d_explorer_id": 45139,
+      "p3d_model_class": "Container_1Aoh",
+      "p3d_path": "structures/industrial/Containers/Container_1Aoh.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/45139",
+      "bbox_min": {
+        "x": -1.3522796630859375,
+        "y": -1.3908497095108032,
+        "z": -5
+      },
+      "bbox_max": {
+        "x": 1.3522796630859375,
+        "y": 1.3908497095108032,
+        "z": 5
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Mil_Barracks6_Old",
+      "p3d_explorer_id": 45457,
+      "p3d_model_class": "Mil_Barracks6_Old",
+      "p3d_path": "structures/military/houses/Mil_Barracks6_Old.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/45457",
+      "bbox_min": {
+        "x": -14.420729637145996,
+        "y": -3.500000238418579,
+        "z": -9.016969680786133
+      },
+      "bbox_max": {
+        "x": 17.087200164794922,
+        "y": 8.335592269897461,
+        "z": 7.068360328674316
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Mil_Barracks3",
+      "p3d_explorer_id": 45450,
+      "p3d_model_class": "Mil_Barracks3",
+      "p3d_path": "structures/military/houses/Mil_Barracks3.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/45450",
+      "bbox_min": {
+        "x": -9.391935348510742,
+        "y": -3.830763339996338,
+        "z": -7.558560848236084
+      },
+      "bbox_max": {
+        "x": 9.391935348510742,
+        "y": 3.830763339996338,
+        "z": 7.558560848236084
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Container_1Bo",
+      "p3d_explorer_id": 45141,
+      "p3d_model_class": "Container_1Bo",
+      "p3d_path": "structures/industrial/Containers/Container_1Bo.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/45141",
+      "bbox_min": {
+        "x": -1.3510332107543945,
+        "y": -1.3908497095108032,
+        "z": -5
+      },
+      "bbox_max": {
+        "x": 1.3510332107543945,
+        "y": 1.3908497095108032,
+        "z": 5
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Garage_Office",
+      "p3d_explorer_id": 45182,
+      "p3d_model_class": "Garage_Office",
+      "p3d_path": "structures/industrial/Garages/Garage_Office.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/45182",
+      "bbox_min": {
+        "x": -3.9442646503448486,
+        "y": -5.376480579376221,
+        "z": -8.997841835021973
+      },
+      "bbox_max": {
+        "x": 3.9442646503448486,
+        "y": 5.376480579376221,
+        "z": 8.997841835021973
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Mil_GuardHouse3",
+      "p3d_explorer_id": 47568,
+      "p3d_model_class": "Mil_GuardHouse3",
+      "p3d_path": "structures_bliss/military/Houses/Mil_GuardHouse3.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/47568",
+      "bbox_min": {
+        "x": -6.920687675476074,
+        "y": -2.495624542236328,
+        "z": -5.421030521392822
+      },
+      "bbox_max": {
+        "x": 6.920687675476074,
+        "y": 2.495624303817749,
+        "z": 5.421030521392822
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Mil_Guardhouse1",
+      "p3d_explorer_id": 45459,
+      "p3d_model_class": "Mil_GuardHouse1",
+      "p3d_path": "structures/military/houses/Mil_GuardHouse1.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/45459",
+      "bbox_min": {
+        "x": -6.032729625701904,
+        "y": -2.9335806369781494,
+        "z": -4.582853317260742
+      },
+      "bbox_max": {
+        "x": 6.032729625701904,
+        "y": 2.9335803985595703,
+        "z": 4.582853317260742
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Mil_Fortified_Nest_Watchtower",
+      "p3d_explorer_id": 45483,
+      "p3d_model_class": "Mil_Fortified_Nest_Watchtower",
+      "p3d_path": "structures/military/Improvised/Mil_Fortified_Nest_Watchtower.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/45483",
+      "bbox_min": {
+        "x": -3.4878652095794678,
+        "y": -2.9793038368225098,
+        "z": -5.230114936828613
+      },
+      "bbox_max": {
+        "x": 3.4878652095794678,
+        "y": 2.9793038368225098,
+        "z": 5.230114936828613
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    },
+    {
+      "candidate_dayz_terrain_classname": "Land_Wreck_Caravan_MRust",
+      "p3d_explorer_id": 47388,
+      "p3d_model_class": "Wreck_Caravan_MRust",
+      "p3d_path": "structures/wrecks/Vehicles/Wreck_Caravan_MRust.p3d",
+      "odolv": 56,
+      "source_model_url": "https://www.dzp3dexplorer.com/v1/models/47388",
+      "bbox_min": {
+        "x": -1.3428890705108643,
+        "y": -1.9975595474243164,
+        "z": -4.8207502365112305
+      },
+      "bbox_max": {
+        "x": 1.3428890705108643,
+        "y": 1.9975595474243164,
+        "z": 4.8207502365112305
+      },
+      "console_runtime_verified": false,
+      "physics_collision_verified": false
+    }
+  ]
+}
