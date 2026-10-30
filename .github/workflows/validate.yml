@@ -46,6 +46,12 @@ jobs:
       - name: Strict Stage 2 preview release checks
         run: python scripts/check_release.py dist/stage2/beileys47-livonia-stage2-preview.zip
 
+      - name: Audit CE input guards and reproducible Stage 1-3 build dependencies
+        run: |
+          python scripts/test_ce_input_guards.py
+          python scripts/test_stage3_dependency_refresh.py
+          python scripts/test_zip_reproducibility.py
+
       - name: Generate read-only Nitrado preflight (NO provider access)
         run: python scripts/plan_nitrado.py
 
