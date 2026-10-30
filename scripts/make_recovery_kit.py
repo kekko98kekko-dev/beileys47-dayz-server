@@ -38,6 +38,7 @@ SOURCE_PATHS = [
     "docs/STAGE4_SITE_SCREEN.md",
     "docs/STAGE4_FOOTPRINT.md",
     "docs/STAGE4_RELEASE_COMPATIBILITY.md",
+    "docs/STAGE4_TERRAIN_SURVEY.md",
     "docs/STAGE4_SITE_SHORTLIST.md",
     "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
@@ -52,6 +53,8 @@ SOURCE_PATHS = [
     "scripts/test_stage4_sites.py",
     "scripts/assess_stage4_footprints.py",
     "scripts/test_stage4_footprints.py",
+    "scripts/build_stage4_terrain_survey_grid.py",
+    "scripts/test_stage4_terrain_grid.py",
     "scripts/check_stage4_release_gate.py",
     "scripts/test_stage4_release_gate.py",
     "scripts/audit_stage4_assets.py",
@@ -85,6 +88,12 @@ PREVIEW_PATHS = [
     "dist/stage4_footprint/footprint_rectangles.svg",
     "dist/stage4_footprint/beileys47-zone47-footprint-screen-only.zip",
     "dist/compatibility/stage4_release_gate_report.json",
+    "dist/stage4_terrain_survey/terrain_survey_grid.json",
+    "dist/stage4_terrain_survey/central_empty_Y_grid.csv",
+    "dist/stage4_terrain_survey/southern_west_empty_Y_grid.csv",
+    "dist/stage4_terrain_survey/southern_east_empty_Y_grid.csv",
+    "dist/stage4_terrain_survey/central_xz_survey.svg",
+    "dist/stage4_terrain_survey/beileys47-zone47-terrain-survey-worksheet-only.zip",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
