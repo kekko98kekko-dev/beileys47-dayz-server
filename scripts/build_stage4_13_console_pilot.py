@@ -11,6 +11,8 @@ import json
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 ROOT=Path(__file__).resolve().parents[1]
 PROTOCOL=ROOT/"config/stage4_13_pilot_protocol.json"
 PILOT=ROOT/"dist/stage4_6_preflight/zone47_micro_pilot_plan.json"
@@ -121,7 +123,7 @@ def build()->dict:
     files["SHA256.json"]=(json.dumps(hashes,indent=2)+"\n").encode()
     archive=OUT/"beileys47-console-pilot-templates-only.zip"
     with zipfile.ZipFile(archive,"w",zipfile.ZIP_DEFLATED) as z:
-        for name,content in sorted(files.items()):z.writestr(name,content)
+        for name,content in sorted(files.items()):add_bytes(z,name,content)
     with zipfile.ZipFile(archive) as z:
         assert z.testzip() is None and set(z.namelist())==set(files)
         for name,digest in hashes.items():assert hashlib.sha256(z.read(name)).hexdigest()==digest

@@ -13,6 +13,8 @@ import math
 import zipfile
 from collections import Counter, deque
 from pathlib import Path
+
+from zip_deterministic import add_bytes
 from xml.sax.saxutils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -195,7 +197,7 @@ This archive is intended for review, future implementation and history.
     files["SHA256_MANIFEST.json"]=(json.dumps(manifest,indent=2)+"\n").encode()
     with zipfile.ZipFile(ZIP,"w",compression=zipfile.ZIP_DEFLATED) as archive:
         for name,data in sorted(files.items()):
-            archive.writestr(name,data)
+            add_bytes(archive,name,data)
     with zipfile.ZipFile(ZIP) as archive:
         check(archive.testzip() is None, "ZIP corrupted")
         check(set(archive.namelist())==set(files), "Unexpected ZIP entries")

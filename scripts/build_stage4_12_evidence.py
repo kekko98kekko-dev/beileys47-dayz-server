@@ -12,6 +12,8 @@ import json
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from triage_stage4_12_rpt import ROOT,OUTPUT,PROVENANCE,known_candidates,run
 from audit_stage4_10_all_placements import ROOT as ROOT_410
 
@@ -106,7 +108,7 @@ def build()->dict:
     files["SHA256.json"]=(json.dumps(digest,indent=2)+"\n").encode()
     path=DIR/"beileys47-spawner-log-preflight-only.zip"
     with zipfile.ZipFile(path,"w",zipfile.ZIP_DEFLATED) as zipf:
-        for k,v in sorted(files.items()):zipf.writestr(k,v)
+        for k,v in sorted(files.items()):add_bytes(zipf,k,v)
     with zipfile.ZipFile(path) as zipf:
         assert zipf.testzip() is None and set(zipf.namelist())==set(files)
         for k,hashval in digest.items():assert hashlib.sha256(zipf.read(k)).hexdigest()==hashval

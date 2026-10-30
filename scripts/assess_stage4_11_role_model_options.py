@@ -16,6 +16,8 @@ import zipfile
 from collections import Counter
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from assess_stage4_9_visual_envelopes import visual_radius
 from audit_stage4_10_all_placements import ROOT as ROOT_410, proximity
 from build_stage4_terrain_survey_grid import local_to_world
@@ -198,7 +200,7 @@ def build()->dict:
     hashes={name:hashlib.sha256(data).hexdigest() for name,data in sorted(files.items())}
     files["SHA256.json"]=(json.dumps(hashes,indent=2)+"\n").encode()
     with zipfile.ZipFile(OUT/"beileys47-stage411-visual-role-options-not-deployable.zip","w",zipfile.ZIP_DEFLATED) as z:
-        for name,contents in sorted(files.items()):z.writestr(name,contents)
+        for name,contents in sorted(files.items()):add_bytes(z,name,contents)
     with zipfile.ZipFile(OUT/"beileys47-stage411-visual-role-options-not-deployable.zip") as z:
         expect(z.testzip() is None and set(z.namelist())==set(files),"Archive failed")
         for name,digest in hashes.items():expect(hashlib.sha256(z.read(name)).hexdigest()==digest,"Bad hash")

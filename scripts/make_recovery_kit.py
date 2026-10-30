@@ -64,6 +64,7 @@ SOURCE_PATHS = [
     "scripts/build_mission.py",
     "scripts/zip_deterministic.py",
     "scripts/test_zip_reproducibility.py",
+    "scripts/test_all_nested_zip_reproducibility.py",
     "scripts/test_stage3_dependency_refresh.py",
     "scripts/test_ce_input_guards.py",
     "scripts/build_stage2.py",

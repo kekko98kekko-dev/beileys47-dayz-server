@@ -13,6 +13,8 @@ import json
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 ROOT=Path(__file__).resolve().parents[1]
 GRID=ROOT/"dist/stage4_terrain_survey/terrain_survey_grid.json"
 OUT=ROOT/"dist/stage4_height_capture"
@@ -76,7 +78,7 @@ def build()->list[dict]:
     manifest={k:hashlib.sha256(v).hexdigest() for k,v in sorted(files.items())}
     files["SHA256.json"]=(json.dumps(manifest,indent=2)+"\n").encode()
     with zipfile.ZipFile(filename,"w",zipfile.ZIP_DEFLATED) as z:
-        for k,v in sorted(files.items()):z.writestr(k,v)
+        for k,v in sorted(files.items()):add_bytes(z,k,v)
     with zipfile.ZipFile(filename) as z:
         assert z.testzip() is None
         for k,h in manifest.items():assert hashlib.sha256(z.read(k)).hexdigest()==h

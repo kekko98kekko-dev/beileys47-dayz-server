@@ -18,6 +18,8 @@ import zipfile
 from collections import Counter
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from assess_stage4_9_visual_envelopes import visual_radius, dist_to_segment
 from build_stage4_terrain_survey_grid import local_to_world
 
@@ -255,7 +257,7 @@ def build()->dict:
     files["SHA256_MANIFEST.json"]=(json.dumps(manifest,indent=2)+"\n").encode()
     zpath=OUT/"beileys47-full-layout-paper-audit-only.zip"
     with zipfile.ZipFile(zpath,"w",zipfile.ZIP_DEFLATED) as archive:
-        for name,contents in sorted(files.items()):archive.writestr(name,contents)
+        for name,contents in sorted(files.items()):add_bytes(archive,name,contents)
     with zipfile.ZipFile(zpath) as archive:
         need(archive.testzip() is None and set(archive.namelist())==set(files),"Invalid ZIP")
         for name,digest in manifest.items():
