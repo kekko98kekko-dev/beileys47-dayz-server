@@ -1,0 +1,15 @@
+# Never publish credentials in this public repository
+.env
+.env.*
+*.key
+*.pem
+*secret*
+*token*
+*credential*
+*.bak
+*.backup
+backups/
+private/
+__pycache__/
+*.pyc
+.DS_Store
