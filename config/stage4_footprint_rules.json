@@ -1,0 +1,21 @@
+{
+  "stage": 4,
+  "status": "PROXY_FOOTPRINT_EVALUATION_NOT_TERRAIN_APPROVAL",
+  "compatible_upstream_commit": "f220b2918b1d79a5055b1ee9be70c0ec1516e876",
+  "reference_center_source": "dist/stage4_site_screening/site_screen_report.json",
+  "width_m": 240,
+  "depth_m": 220,
+  "rotation_angles_degrees": [
+    0,
+    30,
+    60,
+    90,
+    120,
+    150
+  ],
+  "minimum_static_group_anchor_clearance_to_footprint_m": 45,
+  "minimum_active_event_point_clearance_to_footprint_m": 180,
+  "minimum_fresh_spawn_point_clearance_to_footprint_m": 1500,
+  "max_top_candidates_per_region": 3,
+  "note": "Distances measure XML anchor POINTS against an ideal rotated rectangle; these are NOT footprints of existing 3D buildings or collision polygons. Missing roads, terrain, vegetation, water and FPS. No location or orientation may be approved from this result."
+}

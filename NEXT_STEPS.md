@@ -13,6 +13,7 @@
 - [x] Fail-closed Stage 4 survey template and offline Object Spawner exporter (requires real terrain input).
 - [x] Synthetic-only negative tests: reject missing height, unknown model and absent verification.
 - [x] Document PS4/PS5 acceptance gates, performance checks, and rollback protocol.
+- [x] Stage 4.2 rectangle proxy pre-screen for full 240x220m footprint, six orientations, static anchor margins (NOT terrain surveyed).
 - [x] Stage 4.1 static candidate screen: terrain anchors, player spawns, and dynamic event anchors compared against pinned Livonia mission; non-deployable report.
 - [ ] Stage 4 real terrain parcel, verified slope/roads/vegetation, verified assets and console-tested Object Spawner (NOT DONE).
 - [x] Builder automatico di XML/JSON.

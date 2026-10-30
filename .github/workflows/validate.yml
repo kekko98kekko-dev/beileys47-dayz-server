@@ -81,6 +81,12 @@ jobs:
       - name: Regression test provisional site coordinates against pinned source points
         run: python scripts/test_stage4_sites.py
 
+      - name: Compare full 240x220m prototype rectangles with static Livonia source anchors
+        run: python scripts/assess_stage4_footprints.py
+
+      - name: Regression-test rectangular geometry and candidate gates
+        run: python scripts/test_stage4_footprints.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -135,6 +141,17 @@ jobs:
             dist/stage4_site_screening/site_screen_report.json
             dist/stage4_site_screening/site_screen_scatter.svg
             dist/stage4_site_screening/beileys47-zone47-site-screen-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.2 full-footprint proxy screening (NO deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-zone47-footprint-screen
+          path: |
+            dist/stage4_footprint/footprint_report.json
+            dist/stage4_footprint/footprint_rectangles.svg
+            dist/stage4_footprint/beileys47-zone47-footprint-screen-only.zip
           if-no-files-found: error
           retention-days: 90
 
