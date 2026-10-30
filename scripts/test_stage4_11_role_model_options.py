@@ -70,7 +70,7 @@ def test()->None:
     reject(lambda:examine(modified,earlier,roles,layout),"Release approval bypass")
     modified=copy.deepcopy(source)
     modified["reference_model_catalog"][0]["bbox_min"]["x"]=float("nan")
-    reject(lambda:examine(modified,earlier,roles,layout),"Invalid P3D bounds")
+    reject(lambda:examine(modified,earlier,roles,layout),"Impossible P3D bounds")
 
     with (OUT/"all_26_visual_candidate_sizes.csv").open(encoding="utf-8",newline="") as f:
         rows=list(csv.DictReader(f))
