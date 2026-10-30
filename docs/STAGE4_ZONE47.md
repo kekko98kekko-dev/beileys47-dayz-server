@@ -71,6 +71,16 @@ https://community.bistudio.com/wiki/DayZ:Object_Spawner
 
 These are **broad geographical directions only**. No land parcel or valid center X/Y/Z has been verified or selected. Do not read the local SVG coordinates as Livonia coordinates.
 
+## Verified asset-name shortlist (NOT installation-ready)
+
+An automated source check now reads the **pinned Livonia `mapgrouppos.xml`** and verifies that proposed asset identifiers actually occur in the official terrain group data.
+
+Examples: military guard boxes, old barracks, storage containers, small nests, vehicle wrecks and watchtowers. The full 13-candidate shortlist is in `config/stage4_asset_candidates.json`.
+
+**An object name existing in terrain data is NOT proof that it can be spawned through Object Spawner on PS4/PS5.** Heights, class availability at runtime, collisions, draw calls, lighting, orientation, loot and FPS are still unverified. Large buildings are candidates only, not commitments to spawn 13 big structures.
+
+The audit report is `dist/stage4/asset_evidence.json`, saved together with the design preview and recovery kit.
+
 ## Quality gates
 
 - **Concept**: three entrances, eight readable sectors, no disconnected gameplay, route redundancy.
