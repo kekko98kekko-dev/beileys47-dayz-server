@@ -1,4 +1,4 @@
-name: Validate DayZ Livonia Stage 1, 2 and 3 previews
+name: Validate DayZ Livonia Stages 1–4 and site-screening previews
 
 on:
   push:
@@ -71,6 +71,12 @@ jobs:
           python -m zipfile -t dist/stage4/beileys47-zone47-design-only.zip
           python -m json.tool dist/stage4/concept_audit.json > /dev/null
 
+      - name: Screen three Livonia regions against pinned terrain, player spawns and event points
+        run: python scripts/scan_stage4_sites.py
+
+      - name: Regression test provisional site coordinates against pinned source points
+        run: python scripts/test_stage4_sites.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -114,6 +120,17 @@ jobs:
             dist/stage4/concept_audit.json
             dist/stage4/asset_evidence.json
             dist/stage4/zone47_survey_template.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.1 provisional site candidates (NO deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-zone47-site-screen
+          path: |
+            dist/stage4_site_screening/site_screen_report.json
+            dist/stage4_site_screening/site_screen_scatter.svg
+            dist/stage4_site_screening/beileys47-zone47-site-screen-only.zip
           if-no-files-found: error
           retention-days: 90
 
