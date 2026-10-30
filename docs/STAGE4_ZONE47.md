@@ -87,6 +87,10 @@ A new source-backed shortlist compares official Livonia terrain group anchors, t
 
 The report and coordinate scatter SVG are GitHub Actions artifacts. This is **not** a heightmap, aerial view or road geometry analysis. See [Stage 4.1 site-screen methodology](STAGE4_SITE_SCREEN.md).
 
+## Stage 4.2 — whole-site rectangle pre-screen
+
+The coordinate shortlist can now be cross-checked using six rotated 240 × 220 m ideal rectangles, not just the center. Distances to terrain group anchors, active event spawn points and the chosen fresh-spawn points are reported per orientation. **This remains a point-anchor proxy**, not real building geometry or vegetation. No site is marked surveyed or ready to deploy. [Read Stage 4.2 methodology](STAGE4_FOOTPRINT.md).
+
 ## Quality gates
 
 - **Concept**: three entrances, eight readable sectors, no disconnected gameplay, route redundancy.
