@@ -1,0 +1,133 @@
+{
+  "stage": 4,
+  "codename": "ZONA 47",
+  "status": "CANDIDATE_CLASS_NAMES_ONLY_NOT_RUNTIME_VERIFIED",
+  "source": "BohemiaInteractive/DayZ-Central-Economy/dayzOffline.enoch/mapgrouppos.xml",
+  "pinned_commit": "f220b2918b1d79a5055b1ee9be70c0ec1516e876",
+  "conclusion": "Presence as Livonia map group is evidence of a terrain object identifier, NOT proof it can spawn on console via Object Spawner; all candidates require live validation.",
+  "models": [
+    {
+      "name": "Land_Mil_GuardBox_Green",
+      "zone": "checkpoint",
+      "intent": "compact guard detail",
+      "performance_and_collision_risk": "high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Wreck_hb02_aban1_blue",
+      "zone": "checkpoint",
+      "intent": "abandoned civilian evacuation evidence",
+      "performance_and_collision_risk": "medium",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Mil_Fortified_Nest_Small",
+      "zone": "woods",
+      "intent": "military cover candidate",
+      "performance_and_collision_risk": "high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Guardhouse",
+      "zone": "service",
+      "intent": "small service checkpoint",
+      "performance_and_collision_risk": "high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Container_1Aoh",
+      "zone": "service",
+      "intent": "logistics storage atmosphere",
+      "performance_and_collision_risk": "high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Mil_Barracks6_Old",
+      "zone": "barracks",
+      "intent": "old military building shell",
+      "performance_and_collision_risk": "very_high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Mil_Barracks3",
+      "zone": "barracks",
+      "intent": "second structure candidate",
+      "performance_and_collision_risk": "very_high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Container_1Bo",
+      "zone": "logistics",
+      "intent": "industrial cover",
+      "performance_and_collision_risk": "high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Garage_Office",
+      "zone": "logistics",
+      "intent": "repair facility atmosphere",
+      "performance_and_collision_risk": "very_high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Mil_GuardHouse3",
+      "zone": "hq",
+      "intent": "command building candidate",
+      "performance_and_collision_risk": "very_high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Mil_Guardhouse1",
+      "zone": "hq",
+      "intent": "smaller alternative HQ structure",
+      "performance_and_collision_risk": "very_high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Mil_Fortified_Nest_Watchtower",
+      "zone": "ridge",
+      "intent": "overwatch platform",
+      "performance_and_collision_risk": "very_high",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    },
+    {
+      "name": "Land_Wreck_Caravan_MRust",
+      "zone": "secret",
+      "intent": "environmental clue asset",
+      "performance_and_collision_risk": "medium",
+      "object_spawner_confirmed": false,
+      "ps4_ps5_runtime_confirmed": false,
+      "ground_elevation_known": false
+    }
+  ],
+  "selection_policy": {
+    "large_buildings_max_in_micro": 2,
+    "avoid_spawning_novel_models_without_test": true,
+    "do_not_export_until_world_surveys": true,
+    "prioritize_existing_terrain_features": true
+  }
+}

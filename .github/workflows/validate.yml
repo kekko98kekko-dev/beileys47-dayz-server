@@ -54,6 +54,23 @@ jobs:
           python -m json.tool dist/stage2/change_report.json > /dev/null
           python -m json.tool dist/stage3/change_report.json > /dev/null
 
+      - name: Confirm Stage 4 candidate asset names in pinned Livonia terrain groups
+        run: python scripts/audit_stage4_assets.py
+
+      - name: Generate empty Stage 4 real-terrain survey worksheet
+        run: python scripts/prepare_zone47_survey.py
+
+      - name: Validate and render Stage 4 ZONA 47 tactical concept (NO DEPLOY)
+        run: python scripts/build_stage4_concept.py
+
+      - name: Test Stage 4 Object Spawner export safety (synthetic fixtures only)
+        run: python scripts/test_zone47_export_safety.py
+
+      - name: Verify Stage 4 concept archive integrity
+        run: |
+          python -m zipfile -t dist/stage4/beileys47-zone47-design-only.zip
+          python -m json.tool dist/stage4/concept_audit.json > /dev/null
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -84,6 +101,19 @@ jobs:
           path: |
             dist/stage3/beileys47-livonia-stage3-preview.zip
             dist/stage3/change_report.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4 ZONA 47 conceptual layout (NOT GAME FILES)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-zone47-concept
+          path: |
+            dist/stage4/beileys47-zone47-design-only.zip
+            dist/stage4/zone47_layout.svg
+            dist/stage4/concept_audit.json
+            dist/stage4/asset_evidence.json
+            dist/stage4/zone47_survey_template.json
           if-no-files-found: error
           retention-days: 90
 

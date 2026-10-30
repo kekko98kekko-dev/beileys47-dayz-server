@@ -23,16 +23,26 @@ SOURCE_PATHS = [
     "config/stage1_rules.json",
     "config/stage2_rules.json",
     "config/stage3_rules.json",
+    "config/stage4_zone47_blueprint.json",
+    "config/stage4_asset_candidates.json",
+    "config/stage4_zone47_micro_layout.json",
     "docs/OPERATIONS.md",
     "docs/STAGE1.md",
     "docs/STAGE2.md",
     "docs/STAGE3.md",
+    "docs/STAGE4_ZONE47.md",
+    "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
     "mission/README.md",
     "scripts/audit_stage2.py",
     "scripts/build_mission.py",
     "scripts/build_stage2.py",
     "scripts/build_stage3.py",
+    "scripts/build_stage4_concept.py",
+    "scripts/audit_stage4_assets.py",
+    "scripts/prepare_zone47_survey.py",
+    "scripts/export_zone47_spawner.py",
+    "scripts/test_zone47_export_safety.py",
     "scripts/check_release.py",
     "scripts/make_recovery_kit.py",
     "scripts/plan_nitrado.py",
@@ -48,11 +58,16 @@ PREVIEW_PATHS = [
     "dist/stage2/nitrado_dry_run_plan.json",
     "dist/stage3/beileys47-livonia-stage3-preview.zip",
     "dist/stage3/change_report.json",
+    "dist/stage4/beileys47-zone47-design-only.zip",
+    "dist/stage4/zone47_layout.svg",
+    "dist/stage4/concept_audit.json",
+    "dist/stage4/asset_evidence.json",
+    "dist/stage4/zone47_survey_template.json",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
 This ZIP contains versioned project sources, the Stage 1, Stage 2 and Stage 3
-PREVIEW ZIP files and the corresponding reports. See docs/RECOVERY_KIT.md.
+PREVIEW ZIP files, reports and Stage 4 non-deployable design archive. See docs/RECOVERY_KIT.md.
 
 IMPORTANT:
 * It does NOT contain live Nitrado data, characters, bases, vehicles, or
