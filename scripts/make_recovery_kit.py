@@ -59,6 +59,9 @@ SOURCE_PATHS = [
     "scripts/prepare_stage4_height_capture.py",
     "scripts/audit_stage4_height_samples.py",
     "scripts/test_stage4_height_samples.py",
+    "scripts/build_stage4_surfacey_snippet.py",
+    "scripts/import_stage4_surfacey_log.py",
+    "scripts/test_stage4_surfacey_capture.py",
     "scripts/check_stage4_release_gate.py",
     "scripts/test_stage4_release_gate.py",
     "scripts/audit_stage4_assets.py",
@@ -102,6 +105,7 @@ PREVIEW_PATHS = [
     "dist/stage4_height_capture/southern_west_surfaceY_empty.json",
     "dist/stage4_height_capture/southern_east_surfaceY_empty.json",
     "dist/stage4_height_capture/terrain_height_audit.json",
+    "dist/stage4_height_capture/central_surfaceY_pc_runtime_example.c",
     "dist/stage4_height_capture/beileys47-zone47-height-capture-templates-only.zip",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
