@@ -135,6 +135,11 @@ jobs:
           python scripts/audit_stage4_10_all_placements.py
           python scripts/test_stage4_10_all_placements.py
 
+      - name: Audit Stage 4.11 all 17 new source-backed visual model options
+        run: |
+          python scripts/assess_stage4_11_role_model_options.py
+          python scripts/test_stage4_11_role_model_options.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -291,6 +296,18 @@ jobs:
             dist/stage4_10_full_layout/all_26_placement_review.csv
             dist/stage4_10_full_layout/all_325_pair_review.csv
             dist/stage4_10_full_layout/beileys47-full-layout-paper-audit-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.11 unverified role-matched P3D visual-reference model catalog
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage411-role-matched-visual-candidates
+          path: |
+            dist/stage4_11_role_catalog/candidate_26_visual_fit_report.json
+            dist/stage4_11_role_catalog/all_26_visual_candidate_sizes.csv
+            dist/stage4_11_role_catalog/reference_pair_warnings.csv
+            dist/stage4_11_role_catalog/beileys47-stage411-visual-role-options-not-deployable.zip
           if-no-files-found: error
           retention-days: 90
 
