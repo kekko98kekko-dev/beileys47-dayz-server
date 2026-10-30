@@ -32,6 +32,24 @@ Lo ZIP serve per **ispezionare ed estrarre** i singoli file. Non è un modpack n
 
 I file non includono **alcun Object Spawner ZONA 47**. Il builder verifica che `WorldsData.objectSpawnersArr` sia una lista vuota. Non vengono distribuite coordinate Y inventate, classi `Land_...` mai verificate o modelli P3D come se fossero classi di oggetti PlayStation.
 
+## Gate acquisto: autorizzato un noleggio di prova, NON il lancio pubblico
+
+**Stato: TEST_RENTAL_PERMITTED / LIVE_DEPLOYMENT_BLOCKED.** Una pipeline GitHub verde dimostra solo che i file sono coerenti. Per imparare la configurazione Nitrado è ragionevole noleggiare il minimo per pochi giorni, ma nessun server è stato finora collaudato su PS5.
+
+Configurazione da controllare prima del pagamento:
+
+- Gioco: **DayZ**; piattaforma di hosting: **PlayStation 4** (DayZ viene eseguito su PS5 per retrocompatibilità), mai PC o Xbox.
+- Numero giocatori: **10 slot** per la prova; aumentabili successivamente se il progetto funziona.
+- Durata: **3 giorni prepagati**, se offerti al checkout effettivo; non sottoscrivere rinnovi automatici per questo primo test.
+- Data center: **Francoforte (Europa)** come prima preferenza dalla Campania, verificando la latenza nell'offerta.
+- Mappa **Livonia** da confermare nel pannello dopo l'attivazione; non presupporre che il server parta automaticamente sulla mappa richiesta.
+- Accesso con password privata; server non pubblicizzato fino a superamento Stage 1–3 e dei test PS5.
+- Conservare ricevuta, schermata della configurazione e indirizzo del pannello senza pubblicare credenziali.
+
+**Condizioni economiche:** l'importo esatto dipende da piattaforma, durata, checkout, imposte e offerte attive. Nitrado indica che i noleggi di tre giorni **non sono rimborsabili** e che il prepagato termina senza rinnovo; controllare il riepilogo prima del pagamento. Un test di tre giorni non garantisce abbastanza tempo per certificare tutta ZONA 47: serve prima come verifica vanilla/Stage 1–3. Fonte condizioni: https://server.nitrado.net/pages/agb e https://server.nitrado.net/it-IT/support.
+
+**Dopo l'acquisto:** verificare prima accesso PS5 e salvataggi vanilla, disponibilità di backup Nitrado e download dei singoli file missione. Se il pannello nega i permessi necessari, la missione è differente oppure la versione corrente non coincide con la baseline esaminata, **interrompere l'installazione** e non forzare XML/JSON. Il Recovery Kit GitHub conserva le configurazioni, **non** i salvataggi del mondo Nitrado; dopo scadenza del noleggio non presumere che personaggi, basi, veicoli e persistenza possano essere recuperati.
+
 ## Cosa faremo quando sarà acquistato il server
 
 1. Nel pannello Nitrado, verificare piattaforma PlayStation, missione **Livonia / dayzOffline.enoch**, numero slot e versione effettiva. Non usare il percorso missione presunto senza controllare il file manager.
