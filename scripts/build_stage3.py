@@ -59,6 +59,15 @@ def modify_events(root: ET.Element, rules: dict) -> list[dict]:
         if name not in index:
             raise ValueError(f"Official event absent: {name}")
         node = index[name]
+        # JSON booleans compare equal to Python integers; never serialize
+        # a boolean as an invalid DayZ XML nominal/child maximum.
+        for key in ("vanilla_nominal", "target_nominal"):
+            if type(options.get(key)) is not int:
+                raise ValueError(f"Invalid event integer rule: {name}.{key}")
+        if name == "StaticHeliCrash":
+            for key in ("vanilla_child_max", "target_child_max"):
+                if type(options.get(key)) is not int:
+                    raise ValueError(f"Invalid event integer rule: {name}.{key}")
         if node.findtext("active") != "1" or node.findtext("position") != "fixed":
             raise ValueError(f"Official event no longer active/fixed: {name}")
         nominal = node.find("nominal")
