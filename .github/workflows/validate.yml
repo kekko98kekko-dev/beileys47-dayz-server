@@ -101,6 +101,15 @@ jobs:
       - name: Validate centered coordinates and empty terrain elevation fields
         run: python scripts/test_stage4_terrain_grid.py
 
+      - name: Build EMPTY Stage 4.5 real DayZ terrain-height capture manifests
+        run: python scripts/prepare_stage4_height_capture.py
+
+      - name: Test height audit using isolated synthetic samples and fail-closed real data gate
+        run: python scripts/test_stage4_height_samples.py
+
+      - name: Verify optional PC SurfaceY example and synthetic log converter
+        run: python scripts/test_stage4_surfacey_capture.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -188,6 +197,20 @@ jobs:
             dist/stage4_terrain_survey/southern_east_empty_Y_grid.csv
             dist/stage4_terrain_survey/central_xz_survey.svg
             dist/stage4_terrain_survey/beileys47-zone47-terrain-survey-worksheet-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.5 height capture templates (ZERO actual measurements)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-zone47-height-capture
+          path: |
+            dist/stage4_height_capture/central_surfaceY_empty.json
+            dist/stage4_height_capture/southern_west_surfaceY_empty.json
+            dist/stage4_height_capture/southern_east_surfaceY_empty.json
+            dist/stage4_height_capture/terrain_height_audit.json
+            dist/stage4_height_capture/central_surfaceY_pc_runtime_example.c
+            dist/stage4_height_capture/beileys47-zone47-height-capture-templates-only.zip
           if-no-files-found: error
           retention-days: 90
 
