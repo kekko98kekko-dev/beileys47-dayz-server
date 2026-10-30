@@ -30,6 +30,9 @@ jobs:
       - name: Regression tests on generated configurations
         run: python scripts/test_stage2.py
 
+      - name: Independent approved-change audit against official Bohemia files
+        run: python scripts/audit_stage2.py
+
       - name: Strict Stage 2 preview release checks
         run: python scripts/check_release.py dist/stage2/beileys47-livonia-stage2-preview.zip
 
@@ -40,6 +43,9 @@ jobs:
           python -m json.tool dist/stage1/change_report.json > /dev/null
           python -m json.tool dist/stage2/change_report.json > /dev/null
 
+      - name: Build offline recovery kit and verify SHA-256 manifest
+        run: python scripts/make_recovery_kit.py
+
       - name: Upload Stage 1 preview (NO deployment)
         uses: actions/upload-artifact@v4
         with:
@@ -48,7 +54,7 @@ jobs:
             dist/stage1/beileys47-livonia-stage1.zip
             dist/stage1/change_report.json
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 90
 
       - name: Upload Stage 2 preview (NO deployment)
         uses: actions/upload-artifact@v4
@@ -58,4 +64,12 @@ jobs:
             dist/stage2/beileys47-livonia-stage2-preview.zip
             dist/stage2/change_report.json
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 90
+
+      - name: Upload complete offline recovery kit (NO deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-recovery-kit
+          path: dist/beileys47-recovery-kit.zip
+          if-no-files-found: error
+          retention-days: 90
