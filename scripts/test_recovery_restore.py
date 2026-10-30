@@ -32,7 +32,7 @@ def test() -> None:
         restored = work / "fresh"
         checksum = work / "release.zip.sha256"
         checksum.write_text(hashlib.sha256(OUT.read_bytes()).hexdigest()
-                            + "  dist/beileys47-recovery-kit.zip\\n", encoding="utf-8")
+                            + "  dist/beileys47-recovery-kit.zip\n", encoding="utf-8")
         result = restore(OUT, restored, checksum)
         assert result["status"] == "OFFLINE_RECOVERY_VERIFIED_AND_EXTRACTED"
         assert result["not_a_live_nitrado_backup"] is True
@@ -46,11 +46,11 @@ def test() -> None:
         reject(lambda: restore(OUT, restored), "NEW")
         assert (restored / "README.md").is_file()
         wrong_checksum = work / "wrong.sha256"
-        wrong_checksum.write_text("0" * 64 + "  beileys47-recovery-kit.zip\\n", encoding="utf-8")
+        wrong_checksum.write_text("0" * 64 + "  beileys47-recovery-kit.zip\n", encoding="utf-8")
         reject(lambda: restore(OUT, work / "external-mismatch", wrong_checksum),
                "External GitHub Release SHA-256 mismatch", work / "external-mismatch")
         wrong_name = work / "wrong-name.sha256"
-        wrong_name.write_text("0" * 64 + "  unrelated.zip\\n", encoding="utf-8")
+        wrong_name.write_text("0" * 64 + "  unrelated.zip\n", encoding="utf-8")
         reject(lambda: restore(OUT, work / "external-name", wrong_name),
                "Invalid or mismatched external Release SHA-256 entry", work / "external-name")
 
