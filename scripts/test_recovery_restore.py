@@ -76,6 +76,13 @@ def test() -> None:
                "Unexpected Recovery Kit member namespace", work / "wrong")
         reject(lambda: mapped_path("repository" + chr(92) + "malicious.txt"),
                "Unsafe ZIP member")
+        for unsafe in ("repository/C:/outside.txt", "repository/CON.txt",
+                       "repository/sub/file. ", "repository/sub/AUX",
+                       "repository/LPT1.txt"):
+            reject(lambda name=unsafe: mapped_path(name), "Unsafe ZIP member")
+        case_collision = forged("windows-case", extra=("repository/readme.md", b"bad"))
+        reject(lambda: restore(case_collision, work / "case-collision"),
+               "Colliding recovery output path", work / "case-collision")
 
     print("PASS: all Recovery Kit files round-trip exactly; corrupt, traversal, duplicate and incomplete archives rejected.")
     print("PASS: no overwrite and no partial destination after failed verification; NO Nitrado access.")
