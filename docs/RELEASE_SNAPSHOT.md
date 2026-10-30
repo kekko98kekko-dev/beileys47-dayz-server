@@ -30,8 +30,8 @@ Confronta il valore con la prima stringa del file `beileys47-recovery-kit.zip.sh
 
 ## Rigenerazione e versioni successive
 
-Il workflow **Publish long-lived recovery snapshot** può essere avviato manualmente dal tab **Actions → Publish long-lived recovery snapshot → Run workflow** sul ramo `main` ogni volta che vuoi una nuova release dal commit corrente. Gli snapshot sono associati al commit e non sovrascrivono le vecchie release. Se si rilancia lo stesso commit, il workflow verifica l'asset esistente invece di creare una copia duplicata.
+Il workflow **Publish long-lived recovery snapshot** parte ora automaticamente a ogni nuovo aggiornamento di `main`. Può anche essere avviato manualmente dal tab **Actions → Publish long-lived recovery snapshot → Run workflow** sul ramo `main`. Gli snapshot sono associati al commit e non sovrascrivono le vecchie release. Se si rilancia lo stesso commit, il workflow verifica l'asset esistente invece di creare una copia duplicata.
 
-Il primo snapshot viene creato automaticamente dopo il merge del documento e del workflow, **soltanto se i test e la generazione del kit vanno a buon fine**. Il workflow non compra servizi, non installa server e non tocca dati Nitrado.
+Gli snapshot vengono pubblicati automaticamente dopo ogni nuovo merge nel ramo **main**, ma **soltanto se la rigenerazione e i test del kit riescono**. Il workflow non compra servizi, non installa server e non tocca dati Nitrado.
 
 **Licenze e uso:** il kit include file derivati dalla Central Economy ufficiale DayZ; controlla e rispetta le licenze originali prima di redistribuire a fini commerciali.
