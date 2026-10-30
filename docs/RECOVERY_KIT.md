@@ -1,6 +1,6 @@
 # BEILEYS47 — Recupero offline, GitHub Actions e Nitrado
 
-**Stato: Stage 1/2 preview; nessun server DayZ PS5/PS4 collaudato.**
+**Stato: Stage 1–4.3 progettate e verificate staticamente; nessun server DayZ PS5/PS4 collaudato.**
 
 ## Che cosa conserviamo
 
@@ -17,6 +17,14 @@ Il workflow costruisce un file separato chiamato **beileys47-recovery-kit**, con
 - **MANIFEST_SHA256.json** con gli hash dei file (verificati nel workflow).
 
 I pacchetti Actions sono configurati per **90 giorni** (massimo standard per repository pubblici, salvo restrizioni del repository). **Scaricare e conservare sul proprio PC lo ZIP**: i 90 giorni NON sono un backup permanente. Il codice versionato rimane ricostruibile, a condizione che il commit ufficiale Bohemia bloccato resti disponibile.
+
+## Copia di lunga durata in GitHub Releases
+
+Abbiamo un nuovo workflow separato **Publish long-lived recovery snapshot** che verifica le Stage 1–4, rigenera il kit e crea una **GitHub Release** associata al commit `main`. La release contiene `beileys47-recovery-kit.zip` e il file SHA-256 per l'integrità. Gli asset GitHub Releases non sono soggetti alla scadenza standard degli artifact Actions dopo 90 giorni; possono comunque diventare indisponibili se la release o il repository vengono cancellati, se cambiano le condizioni del servizio o se GitHub non è disponibile.
+
+Apri il repository → **Releases** → l'ultima release intitolata `BEILEYS47 Recovery Snapshot` → **Assets**, scarica lo ZIP e salvalo sul PC. Per verificare l'hash e sapere come rigenerare una nuova release, leggi [RELEASE_SNAPSHOT.md](RELEASE_SNAPSHOT.md).
+
+**Importante:** la release è destinata a recuperare i **file del progetto**, non i dati del mondo di gioco su Nitrado. La seconda copia locale sul PC non può essere creata da GitHub o da questa chat senza un download da parte dell'utente.
 
 ## Come scaricare l'archivio sul PC Windows
 
