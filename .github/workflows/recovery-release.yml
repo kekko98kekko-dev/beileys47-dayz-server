@@ -1,13 +1,10 @@
 name: Publish long-lived recovery snapshot
 
-# The first snapshot is published after the recovery documentation is merged
-# into main. Later releases require an explicit manual dispatch, or another
-# change to this specific documentation file.
+# Automatically publish a new versioned backup on every reviewed main update.
+# SHA-specific tags prevent overwriting older snapshots.
 on:
   push:
     branches: [main]
-    paths:
-      - docs/RELEASE_SNAPSHOT.md
   workflow_dispatch:
 
 concurrency:
@@ -71,6 +68,11 @@ jobs:
           python scripts/test_stage4_sites.py
           python scripts/assess_stage4_footprints.py
           python scripts/test_stage4_footprints.py
+
+      - name: Generate and test Stage 4.4 X/Z-only terrain survey worksheet
+        run: |
+          python scripts/build_stage4_terrain_survey_grid.py
+          python scripts/test_stage4_terrain_grid.py
 
       - name: Check stable 1.30 source provenance (not console runtime)
         run: |
