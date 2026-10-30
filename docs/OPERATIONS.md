@@ -21,6 +21,49 @@ Il piano mantiene **ready_to_deploy = false** e **server_mission_root = null**: 
 - Utilizzare segreti privati e una conferma esplicita per qualunque futura operazione live.
 - Implementare rollback controllato e test con Stage 1 prima di automatizzare Stage 2.
 
+## Protocollo Franco → avvio: sequenza prioritaria per il primo giorno
+
+**Stato:** preparato in anticipo, NESSUNA operazione ancora eseguita su Nitrado o PS5. Il primo obiettivo è verificare che il noleggio e i file di missione siano utilizzabili, non costruire subito ZONA 47.
+
+| Priorità | Verifica | Prova richiesta | Esito per avanzare |
+| --- | --- | --- | --- |
+| P0 | Ordine corretto: DayZ PlayStation (PS4/PS5), 10 slot o piano concordato, prepagato, regione Europa | Riepilogo del pannello senza dati di pagamento | Confermare piano e scadenza |
+| P1 | Server acceso, mappa Livonia, IP/porta e nome server | Schermata pannello con credenziali oscurate | Server raggiungibile |
+| P2 | Connessione PS5 vanilla da lista Community | Conferma accesso e spawn in gioco | Accesso completato senza errori |
+| P3 | Versione del gioco, missione reale e file manager | Screenshot del percorso `dayzOffline.enoch`, versione visibile e file elencati | Nessuna differenza incompatibile |
+| P4 | Possibilità di ripristino e copia privata dei file originali | Elenco backup effettivamente presenti + copie file disponibili | Esiste un piano di rollback credibile |
+| P5 | Test Stage 1, poi Stage 2, poi Stage 3 | Risultati separati per fase e uno o più riavvii | Ogni fase passa prima della successiva |
+| P6 | ZONA 47: sito reale, quote Y, modelli supportati, 1→3→5 oggetti | Evidenza di gioco e dati di rilevamento privati | **Bloccato** finché manca la prova sul campo |
+
+**Nessun caricamento automatico** di ZIP, Recovery Kit, Stage 3 completo o materiali Stage 4. Si estrae il singolo file appropriato e lo si confronta con l'originale prima di ogni intervento autorizzato.
+
+### Cosa inviare ad Alfred al primo accesso
+
+Una schermata della **pagina principale del server** e, quando disponibile, una del **file manager** che mostri la missione. Oscurare login, password, token, email personali, dettagli di pagamento e qualsiasi credenziale; non pubblicare backup con dati dei giocatori. Le schermate di IP/porta possono essere condivise privatamente, ma non in un repository pubblico.
+
+Da lì posso verificare i percorsi e preparare la modifica esatta, oppure operare con strumenti compatibili quando disponibili e autorizzati. **Non presumere che io possa controllare direttamente Nitrado** finché il pannello e gli accessi non sono stati verificati.
+
+### Criteri di arresto immediato
+
+- Il server acquistato è PC/Xbox invece di PlayStation, o Livonia non è selezionabile.
+- Il server vanilla non è raggiungibile dalla PS5.
+- Il file manager/missione differisce da quanto previsto oppure non permette copia dei file necessari.
+- La versione DayZ in esecuzione è diversa da quella verificata con la baseline ufficiale senza revisione dei cambiamenti.
+- Mancano copie degli originali o una possibilità documentata di rollback per una modifica rischiosa.
+- La prova produce errori, instabilità, perdita di inventario o problemi di persistenza.
+
+In tutti questi casi **non caricare altre configurazioni**; conservare lo stato e diagnosticare prima di proseguire.
+
+### Come usare bene un noleggio breve
+
+**Sessione 1:** confermare piattaforma, server vanilla, mappa e accesso PS5. Poi verificare versioni, file manager e backup. Se uno dei primi controlli fallisce, usare il tempo restante per diagnosticare anziché installare file.
+
+**Sessione 2:** introdurre e verificare Stage 1, Stage 2 e Stage 3 in sequenza, senza saltare le verifiche e tornando alla versione precedente se emerge un problema.
+
+**Sessione 3:** consolidare evidenze e risultati; se possibile fare una ricognizione **non invasiva** del sito di ZONA 47 per valutare accessibilità e ostacoli. Non pretendere che tutte le 26 strutture siano operative dopo una sola prova.
+
+Prima della scadenza, salvare separatamente la configurazione effettiva e i file Nitrado che il provider consente di esportare. Il nostro Recovery Kit GitHub conserva sorgenti e anteprime, **non** i dati persistenti live (personaggi, veicoli, basi, contenitori). Alla scadenza non presumere di poter recuperare questi ultimi.
+
 ## Primo accesso
 1. Entrare nel pannello Nitrado con 2FA.
 2. Selezionare Livonia e un nome riconoscibile come `BEILEYS47 | DAYZ ITALIA | SURVIVAL WAR`.
