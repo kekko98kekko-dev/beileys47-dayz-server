@@ -73,8 +73,55 @@ def validate_payload(source_members:dict[str,bytes])->dict:
         raise ValueError("Unreviewed base invulnerability")
     if gameplay["GeneralData"]["disableContainerDamage"] is not False:
         raise ValueError("Unreviewed container invulnerability")
-    if "base" not in str(report.get("notes","")).lower() and not report.get("event_changes"):
-        raise ValueError("Stage 3 report missing changes")
+    # Source ZIP can be well-formed but still contain gameplay tampering.
+    # Match the full original generated Stage 3 bytes, not just XML syntax.
+    # Never authorize arbitrary caller-supplied input by re-hashing it.
+    rules=json.loads((ROOT/"config/stage3_rules.json").read_text(encoding="utf-8"))
+    events=ET.fromstring(source_members["dayzOffline.enoch/db/events.xml"])
+    if events.tag!="events" or len(events.findall("event"))<2:
+        raise ValueError("Stage 3 events root/contents invalid")
+    index={e.get("name"):e for e in events.findall("event")}
+    if len(index)!=len(events.findall("event")):
+        raise ValueError("Duplicate DayZ dynamic events")
+    changes=report.get("event_changes")
+    if type(changes)!=list or len(changes)!=2 or set(e.get("event") for e in changes)!={"StaticHeliCrash","StaticMilitaryConvoy"}:
+        raise ValueError("Stage 3 report missing exactly two approved event changes")
+    if report.get("inherited_from")!="STAGE2_BYTE_FOR_BYTE":
+        raise ValueError("Stage 3 inheritance provenance missing")
+    for name,rule in rules["events"].items():
+        observed=index.get(name)
+        if observed is None or observed.findtext("nominal")!=str(rule["target_nominal"]):
+            raise ValueError("Stage 3 event nominal differs from approved rule")
+        entry=next(e for e in changes if e.get("event")==name)
+        if (entry.get("vanilla_nominal")!=rule["vanilla_nominal"] or
+            entry.get("target_nominal")!=rule["target_nominal"]):
+            raise ValueError("Stage 3 change report inconsistent with approved event")
+        if name=="StaticHeliCrash":
+            kids=observed.findall("./children/child")
+            if (len(kids)!=1 or kids[0].get("type")!=rule["child_type"] or
+                kids[0].get("max")!=str(rule["target_child_max"]) or
+                entry.get("child_max")!=[rule["vanilla_child_max"],rule["target_child_max"]]):
+                raise ValueError("Stage 3 heli crash child does not match rules")
+    messages=ET.fromstring(source_members["dayzOffline.enoch/db/messages.xml"])
+    actual=messages.findall("message")
+    if messages.tag!="messages" or len(actual)!=3 or len(report.get("messages",[]))!=3:
+        raise ValueError("Stage 3 messages count or root invalid")
+    for i,(item,spec) in enumerate(zip(actual,rules["messages"])):
+        for tag,expected in (
+            ("text",spec["text"]),("delay",str(spec["delay"])),
+            ("repeat",str(spec["repeat"])),("onconnect",str(spec["onconnect"])),
+            ("shutdown","0"),("deadline","0")):
+            if item.findtext(tag)!=expected:
+                raise ValueError("Stage 3 messages differ from approved rules")
+        summary=report["messages"][i]
+        if (summary.get("kind")!=spec["kind"] or
+            summary.get("repeat_minutes")!=spec["repeat"] or
+            summary.get("onconnect") is not bool(spec["onconnect"])):
+            raise ValueError("Stage 3 message report differs from actual content")
+    for member in sorted(EXPECTED):
+        original=ROOT/"dist/stage3"/member
+        if not original.is_file() or original.read_bytes()!=source_members[member]:
+            raise ValueError("Stage 3 archive member differs from freshly generated mission file: "+member)
     return report
 
 def build(source_zip:Path=SOURCE,output:Path=PACKAGE)->dict:
@@ -139,7 +186,7 @@ def build(source_zip:Path=SOURCE,output:Path=PACKAGE)->dict:
     }
     package_readme=(
         "BEILEYS47 LIVONIA -- PURCHASE-DAY FILE REVIEW CANDIDATE\n\n"
-        "MISSION-FILES/ contains exactly SIX candidate Stage 3 mission files built from pinned Bohemia CE.\n"
+        "MISSION_FILES_REVIEW_ONLY/ contains exactly SIX candidate Stage 3 mission files built from pinned Bohemia CE.\n"
         "DO NOT UPLOAD THIS ZIP: only transfer individual files to matching paths AFTER VERSION REVIEW,\n"
         "BACKUP, APPROVAL and staged PS5 tests. This package has NO ZONA47 spawner or real terrain Y.\n"
         "Stage 1 and Stage 2 previews should be installed and tested before Stage 3, not all at once.\n"
