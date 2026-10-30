@@ -13,6 +13,8 @@
 - [x] Fail-closed Stage 4 survey template and offline Object Spawner exporter (requires real terrain input).
 - [x] Synthetic-only negative tests: reject missing height, unknown model and absent verification.
 - [x] Document PS4/PS5 acceptance gates, performance checks, and rollback protocol.
+- [x] Stage 4.12 privacy-safe offline RPT Object Spawner error triage and 13 pinned official source-name / 26 marker evidence ledger; NO real logs or runtime class verification.
+- [ ] Obtain authorized console server RPT and verify selected classnames and placements in-game before deployment; NEVER publish raw logs (NOT DONE).
 - [x] Stage 4.11 catalog 14 additional indexed P3D models as 17 unverified role-fit candidates; 26 visual size references and 325 paper-pair checks, ZERO console classnames.
 - [ ] Verify actual console-valid object classnames; structural/furniture P3D paths cannot be spawned directly via Object Spawner (NOT DONE).
 - [x] Stage 4.10 full 26-symbol 325-pair schematic audit; 9 hypothetical role-matched visual envelopes and 17 unknown model sizes, indoor-layout flags, NO object deployment.
