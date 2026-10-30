@@ -20,9 +20,9 @@
 
 ### C. Input CE malformati potevano venire accettati silenziosamente
 
-**Severità: media.** I nomi dei gruppi di spawn della Stage 1 e le liste dei tipi/veicoli della Stage 2 erano trasformati in dizionari senza controllare tutti i duplicati: a parità di nome, la seconda voce poteva sostituire la prima. Inoltre probabilità di parti veicolo `NaN`, infinite o fuori da 0–1 potevano contaminare i file.
+**Severità: media.** I nomi dei gruppi di spawn della Stage 1, dei tipi di loot e dei due veicoli modificati nella Stage 2 venivano trasformati in dizionari senza rilevare ambiguità. Il file vanilla `cfgspawnabletypes.xml` può però contenere duplicati legittimi **per altre classi**: la verifica è stata corretta per rifiutare soltanto duplicati dei veicoli sui quali interveniamo. Inoltre probabilità di parti veicolo `NaN`, infinite o fuori da 0–1 potevano contaminare i file.
 
-**Correzione:** rifiuto esplicito di gruppi/tipi duplicati o privi di nome; validazione dei target delle probabilità (reali finiti in [0,1], senza booleani) e dei valori originali prima della modifica. `scripts/test_ce_input_guards.py` verifica gli scenari anomali con XML **sintetico**.
+**Correzione:** rifiuto di gruppi di spawn/tipi loot duplicati o privi di nome e dei duplicati riguardanti i due veicoli modificati (senza riorganizzare le altre voci vanilla); validazione dei target delle probabilità (reali finiti in [0,1], senza booleani) e dei valori originali prima della modifica. `scripts/test_ce_input_guards.py` verifica gli scenari anomali con XML **sintetico**.
 
 ## Ambito dei test e garanzie reali
 
