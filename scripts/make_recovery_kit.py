@@ -31,6 +31,7 @@ SOURCE_PATHS = [
     "config/stage4_centered_export_contract.json",
     "config/stage4_9_p3d_bbox_evidence.json",
     "config/stage4_10_placement_roles.json",
+    "config/stage4_11_p3d_role_candidates.json",
     "config/stage4_asset_candidates.json",
     "config/stage4_zone47_micro_layout.json",
     "docs/OPERATIONS.md",
@@ -48,6 +49,7 @@ SOURCE_PATHS = [
     "docs/STAGE4_8_FIELD_RECON.md",
     "docs/STAGE4_9_MODEL_VISUAL_BOUNDS.md",
     "docs/STAGE4_10_FULL_LAYOUT.md",
+    "docs/STAGE4_11_ROLE_MATCHED_MODELS.md",
     "docs/STAGE4_SITE_SHORTLIST.md",
     "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
@@ -80,6 +82,8 @@ SOURCE_PATHS = [
     "scripts/test_stage4_9_visual_envelopes.py",
     "scripts/audit_stage4_10_all_placements.py",
     "scripts/test_stage4_10_all_placements.py",
+    "scripts/assess_stage4_11_role_model_options.py",
+    "scripts/test_stage4_11_role_model_options.py",
     "scripts/check_stage4_release_gate.py",
     "scripts/test_stage4_release_gate.py",
     "scripts/audit_stage4_assets.py",
@@ -140,6 +144,10 @@ PREVIEW_PATHS = [
     "dist/stage4_10_full_layout/all_26_placement_review.csv",
     "dist/stage4_10_full_layout/all_325_pair_review.csv",
     "dist/stage4_10_full_layout/beileys47-full-layout-paper-audit-only.zip",
+    "dist/stage4_11_role_catalog/candidate_26_visual_fit_report.json",
+    "dist/stage4_11_role_catalog/all_26_visual_candidate_sizes.csv",
+    "dist/stage4_11_role_catalog/reference_pair_warnings.csv",
+    "dist/stage4_11_role_catalog/beileys47-stage411-visual-role-options-not-deployable.zip",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
