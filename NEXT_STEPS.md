@@ -13,6 +13,8 @@
 - [x] Fail-closed Stage 4 survey template and offline Object Spawner exporter (requires real terrain input).
 - [x] Synthetic-only negative tests: reject missing height, unknown model and absent verification.
 - [x] Document PS4/PS5 acceptance gates, performance checks, and rollback protocol.
+- [x] Stage 4.10 full 26-symbol 325-pair schematic audit; 9 hypothetical role-matched visual envelopes and 17 unknown model sizes, indoor-layout flags, NO object deployment.
+- [ ] Stage 4.10 verify real 3D collision and runtime model classes; do not interpret 325 paper pair checks as 325 physically tested placements (NOT DONE).
 - [x] Stage 4.9 13 DayZ 1.30 third-party P3D visual bounding boxes; conservative 5-prop paper-corridor clearance and proposed local shifts, no collision claims.
 - [ ] Verify actual PlayStation object class spawnability, collisions and measured Y; P3D bbox metadata is not physical proof (NOT DONE).
 - [x] Stage 4.8 11 provisional X/Z waypoints and 16 paper-route segments for PS4/PS5 reconnaissance; correct misleading legacy directional entry labels.
