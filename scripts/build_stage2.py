@@ -50,7 +50,11 @@ def parse_xml(raw: bytes, label: str) -> ET.Element:
 def update_type_values(root: ET.Element, rules: dict) -> list[dict]:
     if root.tag != "types":
         raise ValueError("Unexpected types.xml root")
-    items = {node.get("name"): node for node in root.findall("type")}
+    raw_items = root.findall("type")
+    item_names = [node.get("name") for node in raw_items]
+    if not item_names or None in item_names or len(item_names) != len(set(item_names)):
+        raise ValueError("Duplicate or unnamed CE loot type")
+    items = dict(zip(item_names, raw_items))
     missing = set(rules["required_item_types"]) - set(items)
     if missing:
         raise ValueError(f"Official types missing: {sorted(missing)}")
@@ -93,12 +97,24 @@ def update_type_values(root: ET.Element, rules: dict) -> list[dict]:
 def update_vehicles(root: ET.Element, rules: dict) -> list[dict]:
     if root.tag != "spawnabletypes":
         raise ValueError("Unexpected cfgspawnabletypes.xml root")
-    vehicles = {node.get("name"): node for node in root.findall("type")}
+    raw_vehicles = root.findall("type")
+    vehicle_names = [node.get("name") for node in raw_vehicles]
+    if not vehicle_names or None in vehicle_names or len(vehicle_names) != len(set(vehicle_names)):
+        raise ValueError("Duplicate or unnamed vehicle attachment type")
+    vehicles = dict(zip(vehicle_names, raw_vehicles))
     report = []
     for name, options in rules["vehicle_attachment_rules"].items():
         if name not in vehicles:
             raise ValueError(f"Official vehicle cfg missing: {name}")
         vehicle = vehicles[name]
+        wheel_target = options["wheel_chance_first_four"]
+        repair_target = options["repair_part_chance_floor"]
+        if (type(wheel_target) not in (float,int) or not math.isfinite(wheel_target)
+                or not 0 <= wheel_target <= 1
+                or type(repair_target) not in (float,int)
+                or not math.isfinite(repair_target)
+                or not 0 <= repair_target <= 1):
+            raise ValueError("Nonfinite or invalid vehicle probability rule")
         changed = []
         wheel_count = 0
         repair_part_count = 0
@@ -108,7 +124,9 @@ def update_vehicles(root: ET.Element, rules: dict) -> list[dict]:
                 if "Wheel" in partname and wheel_count < 4:
                     # Modify only four main wheels; keep spare wheel probability untouched.
                     old = float(item.attrib["chance"])
-                    new = max(old, float(options["wheel_chance_first_four"]))
+                    if not math.isfinite(old) or not 0 <= old <= 1:
+                        raise ValueError("Nonfinite or invalid original wheel chance")
+                    new = max(old, wheel_target)
                     if new > 1:
                         raise ValueError("Invalid wheel probability")
                     item.set("chance", f"{new:.2f}")
@@ -116,7 +134,9 @@ def update_vehicles(root: ET.Element, rules: dict) -> list[dict]:
                     wheel_count += 1
                 elif partname in {"SparkPlug", "CarBattery", "CarRadiator"}:
                     old = float(item.attrib["chance"])
-                    new = max(old, float(options["repair_part_chance_floor"]))
+                    if not math.isfinite(old) or not 0 <= old <= 1:
+                        raise ValueError("Nonfinite or invalid original repair part chance")
+                    new = max(old, repair_target)
                     if new > 1:
                         raise ValueError("Invalid repair part probability")
                     item.set("chance", f"{new:.2f}")
