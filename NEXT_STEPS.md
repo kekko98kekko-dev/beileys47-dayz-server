@@ -18,7 +18,7 @@
 ## Dopo l'acquisto, con consenso
 - [ ] Salvare copie dei file originali nel posto giusto (mai con segreti).
 - [ ] Configurare la missione Livonia effettivamente in uso.
-- [ ] Attivare \`cfggameplay.json\` nella configurazione del pannello, se necessario.
+- [ ] Attivare `cfggameplay.json` nella configurazione del pannello, se necessario.
 - [ ] Testare modifiche **una categoria alla volta**.
 - [ ] Solo dopo verifica API/FTP: creare una procedura di upload, con autorizzazioni minime, approvazione e ripristino.
 - [ ] Test su PS5: spawn, loot, veicoli, FPS, restart, casse, rollback.
