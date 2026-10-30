@@ -7,6 +7,7 @@ import json
 import tempfile
 import zipfile
 from pathlib import Path
+from unittest.mock import patch
 
 from make_recovery_kit import OUT
 from restore_recovery_kit import restore, verify_archive, mapped_path
@@ -15,7 +16,7 @@ from restore_recovery_kit import restore, verify_archive, mapped_path
 def reject(action, expected: str, absent: Path | None = None) -> None:
     try:
         action()
-    except (ValueError, zipfile.BadZipFile) as exc:
+    except (ValueError, OSError, zipfile.BadZipFile) as exc:
         assert expected in str(exc), (expected, str(exc))
     else:
         raise AssertionError("Unsafe recovery action accepted: " + expected)
@@ -45,6 +46,29 @@ def test() -> None:
             assert (restored / rel).read_bytes() == original, str(rel)
         reject(lambda: restore(OUT, restored), "NEW")
         assert (restored / "README.md").is_file()
+        # Simulate a competing process creating the destination precisely
+        # AFTER our initial exists() check, during exclusive reservation.
+        raced = work / "raced"
+        original_mkdir = Path.mkdir
+        def occupy_destination(path, *args, **kwargs):
+            if path == raced:
+                original_mkdir(path, *args, **kwargs)
+                (path / "SENTINEL").write_text("preserve", encoding="utf-8")
+                raise FileExistsError("Simulated rival directory creation")
+            return original_mkdir(path, *args, **kwargs)
+        with patch.object(Path, "mkdir", occupy_destination):
+            reject(lambda: restore(OUT, raced), "NEW")
+        assert (raced / "SENTINEL").read_text(encoding="utf-8") == "preserve"
+
+        # A late I/O error must remove a partially populated destination.
+        interrupted = work / "interrupted"
+        original_rename = Path.rename
+        def fail_transfer(path, target):
+            if Path(target).parent == interrupted:
+                raise OSError("Synthetic transfer failure")
+            return original_rename(path, target)
+        with patch.object(Path, "rename", fail_transfer):
+            reject(lambda: restore(OUT, interrupted), "Synthetic transfer failure", interrupted)
         wrong_checksum = work / "wrong.sha256"
         wrong_checksum.write_text("0" * 64 + "  beileys47-recovery-kit.zip\n", encoding="utf-8")
         reject(lambda: restore(OUT, work / "external-mismatch", wrong_checksum),
