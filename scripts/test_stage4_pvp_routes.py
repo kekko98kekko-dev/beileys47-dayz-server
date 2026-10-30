@@ -19,7 +19,7 @@ def test()->None:
     assert report["real_world_line_of_sight_checked"] is False
     assert report["real_world_pathfinding_available"] is False
     assert len(report["entrance_paths"])==3
-    assert report["route_edges"]==15
+    assert report["route_edges"]==16
     assert report["sector_count"]==8
     assert report["pilot_symbols_in_all_sectors"]==26
     assert len(report["single_sector_lockout"])==21
@@ -53,7 +53,14 @@ def test()->None:
     try:summarize(bad)
     except AssertionError:pass
     else:raise AssertionError("Fake terrain survey claim accepted")
-    assert len(report["two_sector_lockout_failures"])<=report["two_sector_lockout_tested"]
+    assert len(report["two_sector_lockout_failures"])==0
+    no_east_escape=copy.deepcopy(bp)
+    no_east_escape["links"]=[edge for edge in no_east_escape["links"]
+                             if set(edge)!={"service","secret"}]
+    try:summarize(no_east_escape)
+    except AssertionError as exc:
+        assert "DOUBLE-SECTOR CHOKEPOINT" in str(exc) or "East-side bypass missing" in str(exc)
+    else:raise AssertionError("East-side double-sector trap was not detected")
     with (OUT/"sector_lockout_matrix.csv").open(encoding="utf-8",newline="") as f:
         rows=list(csv.DictReader(f))
     assert len(rows)==21
