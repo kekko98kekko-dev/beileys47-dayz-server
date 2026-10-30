@@ -40,6 +40,7 @@ SOURCE_PATHS = [
     "docs/STAGE1.md",
     "docs/STAGE2.md",
     "docs/STAGE3.md",
+    "docs/STAGE5_GAMEPLAY_BALANCE.md",
     "docs/STAGE4_ZONE47.md",
     "docs/STAGE4_SITE_SCREEN.md",
     "docs/STAGE4_FOOTPRINT.md",
@@ -117,6 +118,8 @@ SOURCE_PATHS = [
     "scripts/plan_nitrado.py",
     "scripts/test_stage2.py",
     "scripts/test_stage3.py",
+    "scripts/build_stage5_balance.py",
+    "scripts/test_stage5_balance.py",
     "scripts/validate.py",
 ]
 PREVIEW_PATHS = [
@@ -127,6 +130,7 @@ PREVIEW_PATHS = [
     "dist/stage2/nitrado_dry_run_plan.json",
     "dist/stage3/beileys47-livonia-stage3-preview.zip",
     "dist/stage3/change_report.json",
+    "dist/stage5_gameplay/ce_balance_scorecard.json",
     "dist/stage4/beileys47-zone47-design-only.zip",
     "dist/stage4/zone47_layout.svg",
     "dist/stage4/concept_audit.json",
