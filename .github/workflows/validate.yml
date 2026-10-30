@@ -1,4 +1,4 @@
-name: Validate and build DayZ Livonia preview
+name: Validate DayZ Livonia Stage 1 and Stage 2 previews
 
 on:
   push:
@@ -21,23 +21,38 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Validate project profile and XML/JSON in mission/
+      - name: Validate project profile and mission XML/JSON
         run: python scripts/validate.py
 
-      - name: Build Livonia Stage 1 from pinned Bohemia source
-        run: python scripts/build_mission.py
+      - name: Build both stages from pinned Bohemia official files
+        run: python scripts/build_stage2.py
 
-      - name: Verify archive and report
+      - name: Regression tests on generated configurations
+        run: python scripts/test_stage2.py
+
+      - name: Verify generated ZIP integrity and reports
         run: |
-          python -m zipfile -t dist/beileys47-livonia-stage1.zip
-          python -m json.tool dist/change_report.json > /dev/null
+          python -m zipfile -t dist/stage1/beileys47-livonia-stage1.zip
+          python -m zipfile -t dist/stage2/beileys47-livonia-stage2-preview.zip
+          python -m json.tool dist/stage1/change_report.json > /dev/null
+          python -m json.tool dist/stage2/change_report.json > /dev/null
 
-      - name: Upload preview files for review (NO Nitrado deploy)
+      - name: Upload Stage 1 preview (NO deployment)
         uses: actions/upload-artifact@v4
         with:
           name: beileys47-livonia-stage1-preview
           path: |
-            dist/beileys47-livonia-stage1.zip
-            dist/change_report.json
+            dist/stage1/beileys47-livonia-stage1.zip
+            dist/stage1/change_report.json
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload Stage 2 preview (NO deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-livonia-stage2-preview
+          path: |
+            dist/stage2/beileys47-livonia-stage2-preview.zip
+            dist/stage2/change_report.json
           if-no-files-found: error
           retention-days: 7
