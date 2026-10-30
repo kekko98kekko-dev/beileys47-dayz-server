@@ -1,6 +1,6 @@
 # BEILEYS47 — Recupero offline, GitHub Actions e Nitrado
 
-**Stato: Stage 1–4.3 progettate e verificate staticamente; nessun server DayZ PS5/PS4 collaudato.**
+**Stato: Stage 1–4.13 e kit di preparazione all'acquisto, testati solo staticamente e con dati sintetici; nessun server DayZ PS5/PS4 collaudato.**
 
 ## Che cosa conserviamo
 
@@ -22,6 +22,8 @@ Il workflow costruisce un file separato chiamato **beileys47-recovery-kit**, con
 - Stage 4.10 con tutti i 26 marker, 325 confronti geometrici schematici, 9 ingombri VISIVI ipotetici e 17 dimensioni sconosciute; nessuna collisione reale verificata;
 - Stage 4.11 con 14 nuovi P3D fonte catalogo per 17 ruoli, 26 ingombri visivi proposti, 325 confronti 2D e blocco automatico delle path P3D non ammesse dal DayZ Object Spawner; nessuna classe confermata su PS5;
 - Stage 4.12 con analizzatore locale privacy-safe di RPT, marker di errore ufficiale Bohemia, registro di 13 classi nominali/26 marker e archivio vuoto di prove: NESSUN log reale o risultato di spawn su PS5;
+- Stage 4.13 con protocollo incrementale 1→3→5 oggetti, moduli vuoti e audit di backup/riavvio/collisioni: nessun test reale;
+- Master pre-acquisto con 6 file di missione Stage 3 e hash SHA-256, esclusione di ZONA 47 e piano di verifica prima della configurazione Nitrado.
 - script di preflight che non può eseguire upload o riavviare il server;
 - **MANIFEST_SHA256.json** con gli hash dei file (verificati nel workflow).
 
