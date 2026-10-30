@@ -55,6 +55,10 @@ GitHub Actions generates these non-installable outputs:
 
 The screening is tested with independent distance and exclusion checks against the official pinned inputs. It cannot certify a complete object footprint or map performance.
 
+## Stage 4.2 continuation
+
+The next safety gate checks the **whole ideal outpost rectangle** against pinned XML point anchors in six orientations. The additional report helps avoid assuming that a clear *center point* implies a clear whole building area. [Full-footprint static analysis](STAGE4_FOOTPRINT.md).
+
 ## To move from shortlist to physical approval
 
 1. On a real Livonia map / game session, inspect the highest-scoring central-region coordinates and the two alternatives.
