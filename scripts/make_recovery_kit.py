@@ -24,6 +24,7 @@ SOURCE_PATHS = [
     "config/stage2_rules.json",
     "config/stage3_rules.json",
     "config/stage4_zone47_blueprint.json",
+    "config/stage4_asset_candidates.json",
     "config/stage4_zone47_micro_layout.json",
     "docs/OPERATIONS.md",
     "docs/STAGE1.md",
@@ -37,6 +38,7 @@ SOURCE_PATHS = [
     "scripts/build_stage2.py",
     "scripts/build_stage3.py",
     "scripts/build_stage4_concept.py",
+    "scripts/audit_stage4_assets.py",
     "scripts/check_release.py",
     "scripts/make_recovery_kit.py",
     "scripts/plan_nitrado.py",
@@ -55,6 +57,7 @@ PREVIEW_PATHS = [
     "dist/stage4/beileys47-zone47-design-only.zip",
     "dist/stage4/zone47_layout.svg",
     "dist/stage4/concept_audit.json",
+    "dist/stage4/asset_evidence.json",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
