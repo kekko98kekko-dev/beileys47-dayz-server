@@ -93,6 +93,12 @@ jobs:
       - name: Prove console compatibility gate stays blocked without real Nitrado tests
         run: python scripts/test_stage4_release_gate.py
 
+      - name: Build X/Z-only Stage 4.4 terrain survey worksheets (NO measured ground Y)
+        run: python scripts/build_stage4_terrain_survey_grid.py
+
+      - name: Validate centered coordinates and empty terrain elevation fields
+        run: python scripts/test_stage4_terrain_grid.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -166,6 +172,20 @@ jobs:
         with:
           name: beileys47-ce-stable-compatibility-gate
           path: dist/compatibility/stage4_release_gate_report.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.4 unmeasured-Y terrain survey templates (NOT GAME FILES)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-zone47-terrain-survey-grid
+          path: |
+            dist/stage4_terrain_survey/terrain_survey_grid.json
+            dist/stage4_terrain_survey/central_empty_Y_grid.csv
+            dist/stage4_terrain_survey/southern_west_empty_Y_grid.csv
+            dist/stage4_terrain_survey/southern_east_empty_Y_grid.csv
+            dist/stage4_terrain_survey/central_xz_survey.svg
+            dist/stage4_terrain_survey/beileys47-zone47-terrain-survey-worksheet-only.zip
           if-no-files-found: error
           retention-days: 90
 

@@ -91,6 +91,10 @@ The report and coordinate scatter SVG are GitHub Actions artifacts. This is **no
 
 The coordinate shortlist can now be cross-checked using six rotated 240 × 220 m ideal rectangles, not just the center. Distances to terrain group anchors, active event spawn points and the chosen fresh-spawn points are reported per orientation. **This remains a point-anchor proxy**, not real building geometry or vegetation. No site is marked surveyed or ready to deploy. [Read Stage 4.2 methodology](STAGE4_FOOTPRINT.md).
 
+## Stage 4.4 — Survey X/Z centered correctly
+
+Stage 4.4 generates exact *geometrically transformed* X/Z survey points and conceptual object positions, treating a candidate X/Z as the **world center** rather than the local southwest origin. This prevents shifting the full structure when mapping the 240 × 220 m layout. All Y heights remain **empty** and no terrain slope or road access is claimed. [Read the survey method](STAGE4_TERRAIN_SURVEY.md).
+
 ## Quality gates
 
 - **Concept**: three entrances, eight readable sectors, no disconnected gameplay, route redundancy.
