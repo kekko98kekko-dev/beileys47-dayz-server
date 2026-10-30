@@ -1,0 +1,268 @@
+{
+  "stage": 4,
+  "codename": "ZONA 47",
+  "version": "0.1.0",
+  "status": "DESIGN_ONLY_NOT_INSTALLABLE",
+  "map": "Livonia",
+  "platforms": [
+    "PS4",
+    "PS5"
+  ],
+  "identity": "A forgotten army logistics outpost consumed by the forest, with legible paths, lived-in environmental story, and fair tactical combat.",
+  "coordinate_system": {
+    "unit": "local_metres_xz",
+    "width": 240,
+    "height": 220,
+    "world_x": null,
+    "world_y": null,
+    "world_z": null,
+    "yaw_degrees": null,
+    "terrain_surveyed": false,
+    "origin": "southwest_local_only"
+  },
+  "objectives": {
+    "experience": [
+      "wonder",
+      "exploration",
+      "risk_reward",
+      "three_playstyles",
+      "fair_pvp",
+      "low_clutter"
+    ],
+    "max_visual_entities_soft": 80,
+    "max_large_structures_soft": 12,
+    "first_micro_prototype_min": 20,
+    "first_micro_prototype_max": 30,
+    "real_console_fps_threshold": null
+  },
+  "entrances": [
+    {
+      "id": "north",
+      "x": 118,
+      "z": 10,
+      "name": "Main checkpoint",
+      "approach": "loud/readable",
+      "risk": "high",
+      "to": "checkpoint"
+    },
+    {
+      "id": "west",
+      "x": 10,
+      "z": 109,
+      "name": "Breach in the fence",
+      "approach": "quiet/flanking",
+      "risk": "medium",
+      "to": "woods"
+    },
+    {
+      "id": "east",
+      "x": 227,
+      "z": 116,
+      "name": "Service trail",
+      "approach": "slow/concealed",
+      "risk": "medium",
+      "to": "service"
+    }
+  ],
+  "zones": [
+    {
+      "id": "checkpoint",
+      "name": "Broken Checkpoint",
+      "x": 119,
+      "z": 39,
+      "object_budget": 11,
+      "prototype_count": 4,
+      "loot_purpose": "basic utility",
+      "narrative": "Roadblock abandoned mid-evacuation",
+      "risk": "high",
+      "function": "visible, loud entry"
+    },
+    {
+      "id": "woods",
+      "name": "West Breach",
+      "x": 38,
+      "z": 111,
+      "object_budget": 6,
+      "prototype_count": 2,
+      "loot_purpose": "no rare loot",
+      "narrative": "Escape route cut through the perimeter",
+      "risk": "medium",
+      "function": "quiet flank"
+    },
+    {
+      "id": "service",
+      "name": "Service Approach",
+      "x": 194,
+      "z": 110,
+      "object_budget": 8,
+      "prototype_count": 3,
+      "loot_purpose": "repair/utility",
+      "narrative": "Supply track used after the official gates failed",
+      "risk": "medium",
+      "function": "alternative entry"
+    },
+    {
+      "id": "barracks",
+      "name": "Barracks Yard",
+      "x": 88,
+      "z": 103,
+      "object_budget": 13,
+      "prototype_count": 4,
+      "loot_purpose": "mid-tier supplies",
+      "narrative": "Abandoned camp; hastily evacuated",
+      "risk": "medium",
+      "function": "close-range rotations"
+    },
+    {
+      "id": "logistics",
+      "name": "Logistics Depot",
+      "x": 169,
+      "z": 145,
+      "object_budget": 13,
+      "prototype_count": 4,
+      "loot_purpose": "ammo and repair",
+      "narrative": "Last resupply point",
+      "risk": "high",
+      "function": "mid-range contest"
+    },
+    {
+      "id": "hq",
+      "name": "Command Core",
+      "x": 119,
+      "z": 175,
+      "object_budget": 16,
+      "prototype_count": 5,
+      "loot_purpose": "one scarce high-value reward opportunity",
+      "narrative": "Encrypted orders, overturned desks and final stand",
+      "risk": "very_high",
+      "function": "central objective; two-plus approaches"
+    },
+    {
+      "id": "ridge",
+      "name": "Overwatch Ridge",
+      "x": 42,
+      "z": 184,
+      "object_budget": 8,
+      "prototype_count": 2,
+      "loot_purpose": "observation only",
+      "narrative": "Forward observer post, no permanent safety",
+      "risk": "high",
+      "function": "powerful but counterable"
+    },
+    {
+      "id": "secret",
+      "name": "Hidden Cache",
+      "x": 211,
+      "z": 194,
+      "object_budget": 5,
+      "prototype_count": 2,
+      "loot_purpose": "modest exploration reward",
+      "narrative": "Personal trace of someone who escaped",
+      "risk": "low",
+      "function": "reward attentive exploration"
+    }
+  ],
+  "links": [
+    [
+      "north",
+      "checkpoint"
+    ],
+    [
+      "west",
+      "woods"
+    ],
+    [
+      "east",
+      "service"
+    ],
+    [
+      "checkpoint",
+      "barracks"
+    ],
+    [
+      "checkpoint",
+      "service"
+    ],
+    [
+      "checkpoint",
+      "woods"
+    ],
+    [
+      "woods",
+      "barracks"
+    ],
+    [
+      "woods",
+      "ridge"
+    ],
+    [
+      "service",
+      "logistics"
+    ],
+    [
+      "barracks",
+      "logistics"
+    ],
+    [
+      "barracks",
+      "hq"
+    ],
+    [
+      "logistics",
+      "hq"
+    ],
+    [
+      "logistics",
+      "secret"
+    ],
+    [
+      "ridge",
+      "hq"
+    ],
+    [
+      "hq",
+      "secret"
+    ]
+  ],
+  "balance": {
+    "dominant_position": "ridge",
+    "visible_zones": [
+      "checkpoint",
+      "barracks"
+    ],
+    "countered_from": [
+      "woods",
+      "hq"
+    ],
+    "max_visible_playable_zones": 3,
+    "no_pay_to_win": true,
+    "raid_windows_implemented": false,
+    "scripted_quests_implemented": false,
+    "spawned_loot_implemented": false,
+    "objects_spawner_implemented": false,
+    "player_count": "10 initial slots; encounters depend on concurrent population; no PvP guarantee",
+    "no_rare_gear_spam": true
+  },
+  "gates": {
+    "before_real_objects": [
+      "Choose confirmed Livonia land parcel from in-game terrain survey",
+      "Check distances from vanilla buildings and player spawns",
+      "Verify asset class names actually exist in console build",
+      "Obtain ground elevations and rotations for every object",
+      "Validate sight lines, player access and vehicle approach",
+      "Measure FPS and collision on PS4 and PS5"
+    ],
+    "test_phases": [
+      "paper",
+      "20_to_30_micro",
+      "40_to_60_extended_if_tests_pass",
+      "final_if_real_console_testing_passes"
+    ],
+    "rollback": "Remove object spawner reference and restore backed-up gameplay JSON after explicit owner approval"
+  },
+  "sources": [
+    "https://community.bistudio.com/wiki/DayZ:Object_Spawner",
+    "https://community.bohemia.net/wiki/DayZ:Gameplay_Settings",
+    "https://server.nitrado.net/en-US/guides/editing-xml-files-manually-with-dayz-console-en/"
+  ]
+}
