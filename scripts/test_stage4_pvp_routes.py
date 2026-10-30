@@ -43,7 +43,7 @@ def test()->None:
     # Mutated paper graph: remove northern sector's alternative access to
     # logistics (checkpoint -> service). That collapses independent routes.
     broken=copy.deepcopy(bp)
-    broken["links"]=[pair for pair in broken["links"] if set(pair)!={"checkpoint","service"}]
+    broken["links"]=[pair for pair in broken["links"] if set(pair) not in ({"checkpoint","service"},{"checkpoint","woods"})]
     try:summarize(broken)
     except AssertionError as err:
         assert "SINGLE-CORRIDOR" in str(err) or "Single zone" in str(err)
