@@ -102,6 +102,17 @@ Expected artifacts under `dist/stage4/`:
 
 GitHub Actions publishes `beileys47-zone47-concept`, and the recovery kit retains the source specification. All outputs are **free and independent of Nitrado**.
 
+## Future Object Spawner exporter — fail-closed
+
+We now have a guarded exporter: `scripts/export_zone47_spawner.py`. By default it **refuses to generate an Object Spawner JSON** because the survey is incomplete.
+
+1. GitHub Actions creates `zone47_survey_template.json` with **26 empty placements**, no terrain heights, no center anchor and no verified classnames.
+2. A future *real* survey must choose a site, record world X/Z, a rotation, valid Y height for every placement, and confirm the classes are available in the current PlayStation build.
+3. Only after every field and confirmation is present can the local exporter generate an **experimental** `zone47_objects.json` and a copy of Stage 3 `cfggameplay.json` referencing that file in `WorldsData.objectSpawnersArr`.
+4. No upload to Nitrado, restart or destructive action is built into the exporter. Owner authorization and actual PS4/PS5 runtime checks remain mandatory.
+
+GitHub Actions uses purely **synthetic** test coordinates to verify transforms and fails closed on missing models or heights. It deletes all synthetic files after tests; this never represents real terrain validation. Completed surveys, if any, should be stored privately on the PC, **not in the public GitHub repository**.
+
 ## Project rules
 
 **No paid service, no game-server deployment, no destructive operation and no claim of bug-free gameplay without owner approval and live evidence.**
