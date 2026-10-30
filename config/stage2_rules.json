@@ -1,0 +1,48 @@
+{
+  "description": "Stage 2 preview only: additional PvP equipment, repair supplies, vehicle readiness, modest stamina, buried stash persistence",
+  "type_multipliers": {
+    "MP5K": 1.25,
+    "SKS": 1.25,
+    "Mosin9130": 1.15,
+    "Ammo_9x19": 1.15,
+    "Ammo_762x39": 1.15,
+    "AmmoBox_762x39_20Rnd": 1.2,
+    "SparkPlug": 1.2,
+    "CarRadiator": 1.2,
+    "CarBattery": 1.2,
+    "TireRepairKit": 1.2,
+    "NailBox": 1.1
+  },
+  "required_item_types": [
+    "MP5K",
+    "SKS",
+    "Ammo_9x19",
+    "SparkPlug",
+    "CarRadiator",
+    "CarBattery",
+    "UndergroundStash"
+  ],
+  "buried_stash_lifetime_days": 21,
+  "vehicle_attachment_rules": {
+    "Hatchback_02": {
+      "wheel_chance_first_four": 0.9,
+      "repair_part_chance_floor": 0.75
+    },
+    "OffroadHatchback": {
+      "wheel_chance_first_four": 0.9,
+      "repair_part_chance_floor": 0.75
+    }
+  },
+  "gameplay": {
+    "staminaMax": 110,
+    "staminaKgToStaminaPercentPenalty": 1.6,
+    "disableContainerDamage": false,
+    "disableBaseDamage": false
+  },
+  "notes": [
+    "Weapon targets only modify already-active CE classes. Rare M4/AKM are unchanged.",
+    "No new vehicle spawns; attachment probability changes only for two vanilla car models.",
+    "No promise of container retention after wipes or bugs.",
+    "Settings take effect only when actual Nitrado mission loads cfggameplay.json, and gameplay must be tested."
+  ]
+}
