@@ -2,7 +2,7 @@
 
 In questa cartella metteremo **solo copie dei file di missione DayZ attualmente compatibili con Livonia per console** e le nostre modifiche.
 
-Per il momento è volutamente vuota: il file di profilo in \`config/\` serve soltanto alla progettazione.
+Per il momento è volutamente vuota: il file di profilo in `config/` serve soltanto alla progettazione.
 
 Prima di caricare XML/JSON:
 1. Recuperare i file corretti della missione del server attivo (o dalla fonte ufficiale nella stessa versione).
