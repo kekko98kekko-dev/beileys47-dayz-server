@@ -56,7 +56,6 @@ def run() -> None:
 
         # Fully specified fixture exercises only local JSON composition.
         synthetic_out=work/"synthetic_export"
-        result=export(work/"all_missing.json",STAGE3_GAMEPLAY,work/"should_never_exist") if False else None
         survey=work/"synthetic.json"
         survey.write_text(json.dumps(sample),encoding="utf-8")
         report=export(survey,STAGE3_GAMEPLAY,synthetic_out)
