@@ -47,7 +47,7 @@ def test() -> None:
         def forged(name: str, replacement: bytes | None = None,
                    extra: tuple[str, bytes] | None = None,
                    omit: str | None = None) -> Path:
-            dest = work / (name + ".zip")
+            dest = work / (name.replace("/", "_") + ".zip")
             with zipfile.ZipFile(dest, "w", zipfile.ZIP_DEFLATED) as out:
                 for member, raw in entries:
                     if member == omit:
@@ -74,7 +74,7 @@ def test() -> None:
         extra = forged("unknown-namespace", extra=("other/passwords.txt", b"bad"))
         reject(lambda: restore(extra, work / "wrong"),
                "Unexpected Recovery Kit member namespace", work / "wrong")
-        reject(lambda: mapped_path("repository\\malicious.txt"),
+        reject(lambda: mapped_path("repository" + chr(92) + "malicious.txt"),
                "Unsafe ZIP member")
 
     print("PASS: all Recovery Kit files round-trip exactly; corrupt, traversal, duplicate and incomplete archives rejected.")
