@@ -11,6 +11,8 @@ import json
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from build_stage4_terrain_survey_grid import local_to_world
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -90,7 +92,7 @@ def run()->dict:
     manifest={name:hashlib.sha256(v).hexdigest() for name,v in files.items()}
     files["sha256.json"]=(json.dumps(manifest,indent=2)+"\n").encode()
     with zipfile.ZipFile(OUT/"beileys47-micro-pilot-plan-only.zip","w",zipfile.ZIP_DEFLATED) as z:
-        for name,value in sorted(files.items()):z.writestr(name,value)
+        for name,value in sorted(files.items()):add_bytes(z,name,value)
     with zipfile.ZipFile(OUT/"beileys47-micro-pilot-plan-only.zip") as z:
         require(z.testzip() is None,"Bad ZIP")
         require(set(z.namelist())==set(files),"Unexpected ZIP file")
