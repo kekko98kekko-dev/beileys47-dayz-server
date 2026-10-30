@@ -84,3 +84,27 @@ Un archivio riproducibile non certifica il corretto comportamento dell'economia 
 **Correzione:** aggiunto `scripts/restore_recovery_kit.py`, ripristino atomico in una cartella inesistente con verifica preventiva completa del manifesto, CRC, SHA-256, percorsi, duplicati, dimensioni e symlink. Le anteprime `previews/*` vengono ricollocate in `dist/*`. Il test `scripts/test_recovery_restore.py` esegue il round-trip e simula archivi corrotti, duplicati, mancanti e traversal. Test eseguito anche prima della pubblicazione delle GitHub Releases.
 
 **Limiti:** la funzionalità ripristina file, non dati del mondo Nitrado, e non sostituisce una prova reale su PS5. Nessun file viene automaticamente distribuito al provider.
+
+## Quinto audit — Rilievi altimetrici privati e ripristino concorrente
+
+### I. Acquisizione SurfaceY poteva accettare letture parziali
+**Severità: alta per le coordinate.** L'espressione regolare poteva riconoscere il prefisso numerico di una riga difettosa (es. `200.0corrupted`) come misura completa. Il lettore non imponeva inoltre limiti di dimensione ai log.
+
+**Correzione:** il parser esige una riga completa con un solo marker, limita dimensione e numero di righe, rifiuta input incompleti e include test avversari. Le misure restano non autenticate e non abilitate al deploy.
+
+### J. Possibile pubblicazione involontaria dei dati di rilievo
+**Severità: alta per la riservatezza.** Il convertitore permetteva di salvare file compilati dentro `dist/` del repository pubblico, e di sovrascrivere output precedenti.
+
+**Correzione:** è vietato scrivere risultati compilati in qualsiasi percorso del repository; vengono rifiutati file già esistenti e symlink, e si usa creazione esclusiva. Sono stati aggiunti test per le due condizioni.
+
+### K. Il ripristino poteva sovrascrivere una cartella concorrente
+**Severità: media/alta per la sicurezza del recupero.** Una verifica `exists()` prima di `rename()` non assicurava il rifiuto di una directory vuota creata nel frattempo su Linux.
+
+**Correzione:** la destinazione viene riservata con `mkdir()` esclusivo, dopo la verifica preventiva completa. Il trasferimento in più passi non è atomicamente visibile; in caso di errore gestito viene ripulita la nuova destinazione. I test simulano directory concorrente e trasferimento interrotto.
+
+### L. Metadati della misura non validati formalmente
+**Severità: media.** Il timestamp veniva accettato in base alla sola lunghezza e un tipo non hashabile del metodo poteva provocare un errore.
+
+**Correzione:** validazione sintattica di un vero timestamp UTC ISO-8601 e guardie esplicite sul tipo del metodo; test negativi per data invalida, offset non UTC e valore non stringa.
+
+**Limiti invariati:** nessuna quota Y reale è stata acquisita; nessuna classe Object Spawner, collisione, accessibilità, prestazione o persistenza PlayStation è stata provata.
