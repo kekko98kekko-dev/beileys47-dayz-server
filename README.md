@@ -73,3 +73,16 @@ Il pacchetto rimane nella sezione **Actions → ultimo workflow riuscito → Art
 - [Bohemia Interactive: DayZ Central Economy](https://github.com/BohemiaInteractive/DayZ-Central-Economy)
 - [Bohemia Interactive: Gameplay Settings](https://community.bistudio.com/wiki/DayZ:Gameplay_Settings)
 - [GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions)
+
+
+## Recupero offline e nuova verifica Stage 2
+
+✅ La pipeline controlla ora l'**intero contenuto** dei quattro file Stage 2 confrontandoli con la baseline Bohemia e applicando indipendentemente solo le variazioni consentite dalle regole JSON. Le verifiche automatiche non sostituiscono prove su PlayStation.
+
+✅ Dopo ogni build riuscita GitHub Actions genera anche l'artifact **beileys47-recovery-kit**, al cui interno si trova **beileys47-recovery-kit.zip**. Contiene scripts, regole, documentazione, preview Stage 1/2, rapporti e manifest SHA-256. I tre artifact sono conservati per 90 giorni (salvo limiti delle impostazioni repository); **non** sono backup permanenti.
+
+**Non contiene** personaggi, basi, auto, casse né dati persistenti del server Nitrado. Prima della scadenza Nitrado, scaricare lo ZIP sul proprio PC (ideale 48 ore prima) e salvare i file live separatamente se accessibili.
+
+[Guida al recupero sul PC Windows](docs/RECOVERY_KIT.md) · [GitHub Actions](../../actions)
+
+**Nessun deployment GitHub → Nitrado attivo.** È ancora obbligatorio verificare la versione del server, fare copie dei file originali e collaudare Stage 1 e Stage 2 su PS5/PS4.
