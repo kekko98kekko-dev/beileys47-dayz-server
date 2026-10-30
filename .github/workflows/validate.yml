@@ -1,4 +1,5 @@
-name: Validate DayZ configuration
+name: Validate and build DayZ Livonia preview
+
 on:
   push:
   pull_request:
@@ -8,15 +9,35 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  build-preview:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate project profile and DayZ XML/JSON syntax
+
+      - name: Validate project profile and XML/JSON in mission/
         run: python scripts/validate.py
+
+      - name: Build Livonia Stage 1 from pinned Bohemia source
+        run: python scripts/build_mission.py
+
+      - name: Verify archive and report
+        run: |
+          python -m zipfile -t dist/beileys47-livonia-stage1.zip
+          python -m json.tool dist/change_report.json > /dev/null
+
+      - name: Upload preview files for review (NO Nitrado deploy)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-livonia-stage1-preview
+          path: |
+            dist/beileys47-livonia-stage1.zip
+            dist/change_report.json
+          if-no-files-found: error
+          retention-days: 7
