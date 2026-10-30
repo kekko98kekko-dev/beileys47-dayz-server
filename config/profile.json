@@ -1,0 +1,39 @@
+{
+  "project": "BEILEYS47 | DAYZ SURVIVAL WAR",
+  "game": "DayZ",
+  "platform": "PlayStation 4 / PlayStation 5",
+  "map": "livonia",
+  "slots": 10,
+  "status": "planning_only_not_deployable",
+  "gameplay": {
+    "focus": [
+      "survival",
+      "frequent_pvp"
+    ],
+    "pvp": "always_on",
+    "perspective": "first_and_third",
+    "loot": {
+      "mode": "selective_changes_only",
+      "food_medicine_target_multiplier": 1.4,
+      "general_target_multiplier": 1.5,
+      "weapons_ammunition": "increase_access_without_removing_progression"
+    },
+    "vehicle_target_count": 4,
+    "infected": "default_until_tested",
+    "night": "shorter_than_default_if_supported",
+    "stamina": "light_adjustment_if_supported",
+    "persistence": "preserve_bases_and_storage_across_normal_restarts",
+    "wipes": "not_without_notice_except_technical_emergency",
+    "hotspots": [
+      "Gliniska",
+      "Sobotka",
+      "Brena"
+    ]
+  },
+  "notes": [
+    "This profile is a design specification, NOT an in-game configuration file.",
+    "Actual spawn / economy settings require current, map-compatible mission XML/JSON.",
+    "No automatic deployment or restart is enabled.",
+    "Real gameplay tuning requires PS5 playtesting and server logs."
+  ]
+}
