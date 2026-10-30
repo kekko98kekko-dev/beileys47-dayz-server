@@ -50,6 +50,7 @@ SOURCE_PATHS = [
     "docs/STAGE4_9_MODEL_VISUAL_BOUNDS.md",
     "docs/STAGE4_10_FULL_LAYOUT.md",
     "docs/STAGE4_11_ROLE_MATCHED_MODELS.md",
+    "docs/STAGE4_12_RPT_AND_SPAWNER_PROVENANCE.md",
     "docs/STAGE4_SITE_SHORTLIST.md",
     "docs/ZONE47_QA_PROTOCOL.md",
     "docs/RECOVERY_KIT.md",
@@ -84,6 +85,10 @@ SOURCE_PATHS = [
     "scripts/test_stage4_10_all_placements.py",
     "scripts/assess_stage4_11_role_model_options.py",
     "scripts/test_stage4_11_role_model_options.py",
+    "scripts/triage_stage4_12_rpt.py",
+    "scripts/build_stage4_12_evidence.py",
+    "scripts/test_stage4_12_rpt.py",
+    "scripts/test_stage4_12_evidence.py",
     "scripts/check_stage4_release_gate.py",
     "scripts/test_stage4_release_gate.py",
     "scripts/audit_stage4_assets.py",
@@ -148,6 +153,9 @@ PREVIEW_PATHS = [
     "dist/stage4_11_role_catalog/all_26_visual_candidate_sizes.csv",
     "dist/stage4_11_role_catalog/reference_pair_warnings.csv",
     "dist/stage4_11_role_catalog/beileys47-stage411-visual-role-options-not-deployable.zip",
+    "dist/stage4_12_rpt_diagnostics/class_evidence_no_runtime.json",
+    "dist/stage4_12_rpt_diagnostics/rpt_triage_no_logs.json",
+    "dist/stage4_12_rpt_diagnostics/beileys47-spawner-log-preflight-only.zip",
 ]
 README = """BEILEYS47 | DAYZ SURVIVAL WAR - OFFLINE RECOVERY KIT
 
