@@ -140,6 +140,11 @@ jobs:
           python scripts/assess_stage4_11_role_model_options.py
           python scripts/test_stage4_11_role_model_options.py
 
+      - name: Test Stage 4.12 RPT diagnostics and empty class-evidence ledger
+        run: |
+          python scripts/build_stage4_12_evidence.py
+          python scripts/test_stage4_12_evidence.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -308,6 +313,17 @@ jobs:
             dist/stage4_11_role_catalog/all_26_visual_candidate_sizes.csv
             dist/stage4_11_role_catalog/reference_pair_warnings.csv
             dist/stage4_11_role_catalog/beileys47-stage411-visual-role-options-not-deployable.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 4.12 privacy-safe EMPTY server-RPT audit (NO real logs)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage412-rpt-triage-no-logs
+          path: |
+            dist/stage4_12_rpt_diagnostics/class_evidence_no_runtime.json
+            dist/stage4_12_rpt_diagnostics/rpt_triage_no_logs.json
+            dist/stage4_12_rpt_diagnostics/beileys47-spawner-log-preflight-only.zip
           if-no-files-found: error
           retention-days: 90
 
