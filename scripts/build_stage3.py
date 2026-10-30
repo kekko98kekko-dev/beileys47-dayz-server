@@ -15,6 +15,8 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 from build_mission import UPSTREAM_BASE, UPSTREAM_COMMIT
 from build_stage2 import STAGE2_FILES, build as build_stage2
 
@@ -165,8 +167,8 @@ def build(output: Path, source_dir: Path | None) -> None:
     archive = outdir / "beileys47-livonia-stage3-preview.zip"
     with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zipped:
         for path in STAGE3_FILES:
-            zipped.write(dest / path, arcname=f"dayzOffline.enoch/{path}")
-        zipped.write(report_path, arcname="change_report.json")
+            add_bytes(zipped, f"dayzOffline.enoch/{path}", (dest / path).read_bytes())
+        add_bytes(zipped, "change_report.json", report_path.read_bytes())
     print(f"Stage 3 PREVIEW: {archive}")
     print("Changed only 2 dynamic events + 3 non-shutdown announcements.")
     print("NO runtime tests; NO Nitrado access or deployment.")
