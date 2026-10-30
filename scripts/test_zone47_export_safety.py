@@ -8,6 +8,7 @@ from pathlib import Path
 
 from export_zone47_spawner import export, STAGE3_GAMEPLAY
 from prepare_zone47_survey import OUT as SURVEY_TEMPLATE, build as make_template
+from build_stage4_terrain_survey_grid import local_to_world
 
 def must_block(data:dict, work:Path, label:str) -> None:
     survey=work/f"{label}.json"
@@ -33,8 +34,9 @@ def run() -> None:
         sample["status"]="SURVEY_DATA_REVIEWED_FOR_OFFLINE_EXPORT"
         sample["confirmations"]={k:True for k in sample["confirmations"]}
         sample["site"].update({
-            "world_origin_x":5000,"world_origin_z":5000,
-            "rotation_degrees":35.0,
+            "source_site_candidate":"central",
+            "world_center_x":9000,"world_center_z":7800,
+            "rotation_degrees":120.0,
             "game_version":"SYNTHETIC TEST ONLY",
             "survey_notes":"SYNTHETIC fixture: coordinates are NOT from DayZ; they are used only to test transformations."
         })
@@ -54,6 +56,19 @@ def run() -> None:
         broken["placements"][0]["classname"]="MadeUp_UnknownObject"
         must_block(broken,work,"unknown_class")
 
+        old_version=copy.deepcopy(sample)
+        old_version["version"]="1.0"
+        must_block(old_version,work,"deprecated_v1_origin")
+        wrong_origin=copy.deepcopy(sample)
+        wrong_origin["site"]["world_origin_x"]=9000
+        must_block(wrong_origin,work,"ambiguous_old_origin_field")
+        shifted=copy.deepcopy(sample)
+        shifted["site"]["world_center_x"]=9100
+        must_block(shifted,work,"unreviewed_site_center")
+        wrong_rotation=copy.deepcopy(sample)
+        wrong_rotation["site"]["rotation_degrees"]=35.0
+        must_block(wrong_rotation,work,"unreviewed_orientation")
+
         # Fully specified fixture exercises only local JSON composition.
         synthetic_out=work/"synthetic_export"
         survey=work/"synthetic.json"
@@ -63,6 +78,17 @@ def run() -> None:
         assert len(objects["Objects"])==26
         assert all(len(o["pos"])==3 and len(o["ypr"])==3 for o in objects["Objects"])
         assert all(o["enableCEPersistency"] is False for o in objects["Objects"])
+        assert all(set(o)=={"name","pos","ypr","scale","enableCEPersistency"} for o in objects["Objects"])
+        assert all(o["scale"]==1.0 and len(o["pos"])==3 and len(o["ypr"])==3 for o in objects["Objects"])
+        micro=json.loads((SURVEY_TEMPLATE.parents[2]/"config/stage4_zone47_micro_layout.json").read_text())
+        ordered={p["id"]:p for p in micro["asset_placements"]}
+        for source,entry in zip(sample["placements"],objects["Objects"]):
+            local=ordered[source["id"]]
+            x,z=local_to_world(local["local_x"],local["local_z"],9000,7800,240,220,120)
+            assert abs(x-entry["pos"][0])<0.0001 and abs(z-entry["pos"][2])<0.0001
+        assert report["coordinate_reference"]=="WORLD_CENTER_OF_BLUEPRINT"
+        assert report["world_center_x"]==9000 and report["world_center_z"]==7800
+        assert report["runtime_verified"] is False and report["site_is_provisional"] is True
         original_game=json.loads(STAGE3_GAMEPLAY.read_text(encoding="utf-8"))
         revised=json.loads((synthetic_out/"cfggameplay.json").read_text(encoding="utf-8"))
         assert revised["WorldsData"]["objectSpawnersArr"] == original_game["WorldsData"]["objectSpawnersArr"]+["zone47_objects.json"]
