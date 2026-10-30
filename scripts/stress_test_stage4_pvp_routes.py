@@ -15,6 +15,8 @@ import math
 import zipfile
 from pathlib import Path
 
+from zip_deterministic import add_bytes
+
 ROOT=Path(__file__).resolve().parents[1]
 BP=ROOT/"config/stage4_zone47_blueprint.json"
 MICRO=ROOT/"config/stage4_zone47_micro_layout.json"
@@ -173,7 +175,7 @@ def build()->dict:
     files["SHA256.json"]=(json.dumps(digest,indent=2)+"\n").encode()
     zip_path=OUT/"beileys47-route-stress-design-only.zip"
     with zipfile.ZipFile(zip_path,"w",zipfile.ZIP_DEFLATED) as z:
-        for name,data in sorted(files.items()):z.writestr(name,data)
+        for name,data in sorted(files.items()):add_bytes(z,name,data)
     with zipfile.ZipFile(zip_path) as z:
         assert z.testzip() is None
         assert set(z.namelist())==set(files)
