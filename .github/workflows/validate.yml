@@ -151,6 +151,11 @@ jobs:
           python scripts/audit_stage4_13_console_pilot.py
           python scripts/test_stage4_13_console_pilot.py
 
+      - name: Check pre-purchase Livonia six-file handoff integrity and safe exclusions
+        run: |
+          python scripts/build_prepurchase_bundle.py
+          python scripts/test_prepurchase_bundle.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -341,6 +346,16 @@ jobs:
             dist/stage4_13_console_pilot/blank_1_3_5_console_trial.json
             dist/stage4_13_console_pilot/console_pilot_no_evidence_audit.json
             dist/stage4_13_console_pilot/beileys47-console-pilot-templates-only.zip
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload six-file pre-purchase candidate and manual review gate
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-livonia-prepurchase-candidate-NOT-TESTED
+          path: |
+            dist/prepurchase/beileys47-livonia-mission-review-candidate.zip
+            dist/prepurchase/purchase_day_gate.json
           if-no-files-found: error
           retention-days: 90
 
