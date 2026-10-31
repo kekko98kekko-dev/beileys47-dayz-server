@@ -156,6 +156,11 @@ jobs:
           python scripts/build_stage7_bunker.py
           python scripts/test_stage7_bunker.py
 
+      - name: Review Stage 8 PS5 bunker class evidence and risky exit behavior
+        run: |
+          python scripts/build_stage8_feasibility.py
+          python scripts/test_stage8_feasibility.py
+
       - name: Generate the complete recovery archive
         run: python scripts/make_recovery_kit.py
 

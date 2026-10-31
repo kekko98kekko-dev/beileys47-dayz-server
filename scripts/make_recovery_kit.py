@@ -38,6 +38,7 @@ SOURCE_PATHS = [
     "config/stage4_zone47_micro_layout.json",
     "config/stage6_special_zones.json",
     "config/stage7_bunker_layout.json",
+    "config/stage8_bunker_feasibility.json",
     "docs/OPERATIONS.md",
     "docs/STAGE1.md",
     "docs/STAGE2.md",
@@ -45,6 +46,7 @@ SOURCE_PATHS = [
     "docs/STAGE5_GAMEPLAY_BALANCE.md",
     "docs/STAGE6_SPECIAL_ZONES.md",
     "docs/STAGE7_BUNKER_TOPOLOGY.md",
+    "docs/STAGE8_BUNKER_FEASIBILITY.md",
     "docs/STAGE4_ZONE47.md",
     "docs/STAGE4_SITE_SCREEN.md",
     "docs/STAGE4_FOOTPRINT.md",
@@ -128,6 +130,8 @@ SOURCE_PATHS = [
     "scripts/test_stage6_special_zones.py",
     "scripts/build_stage7_bunker.py",
     "scripts/test_stage7_bunker.py",
+    "scripts/build_stage8_feasibility.py",
+    "scripts/test_stage8_feasibility.py",
     "scripts/validate.py",
 ]
 PREVIEW_PATHS = [
@@ -142,6 +146,7 @@ PREVIEW_PATHS = [
     "dist/stage6_special_zones/concept_review.json",
     "dist/stage7_bunker/bunker_topology_report.json",
     "dist/stage7_bunker/bunker_topology.svg",
+    "dist/stage8_bunker_feasibility/feasibility_review.json",
     "dist/stage4/beileys47-zone47-design-only.zip",
     "dist/stage4/zone47_layout.svg",
     "dist/stage4/concept_audit.json",
