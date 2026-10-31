@@ -145,7 +145,7 @@ def audit(data: dict, blueprint: dict, six: dict, pilot: dict) -> dict:
                 and nid not in rooms, "invalid or duplicate room")
         require(type(spec["label"]) is str and 3 <= len(spec["label"]) <= 40,
                 "room label")
-        require(spec["role"] in ALLOWED_ROLES, "unknown room role")
+        require(type(spec["role"]) is str and spec["role"] in ALLOWED_ROLES, "unknown room role")
         require(all(type(spec[k]) in (float, int) and math.isfinite(spec[k])
                     for k in ("local_x", "local_z")), "invalid room coordinate")
         require(bounds["min_x"] <= spec["local_x"] <= bounds["max_x"] and
@@ -210,8 +210,13 @@ def audit(data: dict, blueprint: dict, six: dict, pilot: dict) -> dict:
         "first_pilot_remains_one_three_five_props": True,
     }, "unreviewed gameplay promise")
     unresolved = data.get("unresolved")
-    require(type(unresolved) is dict and len(unresolved) == 8 and
-            all(v is True for v in unresolved.values()), "real console gates misrepresented")
+    require(type(unresolved) is dict and set(unresolved) == {
+        "real_ground_y_all_rooms", "actual_walkable_bunker_structures",
+        "console_classnames", "door_and_stair_behaviors",
+        "local_terrain_obstructions", "navigation_and_evacuation",
+        "loot_spawn_points", "ps5_collision_and_performance",
+    } and all(v is True for v in unresolved.values()),
+            "real console gates misrepresented")
     require(data.get("artifacts") == {
         "world_positions_generated": False,
         "object_spawner_json_generated": False,
