@@ -24,3 +24,11 @@
 6. Only after those pass, consider the user-approved player+world persistence wipe with a recoverable backup.
 
 Upstream XML: https://github.com/BohemiaInteractive/DayZ-Central-Economy/blob/master/dayzOffline.enoch/cfgplayerspawnpoints.xml
+
+## Installation attempt and exact stopping point (2026-10-31)
+
+Agent run: https://agent.tinyfish.ai/runs/3ff498ac-017a-4be3-b745-288124a8b8be
+
+Nitrado editor opened; `beileys47_freshspawn_v7.json` was created as a file in mission `custom/` and the GitHub preset was pasted into the **unsaved editor**. Agent ran out of wallet budget before clicking Save or reopening. Hence **V7 is NOT ACTIVE**, `cfggameplay.json` remains V6, no server restart, showcase and spawn XML untouched, no wipe. The pasted editor state may be lost after closing session; do not assume the V7 file has content. Never point `cfggameplay.json` to the V7 file until its saved content is verified. Remaining TinyFish balance observed after run approximately $0.184; a full automated installation requires renewed funding or a supported alternative.
+
+Last successful Nitrado smoke test remains the clean V6 restart; no new V7 verification.
