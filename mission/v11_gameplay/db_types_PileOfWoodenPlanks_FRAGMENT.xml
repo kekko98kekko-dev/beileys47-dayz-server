@@ -1,0 +1,14 @@
+<!-- Replace ONLY PileOfWoodenPlanks in live db/types.xml. Affects NEW piles, NOT existing ones; does NOT enforce day-15 reset. -->
+<type name="PileOfWoodenPlanks">
+        <nominal>0</nominal>
+        <lifetime>28800</lifetime>
+        <restock>0</restock>
+        <min>0</min>
+        <quantmin>100</quantmin>
+        <quantmax>100</quantmax>
+        <cost>100</cost>
+        <flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+        <category name="tools"/>
+        <tag name="floor"/>
+        <usage name="Industrial"/>
+    </type>
