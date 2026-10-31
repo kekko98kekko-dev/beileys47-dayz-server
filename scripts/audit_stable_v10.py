@@ -72,7 +72,7 @@ def check_ce_groups(text, objects):
 
 def main():
     raw=SPAWN.read_bytes()
-    blob=hashlib.sha1(b"blob "+str(len(raw)).encode("ascii")+b"\\0"+raw).hexdigest()
+    blob=hashlib.sha1(b"blob "+str(len(raw)).encode("ascii")+b"\0"+raw).hexdigest()
     assert blob==OFFICIAL_SHA, "not byte-identical to Bohemia DZ_130 Livonia spawn XML"
     points=spawn_positions(raw.decode("utf-8-sig"))
     assert len(points)==151
