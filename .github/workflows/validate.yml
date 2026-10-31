@@ -167,6 +167,11 @@ jobs:
           python scripts/build_stage5_balance.py
           python scripts/test_stage5_balance.py
 
+      - name: Stage 6 special sites, infected and restarter design-only review
+        run: |
+          python scripts/build_stage6_special_zones.py
+          python scripts/test_stage6_special_zones.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -203,6 +208,14 @@ jobs:
           path: |
             dist/stage3/beileys47-livonia-stage3-preview.zip
             dist/stage3/change_report.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 6 concepts, NO game-ready JSON and NO restart configuration
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage6-special-zones-concept-only
+          path: dist/stage6_special_zones/concept_review.json
           if-no-files-found: error
           retention-days: 90
 
