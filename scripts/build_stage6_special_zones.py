@@ -106,9 +106,9 @@ def validate(data: dict, blueprint: dict, pilot: dict, messages: bytes) -> dict:
                    "SCENERY_ONLY",
                }, "unreviewed gameplay mechanic")
     ensure(seen == set(REQUIRED_ZONE_IDS), "missing special-zone scenario")
-    ensure("confirm_actual_event_coordinate_pool" in next(
+    ensure("verify_current_zombie_territories_xml" in next(
            x for x in specs if x["id"] == "infected_cordon")["needed"],
-           "infected concentration missing actual event-spawn-location check")
+           "infected territory plan missing official env/zombie_territories.xml check")
     ensure("confirm_vanilla_CE_spawnable_positions" in next(
            x for x in specs if x["id"] == "logistics_hotspot")["needed"],
            "loot plan cannot promise new loot spawning without CE positions")
@@ -177,7 +177,7 @@ def validate(data: dict, blueprint: dict, pilot: dict, messages: bytes) -> dict:
         "restart_method_reviewed": restart["method"],
         "restart_uptime_minutes_is_only_a_proposal": restart["trial_uptime_minutes"],
         "existing_stage3_shutdown_active": False,
-        "real_zombie_event_spawn_coordinates_confirmed": False,
+        "real_zombie_territory_positions_confirmed": False,
         "loot_positions_confirmed": False,
         "terrain_and_building_classes_confirmed": False,
         "live_PS5_gameplay_tested": False,
