@@ -1,0 +1,4133 @@
+{
+  "name": "BEILEYS47_V8_Spawn_Bende_Mappa_Fruit_Cans_Knife",
+  "spawnWeight": 1,
+  "attachmentSlotItemSets": [
+    {
+      "slotName": "Body",
+      "discreteItemSets": [
+        {
+          "itemType": "TShirt_Beige",
+          "spawnWeight": 1,
+          "attributes": {
+            "healthMin": 0.65,
+            "healthMax": 0.85,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "TShirt_Black",
+          "spawnWeight": 1,
+          "attributes": {
+            "healthMin": 0.65,
+            "healthMax": 0.85,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "slotName": "Legs",
+      "discreteItemSets": [
+        {
+          "itemType": "CanvasPantsMidi_Beige",
+          "spawnWeight": 1,
+          "attributes": {
+            "healthMin": 0.65,
+            "healthMax": 0.85,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "slotName": "Feet",
+      "discreteItemSets": [
+        {
+          "itemType": "AthleticShoes_Black",
+          "spawnWeight": 1,
+          "attributes": {
+            "healthMin": 0.65,
+            "healthMax": 0.85,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "slotName": "Back",
+      "discreteItemSets": [
+        {
+          "itemType": "TaloonBag_Blue",
+          "spawnWeight": 1,
+          "attributes": {
+            "healthMin": 0.85,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    }
+  ],
+  "discreteUnsortedItemSets": [
+    {
+      "name": "TestV7_01",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Apple",
+        "PeachesCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_02",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Apple",
+        "PeachesCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_03",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Apple",
+        "PeachesCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_04",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Apple",
+        "SpaghettiCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_05",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Apple",
+        "SpaghettiCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_06",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Apple",
+        "SpaghettiCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_07",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Apple",
+        "BakedBeansCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_08",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Apple",
+        "BakedBeansCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_09",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Apple",
+        "BakedBeansCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_10",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Pear",
+        "PeachesCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_11",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Pear",
+        "PeachesCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_12",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Pear",
+        "PeachesCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_13",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Pear",
+        "SpaghettiCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_14",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Pear",
+        "SpaghettiCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_15",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Pear",
+        "SpaghettiCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_16",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Pear",
+        "BakedBeansCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_17",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Pear",
+        "BakedBeansCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_18",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Pear",
+        "BakedBeansCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_19",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Plum",
+        "PeachesCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_20",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Plum",
+        "PeachesCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_21",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Plum",
+        "PeachesCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_22",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Plum",
+        "SpaghettiCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_23",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Plum",
+        "SpaghettiCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_24",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Plum",
+        "SpaghettiCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_25",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Plum",
+        "BakedBeansCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_26",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Plum",
+        "BakedBeansCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_27",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Apple",
+        "Plum",
+        "BakedBeansCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_28",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Apple",
+        "PeachesCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_29",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Apple",
+        "PeachesCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_30",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Apple",
+        "PeachesCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_31",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Apple",
+        "SpaghettiCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_32",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Apple",
+        "SpaghettiCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_33",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Apple",
+        "SpaghettiCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_34",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Apple",
+        "BakedBeansCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_35",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Apple",
+        "BakedBeansCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_36",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Apple",
+        "BakedBeansCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_37",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Pear",
+        "PeachesCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_38",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Pear",
+        "PeachesCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_39",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Pear",
+        "PeachesCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_40",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Pear",
+        "SpaghettiCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_41",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Pear",
+        "SpaghettiCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_42",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Pear",
+        "SpaghettiCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_43",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Pear",
+        "BakedBeansCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_44",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Pear",
+        "BakedBeansCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_45",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Pear",
+        "BakedBeansCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_46",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Plum",
+        "PeachesCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_47",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Plum",
+        "PeachesCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_48",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Plum",
+        "PeachesCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_49",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Plum",
+        "SpaghettiCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_50",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Plum",
+        "SpaghettiCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_51",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Plum",
+        "SpaghettiCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_52",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Plum",
+        "BakedBeansCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_53",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Plum",
+        "BakedBeansCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_54",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Pear",
+        "Plum",
+        "BakedBeansCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_55",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Apple",
+        "PeachesCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_56",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Apple",
+        "PeachesCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_57",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Apple",
+        "PeachesCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_58",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Apple",
+        "SpaghettiCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_59",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Apple",
+        "SpaghettiCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_60",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Apple",
+        "SpaghettiCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_61",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Apple",
+        "BakedBeansCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_62",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Apple",
+        "BakedBeansCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_63",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Apple",
+        "BakedBeansCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_64",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Pear",
+        "PeachesCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_65",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Pear",
+        "PeachesCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_66",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Pear",
+        "PeachesCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_67",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Pear",
+        "SpaghettiCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_68",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Pear",
+        "SpaghettiCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_69",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Pear",
+        "SpaghettiCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_70",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Pear",
+        "BakedBeansCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_71",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Pear",
+        "BakedBeansCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_72",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Pear",
+        "BakedBeansCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_73",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Plum",
+        "PeachesCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_74",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Plum",
+        "PeachesCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_75",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Plum",
+        "PeachesCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_76",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Plum",
+        "SpaghettiCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_77",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Plum",
+        "SpaghettiCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_78",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Plum",
+        "SpaghettiCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_79",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Plum",
+        "BakedBeansCan",
+        "PeachesCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_80",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Plum",
+        "BakedBeansCan",
+        "SpaghettiCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "name": "TestV7_81",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "simpleChildrenUseDefaultAttributes": false,
+      "simpleChildrenTypes": [
+        "Plum",
+        "Plum",
+        "BakedBeansCan",
+        "BakedBeansCan",
+        "CombatKnife"
+      ],
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "ChernarusMap",
+          "attributes": {
+            "healthMin": 1,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    }
+  ]
+}
