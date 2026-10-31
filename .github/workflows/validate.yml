@@ -34,6 +34,9 @@ jobs:
       - name: Regression tests on generated configurations
         run: python scripts/test_stage2.py
 
+      - name: Verify English server identity against international announcement policy
+        run: python scripts/test_server_identity.py
+
       - name: Build Stage 3 encounter/identity preview (NO deployment)
         run: python scripts/build_stage3.py
 
