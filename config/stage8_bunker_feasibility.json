@@ -1,0 +1,101 @@
+{
+  "stage": 8,
+  "version": "1.0",
+  "codename": "ZONA 47 — bunker feasibility",
+  "status": "SOURCE_SCREENING_ONLY_NOT_CONSOLE_PROVEN",
+  "reference_files": {
+    "stage7": "config/stage7_bunker_layout.json",
+    "official_map_candidates": "config/stage4_asset_candidates.json",
+    "third_party_p3d_catalog": "config/stage4_11_p3d_role_candidates.json",
+    "stage4_pilot": "config/stage4_13_pilot_protocol.json"
+  },
+  "source_review": {
+    "bohemia_object_spawner": "https://community.bistudio.com/wiki/DayZ:Object_Spawner",
+    "console_bunker_historical_example": "https://github.com/scalespeeder/DayZ-LIVONIA-Yugovostok-Underground-Bunker-Custom-Json-File-For-PC-and-Console",
+    "example_test_platform": "PC Livonia local server",
+    "example_tested_game_version": "1.16",
+    "example_limitation": "EXIT_REQUIRES_LOGOUT_LOGIN",
+    "example_secondary_limitation": "DROPPED_ITEMS_MAY_REAPPEAR_ON_SURFACE",
+    "example_is_verified_for_current_ps5": false,
+    "example_content_copied": false,
+    "official_direct_structure_p3d_paths_allowed": false,
+    "third_party_model_paths_spawnable_directly": false
+  },
+  "options": [
+    {
+      "id": "vanilla_site_reuse",
+      "method": "USE_EXISTING_ACCESSIBLE_VANILLA_WORLD_GEOMETRY",
+      "bunker_underground_guaranteed": false,
+      "suggested_for_first_rental": false,
+      "needs": [
+        "owner_approved_livonia_site",
+        "actual_entrance_and_exit_walkthrough",
+        "verify_no_player_traps",
+        "verify_loot_territories",
+        "test_world_persistence"
+      ]
+    },
+    {
+      "id": "surface_command",
+      "method": "SMALL_VANILLA_CLASS_CANDIDATE_COMPOUND",
+      "bunker_underground_guaranteed": false,
+      "suggested_for_first_rental": true,
+      "needs": [
+        "verify_terrain_Y",
+        "prove_console_spawnability_per_class",
+        "walk_all_real_exits",
+        "confirm_no_performance_regression",
+        "backups_before_test"
+      ]
+    },
+    {
+      "id": "underground_assembled",
+      "method": "UNVERIFIED_COMPLEX_BUNKER_EXPERIMENT",
+      "bunker_underground_guaranteed": false,
+      "suggested_for_first_rental": false,
+      "needs": [
+        "real_landscape_support",
+        "prove_console_spawnability_per_class",
+        "verify_terrain_and_interiors",
+        "two_independent_exits_playtested",
+        "test_item_floor_behavior",
+        "test_persistence_and_FPS",
+        "rollback_ready"
+      ]
+    }
+  ],
+  "surface_classname_review_candidates": [
+    "Land_Mil_GuardHouse3",
+    "Land_Mil_Guardhouse1"
+  ],
+  "interior_model_visual_references": [
+    "Desk_Office",
+    "Desk_Globe"
+  ],
+  "release_gates": {
+    "planned_first_pilot_counts": [
+      1,
+      3,
+      5
+    ],
+    "minimum_real_exits_walked_per_selected_bunker": 2,
+    "verify_normal_exit_without_logout": true,
+    "verify_dropped_items_remain_accessible": true,
+    "verify_server_restart_and_persistence": true,
+    "verify_PS5_and_PS4_separately": true,
+    "verify_collision_terrain_water_and_vegetation": true,
+    "verify_visual_model_classname_is_spawnable": false,
+    "current_server_exists": false,
+    "Y_measured": false,
+    "runtime_classnames_confirmed": false,
+    "runtime_exits_tested": false,
+    "dropped_item_persistence_tested": false,
+    "runtime_FPS_tested": false,
+    "addon_workshop_mods_installed": false,
+    "deploy_allowed": false
+  },
+  "no_installable_json": true,
+  "no_nitrado_requests": true,
+  "no_live_tests": true,
+  "deployment_allowed": false
+}
