@@ -1,0 +1,74 @@
+{
+  "project": "BEILEYS47",
+  "milestone": "BUNKER_V10",
+  "platform": "DayZ 1.30 Livonia PS5",
+  "status": "research_only_not_installed",
+  "sources": [
+    {
+      "project": "Yugovostok",
+      "url": "https://github.com/scalespeeder/DayZ-LIVONIA-Yugovostok-Underground-Bunker-Custom-Json-File-For-PC-and-Console",
+      "decision": "reject_unescapable"
+    },
+    {
+      "project": "Steam Livonia Bunker console template",
+      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3297469177",
+      "decision": "needs_console_variant_extraction"
+    },
+    {
+      "project": "Tisy Research Facility",
+      "url": "https://github.com/DayZedAndConfused762/DayZedAndConfusedServer/blob/main/Snippets/builds-json/Tisy_Research_Facility_Updated.json",
+      "decision": "too_large_and_requires_terrain_fit",
+      "stats": {
+        "count": 122,
+        "minX": 1039.0958251953125,
+        "maxX": 1332.2396240234375,
+        "minZ": 14466.568359375,
+        "maxZ": 14654.91015625,
+        "minY": 448.9839172363281,
+        "maxY": 477.99224853515625,
+        "egressClasses": [
+          "Land_Underground_Stairs_Start",
+          "Land_Underground_Stairs_Exit"
+        ]
+      }
+    },
+    {
+      "project": "Bunker Entrance prefab",
+      "url": "https://github.com/DayZedAndConfused762/DayZedAndConfusedServer/blob/main/Snippets/builds-json/Bunker_Entrance.json",
+      "decision": "module_only_not_complete",
+      "stats": {
+        "count": 15,
+        "minX": 4281.06494140625,
+        "maxX": 4292.408203125,
+        "minZ": 8646.078125,
+        "maxZ": 8662.3544921875,
+        "minY": 319.98663330078125,
+        "maxY": 336.67138671875,
+        "egressClasses": [
+          "Land_Underground_Stairs_Exit",
+          "Land_Underground_Stairs_Start"
+        ]
+      }
+    }
+  ],
+  "terrainCandidates": [
+    {
+      "x": 10655,
+      "z": 3620,
+      "nearestMappedStaticMeters": 62.3,
+      "groundElevationVerified": false
+    },
+    {
+      "x": 10530,
+      "z": 3600,
+      "nearestMappedStaticMeters": 126.7,
+      "groundElevationVerified": false
+    }
+  ],
+  "validation": {
+    "ground3d": false,
+    "egress": false,
+    "consoleLive": false,
+    "importedToNitrado": false
+  }
+}
