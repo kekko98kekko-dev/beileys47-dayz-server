@@ -2,7 +2,7 @@
 
 Progetto di configurazione per **DayZ PlayStation (PS4/PS5)**, mappa **Livonia**, server community da **10 slot**.
 
-**Stato al 31/10/2026:** server Nitrado DayZ PlayStation acquistato, Livonia avviata e primo ingresso da PS5 riuscito. **Nessun pacchetto Stage 1–9 ancora distribuito sul server; nessun deploy automatico configurato.** [Protocollo di attivazione e prove live](docs/LIVE_ACTIVATION_2026-10-31.md).
+**Stato live al 31/10/2026:** server Nitrado PlayStation / Livonia **online, accessibile da PS5**, con modifiche di configurazione Franco V1/V2/V3 applicate secondo le conferme dell'utente e alcuni elementi verificati direttamente nel pannello. I **due hotspot hanno ancora Object Spawner senza oggetti**, perciò le strutture PvP personalizzate **non sono state costruite**. Il backup ripristinabile completo del mondo **non è verificato** (pannello: nessun backup disponibile). Le anteprime Stage 1–9 nel repository **non sono equivalenti al deploy live**. [Stato reale e limiti](docs/FRANCO_V3_VERIFIED_LIVE_2026-10-31.md) · [Protocollo originale](docs/LIVE_ACTIVATION_2026-10-31.md).
 
 ## Obiettivo
 
