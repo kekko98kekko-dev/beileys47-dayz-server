@@ -40,7 +40,7 @@
       "concept": "Ingresso infestato con pressione degli infetti già esistenti; zero orde scriptate",
       "needed": [
         "confirm_infected_event_class",
-        "confirm_actual_event_coordinate_pool",
+        "verify_current_zombie_territories_xml",
         "small_increment_and_staged_ps5_test",
         "verify_proximity_to_player_spawns"
       ],
