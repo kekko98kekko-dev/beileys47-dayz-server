@@ -2,7 +2,7 @@
 
 Progetto di configurazione per **DayZ PlayStation (PS4/PS5)**, mappa **Livonia**, server community da **10 slot**.
 
-**Stato:** progettazione e controlli preliminari. **Non abbiamo acquistato Nitrado, né configurato un deploy automatico.**
+**Stato al 31/10/2026:** server Nitrado DayZ PlayStation acquistato, Livonia avviata e primo ingresso da PS5 riuscito. **Nessun pacchetto Stage 1–9 ancora distribuito sul server; nessun deploy automatico configurato.** [Protocollo di attivazione e prove live](docs/LIVE_ACTIVATION_2026-10-31.md).
 
 ## Obiettivo
 
@@ -38,7 +38,7 @@ Al momento il test controlla `config/profile.json`. Quando aggiungeremo XML/JSON
 - Il repository è **pubblico**: NON inserirvi password, token, FTP/API key, dati privati o file di backup con segreti.
 - GitHub Actions sui runner standard per repository pubblici non consuma la quota dei 2.000 minuti dei repository privati, nel rispetto delle condizioni GitHub.
 - Nessuna modifica sarà inviata automaticamente al server finché non avremo collaudato un metodo autorizzato e sicuro.
-- **Non spendere per Nitrado** finché le attività preliminari non sono complete e il prezzo non è confermato.
+- **Nitrado è stato acquistato il 31/10/2026**; conservare copie dei file missione originali e verificare il rollback prima di ogni modifica live.
 
 
 ## Stage 2 — Anteprima survival/PvP già generabile
@@ -119,7 +119,7 @@ Stage 3 mantiene **identici** tutti i file Stage 2 e aggiunge:
 
 ✅ Il nuovo script **scripts/plan_nitrado.py** genera un piano JSON di installazione dalla preview Stage 2 verificata: quattro file attesi, dimensioni, hash SHA-256, percorsi **relativi** e checklist delle condizioni mancanti. Il piano viene allegato allo ZIP di recupero.
 
-**Non è un deploy**: non richiede credenziali, non parla con Nitrado, non legge dati live e non sa dove risiede la missione del futuro server. L'indicatore **ready_to_deploy** resta sempre false. Il percorso reale e le API PlayStation andranno verificati solo dopo un acquisto autorizzato.
+**Non è un deploy**: non richiede credenziali, non parla con Nitrado, non legge dati live e non sa dove risiede la missione del futuro server. L'indicatore **ready_to_deploy** resta sempre false. Il servizio è attivo, ma il percorso missione reale, i file originali e i permessi di modifica non sono ancora stati verificati.
 
 [Procedura di preflight e installazione](docs/OPERATIONS.md)
 
