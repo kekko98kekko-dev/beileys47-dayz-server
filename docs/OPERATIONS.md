@@ -1,6 +1,6 @@
 # Piano di messa online — DayZ PS5 (Nitrado)
 
-**Non acquistato. Non esiste un server attivo. Questo documento non autorizza modifiche live.**
+**Aggiornamento 31/10/2026:** Nitrado PlayStation acquistato, Livonia raggiungibile da PS5. Il resto della guida è una procedura preparata *prima dell'acquisto*; i pacchetti Stage 1–9 non sono ancora installati. Vedi [LIVE_ACTIVATION_2026-10-31.md](LIVE_ACTIVATION_2026-10-31.md). Nessun caricamento automatico o modifica live autorizzata.
 
 ## Prima dell'acquisto
 - Confermare sul sito Nitrado **PlayStation** (NON PC), mappa Livonia, 10 posti, prezzo in euro, opzione prepagata e rinnovo automatico disattivato.
@@ -124,9 +124,9 @@ La documentazione Nitrado per DayZ avverte che alcune opzioni di **riavvio autom
 5. Riavviare, verificare da console e documentare l'esito.
 
 ## Quello che NON abbiamo
-- Nitrado non acquistato e nessun collegamento API/FTP collaudato.
+- Nitrado acquistato e accesso PS5 vanilla confermato; nessun collegamento API/FTP per il deploy collaudato.
 - Nessuna distribuzione automatica attiva da GitHub.
-- Nessuna prova reale DayZ PS5 e nessuna garanzia di assenza bug/lag.
+- Accesso vanilla PS5 verificato; nessuna prova live delle Stage 1–9, nessuna garanzia di assenza bug/lag.
 - Nessuna pianificazione effettiva dei raid a orari prestabiliti.
 
 ## Guide ufficiali
