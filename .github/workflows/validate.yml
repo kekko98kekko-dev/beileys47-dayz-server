@@ -172,6 +172,11 @@ jobs:
           python scripts/build_stage6_special_zones.py
           python scripts/test_stage6_special_zones.py
 
+      - name: Stage 7 bunker fair route network and SVG diagram (DESIGN ONLY)
+        run: |
+          python scripts/build_stage7_bunker.py
+          python scripts/test_stage7_bunker.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -208,6 +213,16 @@ jobs:
           path: |
             dist/stage3/beileys47-livonia-stage3-preview.zip
             dist/stage3/change_report.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 7 bunker schematic SVG and paper graph (NOT MAP FILES)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage7-bunker-route-plan
+          path: |
+            dist/stage7_bunker/bunker_topology_report.json
+            dist/stage7_bunker/bunker_topology.svg
           if-no-files-found: error
           retention-days: 90
 
