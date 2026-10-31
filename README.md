@@ -95,7 +95,7 @@ The Stage 4 concept also includes a **13-class candidate asset shortlist**, a bl
 
 Stage 3 mantiene **identici** tutti i file Stage 2 e aggiunge:
 - maggiore target di due eventi vanilla: elicotteri precipitati e convogli militari (3 → 4); adegua solo il limite del tipo elicottero specifico;
-- tre messaggi in italiano: benvenuto, suggerimenti survival e regole PvP, **senza shutdown**;
+- three English-language server messages: welcome, survival tips and fair-play/PvP rules, **senza shutdown**;
 - audit statico indipendente e archivio ZIP Stage 3 su GitHub Actions.
 
 **Non crea missioni automatiche, mappe personalizzate o nuovi edifici.** Eventi e annunci vanno testati sulla console PlayStation.
@@ -112,7 +112,7 @@ Stage 3 mantiene **identici** tutti i file Stage 2 e aggiunge:
 
 [Guida al recupero sul PC Windows](docs/RECOVERY_KIT.md) · [GitHub Actions](../../actions)
 
-**Nessun deployment GitHub → Nitrado attivo.** È ancora obbligatorio verificare la versione del server, fare copie dei file originali e collaudare Stage 1 e Stage 2 su PS5/PS4.
+**International identity:** the English server hostname, description and Stage 3 announcements are defined in [SERVER_IDENTITY_EN.md](docs/SERVER_IDENTITY_EN.md); the user must apply the general settings manually and Stage 3 messages remain OFF until tested.\n\n**Nessun deployment GitHub → Nitrado attivo.** È ancora obbligatorio verificare la versione del server, fare copie dei file originali e collaudare Stage 1 e Stage 2 su PS5/PS4.
 
 
 ## Preflight Nitrado in sola lettura
