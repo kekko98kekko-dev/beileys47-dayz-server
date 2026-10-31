@@ -182,6 +182,11 @@ jobs:
           python scripts/build_stage8_feasibility.py
           python scripts/test_stage8_feasibility.py
 
+      - name: Stage 9 HQ source-backed building comparison and blocked test checklist
+        run: |
+          python scripts/build_stage9_hq_structure.py
+          python scripts/test_stage9_hq_structure.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -218,6 +223,16 @@ jobs:
           path: |
             dist/stage3/beileys47-livonia-stage3-preview.zip
             dist/stage3/change_report.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 9 HQ candidate and 16-step field checklist (NOT INSTALLABLE)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage9-hq-structural-preflight
+          path: |
+            dist/stage9_hq_structure/hq_structure_review.json
+            dist/stage9_hq_structure/hq_structure_checklist.csv
           if-no-files-found: error
           retention-days: 90
 
