@@ -1,0 +1,139 @@
+{
+  "Objects": [
+    {
+      "name": "Land_Mil_Fortified_Nest_Small",
+      "pos": [
+        11433.7998046875,
+        213.95899963378906,
+        567.9959716796875
+      ],
+      "ypr": [
+        132.54696655273438,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Mil_Fortified_Nest_Small",
+      "pos": [
+        11422.099609375,
+        213.468994140625,
+        560.322021484375
+      ],
+      "ypr": [
+        132.07200622558594,
+        0,
+        3.9999992847442627
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Wreck_sed01_aban1_police",
+      "pos": [
+        11423.599609375,
+        213.49200439453125,
+        566.6110229492188
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Wreck_sed01_aban2_police",
+      "pos": [
+        11427,
+        213.78599548339844,
+        570.166015625
+      ],
+      "ypr": [
+        90.2249984741211,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Mil_Fortified_Nest_Watchtower",
+      "pos": [
+        11438.7998046875,
+        214.2760009765625,
+        554.2659912109375
+      ],
+      "ypr": [
+        132.54798889160156,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_wreck_truck01_aban2_green",
+      "pos": [
+        11439.3291015625,
+        212.5120849609375,
+        562.7659912109375
+      ],
+      "ypr": [
+        127.5505142211914,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_wreck_truck01_aban2_green",
+      "pos": [
+        11447.318359375,
+        212.30108642578125,
+        557.1373291015625
+      ],
+      "ypr": [
+        126.65547180175781,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_wreck_truck01_aban2_blue",
+      "pos": [
+        11455.0205078125,
+        212.08584594726562,
+        551.3373413085938
+      ],
+      "ypr": [
+        125.5018539428711,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_wreck_truck01_aban1_green",
+      "pos": [
+        11463.3076171875,
+        211.8539581298828,
+        545.4619140625
+      ],
+      "ypr": [
+        132.3775177001953,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    }
+  ]
+}
