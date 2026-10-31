@@ -112,7 +112,9 @@ Stage 3 mantiene **identici** tutti i file Stage 2 e aggiunge:
 
 [Guida al recupero sul PC Windows](docs/RECOVERY_KIT.md) · [GitHub Actions](../../actions)
 
-**International identity:** the English server hostname, description and Stage 3 announcements are defined in [SERVER_IDENTITY_EN.md](docs/SERVER_IDENTITY_EN.md); the user must apply the general settings manually and Stage 3 messages remain OFF until tested.\n\n**Nessun deployment GitHub → Nitrado attivo.** È ancora obbligatorio verificare la versione del server, fare copie dei file originali e collaudare Stage 1 e Stage 2 su PS5/PS4.
+**International identity:** the English server hostname, description and Stage 3 announcements are defined in [SERVER_IDENTITY_EN.md](docs/SERVER_IDENTITY_EN.md); the user must apply the general settings manually and Stage 3 messages remain OFF until tested.
+
+**Nessun deployment GitHub → Nitrado attivo.** È ancora obbligatorio verificare la versione del server, fare copie dei file originali e collaudare Stage 1 e Stage 2 su PS5/PS4.
 
 
 ## Preflight Nitrado in sola lettura
