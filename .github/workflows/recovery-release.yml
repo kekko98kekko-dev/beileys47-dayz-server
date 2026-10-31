@@ -146,6 +146,11 @@ jobs:
           python scripts/build_stage5_balance.py
           python scripts/test_stage5_balance.py
 
+      - name: Validate Stage 6 bunker, infected, CE loot and restart design safety
+        run: |
+          python scripts/build_stage6_special_zones.py
+          python scripts/test_stage6_special_zones.py
+
       - name: Generate the complete recovery archive
         run: python scripts/make_recovery_kit.py
 
