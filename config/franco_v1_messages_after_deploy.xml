@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<messages>
+  <message>
+    <delay>0</delay><repeat>0</repeat><deadline>0</deadline><onconnect>1</onconnect><shutdown>0</shutdown>
+    <text>Welcome to BEILEYS47 | SURVIVAL WAR! Explore Livonia, build your base, repair your ride and survive. International players welcome.</text>
+  </message>
+  <message>
+    <delay>0</delay><repeat>35</repeat><deadline>0</deadline><onconnect>0</onconnect><shutdown>0</shutdown>
+    <text>SURVIVAL WAR | Look for full sheet-metal stacks, repairable vehicles, helicopter crashes and military convoys. High rewards bring high risks.</text>
+  </message>
+  <message>
+    <delay>0</delay><repeat>60</repeat><deadline>0</deadline><onconnect>0</onconnect><shutdown>0</shutdown>
+    <text>SURVIVAL WAR | PvP/PvE enabled. No cheating, exploits or harassment. Respect other players and enjoy Livonia.</text>
+  </message>
+</messages>

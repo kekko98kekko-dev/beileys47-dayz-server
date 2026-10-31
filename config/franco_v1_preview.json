@@ -1,0 +1,93 @@
+{
+  "status": "APPROVED_FOR_OFFLINE_CANDIDATE_ONLY_NOT_DEPLOYED",
+  "release": "Franco V1",
+  "game": "DayZ PS4/PS5",
+  "mission": "dayzOffline.enoch",
+  "slots": 10,
+  "deployment_allowed": false,
+  "changes": {
+    "MetalPlate": {
+      "file": "db/types.xml",
+      "quantmin": 100,
+      "quantmax": 100,
+      "nominal": "UNCHANGED",
+      "note": "Other materials require per-class quantity review"
+    },
+    "weapons": {
+      "mode": "Retain original random damage; validate LootDamageMin/Max and per-weapon rules",
+      "global_damage_change": false
+    },
+    "vehicles": {
+      "file": "cfgspawnabletypes.xml",
+      "vehicle_count_change": 0,
+      "models": [
+        "Hatchback_02",
+        "OffroadHatchback"
+      ],
+      "first_four_wheel_chance": 0.9,
+      "engine_part_min_chance": 0.75,
+      "engine_parts": [
+        "CarRadiator",
+        "CarBattery",
+        "SparkPlug"
+      ]
+    },
+    "events": {
+      "file": "db/events.xml",
+      "StaticHeliCrash": {
+        "expected_nominal": 3,
+        "target_nominal": 4,
+        "Mi8_child_max_expected": 3,
+        "Mi8_child_max_target": 4
+      },
+      "StaticMilitaryConvoy": {
+        "expected_nominal": 3,
+        "target_nominal": 4
+      }
+    },
+    "weather": {
+      "file": "cfgweather.xml",
+      "custom_enable": 1,
+      "overcast_max": 0.9,
+      "fog_max": 0.1,
+      "rain_max": 0.75,
+      "lightning_density": 0.35
+    },
+    "nights": {
+      "nitrado_general_time_acceleration_candidate": 4,
+      "nitrado_night_acceleration_candidate": 4,
+      "manual_and_console_validation": true
+    },
+    "hotspots": {
+      "count_planned": 2,
+      "actual_spawners_installed": false,
+      "why": "Site coordinates/infected + loot placement need real PS5 surveys"
+    },
+    "community": {
+      "frequency_proposal": "one event per week",
+      "automatic_gameplay": false
+    }
+  },
+  "identity": {
+    "hostname_keep": "BEILEYS47 | SURVIVAL WAR | LIVONIA | NO SCHEDULED WIPES",
+    "description_keep_until_deployed": "International community | PvP & PvE | All players welcome | Custom content coming soon",
+    "description_after_confirmed_deploy": "International PvP/PvE | Building loot+ | Repairable rides | Military events+ | No scheduled wipes",
+    "messages_after_confirmed_deploy": "config/franco_v1_messages_after_deploy.xml"
+  },
+  "explicitly_excluded": [
+    "buried stash lifetime changes",
+    "other lifetime/despawn changes",
+    "all car spawn points filled",
+    "global zombie count increase",
+    "player spawn changes",
+    "wipe flags",
+    "cfggameplay.json override",
+    "non-vanilla PlayStation mods"
+  ],
+  "blockers": [
+    "No provider world backup shown at latest Nitrado inspection",
+    "Missing actual original XMLs and hashes for the change set",
+    "Current browser connection is read-only and no logged-in Nitrado automation profile is set up",
+    "Need in-game PS5 performance, persistence, and spawn verification"
+  ]
+}
