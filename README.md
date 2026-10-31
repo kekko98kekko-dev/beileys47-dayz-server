@@ -2,7 +2,7 @@
 
 Progetto di configurazione per **DayZ PlayStation (PS4/PS5)**, mappa **Livonia**, server community da **10 slot**.
 
-**Stato live al 31/10/2026:** Franco V4 pubblico, PlayStation Livonia **online** con 18 oggetti statici su due avamposti sperimentali (9+9); nessun wipe. **V5 NON installata:** starter gear e 20 variazioni selettive di loot preparate offline. Tentativo automatico di creare il preset in Nitrado bloccato da interfaccia (cartella anziché file); riferimento non valido successivamente rimosso e JSON ripristinato, server nuovamente verificato in esecuzione. Non esiste backup completo del mondo verificato. [V5 e recupero](docs/FRANCO_V5_OFFLINE_PROPOSAL_AND_RESTORE_2026-10-31.md) · [V4](docs/FRANCO_V4_FIELD_SITES_LIVE_2026-10-31.md).
+**Stato al 31/10/2026 (V6):** dopo il caricamento manuale di un vero file di preset, un agente TinyFish autenticato riferisce che il kit iniziale V6 è registrato in `cfggameplay.json`, che l'opzione Nitrado è attiva e che il server è stato riavviato senza wipe. **Manca prova di spawn in gioco su PS5 e controllo RPT finale.** Le due aree V4 (9+9 oggetti) restano presenti ma **non equivalgono alla grande ZONA 47**; il loot selettivo V5 non è attestato live. **La relazione automatica contiene discrepanze su coordinate e contenuto del preset e non è prova affidabile di altre funzionalità.** Nessun backup integrale del mondo verificato. [Report V6](docs/FRANCO_V6_STARTER_KIT_PANEL_REPORT_2026-10-31.md) · [V5](docs/FRANCO_V5_OFFLINE_PROPOSAL_AND_RESTORE_2026-10-31.md) · [V4](docs/FRANCO_V4_FIELD_SITES_LIVE_2026-10-31.md).
 
 ## Obiettivo
 
