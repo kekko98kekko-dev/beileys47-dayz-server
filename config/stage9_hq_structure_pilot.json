@@ -1,0 +1,56 @@
+{
+  "stage": 9,
+  "version": "1.0",
+  "status": "STRUCTURAL_PILOT_REVIEW_ONLY_NOT_INSTALLABLE",
+  "mission": "dayzOffline.enoch",
+  "map": "Livonia",
+  "platform": "PlayStation 4/5",
+  "references": {
+    "stage8": "config/stage8_bunker_feasibility.json",
+    "terrain_names": "config/stage4_asset_candidates.json",
+    "third_party_bbox": "config/stage4_9_p3d_bbox_evidence.json",
+    "micro_layout": "config/stage4_zone47_micro_layout.json",
+    "pilot": "config/stage4_13_pilot_protocol.json"
+  },
+  "focus_marker": "hq_01",
+  "candidate_classnames": [
+    "Land_Mil_GuardHouse3",
+    "Land_Mil_Guardhouse1"
+  ],
+  "inspect_local_markers": [
+    "hq_02",
+    "hq_03",
+    "hq_04",
+    "hq_05"
+  ],
+  "concept_clearance_buffer_m": 4,
+  "trial_policy": {
+    "try_one_alternative_at_a_time": true,
+    "keep_original_stage4_pilot_1_3_5": true,
+    "hq_structural_trial_is_separate_later_gate": true,
+    "stage1_to_3_required_first": true,
+    "vanilla_access_verified_first": true,
+    "owner_approval_required": true,
+    "real_ground_y_required": true,
+    "verified_console_class_required": true,
+    "collision_and_exit_walkthrough_required": true,
+    "private_backup_before_edit_required": true,
+    "at_least_two_normal_walkable_exits_required": true,
+    "zero_persistent_fps_regression_required": true,
+    "restore_trial_must_be_proven": true
+  },
+  "evidence_status": {
+    "live_nitrado_connected": false,
+    "playstation_classname_tested": false,
+    "site_ground_y_measured": false,
+    "actual_vanilla_object_collision_tested": false,
+    "backups_verified": false,
+    "owner_approved_hq_trial": false,
+    "installable_objects_generated": false
+  },
+  "allowed_output_files": [
+    "hq_structure_review.json",
+    "hq_structure_checklist.csv"
+  ],
+  "deployment_allowed": false
+}
