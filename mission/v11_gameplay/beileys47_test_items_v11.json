@@ -1,0 +1,859 @@
+{
+  "Objects": [
+    {
+      "name": "BandageDressing",
+      "pos": [
+        11507.1964,
+        212.78896,
+        440.6215
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "SalineBag",
+      "pos": [
+        11508.3164,
+        212.78896,
+        440.6215
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "TetracyclineAntibiotics",
+      "pos": [
+        11509.4364,
+        212.78896,
+        440.6215
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "CharcoalTablets",
+      "pos": [
+        11507.1964,
+        212.78896,
+        441.7415
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Morphine",
+      "pos": [
+        11508.3164,
+        212.78896,
+        441.7415
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Epinephrine",
+      "pos": [
+        11509.4364,
+        212.78896,
+        441.7415
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "BloodTestKit",
+      "pos": [
+        11507.1964,
+        212.78896,
+        442.8615
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "DisinfectantSpray",
+      "pos": [
+        11508.3164,
+        212.78896,
+        442.8615
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "VitaminBottle",
+      "pos": [
+        11509.4364,
+        212.78896,
+        442.8615
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "BloodBagEmpty",
+      "pos": [
+        11515.8458,
+        212.79496,
+        434.1221
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "BloodBagIV",
+      "pos": [
+        11516.9658,
+        212.79496,
+        434.1221
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "PainkillerTablets",
+      "pos": [
+        11518.0858,
+        212.79496,
+        434.1221
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Thermometer",
+      "pos": [
+        11515.8458,
+        212.79496,
+        435.2421
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "SurgicalGloves_Blue",
+      "pos": [
+        11516.9658,
+        212.79496,
+        435.2421
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "FirstAidKit",
+      "pos": [
+        11518.0858,
+        212.79496,
+        435.2421
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Heatpack",
+      "pos": [
+        11515.8458,
+        212.79496,
+        436.3621
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "IodineTincture",
+      "pos": [
+        11516.9658,
+        212.79496,
+        436.3621
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Canteen",
+      "pos": [
+        11571.4855,
+        213.67841,
+        481.4367
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "WaterBottle",
+      "pos": [
+        11572.6055,
+        213.67841,
+        481.4367
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "SodaCan_Cola",
+      "pos": [
+        11573.7255,
+        213.67841,
+        481.4367
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "BakedBeansCan",
+      "pos": [
+        11571.4855,
+        213.67841,
+        482.5567
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "TacticalBaconCan",
+      "pos": [
+        11572.6055,
+        213.67841,
+        482.5567
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "CanOpener",
+      "pos": [
+        11573.7255,
+        213.67841,
+        482.5567
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "PortableGasStove",
+      "pos": [
+        11571.4855,
+        213.67841,
+        483.6767
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Rice",
+      "pos": [
+        11572.6055,
+        213.67841,
+        483.6767
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "M4A1",
+      "pos": [
+        11475.2804,
+        215.10999,
+        455.726
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "AK74",
+      "pos": [
+        11476.4004,
+        215.10999,
+        455.726
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "AKM",
+      "pos": [
+        11477.5204,
+        215.10999,
+        455.726
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "SKS",
+      "pos": [
+        11475.2804,
+        215.10999,
+        456.846
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Mosin9130",
+      "pos": [
+        11476.4004,
+        215.10999,
+        456.846
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "MP5K",
+      "pos": [
+        11477.5204,
+        215.10999,
+        456.846
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Glock19",
+      "pos": [
+        11475.2804,
+        215.10999,
+        457.966
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Deagle",
+      "pos": [
+        11476.4004,
+        215.10999,
+        457.966
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "HuntingKnife",
+      "pos": [
+        11477.5204,
+        215.10999,
+        457.966
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "CombatKnife",
+      "pos": [
+        11475.2804,
+        215.10999,
+        459.086
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Mag_STANAG_30Rnd",
+      "pos": [
+        11480.589,
+        214.96185,
+        451.4305
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Mag_AKM_30Rnd",
+      "pos": [
+        11481.709,
+        214.96185,
+        451.4305
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Mag_AK74_30Rnd",
+      "pos": [
+        11482.829,
+        214.96185,
+        451.4305
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Mag_MP5_30Rnd",
+      "pos": [
+        11480.589,
+        214.96185,
+        452.5505
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Mag_Glock_15Rnd",
+      "pos": [
+        11481.709,
+        214.96185,
+        452.5505
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "AmmoBox_556x45_20Rnd",
+      "pos": [
+        11482.829,
+        214.96185,
+        452.5505
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "AmmoBox_762x39_20Rnd",
+      "pos": [
+        11480.589,
+        214.96185,
+        453.6705
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "AmmoBox_762x54_20Rnd",
+      "pos": [
+        11481.709,
+        214.96185,
+        453.6705
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "AmmoBox_9x19_25rnd",
+      "pos": [
+        11482.829,
+        214.96185,
+        453.6705
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "AmmoBox_45ACP_25rnd",
+      "pos": [
+        11480.589,
+        214.96185,
+        454.7905
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "TireRepairKit",
+      "pos": [
+        11579.5802,
+        213.90299,
+        474.006
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "CanisterGasoline",
+      "pos": [
+        11580.7002,
+        213.90299,
+        474.006
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Wrench",
+      "pos": [
+        11581.8202,
+        213.90299,
+        474.006
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "LugWrench",
+      "pos": [
+        11579.5802,
+        213.90299,
+        475.126
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Pliers",
+      "pos": [
+        11580.7002,
+        213.90299,
+        475.126
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "HandSaw",
+      "pos": [
+        11581.8202,
+        213.90299,
+        475.126
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Hammer",
+      "pos": [
+        11579.5802,
+        213.90299,
+        476.246
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "WoodenLog",
+      "pos": [
+        11580.7002,
+        213.90299,
+        476.246
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "WoodenPlank",
+      "pos": [
+        11581.8202,
+        213.90299,
+        476.246
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "MetalPlate",
+      "pos": [
+        11579.5802,
+        213.90299,
+        477.366
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "NailBox",
+      "pos": [
+        11580.7002,
+        213.90299,
+        477.366
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "DuctTape",
+      "pos": [
+        11581.8202,
+        213.90299,
+        477.366
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    }
+  ]
+}
