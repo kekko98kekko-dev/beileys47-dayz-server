@@ -65,9 +65,11 @@ def main() -> None:
     assert actual_msgs.tag == "messages"
     items = actual_msgs.findall("message")
     assert len(items) == len(rules["messages"]) == 3
+    assert rules["audience_language"] == "en"
     for node, rule in zip(items, rules["messages"]):
         assert node.findtext("text") == rule["text"]
         assert len(rule["text"]) <= 160
+        assert rule["text"].isascii(), "International announcements must be accessible in English"
         assert node.findtext("shutdown") == "0"
         assert node.findtext("deadline") == "0"
         assert int(node.findtext("repeat")) == rule["repeat"]
