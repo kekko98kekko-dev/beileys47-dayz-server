@@ -32,6 +32,7 @@ jobs:
         run: |
           python scripts/audit_stable_v10.py
           python scripts/test_stable_v10.py
+          python scripts/test_v11_gameplay.py
 
       - name: Build both stages from pinned Bohemia official files
         run: python scripts/build_stage2.py
