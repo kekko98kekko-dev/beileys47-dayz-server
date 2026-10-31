@@ -1,0 +1,109 @@
+{
+  "name": "BEILEYS47_FairSurvival_V6",
+  "spawnWeight": 1,
+  "attachmentSlotItemSets": [
+    {
+      "slotName": "Body",
+      "discreteItemSets": [
+        {
+          "itemType": "TShirt_Beige",
+          "spawnWeight": 1,
+          "attributes": {
+            "healthMin": 0.65,
+            "healthMax": 0.85,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        },
+        {
+          "itemType": "TShirt_Black",
+          "spawnWeight": 1,
+          "attributes": {
+            "healthMin": 0.65,
+            "healthMax": 0.85,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "slotName": "Legs",
+      "discreteItemSets": [
+        {
+          "itemType": "CanvasPantsMidi_Beige",
+          "spawnWeight": 1,
+          "attributes": {
+            "healthMin": 0.65,
+            "healthMax": 0.85,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    },
+    {
+      "slotName": "Feet",
+      "discreteItemSets": [
+        {
+          "itemType": "AthleticShoes_Black",
+          "spawnWeight": 1,
+          "attributes": {
+            "healthMin": 0.65,
+            "healthMax": 0.85,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": -1
+        }
+      ]
+    }
+  ],
+  "discreteUnsortedItemSets": [
+    {
+      "name": "FreshSpawnCargo",
+      "spawnWeight": 1,
+      "attributes": {
+        "healthMin": 1,
+        "healthMax": 1,
+        "quantityMin": 1,
+        "quantityMax": 1
+      },
+      "complexChildrenTypes": [
+        {
+          "itemType": "BandageDressing",
+          "attributes": {
+            "healthMin": 0.8,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 0
+        },
+        {
+          "itemType": "Chemlight_Red",
+          "attributes": {
+            "healthMin": 0.8,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 1
+        },
+        {
+          "itemType": "PeachesCan",
+          "attributes": {
+            "healthMin": 0.8,
+            "healthMax": 1,
+            "quantityMin": 1,
+            "quantityMax": 1
+          },
+          "quickBarSlot": 2
+        }
+      ]
+    }
+  ]
+}
