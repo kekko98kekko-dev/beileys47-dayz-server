@@ -1,0 +1,15 @@
+<!-- Replace ONLY VehicleTruck01 <event> in live cfgeventspawns.xml; 12 original Bohemia Livonia positions selected. -->
+<event name="VehicleTruck01">
+        <pos x="8879.35" z="11067.37" a="42.67"/>
+        <pos x="569.28" z="943.24" a="171.59"/>
+        <pos x="10999.64" z="1954.42" a="173.75"/>
+        <pos x="1368.19" z="7995.36" a="315.03"/>
+        <pos x="5706.39" z="3754.03" a="79.21"/>
+        <pos x="11581.71" z="7098.02" a="59.91"/>
+        <pos x="3841.3" z="11814.37" a="62.51"/>
+        <pos x="6416.27" z="8161.95" a="156.36"/>
+        <pos x="9050.77" z="5392.03" a="248.8"/>
+        <pos x="4849.71" z="851.93" a="54.92"/>
+        <pos x="1642.99" z="3721.38" a="62.9"/>
+        <pos x="3752.18" z="6335.84" a="294.36"/>
+    </event>
