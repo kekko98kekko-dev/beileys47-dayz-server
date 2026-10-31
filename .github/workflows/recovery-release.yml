@@ -173,6 +173,7 @@ jobs:
         run: |
           python scripts/audit_stable_v10.py
           python scripts/test_stable_v10.py
+          python scripts/test_v11_gameplay.py
 
       - name: Generate the complete recovery archive
         run: python scripts/make_recovery_kit.py
