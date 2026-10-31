@@ -20,26 +20,27 @@
       "delay": 0,
       "repeat": 0,
       "onconnect": 1,
-      "text": "BEILEYS47 | SURVIVAL WAR: a Livonia nessuno è al sicuro. Sopravvivi, conquista, difendi. Buona caccia!"
+      "text": "Welcome to BEILEYS47 | SURVIVAL WAR! Livonia is unforgiving. Explore, survive and compete. Players from every country are welcome."
     },
     {
       "kind": "survival_hint",
       "delay": 0,
       "repeat": 35,
       "onconnect": 0,
-      "text": "SURVIVAL WAR | I crash militari offrono occasioni di loot raro. Preparati: altri sopravvissuti potrebbero essere vicini."
+      "text": "SURVIVAL WAR | Military convoys and helicopter crashes are worth the risk. Stay alert: other survivors may be close."
     },
     {
       "kind": "community_rule",
       "delay": 0,
       "repeat": 60,
       "onconnect": 0,
-      "text": "SURVIVAL WAR | PvP attivo. Niente scorciatoie pay-to-win. Le basi e i nascondigli restano a tuo rischio. Gioca leale."
+      "text": "SURVIVAL WAR | PvP is enabled. No cheats, exploits or harassment. Respect other players and enjoy the hunt."
     }
   ],
   "disclaimer": [
     "This Stage 3 preview changes only existing vanilla dynamic event nominal values, one helicopter child cap, and adds vanilla-supported announcements.",
     "No dynamic event locations, safe zones, raids timers, quests, new weapons, mods or 3D map objects are added.",
     "Actual encounter counts, timing, performance and message delivery require PS5 + Nitrado tests."
-  ]
+  ],
+  "audience_language": "en"
 }

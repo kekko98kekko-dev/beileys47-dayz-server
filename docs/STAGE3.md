@@ -1,6 +1,6 @@
 # Stage 3 — BEILEYS47 | Encounter Identity (Livonia, PS4/PS5)
 
-**Stato: PREVIEW solo GitHub; NON provato su PlayStation; NON installato su Nitrado.**
+**Stato: PREVIEW solo GitHub; accesso PlayStation vanilla riuscito 31/10/2026, ma la Stage 3 NON è ancora installata su Nitrado.**
 
 ## Visione di gioco
 
@@ -20,10 +20,10 @@ I pool di coordinate in cfgeventspawns.xml, i raggi, i tempi, il loot assegnato 
 
 ### db/messages.xml — identità e onboarding
 
-Tre messaggi italiani, massima lunghezza 160 caratteri:
-1. Benvenuto a chi entra.
-2. Suggerimento sugli incontri militari ogni 35 minuti.
-3. Regola PvP/lealtà ogni 60 minuti.
+Tre messaggi **in inglese**, per tutti i giocatori internazionali, massima lunghezza 160 caratteri:
+1. Welcome on connect: all countries are welcome.
+2. Survival hint every 35 minutes: vanilla helicopter crashes and military convoys; nessun evento personalizzato promesso.
+3. Fair-play rule every 60 minutes: PvP enabled; no cheats, exploits or harassment.
 
 Nessun messaggio indica la posizione precisa degli eventi, genera eventi, assegna ricompense, esegue comandi o disconnette giocatori. shutdown=0 e deadline=0 per tutti. Verificare nel pannello PlayStation il caricamento e la formattazione degli annunci.
 

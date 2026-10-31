@@ -1,0 +1,13 @@
+{
+  "project": "BEILEYS47 | DAYZ SURVIVAL WAR",
+  "language": "en",
+  "server_hostname": "BEILEYS47 | SURVIVAL WAR | LIVONIA | NO SCHEDULED WIPES",
+  "server_description": "International community | PvP & PvE | All players welcome | Custom content coming soon",
+  "server_platform": "DayZ PlayStation",
+  "map": "dayzOffline.enoch",
+  "live_hostname_applied": false,
+  "live_description_applied": false,
+  "stage3_messages_enabled_on_live_server": false,
+  "server_password_policy": "Keep private during tests; consider removing before public release, no password stored here",
+  "note": "Manual Nitrado Settings > General update; no provider access or live modifications performed by this repository. No scheduled wipes is an intent, not a durability guarantee."
+}

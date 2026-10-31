@@ -36,6 +36,9 @@ jobs:
       - name: Validate project source and profile
         run: python scripts/validate.py
 
+      - name: Validate international English identity, without live Nitrado writes
+        run: python scripts/test_server_identity.py
+
       - name: Build Stage 1/2 pinned Bohemia mission previews
         run: python scripts/build_stage2.py
 

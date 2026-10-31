@@ -2,7 +2,7 @@
 
 Progetto di configurazione per **DayZ PlayStation (PS4/PS5)**, mappa **Livonia**, server community da **10 slot**.
 
-**Stato:** progettazione e controlli preliminari. **Non abbiamo acquistato Nitrado, né configurato un deploy automatico.**
+**Stato al 31/10/2026:** server Nitrado DayZ PlayStation acquistato, Livonia avviata e primo ingresso da PS5 riuscito. **Nessun pacchetto Stage 1–9 ancora distribuito sul server; nessun deploy automatico configurato.** [Protocollo di attivazione e prove live](docs/LIVE_ACTIVATION_2026-10-31.md).
 
 ## Obiettivo
 
@@ -38,7 +38,7 @@ Al momento il test controlla `config/profile.json`. Quando aggiungeremo XML/JSON
 - Il repository è **pubblico**: NON inserirvi password, token, FTP/API key, dati privati o file di backup con segreti.
 - GitHub Actions sui runner standard per repository pubblici non consuma la quota dei 2.000 minuti dei repository privati, nel rispetto delle condizioni GitHub.
 - Nessuna modifica sarà inviata automaticamente al server finché non avremo collaudato un metodo autorizzato e sicuro.
-- **Non spendere per Nitrado** finché le attività preliminari non sono complete e il prezzo non è confermato.
+- **Nitrado è stato acquistato il 31/10/2026**; conservare copie dei file missione originali e verificare il rollback prima di ogni modifica live.
 
 
 ## Stage 2 — Anteprima survival/PvP già generabile
@@ -95,7 +95,7 @@ The Stage 4 concept also includes a **13-class candidate asset shortlist**, a bl
 
 Stage 3 mantiene **identici** tutti i file Stage 2 e aggiunge:
 - maggiore target di due eventi vanilla: elicotteri precipitati e convogli militari (3 → 4); adegua solo il limite del tipo elicottero specifico;
-- tre messaggi in italiano: benvenuto, suggerimenti survival e regole PvP, **senza shutdown**;
+- three English-language server messages: welcome, survival tips and fair-play/PvP rules, **senza shutdown**;
 - audit statico indipendente e archivio ZIP Stage 3 su GitHub Actions.
 
 **Non crea missioni automatiche, mappe personalizzate o nuovi edifici.** Eventi e annunci vanno testati sulla console PlayStation.
@@ -112,6 +112,8 @@ Stage 3 mantiene **identici** tutti i file Stage 2 e aggiunge:
 
 [Guida al recupero sul PC Windows](docs/RECOVERY_KIT.md) · [GitHub Actions](../../actions)
 
+**International identity:** the English server hostname, description and Stage 3 announcements are defined in [SERVER_IDENTITY_EN.md](docs/SERVER_IDENTITY_EN.md); the user must apply the general settings manually and Stage 3 messages remain OFF until tested.
+
 **Nessun deployment GitHub → Nitrado attivo.** È ancora obbligatorio verificare la versione del server, fare copie dei file originali e collaudare Stage 1 e Stage 2 su PS5/PS4.
 
 
@@ -119,7 +121,7 @@ Stage 3 mantiene **identici** tutti i file Stage 2 e aggiunge:
 
 ✅ Il nuovo script **scripts/plan_nitrado.py** genera un piano JSON di installazione dalla preview Stage 2 verificata: quattro file attesi, dimensioni, hash SHA-256, percorsi **relativi** e checklist delle condizioni mancanti. Il piano viene allegato allo ZIP di recupero.
 
-**Non è un deploy**: non richiede credenziali, non parla con Nitrado, non legge dati live e non sa dove risiede la missione del futuro server. L'indicatore **ready_to_deploy** resta sempre false. Il percorso reale e le API PlayStation andranno verificati solo dopo un acquisto autorizzato.
+**Non è un deploy**: non richiede credenziali, non parla con Nitrado, non legge dati live e non sa dove risiede la missione del futuro server. L'indicatore **ready_to_deploy** resta sempre false. Il servizio è attivo, ma il percorso missione reale, i file originali e i permessi di modifica non sono ancora stati verificati.
 
 [Procedura di preflight e installazione](docs/OPERATIONS.md)
 
