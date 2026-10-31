@@ -73,7 +73,14 @@ def check_mission() -> None:
             else:
                 if "<!DOCTYPE" in raw.upper() or "<!ENTITY" in raw.upper():
                     raise ValueError("XML document types/entities are not permitted")
-                tree = ET.fromstring(raw)
+                # The Dolnik 29-group CE insert is intentionally an XML *fragment*.
+                # Never upload it as a standalone mapgrouppos.xml document.
+                if file.name == "dolnik_mapgrouppos_additions_ONLY.xml":
+                    tree = ET.fromstring("<map>" + raw + "</map>")
+                    if len(tree.findall("group")) != 29:
+                        raise ValueError("Dolnik fragment must contain exactly 29 CE groups")
+                else:
+                    tree = ET.fromstring(raw)
                 if file.name.lower() == "types.xml":
                     names = [
                         el.attrib["name"]
