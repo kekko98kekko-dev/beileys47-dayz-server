@@ -177,6 +177,11 @@ jobs:
           python scripts/build_stage7_bunker.py
           python scripts/test_stage7_bunker.py
 
+      - name: Stage 8 PS5 bunker evidence and safe-exit feasibility (NO DEPLOY)
+        run: |
+          python scripts/build_stage8_feasibility.py
+          python scripts/test_stage8_feasibility.py
+
       - name: Build offline recovery kit and verify SHA-256 manifest
         run: python scripts/make_recovery_kit.py
 
@@ -213,6 +218,14 @@ jobs:
           path: |
             dist/stage3/beileys47-livonia-stage3-preview.zip
             dist/stage3/change_report.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload Stage 8 bunker evidence and feasibility report (NOT INSTALLABLE)
+        uses: actions/upload-artifact@v4
+        with:
+          name: beileys47-stage8-bunker-feasibility-only
+          path: dist/stage8_bunker_feasibility/feasibility_review.json
           if-no-files-found: error
           retention-days: 90
 
