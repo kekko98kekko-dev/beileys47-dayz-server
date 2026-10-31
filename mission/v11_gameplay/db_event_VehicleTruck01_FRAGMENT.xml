@@ -1,0 +1,20 @@
+<!-- Single event to PATCH into LIVE db/events.xml; NOT a complete XML document; 10 target trucks at 12 valid vanilla points. When taken, truck remains counted, no guaranteed instant extra! -->
+<event name="VehicleTruck01">
+        <nominal>10</nominal>
+        <min>10</min>
+        <max>12</max>
+        <lifetime>300</lifetime>
+        <restock>0</restock>
+        <saferadius>300</saferadius>
+        <distanceradius>500</distanceradius>
+        <cleanupradius>200</cleanupradius>
+        <flags deletable="0" init_random="0" remove_damaged="1"/>
+        <position>fixed</position>
+        <limit>mixed</limit>
+        <active>1</active>
+        <children>
+            <child lootmax="0" lootmin="0" max="5" min="3" type="Truck_01_Covered"/>
+            <child lootmax="0" lootmin="0" max="5" min="3" type="Truck_01_Covered_Blue"/>
+            <child lootmax="0" lootmin="0" max="5" min="3" type="Truck_01_Covered_Orange"/>
+        </children>
+    </event>
