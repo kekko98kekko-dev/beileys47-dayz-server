@@ -1,0 +1,319 @@
+{
+  "Objects": [
+    {
+      "name": "Land_Mil_Tent_Big2_1",
+      "pos": [
+        11418,
+        213.6,
+        583
+      ],
+      "ypr": [
+        90,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        11414,
+        213.64,
+        586
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        11416.4,
+        213.64,
+        586
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        11418.8,
+        213.64,
+        586
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        11421.2,
+        213.64,
+        586
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Apple",
+      "pos": [
+        11413.25,
+        214.43,
+        585.6
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "PeachesCan",
+      "pos": [
+        11414.5,
+        214.43,
+        585.6
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "CombatKnife",
+      "pos": [
+        11413.25,
+        214.43,
+        586.25
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "BandageDressing",
+      "pos": [
+        11414.5,
+        214.43,
+        586.25
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "M4A1",
+      "pos": [
+        11415.65,
+        214.43,
+        585.6
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Mag_STANAG_30Rnd",
+      "pos": [
+        11416.9,
+        214.43,
+        585.6
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "AmmoBox_556x45_20Rnd",
+      "pos": [
+        11415.65,
+        214.43,
+        586.25
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Compass",
+      "pos": [
+        11416.9,
+        214.43,
+        586.25
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Canteen",
+      "pos": [
+        11418.05,
+        214.43,
+        585.6
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "DuctTape",
+      "pos": [
+        11419.3,
+        214.43,
+        585.6
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Hammer",
+      "pos": [
+        11418.05,
+        214.43,
+        586.25
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "VitaminBottle",
+      "pos": [
+        11419.3,
+        214.43,
+        586.25
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Morphine",
+      "pos": [
+        11420.45,
+        214.43,
+        585.6
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "GasMask",
+      "pos": [
+        11421.7,
+        214.43,
+        585.6
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "CarBattery",
+      "pos": [
+        11420.45,
+        214.43,
+        586.25
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "SparkPlug",
+      "pos": [
+        11421.7,
+        214.43,
+        586.25
+      ],
+      "ypr": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "enableCEPersistency": false
+    }
+  ]
+}
