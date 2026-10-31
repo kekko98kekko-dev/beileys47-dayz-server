@@ -175,6 +175,16 @@ SOURCE_PATHS = [
     "mission/stable_v10/cfgplayerspawnpoints.xml",
     "scripts/audit_stable_v10.py",
     "scripts/test_stable_v10.py",
+    "mission/v11_gameplay/README_GESTIONE_RICHIESTE.md",
+    "mission/v11_gameplay/TEST_ITEMS_POSITIONS_AND_LIMITATIONS.md",
+    "mission/v11_gameplay/beileys47_test_items_v11.json",
+    "mission/v11_gameplay/beileys47_vehicle_loadouts_v11.xml",
+    "mission/v11_gameplay/cfgeconomycore_V11_REFERENCE_DO_NOT_OVERWRITE.xml",
+    "mission/v11_gameplay/cfgeventspawns_truck12_FRAGMENT.xml",
+    "mission/v11_gameplay/cfgweather_SUNNY_V11.xml",
+    "mission/v11_gameplay/db_event_VehicleTruck01_FRAGMENT.xml",
+    "mission/v11_gameplay/db_types_PileOfWoodenPlanks_FRAGMENT.xml",
+    "scripts/test_v11_gameplay.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
