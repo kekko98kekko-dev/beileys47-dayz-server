@@ -1,0 +1,242 @@
+{
+  "stage": 7,
+  "version": "1.0",
+  "name": "ZONA 47 — Bunker del comando",
+  "status": "SCHEMATIC_TOPOLOGY_NOT_OBJECT_SPAWNER",
+  "map": "Livonia",
+  "target_platform": "PlayStation 4 / PlayStation 5",
+  "blueprint_source": "config/stage4_zone47_blueprint.json",
+  "stage6_source": "config/stage6_special_zones.json",
+  "pilot_source": "config/stage4_13_pilot_protocol.json",
+  "coordinate_system": "zone47_blueprint_local_xz_only_not_world_meters_proven",
+  "footprint": {
+    "min_x": 90,
+    "max_x": 148,
+    "min_z": 151,
+    "max_z": 202
+  },
+  "entrances": [
+    "west_entry",
+    "south_entry",
+    "east_entry"
+  ],
+  "objective": "vault",
+  "rooms": [
+    {
+      "id": "west_entry",
+      "label": "Accesso ovest",
+      "local_x": 94,
+      "local_z": 173,
+      "role": "entrance",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    },
+    {
+      "id": "south_entry",
+      "label": "Accesso sud",
+      "local_x": 116,
+      "local_z": 154,
+      "role": "entrance",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    },
+    {
+      "id": "east_entry",
+      "label": "Accesso est",
+      "local_x": 144,
+      "local_z": 173,
+      "role": "entrance",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    },
+    {
+      "id": "decon",
+      "label": "Decontaminazione",
+      "local_x": 104,
+      "local_z": 161,
+      "role": "utility",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    },
+    {
+      "id": "generator",
+      "label": "Generatore",
+      "local_x": 131,
+      "local_z": 163,
+      "role": "utility",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    },
+    {
+      "id": "archives",
+      "label": "Archivi",
+      "local_x": 102,
+      "local_z": 182,
+      "role": "flank",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    },
+    {
+      "id": "medbay",
+      "label": "Infermeria",
+      "local_x": 132,
+      "local_z": 184,
+      "role": "flank",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    },
+    {
+      "id": "junction",
+      "label": "Nodo centrale",
+      "local_x": 117,
+      "local_z": 174,
+      "role": "junction",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    },
+    {
+      "id": "vault",
+      "label": "Deposito sigillato",
+      "local_x": 117,
+      "local_z": 194,
+      "role": "objective",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    },
+    {
+      "id": "service_tunnel",
+      "label": "Cunicolo di servizio",
+      "local_x": 141,
+      "local_z": 195,
+      "role": "flank",
+      "ground_y": null,
+      "object_classname": null,
+      "collision_verified": false,
+      "console_verified": false
+    }
+  ],
+  "links": [
+    [
+      "west_entry",
+      "decon"
+    ],
+    [
+      "west_entry",
+      "archives"
+    ],
+    [
+      "south_entry",
+      "decon"
+    ],
+    [
+      "south_entry",
+      "generator"
+    ],
+    [
+      "east_entry",
+      "generator"
+    ],
+    [
+      "east_entry",
+      "medbay"
+    ],
+    [
+      "east_entry",
+      "service_tunnel"
+    ],
+    [
+      "decon",
+      "junction"
+    ],
+    [
+      "decon",
+      "archives"
+    ],
+    [
+      "generator",
+      "junction"
+    ],
+    [
+      "generator",
+      "medbay"
+    ],
+    [
+      "archives",
+      "junction"
+    ],
+    [
+      "archives",
+      "vault"
+    ],
+    [
+      "medbay",
+      "junction"
+    ],
+    [
+      "medbay",
+      "vault"
+    ],
+    [
+      "junction",
+      "vault"
+    ],
+    [
+      "service_tunnel",
+      "vault"
+    ],
+    [
+      "service_tunnel",
+      "medbay"
+    ]
+  ],
+  "environmental_story": [
+    "Segni di evacuazione nel corridoio di decontaminazione",
+    "Generatore guasto, accessibile da due direzioni",
+    "Archivio abbandonato e reparto medico collegati da percorsi alternativi",
+    "Deposito sigillato come obiettivo narrativo senza loot garantito"
+  ],
+  "rules": {
+    "minimum_internally_vertex_disjoint_routes_to_objective": 2,
+    "one_access_cannot_hold_all_approaches": true,
+    "no_one_way_doors_claimed": true,
+    "no_functioning_lock_mechanics_claimed": true,
+    "no_zombie_scripted_ai": true,
+    "no_guaranteed_loot": true,
+    "first_pilot_remains_one_three_five_props": true
+  },
+  "unresolved": {
+    "real_ground_y_all_rooms": true,
+    "actual_walkable_bunker_structures": true,
+    "console_classnames": true,
+    "door_and_stair_behaviors": true,
+    "local_terrain_obstructions": true,
+    "navigation_and_evacuation": true,
+    "loot_spawn_points": true,
+    "ps5_collision_and_performance": true
+  },
+  "artifacts": {
+    "world_positions_generated": false,
+    "object_spawner_json_generated": false,
+    "mission_xml_modified": false,
+    "ready_for_nitrado": false
+  },
+  "deployment_allowed": false
+}
