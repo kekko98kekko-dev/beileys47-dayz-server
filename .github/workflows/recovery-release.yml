@@ -161,6 +161,11 @@ jobs:
           python scripts/build_stage8_feasibility.py
           python scripts/test_stage8_feasibility.py
 
+      - name: Stage 9 pilot building size review and on-site checklist (NO DEPLOY)
+        run: |
+          python scripts/build_stage9_hq_structure.py
+          python scripts/test_stage9_hq_structure.py
+
       - name: Generate the complete recovery archive
         run: python scripts/make_recovery_kit.py
 
