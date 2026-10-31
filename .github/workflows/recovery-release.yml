@@ -151,6 +151,11 @@ jobs:
           python scripts/build_stage6_special_zones.py
           python scripts/test_stage6_special_zones.py
 
+      - name: Generate and test Stage 7 bunker concept and static graph (NO DEPLOY)
+        run: |
+          python scripts/build_stage7_bunker.py
+          python scripts/test_stage7_bunker.py
+
       - name: Generate the complete recovery archive
         run: python scripts/make_recovery_kit.py
 
