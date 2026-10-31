@@ -28,6 +28,11 @@ jobs:
       - name: Validate project profile and mission XML/JSON
         run: python scripts/validate.py
 
+      - name: Audit V10 stable candidate (official Livonia spawns, V8 kit and V9 scene, no deployment)
+        run: |
+          python scripts/audit_stable_v10.py
+          python scripts/test_stable_v10.py
+
       - name: Build both stages from pinned Bohemia official files
         run: python scripts/build_stage2.py
 
