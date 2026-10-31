@@ -2,7 +2,7 @@
 
 Progetto di configurazione per **DayZ PlayStation (PS4/PS5)**, mappa **Livonia**, server community da **10 slot**.
 
-**Stato live al 31/10/2026 (Franco V4):** server Nitrado PlayStation / Livonia **online**, PS5 accessibile, **due piccoli avamposti di prova con 9+9 oggetti JSON caricati direttamente via browser automation**, riavvio normale completato e nessun errore Object Spawner emerso nei log controllati. Questi **non** sono la ZONA 47 originale o un bunker completo; resa visiva, collisioni e prestazioni PS5 da provare. **Nessun backup integrale del mondo disponibile nel pannello.** [Stato V4 e ubicazioni effettive](docs/FRANCO_V4_FIELD_SITES_LIVE_2026-10-31.md) · [V3](docs/FRANCO_V3_VERIFIED_LIVE_2026-10-31.md).
+**Stato live al 31/10/2026:** Franco V4 pubblico, PlayStation Livonia **online** con 18 oggetti statici su due avamposti sperimentali (9+9); nessun wipe. **V5 NON installata:** starter gear e 20 variazioni selettive di loot preparate offline. Tentativo automatico di creare il preset in Nitrado bloccato da interfaccia (cartella anziché file); riferimento non valido successivamente rimosso e JSON ripristinato, server nuovamente verificato in esecuzione. Non esiste backup completo del mondo verificato. [V5 e recupero](docs/FRANCO_V5_OFFLINE_PROPOSAL_AND_RESTORE_2026-10-31.md) · [V4](docs/FRANCO_V4_FIELD_SITES_LIVE_2026-10-31.md).
 
 ## Obiettivo
 
