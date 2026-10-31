@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<playerspawnpoints>
+    <fresh>
+        <spawn_params>
+            <min_dist_infected>30</min_dist_infected>
+            <max_dist_infected>70</max_dist_infected>
+            <min_dist_player>65</min_dist_player>
+            <max_dist_player>150</max_dist_player>
+            <min_dist_static>0</min_dist_static>
+            <max_dist_static>2</max_dist_static>
+        </spawn_params>
+        <generator_params>
+            <grid_density>4</grid_density>
+            <grid_width>20</grid_width>
+            <grid_height>20</grid_height>
+            <min_dist_static>0</min_dist_static>
+            <max_dist_static>2</max_dist_static>
+            <min_steepness>-45</min_steepness>
+            <max_steepness>45</max_steepness>
+        </generator_params>
+        <group_params>
+            <enablegroups>false</enablegroups>
+            <groups_as_regular>true</groups_as_regular>
+            <lifetime>120</lifetime>
+            <counter>2</counter>
+        </group_params>
+        <generator_posbubbles>
+            <group name="BEILEYS47_DolnikV7_TestOnly">
+                <pos x="11405.0" z="586.0" />
+            </group>
+        </generator_posbubbles>
+    </fresh>
+    <hop>
+        <spawn_params>
+            <min_dist_infected>30.0</min_dist_infected>
+            <max_dist_infected>70.0</max_dist_infected>
+            <min_dist_player>25.0</min_dist_player>
+            <max_dist_player>70.0</max_dist_player>
+            <min_dist_static>0.5</min_dist_static>
+            <max_dist_static>2.0</max_dist_static>
+        </spawn_params>
+        <generator_params>
+            <grid_density>4</grid_density>
+            <grid_width>150</grid_width>
+            <grid_height>150</grid_height>
+            <min_dist_static>0</min_dist_static>
+            <max_dist_static>2</max_dist_static>
+            <min_steepness>-45</min_steepness>
+            <max_steepness>45</max_steepness>
+        </generator_params>
+        <group_params>
+            <enablegroups>false</enablegroups>
+            <groups_as_regular>true</groups_as_regular>
+            <lifetime>360</lifetime>
+            <counter>-1</counter>
+        </group_params>
+        <generator_posbubbles>
+            <group name="Bielawa">
+                <pos x="1551.147461" z="9376.832031" />
+                <pos x="1316.421631" z="9290.530273" />
+                <pos x="1125.401978" z="9406.3779" />
+                <pos x="1303.298706" z="9696.295898" />
+                <pos x="1046.550293" z="9870.730469" />
+                <pos x="1478.784546" z="9896.9062" />
+                <pos x="1671.9162" z="9967.6533" />
+                <pos x="1730.648682" z="10292.320313" />
+                <pos x="1799.053955" z="9702.639648" />
+                <pos x="2084.579346" z="9576.885742" />
+                <pos x="1137.720215" z="10499.796875" />
+            </group>
+            <group name="Lukow">
+                <pos x="3724.534424" z="11622.162109" />
+                <pos x="3866.552734" z="11924.900391" />
+                <pos x="3651.272949" z="11959.685547" />
+                <pos x="3601.7116" z="12272.011719" />
+                <pos x="3234.377197" z="12099.676758" />
+                <pos x="3209.530518" z="12435.224609" />
+                <pos x="3349.539063" z="11843.341797" />
+            </group>
+            <group name="Brena">
+                <pos x="6953.732422" z="11815.594727" />
+                <pos x="7223.584961" z="11759.3466" />
+                <pos x="7153.2329" z="12043.008789" />
+                <pos x="6865.048828" z="12095.717773" />
+                <pos x="7690.549316" z="12160.602539" />
+                <pos x="7478.538086" z="12160.478516" />
+            </group>
+            <group name="Kolembrody">
+                <pos x="8264.328125" z="12142.592773" />
+                <pos x="8338.135742" z="12261.265625" />
+                <pos x="8426.248047" z="12478.8154" />
+                <pos x="8522.2812" z="12288.429688" />
+                <pos x="8725.990234" z="12425.084961" />
+                <pos x="8888.828125" z="12293.662109" />
+            </group>
+            <group name="Grabin">
+                <pos x="10999.291016" z="11847.226563" />
+                <pos x="11088.583984" z="12078.369141" />
+                <pos x="11255.254883" z="11983.467773" />
+                <pos x="11461.070313" z="11946.746094" />
+                <pos x="11337.553711" z="11625.295898" />
+                <pos x="11542.720703" z="12116.796875" />
+                <pos x="11735.972656" z="11646.174805" />
+            </group>
+            <group name="Stinik">
+                <pos x="12194.280273" z="9648.305664" />
+                <pos x="12120.241211" z="10174.108398" />
+                <pos x="12162.782227" z="9151.776367" />
+                <pos x="11886.427734" z="9175.244141" />
+                <pos x="11704.419922" z="9030.692383" />
+                <pos x="11679.166992" z="8431.100586" />
+                <pos x="11344.383789" z="8435.489258" />
+            </group>
+        </generator_posbubbles>
+    </hop>
+    <travel>
+        <spawn_params>
+            <min_dist_infected>30.0</min_dist_infected>
+            <max_dist_infected>70.0</max_dist_infected>
+            <min_dist_player>25.0</min_dist_player>
+            <max_dist_player>70.0</max_dist_player>
+            <min_dist_static>0.5</min_dist_static>
+            <max_dist_static>2.0</max_dist_static>
+        </spawn_params>
+        <generator_params>
+            <grid_density>4</grid_density>
+            <grid_width>150</grid_width>
+            <grid_height>150</grid_height>
+            <min_dist_static>0</min_dist_static>
+            <max_dist_static>2</max_dist_static>
+            <min_steepness>-45</min_steepness>
+            <max_steepness>45</max_steepness>
+        </generator_params>
+        <group_params>
+            <enablegroups>false</enablegroups>
+            <groups_as_regular>true</groups_as_regular>
+            <lifetime>360</lifetime>
+            <counter>-1</counter>
+        </group_params>
+        <generator_posbubbles>
+            <group name="Bielawa">
+                <pos x="1551.147461" z="9376.832031" />
+                <pos x="1316.421631" z="9290.530273" />
+                <pos x="1125.401978" z="9406.3779" />
+                <pos x="1303.298706" z="9696.295898" />
+                <pos x="1046.550293" z="9870.730469" />
+                <pos x="1478.784546" z="9896.9062" />
+                <pos x="1671.9162" z="9967.6533" />
+                <pos x="1730.648682" z="10292.320313" />
+                <pos x="1799.053955" z="9702.639648" />
+                <pos x="2084.579346" z="9576.885742" />
+                <pos x="1137.720215" z="10499.796875" />
+            </group>
+            <group name="Lukow">
+                <pos x="3724.534424" z="11622.162109" />
+                <pos x="3866.552734" z="11924.900391" />
+                <pos x="3651.272949" z="11959.685547" />
+                <pos x="3601.7116" z="12272.011719" />
+                <pos x="3234.377197" z="12099.676758" />
+                <pos x="3209.530518" z="12435.224609" />
+                <pos x="3349.539063" z="11843.341797" />
+            </group>
+            <group name="Brena">
+                <pos x="6953.732422" z="11815.594727" />
+                <pos x="7223.584961" z="11759.3466" />
+                <pos x="7153.2329" z="12043.008789" />
+                <pos x="6865.048828" z="12095.717773" />
+                <pos x="7690.549316" z="12160.602539" />
+                <pos x="7478.538086" z="12160.478516" />
+            </group>
+            <group name="Kolembrody">
+                <pos x="8264.328125" z="12142.592773" />
+                <pos x="8338.135742" z="12261.265625" />
+                <pos x="8426.248047" z="12478.8154" />
+                <pos x="8522.2812" z="12288.429688" />
+                <pos x="8725.990234" z="12425.084961" />
+                <pos x="8888.828125" z="12293.662109" />
+            </group>
+            <group name="Grabin">
+                <pos x="10999.291016" z="11847.226563" />
+                <pos x="11088.583984" z="12078.369141" />
+                <pos x="11255.254883" z="11983.467773" />
+                <pos x="11461.070313" z="11946.746094" />
+                <pos x="11337.553711" z="11625.295898" />
+                <pos x="11542.720703" z="12116.796875" />
+                <pos x="11735.972656" z="11646.174805" />
+            </group>
+            <group name="Stinik">
+                <pos x="12194.280273" z="9648.305664" />
+                <pos x="12120.241211" z="10174.108398" />
+                <pos x="12162.782227" z="9151.776367" />
+                <pos x="11886.427734" z="9175.244141" />
+                <pos x="11704.419922" z="9030.692383" />
+                <pos x="11679.166992" z="8431.100586" />
+                <pos x="11344.383789" z="8435.489258" />
+            </group>
+        </generator_posbubbles>
+    </travel>
+</playerspawnpoints>
