@@ -1,0 +1,29 @@
+name: BEILEYS47 | V32 Livonia 26-object no-overlap terrain solver
+on:
+  pull_request:
+    paths:
+      - "scripts/v32_zone47_clearance_solver.py"
+      - "scripts/test_v32_zone47_clearance_solver.py"
+      - ".github/workflows/v32-zone47-clearance.yml"
+permissions:
+  contents: read
+jobs:
+  geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - run: python -m py_compile scripts/v32_zone47_clearance_solver.py scripts/test_v32_zone47_clearance_solver.py
+      - run: python scripts/test_v32_zone47_clearance_solver.py
+      - run: python scripts/v32_zone47_clearance_solver.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V32_ZERO_VISUAL_OVERLAPS_NOT_PS5_VERIFIED
+          path: dist/v32/
+          retention-days: 14
+          if-no-files-found: ignore
