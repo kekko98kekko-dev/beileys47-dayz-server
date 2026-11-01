@@ -79,6 +79,10 @@ def build_config(old):
         index = list(root).index(target)
         replacement = xml_load(fragment.encode())
         require(replacement.get("name") == name, "Invalid vehicle patch name")
+        # Keep only cargo items supported by the current DayZ console types.
+        for cargo in list(replacement.findall("cargo")):
+            if any(item.get("name") == "JerryCan" for item in cargo.findall("item")):
+                replacement.remove(cargo)
         root.remove(target)
         root.insert(index, replacement)
     for name in ("Truck_01_Covered", "Truck_01_Covered_Blue", "Truck_01_Covered_Orange"):
