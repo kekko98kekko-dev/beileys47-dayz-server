@@ -1,0 +1,39 @@
+name: BEILEYS47 | V41 ONE-TIME approved truck install and restart
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v41-operator-truck-restart-once.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  operator-restart:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V40_APPROVED: "yes"
+      BEILEYS47_V41_ONE_TIME_KICK_ONE_PLAYER: "yes"
+      BEILEYS47_V41_ONE_TIME_RESTART: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - run: python -m py_compile scripts/v40_dolnik_truck_rescue.py scripts/test_v40_dolnik_truck_rescue.py
+      - run: python scripts/test_v40_dolnik_truck_rescue.py
+      - name: Owner-authorized one-time orderly restart and complete Dolnik rescue truck CE install
+        run: python scripts/v40_dolnik_truck_rescue.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V41_ONE_TIME_RESTART_ORIGINAL_BACKUP
+          path: |
+            deploy/v40/LIVE_TRUCK_RESULT.json
+            deploy/v40/PRIVATE_BEFORE_V40.zip
+          retention-days: 7
+          if-no-files-found: ignore
