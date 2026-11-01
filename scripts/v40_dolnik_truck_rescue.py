@@ -86,8 +86,8 @@ def select_nearby_site(grid,groups,custom,all_vehicle_positions):
     for scene in custom:
       for item in scene.get("Objects",[]):
         pos=item.get("pos")
-        if isinstance(pos,list) and len(pos)>=3 and
-            all(isinstance(v,(int,float)) for v in pos[:3]):
+        if (isinstance(pos,list) and len(pos)>=3 and
+            all(isinstance(v,(int,float)) for v in pos[:3])):
             if math.hypot(pos[0]-x0,pos[2]-z0)<120:
                 obstacles.append((pos[0],pos[2]))
     factor=(grid.shape[0]-1)/WORLD
@@ -200,8 +200,8 @@ def main():
     token=os.environ.get("NITRADO_API_TOKEN","").strip()
     guard(token and os.environ.get("BEILEYS47_V40_APPROVED")=="yes",
           "Owner authorized workflow or token missing")
-    if os.environ.get("GITHUB_EVENT_NAME")=="schedule" and
-        dt.datetime.now(dt.timezone.utc).date()>dt.date(2026,11,30):
+    if (os.environ.get("GITHUB_EVENT_NAME")=="schedule" and
+        dt.datetime.now(dt.timezone.utc).date()>dt.date(2026,11,30)):
         record(status="RENTAL_EXPIRED_NO_ACTION");return
     mission=resolve_mission(token)
     paths={p:posixpath.join(mission,p) for p in MISSION_FILES}
