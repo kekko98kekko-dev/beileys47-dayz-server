@@ -10,7 +10,8 @@ from v21_safe_discovery_messages import MESSAGES as V21_NOTICES
 
 REQUIRED=(
 "cfggameplay.json","custom/beileys47_v16_three_hotspots.json",
-"custom/beileys47_dolnik_military_base_v9.json","db/types.xml",
+"custom/beileys47_dolnik_military_base_v9.json",
+"custom/beileys47_v29_zone47_p1_guardbox.json","db/types.xml",
 "cfgspawnabletypes.xml","db/events.xml","cfgweather.xml",
 "mapgrouppos.xml","mapgroupproto.xml","db/messages.xml",
 "env/zombie_territories.xml","cfgeventspawns.xml",
@@ -23,6 +24,7 @@ def evaluate(gs,raw):
     gp=json.loads(raw["cfggameplay.json"])
     scene=json.loads(raw["custom/beileys47_v16_three_hotspots.json"])
     dolnik=json.loads(raw["custom/beileys47_dolnik_military_base_v9.json"])
+    p1=json.loads(raw["custom/beileys47_v29_zone47_p1_guardbox.json"])
     types=ET.fromstring(raw["db/types.xml"])
     spawn=ET.fromstring(raw["cfgspawnabletypes.xml"])
     events=ET.fromstring(raw["db/events.xml"])
@@ -52,6 +54,16 @@ def evaluate(gs,raw):
       "files":{k:{"sha256":hashlib.sha256(v).hexdigest(),"bytes":len(v)} for k,v in raw.items()},
       "v16_registered":"custom/beileys47_v16_three_hotspots.json" in gp["WorldsData"]["objectSpawnersArr"],
       "v16_scene_props":len(scene.get("Objects",[])),
+      "v29_p1_registered":"custom/beileys47_v29_zone47_p1_guardbox.json" in gp["WorldsData"]["objectSpawnersArr"],
+      "v29_p1_scene_count":len(p1.get("Objects",[])),
+      "v29_p1_exact_guardbox":any(
+        o.get("name")=="Land_Mil_GuardBox_Green"
+        and len(o.get("pos",[]))==3
+        and abs(o["pos"][0]-9057.3275)<0.001
+        and abs(o["pos"][1]-302.7723)<0.001
+        and abs(o["pos"][2]-7822.7058)<0.001
+        for o in p1.get("Objects",[])
+      ),
       "dolnik_tents":sum("Tent" in x.get("name","") for x in dolnik.get("Objects",[])),
       "rare_objects":special,
       "group_positions":len(ET.fromstring(raw["mapgrouppos.xml"]).findall("group")),
