@@ -8,7 +8,7 @@ Installata nel repository una prima automazione **SOLO LETTURA**:
 **Nessuna modifica è stata eseguita sul server Nitrado 20113048.** Nessun wipe, stop, riavvio o upload. Le vecchie configurazioni V11–V14 non vengono attivate da questa procedura.
 
 ## Preparazione unica (account proprietario)
-1. Apri Nitrado e accedi: https://server.nitrado.net/en/user/oauth/tokens
+1. Apri Nitrado e accedi: https://server.nitrado.net/eng/developer/tokens
    Se il link è cambiato, apri il profilo Nitrado > Developer Portal > Long Life Tokens.
 2. Genera un token chiamato **BEILEYS47 GitHub** con il SOLO scope `service`.
    NON selezionare `service_order` o permessi di pagamento.
