@@ -26,6 +26,10 @@ def main():
     assert [v.findtext("text") for v in root.findall("message")[4:]]==[x[1] for x in MESSAGES]
     assert max(len(t[1]) for t in MESSAGES)<=160
     assert all(v.findtext("shutdown")=="0" for v in root.findall("message"))
+    old_long=old.replace(b"Existing greeting 0",b"Existing greeting 0"+b"x"*180)
+    new_long=patch(old_long)
+    assert len(ET.fromstring(new_long).findall("message"))==6
+    assert b"Existing greeting 0"+b"x"*180 in new_long
     must_fail(new)   # duplicate or changed source
     must_fail(sample(3))
     must_fail(sample(5))

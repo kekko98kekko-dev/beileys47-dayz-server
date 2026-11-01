@@ -1,4 +1,5 @@
 name: BEILEYS47 | V21 guarded hotspot notices
+# Legacy notices are preserved as-is. Only new notices must be <=160 characters.
 on:
   pull_request:
     paths:

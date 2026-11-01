@@ -37,7 +37,8 @@ def patch(original:bytes):
     guard(root.tag=="messages","Wrong XML root")
     previous=root.findall("message")
     guard(len(previous)==4,"V20 message count differs; manual review required")
-    guard(all(len((m.findtext("text") or ""))<=160 for m in previous),"Existing message too long")
+    # Existing V16 notices are left untouched even if originally >160 chars.
+    # The 160-char rule applies to the two NEW notices only.
     guard(not any(m.findtext("shutdown")=="1" for m in previous),
           "Existing automatic shutdown rule: manual review before changing messages")
     targets=[]
