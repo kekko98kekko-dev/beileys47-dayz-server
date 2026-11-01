@@ -197,8 +197,9 @@ def build_config(old):
         require(len(blob) > 50, "Generated file too small: " + name)
     # Confirm every cargo classname from V13 exists in the live CE types.
     valid = {x.get("name") for x in types.findall("type")}
-    for vehicle in vehicle_patches.values():
-        for cargo in xml_load(vehicle.encode()).findall(".//cargo/item"):
+    for vehicle_name in vehicle_patches:
+        vehicle = find(root, "type", vehicle_name)
+        for cargo in vehicle.findall(".//cargo/item"):
             require(cargo.get("name") in valid, "Unknown console cargo type " + str(cargo.get("name")))
     return output
 
