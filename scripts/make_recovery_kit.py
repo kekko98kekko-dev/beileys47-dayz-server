@@ -311,6 +311,10 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V45_SAFE_GROUND_CLEANUP.md",
     "scripts/test_v45_safe_loot_ttl.py",
     "scripts/v45_safe_loot_ttl.py",
+    ".github/workflows/v46-one-off-dolnik-and-loot.yml",
+    "docs/BEILEYS47_V46_ONE_RESTART_SAFETY.md",
+    "scripts/test_v46_one_off_truck_and_loot_restart.py",
+    "scripts/v46_one_off_truck_and_loot_restart.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
