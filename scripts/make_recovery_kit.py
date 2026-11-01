@@ -269,6 +269,10 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V31_FULL_ZONE47_RELEASE_GATE.md",
     "scripts/test_v31_full_zone47_dryrun.py",
     "scripts/v31_full_zone47_dryrun.py",
+    ".github/workflows/v32-zone47-clearance.yml",
+    "docs/BEILEYS47_V32_RELOCATED_ZONE47.md",
+    "scripts/test_v32_zone47_clearance_solver.py",
+    "scripts/v32_zone47_clearance_solver.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
