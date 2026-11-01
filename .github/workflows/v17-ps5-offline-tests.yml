@@ -1,0 +1,30 @@
+name: BEILEYS47 | V17 offline PS5 acceptance validation
+on:
+  push:
+    paths:
+      - "scripts/v17_ps5_acceptance.py"
+      - "scripts/test_v17_ps5_acceptance.py"
+      - "deploy/v17/PS5_ACCEPTANCE.template.json"
+      - ".github/workflows/v17-ps5-offline-tests.yml"
+  pull_request:
+    paths:
+      - "scripts/v17_ps5_acceptance.py"
+      - "scripts/test_v17_ps5_acceptance.py"
+      - "deploy/v17/PS5_ACCEPTANCE.template.json"
+      - ".github/workflows/v17-ps5-offline-tests.yml"
+permissions:
+  contents: read
+jobs:
+  offline-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/test_v17_ps5_acceptance.py
+      - name: Validate conservative result of empty acceptance template
+        run: |
+          python scripts/v17_ps5_acceptance.py deploy/v17/PS5_ACCEPTANCE.template.json > /tmp/acceptance.json
+          python -c 'import json; d=json.load(open("/tmp/acceptance.json")); assert d["ps5_acceptance"]=="not_verified"; assert d["no_wipe_verified"] is False'
