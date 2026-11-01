@@ -1,0 +1,61 @@
+name: BEILEYS47 | Shorter nights (safe API)
+on:
+  push:
+    paths:
+      - "scripts/v16_night.py"
+      - ".github/workflows/v16-night.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-night-setting
+  cancel-in-progress: false
+jobs:
+  adjust:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Only adjust clearly identified nighttime setting at 0 players
+        run: python scripts/v16_night.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BEILEYS47_V16_NIGHT_RESULT
+          path: deploy/v16/NIGHT_RESULT.json
+          retention-days: 5
+          if-no-files-found: ignore
+  publish:
+    needs: adjust
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Record run ID and success, not claim a setting without report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RID: ${{ github.run_id }}
+          RESULT: ${{ needs.adjust.result }}
+        run: |
+          python - <<'PY'
+          import os,json,base64,urllib.request,urllib.error
+          url="https://api.github.com/repos/"+os.environ["REPO"]+"/contents/deploy/v16/NIGHT_WORKFLOW.json"
+          h={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json",
+             "Content-Type":"application/json","User-Agent":"BEILEYS47-night"}
+          sha=None
+          try:
+            with urllib.request.urlopen(urllib.request.Request(url,headers=h),timeout=30) as r:sha=json.load(r)["sha"]
+          except urllib.error.HTTPError as e:
+            if e.code!=404:raise
+          b=(json.dumps({"run_id":os.environ["RID"],"outcome":os.environ["RESULT"]},indent=2)+"\n").encode()
+          o={"message":"Record night-adjustment workflow outcome","content":base64.b64encode(b).decode()}
+          if sha:o["sha"]=sha
+          with urllib.request.urlopen(urllib.request.Request(url,headers=h,
+              data=json.dumps(o).encode(),method="PUT"),timeout=30) as r:print(r.status)
+          PY
