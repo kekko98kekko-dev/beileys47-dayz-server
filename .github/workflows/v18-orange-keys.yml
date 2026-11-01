@@ -1,0 +1,52 @@
+name: BEILEYS47 | V18 guarded orange case key repair
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/v18-orange-keys.yml"
+  pull_request:
+    paths:
+      - ".github/workflows/v18-orange-keys.yml"
+      - "scripts/v18_orange_key_fix.py"
+      - "scripts/test_v18_orange_key_fix.py"
+concurrency:
+  group: BEILEYS47-V18-ORANGE-ONE-TIME
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  offline-validation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v18_orange_key_fix.py scripts/test_v18_orange_key_fix.py
+      - run: python scripts/test_v18_orange_key_fix.py
+  guarded-apply:
+    needs: offline-validation
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V18_ORANGE_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: One-file, checksum-guarded no-wipe patch; save rollback first
+        run: python scripts/v18_orange_key_fix.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V18_ORANGE_PRIVATE_ROLLBACK_AND_REPORT
+          path: |
+            deploy/v18/private_predeploy_types_backup.zip
+            deploy/v18/ORANGE_KEY_RESULT.json
+          retention-days: 7
+          if-no-files-found: ignore
