@@ -24,3 +24,13 @@ A PS5 tester must visit approximately X9057 Z7823, observe whether the guard box
 **No automatic P3/P5 or full 26-structure deploy.** If P1 fails, remove only the newly appended JSON reference using the saved exact original gameplay; do not wipe world storage.
 
 Official Bohemia Object Spawner: https://community.bistudio.com/wiki/DayZ:Object_Spawner
+
+## V29 live status — independently verified, 1 November 2026
+
+- [Reviewed V29 PR #52](https://github.com/kekko98kekko-dev/beileys47-dayz-server/pull/52): merged after passing offline and project-wide CI.
+- [Nitrado P1 install run 41306956859](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41306956859): **SUCCESS**. Exactly 1 guardbox Object Spawner was installed at the central Livonia target, both new and updated files passed SHA readback, and the server restarted. No wipe or player-storage edit action.
+- [Independent live Nitrado audit 41307201374](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41307201374): **SUCCESS**. Service `started`, 0 players at audit; 32 original V16 world props retained, V29 P1 registered with exactly one `Land_Mil_GuardBox_Green` at the calibrated X/Y/Z, V20 sprint settings enabled, six V21 messages present, CE keys/weather and vanilla events intact.
+- [Private V29 config rollback ZIP, artifact 13084040649](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41306956859/artifacts/13084040649): 7-day retention; does not include world persistence.
+- **NOT VERIFIED:** model actually rendered on PS5, correct above-ground pivot height, doors, collision, safe access, PS4 FPS, persistence through game updates. This cannot be inferred from successful file readback.
+- **Do not deploy P3/P5 or the remaining 25 props** until P1 in-game evidence establishes compatibility and placement. The original Radunin PvP hotspot remains a separate area.
+
