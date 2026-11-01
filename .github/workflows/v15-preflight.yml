@@ -1,0 +1,38 @@
+name: BEILEYS47 | V15 Preflight (NO WRITES)
+on:
+  push:
+    paths:
+      - "scripts/deploy_beileys47_v15.py"
+      - "deploy/v15/vehicle_changes_b64.txt"
+      - ".github/workflows/v15-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  validate:
+    name: Live Nitrado configs downloaded and validated locally; NO WRITES
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V15_APPROVED: "yes"
+      BEILEYS47_V15_MODE: "validate"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate Python syntax
+        run: |
+          python -m py_compile scripts/nitrado_snapshot.py scripts/deploy_beileys47_v15.py
+      - name: Fetch exact live files, verify SHA guard and test full V15 merge without writing to Nitrado
+        run: python scripts/deploy_beileys47_v15.py
+      - name: Save only non-sensitive dry-run checksums
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V15_PREFLIGHT
+          path: deploy/v15/deploy_result.json
+          if-no-files-found: ignore
+          retention-days: 2
