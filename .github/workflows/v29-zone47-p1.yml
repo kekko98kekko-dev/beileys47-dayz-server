@@ -1,0 +1,51 @@
+name: BEILEYS47 | V29 single-object Zone47 field pilot
+on:
+  pull_request:
+    paths:
+      - "scripts/v29_zone47_p1_pilot.py"
+      - "scripts/test_v29_zone47_p1_pilot.py"
+      - ".github/workflows/v29-zone47-p1.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v29-zone47-p1.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-V29-P1-ONCE
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v29_zone47_p1_pilot.py scripts/test_v29_zone47_p1_pilot.py
+      - run: python scripts/test_v29_zone47_p1_pilot.py
+  guarded-pilot:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V29_PILOT_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install exactly one guardbox only if no players and unchanged verified gameplay
+        run: python scripts/v29_zone47_p1_pilot.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V29_P1_PRIVATE_ROLLBACK_AND_RESULT
+          path: |
+            deploy/v29/RESULT.json
+            deploy/v29/private_original_cfggameplay.zip
+          retention-days: 7
+          if-no-files-found: ignore
