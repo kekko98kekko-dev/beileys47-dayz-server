@@ -291,6 +291,10 @@ SOURCE_PATHS = [
     "scripts/v37_zone47_infected_patches.py",
     ".github/workflows/v39-truck-audit.yml",
     "scripts/v39_truck_live_audit.py",
+    ".github/workflows/v40-dolnik-full-truck.yml",
+    "docs/BEILEYS47_V40_DOLNIK_TRUCK.md",
+    "scripts/test_v40_dolnik_truck_rescue.py",
+    "scripts/v40_dolnik_truck_rescue.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
