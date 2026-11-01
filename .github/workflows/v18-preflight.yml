@@ -53,6 +53,11 @@ jobs:
           assert d["v29_p1_scene_count"]==1, "V29 must contain exactly one object"
           assert d["v29_p1_exact_guardbox"], "V29 exact calibrated model/XYZ mismatch"
           print("V29 INDEPENDENT READBACK: one P1 guardbox registered; PS5 placement and collision pending.")
+          assert d["v35_registered"], "V35 full 25-prop scene not registered in live gameplay"
+          assert d["v35_scene_count"] == 25, "V35 must contain exactly 25 additional objects"
+          assert d["v35_exactly_matches_versioned_25"], "V35 live scene differs from reviewed original 25 props"
+          assert d["v35_total_zone47_scene_objects"] == 26, "ZONA47 count differs"
+          print("V35 INDEPENDENT READBACK VERIFIED: 25 new objects exactly matching versioned scene plus existing P1; in-game placement still pending.")
           PY
       - if: always()
         uses: actions/upload-artifact@v4
