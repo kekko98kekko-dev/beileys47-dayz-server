@@ -1,0 +1,31 @@
+name: BEILEYS47 | V19 nine-feature release evidence
+on:
+  push:
+    paths:
+      - ".github/workflows/v19-release-evidence.yml"
+      - "scripts/v19_release_gate.py"
+      - "scripts/test_v19_release_gate.py"
+  pull_request:
+    paths:
+      - ".github/workflows/v19-release-evidence.yml"
+      - "scripts/v19_release_gate.py"
+      - "scripts/test_v19_release_gate.py"
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v19_release_gate.py scripts/test_v19_release_gate.py
+      - run: python scripts/test_v19_release_gate.py
+      - run: python scripts/v19_release_gate.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V19_TRUTHFUL_FEATURE_STATUS
+          path: deploy/v19/FEATURE_GATE.json
+          retention-days: 30
