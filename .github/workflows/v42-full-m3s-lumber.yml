@@ -9,8 +9,6 @@ on:
       - "scripts/v42_full_m3s_lumber_racks.py"
       - "scripts/test_v42_full_m3s_lumber_racks.py"
       - ".github/workflows/v42-full-m3s-lumber.yml"
-  schedule:
-    - cron: "29 * * * *"
   workflow_dispatch:
 permissions:
   contents: read
