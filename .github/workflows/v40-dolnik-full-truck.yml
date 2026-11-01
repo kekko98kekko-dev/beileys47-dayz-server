@@ -1,7 +1,5 @@
 name: BEILEYS47 | V40 Dolnik full truck + 64-slot Field Backpack
 on:
-  schedule:
-    - cron: "17 * * * *"
   workflow_dispatch:
   pull_request:
     paths:
