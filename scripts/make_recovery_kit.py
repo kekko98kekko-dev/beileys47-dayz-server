@@ -307,6 +307,10 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V44_ONE_ORIGINAL_M3S_REALITY.md",
     "scripts/test_v44_single_original_dolnik_truck.py",
     "scripts/v44_single_original_dolnik_truck.py",
+    ".github/workflows/v45-ground-clutter-ttl.yml",
+    "docs/BEILEYS47_V45_SAFE_GROUND_CLEANUP.md",
+    "scripts/test_v45_safe_loot_ttl.py",
+    "scripts/v45_safe_loot_ttl.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
