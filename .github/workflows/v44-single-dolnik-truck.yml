@@ -1,0 +1,54 @@
+name: BEILEYS47 | V44 ONE final Dolnik M3S at original location
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v44-single-dolnik-truck.yml"
+  pull_request:
+    paths:
+      - "scripts/v44_single_original_dolnik_truck.py"
+      - "scripts/test_v44_single_original_dolnik_truck.py"
+      - ".github/workflows/v44-single-dolnik-truck.yml"
+  schedule:
+    - cron: "43 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  offline-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v44_single_original_dolnik_truck.py scripts/test_v44_single_original_dolnik_truck.py
+      - run: python scripts/test_v44_single_original_dolnik_truck.py
+  protected-live:
+    needs: offline-tests
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V44_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install one original-point fully equipped Dolnik M3S, preserve old persistent vehicles, no wipe
+        run: python scripts/v44_single_original_dolnik_truck.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V44_DOLNIK_ULTIMATE_AND_CONFIG_ROLLBACK
+          path: |
+            deploy/v44/DOLNIK_ULTIMATE_RESULT.json
+            deploy/v44/PRIVATE_ORIGINAL_DOLNIK_XML.zip
+          retention-days: 7
+          if-no-files-found: ignore
