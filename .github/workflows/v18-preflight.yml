@@ -37,6 +37,15 @@ jobs:
           assert d["night_multiplier"] in {8,"8","8.0"}
           assert d["heli_nominal"]=="5" and d["convoy_nominal"]=="5"
           print("POSTDEPLOY VERIFIED: orange case keys, V16 scenery, Dolnik, weather and events; no console gameplay claim.")
+          stamina=d["v20_sprint_settings"]
+          movement=d["v20_movement_settings"]
+          assert stamina["sprintStaminaModifierErc"]==0
+          assert stamina["sprintStaminaModifierCro"]==0
+          assert stamina["staminaKgToStaminaPercentPenalty"]==0
+          assert movement["timeToSprint"]==0.01
+          assert movement["timeToStrafeSprint"]==0.01
+          assert d["gameplay_json_switch"]!="disabled"
+          print("V20 READBACK VERIFIED: sprint drains=0, weight penalty=0, sprint transitions=0.01; gameplay toggle:",d["gameplay_json_switch"],"; PS5 test still pending.")
           PY
       - if: always()
         uses: actions/upload-artifact@v4
