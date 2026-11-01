@@ -1,5 +1,15 @@
 # BEILEYS47 | Premium Survival War — V21 release package
 
+## Verified V21 result — 1 November 2026
+
+- [PR #46](https://github.com/kekko98kekko-dev/beileys47-dayz-server/pull/46) and compatibility [PR #47](https://github.com/kekko98kekko-dev/beileys47-dayz-server/pull/47) merged after CI success.
+- Initial V21 message deployment run 41301785194 correctly **blocked with no changes** because an existing server message was longer than the documented 160-character maximum. The correction preserved legacy text untouched.
+- [Guarded live V21 message deployment 41301975499](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41301975499): SUCCESS. Exactly 2 new messages installed into `db/messages.xml` while preserving all 4 existing messages, normal restart completed and SHA readback verified. No world/storage/wipe operations.
+- [Independent Nitrado audit 41302188916](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41302188916): SUCCESS, service `started`, 6 messages and both new notices present exactly once, V20 stamina switch enabled, V16 32 objects, Dolnik tents and night values intact.
+- [Daily monitoring initial run 41302266799](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41302266799): SUCCESS. Future GitHub daily read-only runs scheduled, but schedule execution time is not guaranteed and provider data may be temporarily unavailable.
+- [Private configuration rollback archive 13082041609](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41301975499/artifacts/13082041609) retained for 5 days. Configuration backup is **NOT** a player-world persistence backup.
+- PS5/PS4 in-game visual test **not performed**. The 240×220 original outpost, new bunker interior and unimplemented scripted systems are **not** falsely counted as done.
+
 **Purpose:** make the existing, verified V20 game server easier to discover, understand, explore, and manage while the original 240×220 m ZONA 47 construction is still blocked by missing real PS5 terrain/physics evidence.
 
 ## Public gameplay identity
