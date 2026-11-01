@@ -19,7 +19,7 @@ def expect_blocked(blob):
 def main():
     before=base()
     after,changed=patch(before)
-    assert changed and len(after)>len(before)
+    assert changed and len(after)==len(before)
     assert patch(after)==(after,False)
     assert sha(before)!=sha(after)
     assert b'<nominal>2</nominal><min>1</min><usage name="Military"/>' in after
