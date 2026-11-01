@@ -265,6 +265,10 @@ SOURCE_PATHS = [
     ".github/workflows/v30-live-terrain-audit.yml",
     "scripts/v30_live_prop_ground_audit.py",
     "docs/BEILEYS47_V30_HEIGHT_DIFF_AND_NEXT_TESTS.md",
+    ".github/workflows/v31-zone47-full-preview.yml",
+    "docs/BEILEYS47_V31_FULL_ZONE47_RELEASE_GATE.md",
+    "scripts/test_v31_full_zone47_dryrun.py",
+    "scripts/v31_full_zone47_dryrun.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",

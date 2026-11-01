@@ -1,0 +1,32 @@
+name: BEILEYS47 | V31 complete 26-placement ZONA47 offline geometry gate
+on:
+  pull_request:
+    paths:
+      - "scripts/v31_full_zone47_dryrun.py"
+      - "scripts/test_v31_full_zone47_dryrun.py"
+      - ".github/workflows/v31-zone47-full-preview.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v31-zone47-full-preview.yml"
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v31_full_zone47_dryrun.py scripts/test_v31_full_zone47_dryrun.py
+      - run: python scripts/test_v31_full_zone47_dryrun.py
+      - run: python scripts/v31_full_zone47_dryrun.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V31_COMPLETE_26_SITE_CONCEPT_NO_DEPLOY
+          path: |
+            dist/v31/BEILEYS47_ZONE47_25_EXPERIMENTAL_NOT_ACTIVE.json
+            dist/v31/GEOMETRY_AND_DEPLOY_GATE.json
+          retention-days: 14
