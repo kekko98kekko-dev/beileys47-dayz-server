@@ -49,6 +49,10 @@ jobs:
           assert d["messages_count"] == 6, "V21 message total differs"
           assert d["v21_messages_exactly_present"], "V21 two notices not present exactly once"
           print("V21 READBACK VERIFIED: all 6 messages on Nitrado; two V21 destination notices exactly present.")
+          assert d["v29_p1_registered"], "V29 P1 not in gameplay object spawner registry"
+          assert d["v29_p1_scene_count"]==1, "V29 must contain exactly one object"
+          assert d["v29_p1_exact_guardbox"], "V29 exact calibrated model/XYZ mismatch"
+          print("V29 INDEPENDENT READBACK: one P1 guardbox registered; PS5 placement and collision pending.")
           PY
       - if: always()
         uses: actions/upload-artifact@v4
