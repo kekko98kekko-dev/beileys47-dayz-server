@@ -1,0 +1,53 @@
+name: BEILEYS47 | V45 preserve bases while clearing old loose loot within 4h
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v45-ground-clutter-ttl.yml"
+  pull_request:
+    paths:
+      - "scripts/v45_safe_loot_ttl.py"
+      - "scripts/test_v45_safe_loot_ttl.py"
+      - ".github/workflows/v45-ground-clutter-ttl.yml"
+  schedule:
+    - cron: "53 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v45_safe_loot_ttl.py scripts/test_v45_safe_loot_ttl.py
+      - run: python scripts/test_v45_safe_loot_ttl.py
+  install-when-idle:
+    needs: test
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V45_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/v45_safe_loot_ttl.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V45_SAFE_LOOSE_LOOT_TTL_AND_ROLLBACK
+          path: |
+            deploy/v45/ORDINARY_LOOT_CLEANUP_STATUS.json
+            deploy/v45/PRIVATE_TYPES_BEFORE_TTL.zip
+          retention-days: 7
+          if-no-files-found: ignore
