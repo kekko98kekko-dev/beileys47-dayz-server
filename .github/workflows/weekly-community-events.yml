@@ -27,7 +27,8 @@ jobs:
           modes=[
             ("ZONA 47 PvP Arena", "Fight for control of ZONA 47 around X7100 Z6965. Hold the center and survive the infected."),
             ("Bunker Siege", "Fight over the fortified original bunker near X9022 Z7458, take the high-value loot and escape."),
-            ("Dolnik Survival Rescue", "Teams race to Dolnik's medical and military camps near X11490 Z460. Recover supplies and protect the extraction group.")
+            ("Dolnik Survival Rescue", "Teams race to Dolnik's medical and military camps near X11490 Z460. Recover supplies and protect the extraction group.",
+            ("Convoy Scavenger", "Hunt vanilla military convoys across Livonia, recover rare supplies and extract safely. No guaranteed event spawns.")
           ]
           title,objective=modes[week%len(modes)]
           issue_title=f"{tag} | {title}"
