@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - ".github/workflows/v24-elevation-probe.yml"
+      - "scripts/v24_elevation_source_probe.py"
 permissions:
   contents: read
 jobs:
