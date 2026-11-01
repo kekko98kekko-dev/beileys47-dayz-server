@@ -1,0 +1,50 @@
+name: BEILEYS47 | V23 guarded vehicle CE consistency fix
+on:
+  pull_request:
+    paths:
+      - "scripts/v23_vehicle_consistency.py"
+      - "scripts/test_v23_vehicle_consistency.py"
+      - ".github/workflows/v23-vehicle-ce.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/v23-vehicle-ce.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-V23-MOTORCYCLE-ONCE
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/test_v23_vehicle_consistency.py
+  guarded-install:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V23_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/v23_vehicle_consistency.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V23_GUARDED_CE_REPORT
+          path: |
+            deploy/v23/RESULT.json
+            deploy/v23/private_events_before_v23.zip
+          retention-days: 7
+          if-no-files-found: ignore
