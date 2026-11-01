@@ -223,6 +223,10 @@ SOURCE_PATHS = [
     ".github/workflows/v18-preflight.yml",
     "docs/BEILEYS47_V18_READONLY_PREFLIGHT.md",
     "scripts/v18_live_preflight.py",
+    ".github/workflows/v18-orange-keys.yml",
+    "docs/BEILEYS47_V18_ORANGE_KEY_CHANGE.md",
+    "scripts/test_v18_orange_key_fix.py",
+    "scripts/v18_orange_key_fix.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
