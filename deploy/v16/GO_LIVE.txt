@@ -3,3 +3,4 @@ Scope: add protected ZONA47 Radunin defenses and loot points, fortify existing v
 Safety: keep V15 custom vehicles, rain without fog, players, bases and storage untouched; require zero player count, no wipe; validate new XML/JSON, verify every uploaded file by readback SHA256, restart.
 Known limitations: custom vertical terrain Y approximate; gameplay needs PS5 visual checks; not a scripted weekly reward or calendar-based 15-day refill.
 This file triggers one guarded workflow as authorized.
+Retry V16 2026-11-01: corrected invalid red shipping key class to available GunCaseKeys_Red. Prior preflight failed safely with no writes.
