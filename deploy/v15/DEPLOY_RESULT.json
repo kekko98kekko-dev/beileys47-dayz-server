@@ -1,10 +1,10 @@
 {
   "service_id": 20113048,
   "version": "V15",
-  "preflight_job": "failure",
-  "deployment_job": "skipped",
-  "deployment_confirmed_by_workflow": false,
+  "preflight_job": "success",
+  "deployment_job": "success",
+  "deployment_confirmed_by_workflow": true,
   "ps5_runtime_tested": false,
   "wipe_performed": false,
-  "run_id": "41293999592"
+  "run_id": "41294393297"
 }
