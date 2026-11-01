@@ -5,3 +5,5 @@ Conditions: pass real API preflight; player count 0 before server stop; sha-veri
 Agreed scope: V14 Dolnik 2 tents; V13 17 vehicle variants with rich construction trucks and rare gun cases; dynamic rain/wind/storm with no fog; one fixed Dolnik M3S test event; increased truck and heli/convoy nominal; new lumber piles max quantity; preserve all other live files.
 Not guaranteed: instant truck replacement, 15-day persistence refill, bunker/custom lock mechanics, in-game PS5 verification; do not call 100% without tests.
 This marker triggers the guarded V15 workflow ONCE.
+
+Retry V15 after first preflight exposed a truncated staged vehicle patch; repaired asset is 2636 chars. Authorization unchanged.
