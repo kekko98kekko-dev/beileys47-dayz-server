@@ -33,7 +33,7 @@ def main():
     files=fake_files()
     assert not installed(files)
     terrain=np.full((2048,2048),215.3,dtype=np.float32)
-    groups=parse(b'<map>')
+    groups=parse(b'<map/>')
     site=select_nearby_site(terrain,groups,[],[(ORIG[0],ORIG[1])])
     assert 35<=site["distance_from_original_m"]<=55
     assert site["terrain_relief_20m"]==0
