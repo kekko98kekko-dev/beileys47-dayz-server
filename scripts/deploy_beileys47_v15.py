@@ -278,6 +278,13 @@ def main():
         print("Read:", rel, flush=True)
     output = build_config(files)
     print("V15 seven-file static validation passed; Dolnik two tents; no wipe.",flush=True)
+    if os.environ.get("BEILEYS47_V15_MODE") == "validate":
+        report(status="preflight_validated", file_sha256={key:digest(value) for key,value in output.items()},
+               wipe=False, file_changes_live=False, ps5_tested=False)
+        print("PREFLIGHT ONLY: seven files validated locally; Nitrado untouched.",flush=True)
+        return
+    require(os.environ.get("BEILEYS47_V15_MODE") == "deploy",
+            "Invalid mode: must be validate or deploy")
     gs = game_state(token)
     count = players(gs)
     require(count == 0, "Player count unknown or nonzero: NO DEPLOY")
