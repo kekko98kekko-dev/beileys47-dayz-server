@@ -1,0 +1,26 @@
+name: BEILEYS47 | Decode Livonia public heightfield format
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v26-heightmap-inspect.yml"
+permissions:
+  contents: read
+jobs:
+  decode:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v26_heightmap_inspect.py
+      - run: python scripts/v26_heightmap_inspect.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V26_PUBLIC_HEIGHT_ENCODING_DIAGNOSTIC
+          path: deploy/v26/HEIGHT_ENCODING_DIAGNOSTIC.json
+          retention-days: 3
+          if-no-files-found: ignore
