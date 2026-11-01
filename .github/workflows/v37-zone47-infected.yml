@@ -16,7 +16,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: BEILEYS47-WORLD-EDIT-V37
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
   cancel-in-progress: false
 jobs:
   test:
