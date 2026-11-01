@@ -1,0 +1,77 @@
+name: BEILEYS47 | V28 persist calibrated 26-point Livonia terrain survey
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v28-save-terrain-survey.yml"
+permissions:
+  contents: write
+concurrency:
+  group: BEILEYS47-V28-ONE-SURVEY
+  cancel-in-progress: false
+jobs:
+  ground-survey:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - run: python scripts/v27_zone47_real_heights.py
+      - name: Persist ONLY calibrated numeric placements, not proprietary raw heightmap
+        run: |
+          python - <<'PY'
+          import json,math
+          from pathlib import Path
+          source=json.loads(Path("deploy/v27/ZONE47_REAL_ELEVATION_CANDIDATES.json").read_text())
+          assert source.get("orientation_confirmed_from_vanilla_objects") is True
+          sites=source.get("candidate_sites",[])
+          assert len(sites)==3 and all(len(s["placements"])==26 for s in sites)
+          assert sites[0]["center_x"]==9000 and sites[0]["center_z"]==7800
+          for s in sites:
+            for p in s["placements"]:
+              assert all(math.isfinite(float(p[k])) for k in ("x","terrain_y","z"))
+              assert 0<=p["x"]<=12800 and 0<=p["z"]<=12800
+              assert 130<p["terrain_y"]<650
+              assert p["ready_for_PS5_spawn"] is False
+          result={
+            "project":"BEILEYS47 | DAYZ SURVIVAL WAR",
+            "phase":"V28 public terrain-calibrated survey",
+            "source_heightmap":source["source_heightmap"],
+            "reference":source["official_group_source"],
+            "calibration_top_6":source["calibration_top_6"],
+            "vanilla_groups_compared":source["vanilla_groups_compared"],
+            "class_candidate_catalog":source.get("dzpage_catalog_verification"),
+            "selected_site":"central",
+            "selected_site_ground_based":True,
+            "live_objects_added":False,
+            "ps4_ps5_tested":False,
+            "deployment_allowed":False,
+            "remaining_reasons":source["remaining_reasons"],
+            "candidate_sites":sites
+          }
+          path=Path("config/stage4_14_public_terrain_survey.json")
+          path.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n")
+          print("READY TO COMMIT:",path,
+            "26 elevations at center X9000 Z7800 plus 52 alternatives.")
+          PY
+      - name: Commit reproducible 26 elevations per site to project source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/stage4_14_public_terrain_survey.json
+          if git diff --cached --quiet; then
+            echo "No changes to calibrated survey"
+          else
+            git commit -m "V28: persist verified public Livonia ground Y for all ZONA47 candidate sites (NO deploy)"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V28_CALIBRATED_PUBLIC_TERRAIN
+          path: config/stage4_14_public_terrain_survey.json
+          retention-days: 15
