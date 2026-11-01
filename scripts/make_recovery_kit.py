@@ -234,6 +234,10 @@ SOURCE_PATHS = [
     "scripts/test_v19_release_gate.py",
     "scripts/v19_plank_maintenance.py",
     "scripts/v19_release_gate.py",
+    ".github/workflows/v20-sprint.yml",
+    "docs/BEILEYS47_V20_SPRINT.md",
+    "scripts/test_v20_unlimited_sprint.py",
+    "scripts/v20_unlimited_sprint.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",

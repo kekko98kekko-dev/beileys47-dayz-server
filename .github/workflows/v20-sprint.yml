@@ -1,0 +1,52 @@
+name: BEILEYS47 | V20 unlimited sprint (guarded no-wipe)
+on:
+  pull_request:
+    paths:
+      - "scripts/v20_unlimited_sprint.py"
+      - "scripts/test_v20_unlimited_sprint.py"
+      - ".github/workflows/v20-sprint.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/v20-sprint.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-V20-SPRINT-ONCE
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v20_unlimited_sprint.py scripts/test_v20_unlimited_sprint.py
+      - run: python scripts/test_v20_unlimited_sprint.py
+  install:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V20_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Upload one validated gameplay file with backup and restart only at 0 players
+        run: python scripts/v20_unlimited_sprint.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V20_INSTALL_AUDIT_AND_RESTORE
+          path: |
+            deploy/v20/RESULT.json
+            deploy/v20/private_cfggameplay_before_v20.zip
+          retention-days: 5
+          if-no-files-found: ignore
