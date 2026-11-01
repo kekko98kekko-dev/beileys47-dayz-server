@@ -137,7 +137,7 @@ def main():
                   "class_candidate_unverified":role.get("proposed_visual_model_classname"),
                   "x":round(xx,4),"terrain_y":round(ground,4),"z":round(zz,4),
                   "local_12m_ground_relief_m":round(float(np.max(heights)-np.min(heights)),3),
-                  "ground_y_source":"DZPage public Livonia 4096² float32 game-derived raster",
+                  "ground_y_source":"DZPage public Livonia 2048² float32 game-derived raster",
                   "object_origin_y_not_determined":True,"ready_for_PS5_spawn":False})
             out.append({"region":site["region"],"center_x":cx,"center_z":cz,
                 "rotation_degrees":angle,"placements":placements,
