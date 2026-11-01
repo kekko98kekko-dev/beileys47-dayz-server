@@ -57,6 +57,12 @@ jobs:
           An additional prize for winners can be organized manually by server admins.
           Automated distribution to winners is NOT available on console through XML alone.
 
+          **Winner claims / scoring (admin-controlled, not an in-game script):**
+          - After the event, a server admin verifies the result with player-supplied evidence; participants' claims do not automatically determine a winner.
+          - The admin may record a pseudonymous winner and prize status in this issue. Do not publish private PSN account data.
+          - If an extra reward is agreed, an admin must transfer it in game manually after confirming player identity and inventory capacity.
+          - Mark delivery COMPLETE only after the recipient confirms the item was physically received on PS5.
+
           *This announcement is automatic. The game is not restarted and no loot is force-spawned by this workflow.*
           """
               req=urllib.request.Request(api,headers=headers,method="POST",
