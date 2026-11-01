@@ -252,6 +252,12 @@ SOURCE_PATHS = [
     ".github/workflows/v24-elevation-probe.yml",
     "scripts/v25_dzpage_network_probe.mjs",
     ".github/workflows/v25-livonia-browser.yml",
+    ".github/workflows/v26-heightmap-inspect.yml",
+    ".github/workflows/v27-terrain-survey.yml",
+    ".github/workflows/v28-save-terrain-survey.yml",
+    "config/stage4_14_public_terrain_survey.json",
+    "scripts/v26_heightmap_inspect.py",
+    "scripts/v27_zone47_real_heights.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
