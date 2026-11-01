@@ -1,10 +1,10 @@
 {
   "service_id": 20113048,
   "version": "V16",
-  "preflight": "failure",
-  "install": "skipped",
-  "installed_according_to_workflow": false,
+  "preflight": "success",
+  "install": "success",
+  "installed_according_to_workflow": true,
   "ps5_tested": false,
   "wipe": false,
-  "run_id": "41295574417"
+  "run_id": "41295681527"
 }
