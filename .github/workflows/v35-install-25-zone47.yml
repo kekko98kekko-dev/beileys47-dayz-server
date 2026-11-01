@@ -1,0 +1,51 @@
+name: BEILEYS47 | V35 INSTALL 25 ZONA47 OBJECTS ON NITRADO
+on:
+  pull_request:
+    paths:
+      - "scripts/v35_install_25_zone47.py"
+      - "scripts/test_v35_install_25_zone47.py"
+      - ".github/workflows/v35-install-25-zone47.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v35-install-25-zone47.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-WORLD-INSTALL-20261101
+  cancel-in-progress: false
+jobs:
+  offline-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v35_install_25_zone47.py scripts/test_v35_install_25_zone47.py
+      - run: python scripts/test_v35_install_25_zone47.py
+  protected-live-install:
+    needs: offline-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V35_OWNER_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Actual protected live Nitrado installation, original backup, readbacks, safe restart
+        run: python scripts/v35_install_25_zone47.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V35_PRIVATE_ORIGINAL_AND_INSTALL_REPORT
+          path: |
+            deploy/v35/LIVE_DEPLOY_RESULT.json
+            deploy/v35/private_live_before_v35.zip
+          retention-days: 7
+          if-no-files-found: ignore
