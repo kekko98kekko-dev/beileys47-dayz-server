@@ -20,6 +20,24 @@ jobs:
           python-version: "3.12"
       - run: python -m py_compile scripts/v18_live_preflight.py
       - run: python scripts/v18_live_preflight.py
+      - name: Verify independent V18 post-deploy key and V16 invariants
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("deploy/v18/LIVE_PREFLIGHT.json",encoding="utf-8"))
+          assert d["status"] in {"started","running"}
+          assert d["v16_registered"] and d["v16_scene_props"]==32
+          assert d["dolnik_tents"]==2
+          assert d["med_tent_lootmax"]=="10" and d["mil_tent_lootmax"]=="8"
+          orange=d["rare_objects"]["GunCaseKeys_Orange"]
+          assert orange["nominal"]==2 and orange["minimum"]==1
+          assert d["rare_objects"]["GunCase_Orange"]["nominal"]==2
+          assert d["rare_objects"]["GunCaseKeys_Blue"]["nominal"]==2
+          assert d["rare_objects"]["GunCaseKeys_Red"]["nominal"]==2
+          assert d["night_multiplier"] in {8,"8","8.0"}
+          assert d["heli_nominal"]=="5" and d["convoy_nominal"]=="5"
+          print("POSTDEPLOY VERIFIED: orange case keys, V16 scenery, Dolnik, weather and events; no console gameplay claim.")
+          PY
       - if: always()
         uses: actions/upload-artifact@v4
         with:
