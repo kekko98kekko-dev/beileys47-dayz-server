@@ -278,6 +278,10 @@ SOURCE_PATHS = [
     "config/v33/BEILEYS47_ZONE47_25_NOT_LIVE.json",
     "config/v33/QUALITY_GATES_NOT_PS5_TESTED.json",
     "scripts/v34_rpt_spawner_readonly.py",
+    ".github/workflows/v35-install-25-zone47.yml",
+    "docs/BEILEYS47_V35_REAL_INSTALL.md",
+    "scripts/test_v35_install_25_zone47.py",
+    "scripts/v35_install_25_zone47.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
