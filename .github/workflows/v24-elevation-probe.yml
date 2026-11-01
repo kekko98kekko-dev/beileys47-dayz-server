@@ -1,0 +1,25 @@
+name: BEILEYS47 | Public Livonia elevation source discovery
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/v24-elevation-probe.yml"
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v24_elevation_source_probe.py
+      - run: python scripts/v24_elevation_source_probe.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V24_PUBLIC_ELEVATION_PROBE
+          path: deploy/v24/PUBLIC_TERRAIN_SOURCE_PROBE.json
+          retention-days: 7
