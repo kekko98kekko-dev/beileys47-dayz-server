@@ -1,4 +1,5 @@
 name: BEILEYS47 | V36 live Nitrado provider backup inventory (GET only)
+# Count real backup records, not top-level Nitrado backup-type categories.
 on:
   pull_request:
     paths:
