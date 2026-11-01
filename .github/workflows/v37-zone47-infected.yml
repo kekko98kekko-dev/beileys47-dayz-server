@@ -1,8 +1,12 @@
 name: BEILEYS47 | V37 install console vanilla infected ZONA47
 on:
+  schedule:
+    - cron: "17 2,5,10 * * *"
+  workflow_dispatch:
   pull_request:
     paths:
       - "scripts/v37_zone47_infected_patches.py"
+      - "scripts/test_v37_zone47_infected_patches.py"
       - "scripts/test_v37_zone47_infected_patches.py"
       - ".github/workflows/v37-zone47-infected.yml"
   push:
@@ -27,7 +31,7 @@ jobs:
       - run: python scripts/test_v37_zone47_infected_patches.py
   guarded-live:
     needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 26
     env:
