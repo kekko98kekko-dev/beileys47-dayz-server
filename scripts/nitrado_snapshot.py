@@ -340,7 +340,39 @@ def self_test():
         except NitradoError:
             pass
     assert len(TARGETS) == 10 and all("storage" not in t for t in TARGETS)
-    print("Local safety checks passed. No network used.")
+    # Regression: an empty Nitrado listing must NEVER be treated as
+    # a valid mission even when the folder basename appears correct.
+    from unittest.mock import patch
+    from contextlib import redirect_stdout
+    from io import StringIO
+    simulated_api = lambda token, endpoint, params=None: (
+        {"gameserver": {"username": "test_account", "game_specific": {}}}
+        if endpoint.endswith("/gameservers") else {"bookmarks": []}
+    )
+    with (patch(__name__ + ".call_api", side_effect=simulated_api),
+          patch(__name__ + ".entries_at", return_value=[]),
+          patch(__name__ + ".download_one",
+                side_effect=NitradoError("download blocked")),
+          redirect_stdout(StringIO())):
+        try:
+            resolve_mission("test-token")
+            raise AssertionError("False positive: empty mission accepted")
+        except NitradoError:
+            pass
+    # Regression: an actual directory listing with both core config
+    # filenames is accepted, without needing to download any files.
+    def fake_entries(token, directory):
+        if directory.endswith("/dayzOffline.enoch"):
+            return [{"name": "cfggameplay.json", "type": "file"},
+                    {"name": "cfgweather.xml", "type": "file"}]
+        return []
+    with (patch(__name__ + ".call_api", side_effect=simulated_api),
+          patch(__name__ + ".entries_at", side_effect=fake_entries),
+          patch(__name__ + ".download_one",
+                side_effect=NitradoError("Not needed")),
+          redirect_stdout(StringIO())):
+        assert resolve_mission("test-token").endswith("/dayzOffline.enoch")
+    print("Local safety + directory resolution regression tests passed. No network used.")
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
