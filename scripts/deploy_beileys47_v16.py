@@ -110,7 +110,7 @@ def build(original):
     # Register CE loot only at new boxes/containers that the real map prototype supports.
     loot_groups=[p for p in scene_v16 if p["name"] in
                  {"Land_Container_1Mo","Land_Roadblock_WoodenCrate"}]
-    must(len(loot_groups)==15, "Unexpected V16 world loot locations")
+    must(len(loot_groups)==16, "Unexpected V16 world loot locations")
     original_coords=set((g.get("name"),g.get("pos")) for g in map_pos.findall("group"))
     for ob in loot_groups:
         must(ob["name"] in valid_group_classes,"Unknown CE prototype: "+ob["name"])
@@ -120,7 +120,7 @@ def build(original):
         ET.SubElement(map_pos,"group",{"name":ob["name"],"pos":pos,
                       "rpy":f"0 0 {-ob['ypr'][0]:.6f}",
                       "a":f"{90-ob['ypr'][0]:.6f}"})
-    must(len(map_pos.findall("group"))==original_count+15,
+    must(len(map_pos.findall("group"))==original_count+16,
          "Map group count not increased by 15")
     changes["mapgrouppos.xml"]=outxml(map_pos)
 
