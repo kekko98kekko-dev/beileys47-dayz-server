@@ -1,0 +1,56 @@
+name: BEILEYS47 | V40 Dolnik full truck + 64-slot Field Backpack
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/v40_dolnik_truck_rescue.py"
+      - "scripts/test_v40_dolnik_truck_rescue.py"
+      - ".github/workflows/v40-dolnik-full-truck.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v40-dolnik-full-truck.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  offline-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - run: python -m py_compile scripts/v40_dolnik_truck_rescue.py scripts/test_v40_dolnik_truck_rescue.py
+      - run: python scripts/test_v40_dolnik_truck_rescue.py
+  install-when-idle:
+    needs: offline-tests
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V40_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - name: Detect safe Dolnik site and install one fully equipped truck event only when no players
+        run: python scripts/v40_dolnik_truck_rescue.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V40_TRUCK_PREFLIGHT_OR_LIVE_BACKUP
+          path: |
+            deploy/v40/LIVE_TRUCK_RESULT.json
+            deploy/v40/PRIVATE_BEFORE_V40.zip
+          retention-days: 7
+          if-no-files-found: ignore
