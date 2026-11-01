@@ -28,7 +28,7 @@ verify={
  "dolnik_tents":sum("Tent" in obj["name"] for obj in dolnik.get("Objects",[])),
  "medical_tent_lootmax":proto.find("group[@name='Land_Medical_Tent_Big']").get("lootmax"),
  "military_tent_lootmax":proto.find("group[@name='Land_Mil_Tent_Big2_4']").get("lootmax"),
- "hordes_confirmed":all(x in horde for x in [
+ "infected_zones_configured":all(x in horde for x in [
     ("InfectedArmy","7100.0","6965.0"),
     ("InfectedArmy","9022.5","7457.9"),
     ("InfectedMedic","11490.0","461.0")]),
@@ -36,13 +36,14 @@ verify={
  "v15_truck_event_intact":events.find("event[@name='VehicleBEILEYS47DolnikTest']") is not None,
  "night_acceleration":night,
  "gun_case_orange_nominal":db.find("type[@name='GunCase_Orange']/nominal").text,
- "no_wipe":True,
+ "no_wipe_verified":False,
+ "no_wipe_proof_status":"configuration API does not expose persistent-world integrity",
  "gameplay_ps5_verified":False
 }
 verify["remote_settings_and_files_verified"]=(verify["nitrado_state"] in {"started","running"}
     and verify["v16_registered"] and verify["zone_scene_props"]==32
     and verify["dolnik_tents"]==2 and verify["medical_tent_lootmax"]=="10"
-    and verify["military_tent_lootmax"]=="8" and verify["hordes_confirmed"]
+    and verify["military_tent_lootmax"]=="8" and verify["infected_zones_configured"]
     and verify["no_fog"] and verify["v15_truck_event_intact"]
     and str(night) in {"8","8.0"})
 path=Path("deploy/v16/LIVE_AUDIT.json")
