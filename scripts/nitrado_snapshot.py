@@ -111,8 +111,10 @@ def resolve_mission(token):
                 return str(e.get("path") or safe_dir(here, name))
             # Only safe likely path ancestors; avoid player storage/backups/logs.
             allowed = (
-                name.lower() in {"games", "game", "dayzps_missions", "missions", "dayz", "server"}
+                name.lower() in {"games", "game", "noftp", "dayzps_missions", "missions", "dayz", "server"}
                 or (depth <= 2 and name.lower().startswith("dayz"))
+                or (here.rstrip("/").lower() == "/games" and depth < 3
+                    and name.lower() not in {"storage", "backups", "logs", "log"})
             )
             if allowed and depth < 6:
                 sub = e.get("path") or safe_dir(here, name)
