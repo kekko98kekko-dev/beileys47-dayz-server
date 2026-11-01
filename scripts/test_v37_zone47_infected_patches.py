@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import xml.etree.ElementTree as ET
-from v37_zone47_infected_patches import patch,NitradoError
+from v37_zone47_infected_patches import patch,already_installed,NitradoError
 def base():
     return b'''<?xml version="1.0" encoding="UTF-8"?>
 <territory-type><territory color="12">
@@ -21,10 +21,15 @@ def main():
     assert b'</territory-type>' in new
     assert b'x="8960.0" z="7810.0"' in new
     assert b'x="9040.0" z="7730.0"' in new
+    assert not already_installed(old)
+    assert already_installed(new)
     reject(new,events())
     reject(old,b"<events></events>")
     reject(old.replace(b'9022.5',b'9022.6'),events())
     reject(old.replace(b'</territory></territory-type>',
       b'<zone name="InfectedArmy" x="8955.0" z="7810.0"/></territory></territory-type>'),events())
+    try: already_installed(new.replace(b'dmin="5"',b'dmin="4"',1))
+    except NitradoError: pass
+    else: raise AssertionError("Wrong settings in already-installed zone accepted")
     print("PASS V37: 2 moderate vanilla patrol zones, prior zones preserved, XML fail-closed")
 if __name__=="__main__":main()
