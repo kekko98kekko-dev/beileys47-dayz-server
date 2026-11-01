@@ -40,7 +40,6 @@ def patch(original:bytes):
     guard(all(len((m.findtext("text") or ""))<=160 for m in previous),"Existing message too long")
     guard(not any(m.findtext("shutdown")=="1" for m in previous),
           "Existing automatic shutdown rule: manual review before changing messages")
-    before=[ET.tostring(m,encoding="unicode") for m in previous]
     targets=[]
     for repeat,msg in MESSAGES:
         guard(len(msg)<=160 and repeat>=60 and all(c not in msg for c in "<>&"),
@@ -57,7 +56,16 @@ def patch(original:bytes):
     updated=head+b"".join(v.encode("utf-8") for v in targets)+b"</messages>"+closing
     checked=ET.fromstring(updated).findall("message")
     guard(len(checked)==6,"Expected six game messages")
-    guard([ET.tostring(x,encoding="unicode") for x in checked[:4]]==before,
+    # ElementTree serializes an element's trailing whitespace as .tail.
+    # Appending a new node may add a harmless newline after the prior last node.
+    # Preserve the original prefix bytes exactly, and compare the prior
+    # four elements semantically without the incidental last-node .tail.
+    def message_semantics(node):
+        node_copy=ET.fromstring(ET.tostring(node,encoding="utf-8"))
+        node_copy.tail=None
+        return ET.tostring(node_copy,encoding="unicode")
+    original_semantics=[message_semantics(x) for x in previous]
+    guard([message_semantics(x) for x in checked[:4]]==original_semantics,
           "Existing notifications were altered")
     guard([(int(m.findtext("repeat","0")),m.findtext("text")) for m in checked[4:]]==list(MESSAGES),
           "New messages differ from target")
