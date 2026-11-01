@@ -1,0 +1,52 @@
+name: BEILEYS47 | V21 guarded hotspot notices
+on:
+  pull_request:
+    paths:
+      - "scripts/v21_safe_discovery_messages.py"
+      - "scripts/test_v21_safe_discovery_messages.py"
+      - ".github/workflows/v21-hotspot-notices.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/v21-hotspot-notices.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-V21-NOTICES-ONCE
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v21_safe_discovery_messages.py scripts/test_v21_safe_discovery_messages.py
+      - run: python scripts/test_v21_safe_discovery_messages.py
+  install:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V21_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: One-file Nitrado message deployment with 0-player guard and verified rollback
+        run: python scripts/v21_safe_discovery_messages.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V21_PRIVATE_MESSAGES_ROLLBACK
+          path: |
+            deploy/v21/MESSAGES_RESULT.json
+            deploy/v21/private_messages_original.zip
+          retention-days: 5
+          if-no-files-found: ignore
