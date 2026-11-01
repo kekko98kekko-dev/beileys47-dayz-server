@@ -1,0 +1,57 @@
+name: BEILEYS47 | V16 final live audit
+on:
+  push:
+    paths:
+      - "scripts/v16_audit_live.py"
+      - ".github/workflows/v16-live-audit.yml"
+permissions:
+  contents: read
+jobs:
+  audit:
+    name: Read-only check server running, V16 configs, and night setting
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/v16_audit_live.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V16_FINAL_LIVE_AUDIT
+          path: deploy/v16/LIVE_AUDIT.json
+          retention-days: 5
+          if-no-files-found: ignore
+  publish:
+    needs: audit
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RID: ${{ github.run_id }}
+          OUTCOME: ${{ needs.audit.result }}
+        run: |
+          python - <<'PY'
+          import os,json,base64,urllib.request,urllib.error
+          url="https://api.github.com/repos/"+os.environ["REPO"]+"/contents/deploy/v16/LIVE_AUDIT_WORKFLOW.json"
+          h={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json",
+             "Content-Type":"application/json","User-Agent":"BEILEYS47-v16-audit"}
+          sha=None
+          try:
+            with urllib.request.urlopen(urllib.request.Request(url,headers=h)) as r:sha=json.load(r)["sha"]
+          except urllib.error.HTTPError as e:
+            if e.code!=404:raise
+          b=(json.dumps({"run_id":os.environ["RID"],"audit_result":os.environ["OUTCOME"]},indent=2)+"\n").encode()
+          obj={"message":"Record V16 final Nitrado live audit","content":base64.b64encode(b).decode()}
+          if sha:obj["sha"]=sha
+          with urllib.request.urlopen(urllib.request.Request(url,headers=h,data=json.dumps(obj).encode(),method="PUT")) as r:
+            print(r.status)
+          PY
