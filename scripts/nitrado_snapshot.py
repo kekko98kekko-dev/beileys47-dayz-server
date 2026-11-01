@@ -77,52 +77,109 @@ def entry_name(entry):
     return str(entry.get("name") or posixpath.basename(str(entry.get("path", "")).rstrip("/")))
 
 def resolve_mission(token):
-    # We only list directories. Never enumerate storage_1, player data or logs.
+    """Discover the mission using authenticated Nitrado metadata, never passwords."""
+    # Nitrado usually places console missions under /games/<account>/noftp/.
+    # API root "/" may be inaccessible even with a valid service-scope token.
     roots = ["/", "/games", "/dayzps_missions", "/games/dayzps_missions"]
+    metadata_found = False
     try:
-        bookmarks = call_api(token, f"/services/{SERVICE_ID}/gameservers/file_server/bookmarks").get("bookmarks", [])
+        info = call_api(token, f"/services/{SERVICE_ID}/gameservers")
+        game = info.get("gameserver", {})
+        if isinstance(game, dict):
+            metadata_found = True
+            username = game.get("username")
+            if isinstance(username, str) and username.isascii() and (
+                    username.replace("_", "").replace("-", "").isalnum()):
+                for base in (f"/games/{username}/noftp", f"/games/{username}/ftproot",
+                             f"/games/{username}"):
+                    roots.extend([base, base + "/dayzps_missions",
+                                  base + "/dayzps_missions/" + MISSION])
+            specific = game.get("game_specific") or {}
+            gamepath = specific.get("path") if isinstance(specific, dict) else None
+            if isinstance(gamepath, str) and gamepath.startswith("/games/") and ".." not in gamepath:
+                base = gamepath.rstrip("/")
+                roots.extend([base, base + "/dayzps_missions",
+                              base + "/dayzps_missions/" + MISSION,
+                              posixpath.dirname(base) + "/dayzps_missions",
+                              posixpath.dirname(base) + "/dayzps_missions/" + MISSION])
+    except NitradoError as exc:
+        # Only an HTTP error number is printed; never a token or private path.
+        print("Diagnostic: gameserver metadata not accessible:", str(exc))
+
+    bookmarks_count = 0
+    try:
+        bookmarks = call_api(
+            token, f"/services/{SERVICE_ID}/gameservers/file_server/bookmarks"
+        ).get("bookmarks", [])
         if isinstance(bookmarks, dict):
             bookmarks = list(bookmarks.values())
-        for b in bookmarks:
-            if isinstance(b, dict) and isinstance(b.get("path"), str):
-                roots.append(b["path"])
-    except NitradoError:
-        pass
-    pending = [(r, 0) for r in roots]
+        for bk in bookmarks if isinstance(bookmarks, list) else []:
+            if isinstance(bk, dict):
+                p = bk.get("path")
+                if isinstance(p, str) and p.startswith("/"):
+                    bookmarks_count += 1
+                    roots.extend([p, p.rstrip("/") + "/dayzps_missions",
+                                  p.rstrip("/") + "/dayzps_missions/" + MISSION])
+            elif isinstance(bk, str) and bk.startswith("/"):
+                bookmarks_count += 1
+                roots.append(bk)
+    except NitradoError as exc:
+        print("Diagnostic: bookmarks not accessible:", str(exc))
+
+    pending = [(r, 0) for r in dict.fromkeys(roots)]
     seen = set()
-    tried = 0
-    while pending and tried < 80:
+    success_lists = 0
+    failed_lists = 0
+    directory_entries = 0
+    file_entries = 0
+    last_api_error = None
+    while pending and len(seen) < 140:
         here, depth = pending.pop(0)
-        if here in seen or depth > 6:
+        if here in seen or depth > 7 or not here.startswith("/"):
             continue
         seen.add(here)
         try:
             entries = entries_at(token, here)
-            tried += 1
-        except NitradoError:
+            success_lists += 1
+        except NitradoError as exc:
+            failed_lists += 1
+            last_api_error = str(exc)
             continue
+        # Avoid accepting an empty/nonexistent path just because its basename is correct.
         if posixpath.basename(here.rstrip("/")) == MISSION:
+            print("Diagnostic: mission found; API metadata:",
+                  metadata_found, "bookmarks:", bookmarks_count)
             return here
-        for e in entries:
-            name = entry_name(e)
-            if not is_dir(e):
-                continue
-            if name == MISSION:
-                return str(e.get("path") or safe_dir(here, name))
-            # Only safe likely path ancestors; avoid player storage/backups/logs.
-            allowed = (
-                name.lower() in {"games", "game", "noftp", "dayzps_missions", "missions", "dayz", "server"}
-                or (depth <= 2 and name.lower().startswith("dayz"))
-                or (here.rstrip("/").lower() == "/games" and depth < 3
-                    and name.lower() not in {"storage", "backups", "logs", "log"})
-            )
-            if allowed and depth < 6:
-                sub = e.get("path") or safe_dir(here, name)
-                pending.append((str(sub), depth + 1))
+        for entry in entries:
+            name = entry_name(entry)
+            if name == MISSION and is_dir(entry):
+                resolved = entry.get("path") or safe_dir(here, name)
+                print("Diagnostic: mission found; directory listings:", success_lists)
+                return str(resolved)
+            if is_dir(entry):
+                directory_entries += 1
+                if name in {"games", "game", "noftp", "ftproot", "dayzps_missions",
+                            "missions", "dayz", "server"} or (
+                    here.rstrip("/") == "/games" and depth < 2
+                ) or (depth < 3 and name.lower().startswith("dayz")):
+                    sub = entry.get("path") or safe_dir(here, name)
+                    pending.append((str(sub), depth + 1))
+            else:
+                file_entries += 1
+
+    print("Diagnostic: metadata_available=", metadata_found,
+          "bookmark_paths=", bookmarks_count,
+          "directory_list_successes=", success_lists,
+          "directory_list_failures=", failed_lists,
+          "directories_seen=", directory_entries,
+          "non_directories_seen=", file_entries)
+    if last_api_error:
+        print("Diagnostic: last list API error:", last_api_error)
     raise NitradoError(
-        "Mission folder not found via Nitrado API. Check API service scope and file_server/list access; "
-        "no server files have been changed."
+        "Mission directory dayzOffline.enoch not found with current API access. "
+        "No server file was modified. Check diagnostics above."
     )
+
 
 def download_one(token, path):
     data = call_api(token, f"/services/{SERVICE_ID}/gameservers/file_server/download", {"file": path})
