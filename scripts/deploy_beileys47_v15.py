@@ -322,8 +322,8 @@ def main():
     finally:
         if stopped_by_us:
             try:
-                request_api_post(token,f"/services/{SERVICE_ID}/gameservers/start")
-                print("Nitrado start requested.",flush=True)
+                request_api_post(token,f"/services/{SERVICE_ID}/gameservers/restart")
+                print("Nitrado restart requested (also starts stopped gameservers).",flush=True)
             except Exception:
                 print("WARNING: automatic start failed; check Nitrado panel immediately.",flush=True)
     print("V15 file verification complete. PS5 gameplay verification is still required.",flush=True)
