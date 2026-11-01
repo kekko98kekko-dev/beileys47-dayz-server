@@ -220,6 +220,9 @@ SOURCE_PATHS = [
     "scripts/v16_night.py",
     "scripts/v16_read_extra.py",
     "scripts/v17_ps5_acceptance.py",
+    ".github/workflows/v18-preflight.yml",
+    "docs/BEILEYS47_V18_READONLY_PREFLIGHT.md",
+    "scripts/v18_live_preflight.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
