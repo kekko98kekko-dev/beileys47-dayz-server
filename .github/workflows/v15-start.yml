@@ -1,0 +1,75 @@
+name: BEILEYS47 | Start after V15 (guarded)
+on:
+  push:
+    paths:
+      - "deploy/v15/START_SERVER_NOW.txt"
+  workflow_dispatch:
+
+concurrency:
+  group: BEILEYS47-server-start
+  cancel-in-progress: false
+
+jobs:
+  start:
+    name: Verify V15 deployed and bring stopped DayZ server online
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_START_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Guarded Nitrado restart (no files changed)
+        run: python scripts/start_beileys47_after_v15.py
+      - name: Save factual running status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V15_START_STATUS
+          path: deploy/v15/START_RESULT.json
+          retention-days: 5
+          if-no-files-found: ignore
+
+  publish:
+    name: Publish factual server status for ChatGPT
+    needs: start
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Record start job status without claiming gameplay testing
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RESULT: ${{ needs.start.result }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import base64,json,os,urllib.request,urllib.error
+          data = {"service_id":20113048,"version":"V15",
+                  "start_job_conclusion":os.environ["RESULT"],
+                  "start_job_success":os.environ["RESULT"]=="success",
+                  "in_game_verified":False,"run_id":os.environ["RUN_ID"]}
+          api="https://api.github.com/repos/"+os.environ["REPO"]+"/contents/deploy/v15/START_WORKFLOW_RESULT.json"
+          headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"],
+                   "Accept":"application/vnd.github+json",
+                   "Content-Type":"application/json","User-Agent":"BEILEYS47-start-monitor"}
+          old=None
+          try:
+              with urllib.request.urlopen(urllib.request.Request(api,headers=headers),timeout=20) as req:
+                  old=json.load(req)["sha"]
+          except urllib.error.HTTPError as e:
+              if e.code!=404:raise
+          payload={"message":"Record DayZ server start workflow outcome",
+                   "content":base64.b64encode((json.dumps(data,indent=2)+"\n").encode()).decode()}
+          if old:payload["sha"]=old
+          req=urllib.request.Request(api,headers=headers,data=json.dumps(payload).encode(),method="PUT")
+          with urllib.request.urlopen(req,timeout=30) as response:
+              print("Status published:",response.status)
+          PY
