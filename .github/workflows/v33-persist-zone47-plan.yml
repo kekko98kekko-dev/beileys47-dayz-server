@@ -1,0 +1,65 @@
+name: BEILEYS47 | V33 store full 25-object ZONA47 scene in repository (not live)
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v33-persist-zone47-plan.yml"
+permissions:
+  contents: write
+concurrency:
+  group: BEILEYS47-V33-ZONE47-PERSIST
+  cancel-in-progress: false
+jobs:
+  archive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - run: python scripts/test_v32_zone47_clearance_solver.py
+      - run: python scripts/v32_zone47_clearance_solver.py
+      - name: Fail-closed validation and archive the actual scene (not a live Nitrado file)
+        run: |
+          python - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          root=Path("dist/v32")
+          data=json.loads((root/"ZONE47_25_EXPERIMENTAL_RELOCATED.json").read_text())
+          audit=json.loads((root/"ZERO_VISUAL_COLLISIONS_NOT_PS5_PROOF.json").read_text())
+          assert len(data["Objects"])==25
+          assert audit["p1_preserved"] and audit["candidate_new_objects"]==25
+          assert audit["visual_clearance_conflicts"]==0
+          assert audit["PS4_PS5_model_footprint_validated"] is False
+          assert audit["deployment_allowed"] is False
+          assert audit["nitrado_api_calls"]==0
+          dest=Path("config/v33")
+          dest.mkdir(parents=True,exist_ok=True)
+          shutil.copyfile(root/"ZONE47_25_EXPERIMENTAL_RELOCATED.json",
+                          dest/"BEILEYS47_ZONE47_25_NOT_LIVE.json")
+          shutil.copyfile(root/"ZERO_VISUAL_COLLISIONS_NOT_PS5_PROOF.json",
+                          dest/"QUALITY_GATES_NOT_PS5_TESTED.json")
+          print("Archived 25 experimental objects and no-overlap report, with explicit deploy block")
+          PY
+      - name: Save the scene design permanently in GitHub repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/v33/
+          if git diff --cached --quiet; then
+            echo "Identical scene already tracked"
+          else
+            git commit -m "V33: persist full 25-object ZONA47 offline scene and PS5 acceptance gate"
+            git push
+          fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V33_PERMANENTLY_VERSIONED_ZONE47_SCENE
+          path: config/v33/
+          retention-days: 14
+          if-no-files-found: ignore
