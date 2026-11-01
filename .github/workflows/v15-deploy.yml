@@ -1,0 +1,107 @@
+name: BEILEYS47 | V15 guarded deployment
+on:
+  push:
+    paths:
+      - "deploy/v15/GO_LIVE.txt"
+  workflow_dispatch:
+
+concurrency:
+  group: BEILEYS47-V15-ONE-TIME
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    name: Read-only validation on actual Nitrado files
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V15_APPROVED: "yes"
+      BEILEYS47_V15_MODE: "validate"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Source compile
+        run: python -m py_compile scripts/nitrado_snapshot.py scripts/deploy_beileys47_v15.py
+      - name: Re-read and validate seven real mission files, NO WRITE
+        run: python scripts/deploy_beileys47_v15.py
+
+  deploy:
+    name: Stop only at 0 players, upload V15, read-back SHA, restart
+    needs: preflight
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V15_APPROVED: "yes"
+      BEILEYS47_V15_MODE: "deploy"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Controlled V15 deployment; never wipe
+        run: python scripts/deploy_beileys47_v15.py
+      - name: Attach limited deployment report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V15_ACTUAL_DEPLOY_REPORT
+          path: deploy/v15/deploy_result.json
+          if-no-files-found: ignore
+          retention-days: 7
+
+  publish_status:
+    name: Write simple V15 outcome into repository for inspection
+    if: always()
+    needs: [preflight, deploy]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Record real preflight and deployment job outcome
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          VALIDATE_RESULT: ${{ needs.preflight.result }}
+          DEPLOY_RESULT: ${{ needs.deploy.result }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import base64, json, os, urllib.request, urllib.error
+          status = {
+              "service_id": 20113048,
+              "version": "V15",
+              "preflight_job": os.environ["VALIDATE_RESULT"],
+              "deployment_job": os.environ["DEPLOY_RESULT"],
+              "deployment_confirmed_by_workflow": os.environ["DEPLOY_RESULT"] == "success",
+              "ps5_runtime_tested": False,
+              "wipe_performed": False,
+              "run_id": os.environ["RUN_ID"]
+          }
+          blob = (json.dumps(status, ensure_ascii=False, indent=2) + "\n").encode()
+          api = "https://api.github.com/repos/" + os.environ["REPO"] + "/contents/deploy/v15/DEPLOY_RESULT.json"
+          headers = {"Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                     "Accept": "application/vnd.github+json",
+                     "Content-Type": "application/json",
+                     "User-Agent": "BEILEYS47-workflow-result/1.0"}
+          # On a rerun, include existing content SHA to update rather than conflict.
+          sha = None
+          try:
+              with urllib.request.urlopen(urllib.request.Request(api,headers=headers),timeout=25) as resp:
+                  sha = json.load(resp)["sha"]
+          except urllib.error.HTTPError as exc:
+              if exc.code != 404: raise
+          reqbody={"message": "Record actual V15 workflow outcome", "content": base64.b64encode(blob).decode()}
+          if sha: reqbody["sha"]=sha
+          req=urllib.request.Request(api, data=json.dumps(reqbody).encode(),
+                                     headers=headers, method="PUT")
+          with urllib.request.urlopen(req,timeout=30) as resp:
+              print("Published deployment result. HTTP",resp.status)
+          PY
