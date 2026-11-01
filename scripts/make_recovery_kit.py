@@ -258,6 +258,10 @@ SOURCE_PATHS = [
     "config/stage4_14_public_terrain_survey.json",
     "scripts/v26_heightmap_inspect.py",
     "scripts/v27_zone47_real_heights.py",
+    ".github/workflows/v29-zone47-p1.yml",
+    "docs/BEILEYS47_V29_P1_GUARDBOX.md",
+    "scripts/test_v29_zone47_p1_pilot.py",
+    "scripts/v29_zone47_p1_pilot.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
