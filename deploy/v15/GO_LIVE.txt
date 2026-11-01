@@ -1,0 +1,7 @@
+BEILEYS47 V15 — GO LIVE AUTHORIZATION
+Owner instruction in ChatGPT on 2026-11-01: install all feasible agreed changes now in one session, wipe only if technically needed; skip optional backups.
+Nitrado service: 20113048
+Conditions: pass real API preflight; player count 0 before server stop; sha-verified edits; NO wipe; attempt rollback of modified files in case of failure; post-upload readback verification; restart.
+Agreed scope: V14 Dolnik 2 tents; V13 17 vehicle variants with rich construction trucks and rare gun cases; dynamic rain/wind/storm with no fog; one fixed Dolnik M3S test event; increased truck and heli/convoy nominal; new lumber piles max quantity; preserve all other live files.
+Not guaranteed: instant truck replacement, 15-day persistence refill, bunker/custom lock mechanics, in-game PS5 verification; do not call 100% without tests.
+This marker triggers the guarded V15 workflow ONCE.
