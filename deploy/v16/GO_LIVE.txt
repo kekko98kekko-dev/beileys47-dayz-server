@@ -1,0 +1,5 @@
+BEILEYS47 V16 rollout - owner explicitly approved in conversation on 2026-11-01.
+Scope: add protected ZONA47 Radunin defenses and loot points, fortify existing vanilla bunker at X9022.5/Z7457.9, maintain two Dolnik tents, 3 infected territorial hotspots, rare reward cases and CE medical/military loot, international community event notice.
+Safety: keep V15 custom vehicles, rain without fog, players, bases and storage untouched; require zero player count, no wipe; validate new XML/JSON, verify every uploaded file by readback SHA256, restart.
+Known limitations: custom vertical terrain Y approximate; gameplay needs PS5 visual checks; not a scripted weekly reward or calendar-based 15-day refill.
+This file triggers one guarded workflow as authorized.
