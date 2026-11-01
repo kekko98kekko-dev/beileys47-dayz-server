@@ -32,3 +32,11 @@ Stamina cap remains unchanged (avoid unexpected numeric overflow). Swimming, mel
 The 240×220 original ZONA47, a separate custom underground bunker, functional ship-container locks, script-controlled moving hordes, automated named-player prizes, immediately replenished trucks, exactly timed persistent plank refills, working refrigerators and PS5 collision/performance acceptance **are not magically implemented by these stamina settings**. See [V19 factual feature gate](BEILEYS47_V19_ALL_NINE_FEATURES.md). No unsupported workarounds or arbitrary terrain heights should be pushed onto the live server.
 
 Official source: https://community.bistudio.com/wiki/DayZ:Gameplay_Settings
+
+## Post-deploy evidence — November 1, 2026
+
+- Live install: https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41300300611 — SUCCESS.
+- Independent read-only audit: https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41300572865 — SUCCESS; server started and enableCfgGameplayFile enabled.
+- Verified running configuration: sprintStaminaModifierErc=0, sprintStaminaModifierCro=0, staminaKgToStaminaPercentPenalty=0, timeToSprint=0.01, timeToStrafeSprint=0.01.
+- Original configuration rollback archive: https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41300300611/artifacts/13081490079 (5-day retention).
+- Real PS5 sprint behavior remains untested; sprint top speed stays vanilla.
