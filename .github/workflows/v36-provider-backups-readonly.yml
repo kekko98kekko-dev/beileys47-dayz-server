@@ -1,6 +1,9 @@
 name: BEILEYS47 | V36 live Nitrado provider backup inventory (GET only)
 # Count real backup records, not top-level Nitrado backup-type categories.
 on:
+  schedule:
+    - cron: "31 5 * * *"
+  workflow_dispatch:
   pull_request:
     paths:
       - "scripts/v36_nitrado_backups_readonly.py"
@@ -25,7 +28,7 @@ jobs:
       - run: python scripts/test_v36_nitrado_backups_readonly.py
   live-get:
     needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 8
     env:
