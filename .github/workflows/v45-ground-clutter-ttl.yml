@@ -9,8 +9,6 @@ on:
       - "scripts/v45_safe_loot_ttl.py"
       - "scripts/test_v45_safe_loot_ttl.py"
       - ".github/workflows/v45-ground-clutter-ttl.yml"
-  schedule:
-    - cron: "53 * * * *"
   workflow_dispatch:
 permissions:
   contents: read
