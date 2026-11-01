@@ -1,0 +1,66 @@
+name: BEILEYS47 | Nitrado API (sola lettura)
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "probe = testa connessione, snapshot = scarica configurazioni"
+        required: true
+        default: probe
+        type: choice
+        options:
+          - probe
+          - snapshot
+  push:
+    paths:
+      - "scripts/nitrado_snapshot.py"
+      - ".github/workflows/nitrado-readonly.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nitrado-readonly-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verifica codice senza accesso al server
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compilazione e test di sicurezza (no network)
+        run: |
+          python -m py_compile scripts/nitrado_snapshot.py
+          python scripts/nitrado_snapshot.py self-test
+
+  read_only:
+    name: Nitrado probe o backup configurazioni - MAI scrittura
+    if: github.event_name == 'workflow_dispatch'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verifica connessione Nitrado
+        if: inputs.mode == 'probe'
+        run: python scripts/nitrado_snapshot.py probe
+      - name: Scarica solo configurazioni (no persistence)
+        if: inputs.mode == 'snapshot'
+        run: python scripts/nitrado_snapshot.py snapshot
+      - name: Allegato ZIP protetto nei risultati Actions
+        if: inputs.mode == 'snapshot'
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_NITRADO_CONFIG
+          path: nitrado_snapshot/BEILEYS47_NITRADO_CONFIG.zip
+          if-no-files-found: error
+          retention-days: 3
