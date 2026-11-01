@@ -238,6 +238,11 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V20_SPRINT.md",
     "scripts/test_v20_unlimited_sprint.py",
     "scripts/v20_unlimited_sprint.py",
+    ".github/workflows/v21-daily-health.yml",
+    ".github/workflows/v21-hotspot-notices.yml",
+    "docs/BEILEYS47_V21_PREMIUM_LAUNCH.md",
+    "scripts/test_v21_safe_discovery_messages.py",
+    "scripts/v21_safe_discovery_messages.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
