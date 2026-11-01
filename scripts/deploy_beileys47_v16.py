@@ -130,14 +130,14 @@ def build(original):
           "GunCase_Orange":(2,1),"ScientificBriefcase":(1,0),
           "ScientificBriefcaseKeys":(2,1),
           "ShippingContainerKeys_Blue":(2,1),
-          "ShippingContainerKeys_Red":(2,1)}
+          "GunCaseKeys_Red":(2,1)}
     for name,(nominal,minv) in rare.items():
         e=byname(db,"type",name)
         e.find("nominal").text=str(nominal)
         e.find("min").text=str(minv)
         # All added types need loot categories and usage to work with CE groups.
         if name in {"GunCase_Orange","ScientificBriefcase","ScientificBriefcaseKeys",
-                    "ShippingContainerKeys_Blue","ShippingContainerKeys_Red"}:
+                    "ShippingContainerKeys_Blue","GunCaseKeys_Red"}:
             if e.find("category") is None:
                 ET.SubElement(e,"category",name="containers" if "Case" in name or "Briefcase" in name else "tools")
             if e.find("usage") is None:
