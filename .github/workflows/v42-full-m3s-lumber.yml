@@ -30,7 +30,7 @@ jobs:
       - run: python scripts/test_v42_full_m3s_lumber_racks.py
   install-when-idle:
     needs: offline-tests
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    if: false # emergency pause: V46 post-restart hash mismatch, audit world before any further writes
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
