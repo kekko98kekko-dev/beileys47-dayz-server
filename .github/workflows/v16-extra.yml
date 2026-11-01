@@ -24,3 +24,35 @@ jobs:
           name: BEILEYS47_V16_EXTRA
           path: v16_extra/BEILEYS47_V16_EXTRA.zip
           retention-days: 3
+
+  publish:
+    needs: read
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Record the run ID for artifact retrieval
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          CONCLUSION: ${{ needs.read.result }}
+        run: |
+          python - <<'PY'
+          import os,json,urllib.request,urllib.error,base64
+          path="https://api.github.com/repos/"+os.environ["REPO"]+"/contents/deploy/v16/EXTRA_RUN.json"
+          headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"],
+            "Accept":"application/vnd.github+json",
+            "Content-Type":"application/json","User-Agent":"BEILEYS47-V16"}
+          sha=None
+          try:
+            with urllib.request.urlopen(urllib.request.Request(path,headers=headers)) as r:sha=json.load(r)["sha"]
+          except urllib.error.HTTPError as e:
+            if e.code!=404:raise
+          b=(json.dumps({"run_id":os.environ["RUN_ID"],"result":os.environ["CONCLUSION"]})+"\n").encode()
+          obj={"message":"Record V16 extra-read run ID","content":base64.b64encode(b).decode()}
+          if sha:obj["sha"]=sha
+          with urllib.request.urlopen(urllib.request.Request(path,headers=headers,
+              data=json.dumps(obj).encode(),method="PUT"),timeout=30) as r:print("Published",r.status)
+          PY
