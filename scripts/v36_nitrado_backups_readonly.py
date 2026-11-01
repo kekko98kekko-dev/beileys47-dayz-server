@@ -11,19 +11,39 @@ import json,os,sys
 from pathlib import Path
 from nitrado_snapshot import call_api,SERVICE_ID,NitradoError
 OUT=Path("deploy/v36/PROVIDER_BACKUP_AVAILABILITY.json")
+def _walk_backups(node,depth=0):
+    """Count *records* nested in lists; dict categories by themselves are NOT backups.
+
+    Nitrado may return {"automatic":[],"manual":[]} or a keyed backup map.
+    Do not assert existence based on its category keys.
+    """
+    if depth>5:return (None,False)
+    if isinstance(node,list):
+        return len(node),True
+    if isinstance(node,dict):
+        # Recognized single backup metadata record, without logging its values
+        if any(k in node for k in ("created_at","timestamp","created","date")) and any(
+           k in node for k in ("id","backup_id","name","filename","size")):
+           return 1,True
+        records=0
+        known=False
+        for v in node.values():
+            if isinstance(v,(list,dict)):
+                count,ok=_walk_backups(v,depth+1)
+                if ok:known=True;records+=count
+        return (records if known else None,known)
+    return None,False
+
 def analyze(backups_data,restore_data):
     assert isinstance(backups_data,dict),"Backup endpoint response not structured"
     inventory=backups_data.get("backups")
-    # Do not treat success with an absent backups key as a nonempty backup list.
-    if isinstance(inventory,list):
-        count=len(inventory)
-        formats=sorted(set(type(x).__name__ for x in inventory))
+    count,recognized=_walk_backups(inventory)
+    # All schema details are types and aggregate counts only; no IDs or dates.
+    types=[]
+    if isinstance(inventory,list):types=["list"]
     elif isinstance(inventory,dict):
-        count=len(inventory)
-        formats=["dict"]
-    else:
-        count=None
-        formats=[]
+        types=["dict"]
+        types+=sorted(set(type(x).__name__ for x in inventory.values()))
     enabled=None
     if isinstance(restore_data,bool):
         enabled=restore_data
@@ -34,16 +54,18 @@ def analyze(backups_data,restore_data):
                 break
     return {
        "backup_endpoint_responded":True,
-       "backup_list_present":count is not None,
+       "backup_list_present":inventory is not None,
+       "backup_schema_records_recognized":recognized,
        "backup_count":count,
-       "backup_container_types":formats,
+       "backup_container_types":types,
        "restore_possible_endpoint_supported":restore_data is not None,
        "restore_possible":enabled,
-       "provider_backup_exists":bool(count and count>0),
+       "provider_backup_exists":bool(recognized and count is not None and count>0),
        "full_dayz_world_restore_tested":False,
        "restoration_executed":False,
        "restore_reliability_certified":False
     }
+
 def main():
     token=os.environ.get("NITRADO_API_TOKEN","").strip()
     if not token:raise NitradoError("Nitrado secret missing")
