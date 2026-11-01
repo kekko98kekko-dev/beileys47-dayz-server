@@ -328,12 +328,14 @@ def main():
                error=type(error).__name__, wipe=False)
         raise
     finally:
-        if stopped_by_us:
+        # After a successful upload, request start even when the game server
+        # was already stopped before the workflow began.
+        if modified and len(modified) == len(output):
             try:
                 request_api_post(token,f"/services/{SERVICE_ID}/gameservers/restart")
-                print("Nitrado restart requested (also starts stopped gameservers).",flush=True)
+                print("Nitrado restart/start requested after verified upload.",flush=True)
             except Exception:
-                print("WARNING: automatic start failed; check Nitrado panel immediately.",flush=True)
+                print("WARNING: automatic restart request failed; check Nitrado panel.",flush=True)
     print("V15 file verification complete. PS5 gameplay verification is still required.",flush=True)
 
 if __name__ == "__main__":
