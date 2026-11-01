@@ -196,6 +196,23 @@ def installed(originals):
        guard(ev.find(f"event[@name='{GIFT}']").findtext("nominal")=="1","V40 different event cap")
        return True
     return False
+def permitted_restart(status,count,one_time_owner_override=False):
+    """Allow online restart only with owner permission and exactly ONE player.
+
+    Never treat an unknown player count or multiple players as safe. The normal
+    scheduled V40 workflow must retain its original zero-player protection.
+    """
+    if status=="stopped":return True
+    if status not in ("started","running"):return False
+    if type(count) is not int or count<0:return False
+    return count==0 or (one_time_owner_override is True and count==1)
+
+def ensure_no_new_players(status,previous_count,now_count,owner_override):
+    if status=="stopped":return True
+    return (permitted_restart(status,now_count,owner_override)
+            and type(previous_count) is int
+            and now_count<=previous_count)
+
 def main():
     token=os.environ.get("NITRADO_API_TOKEN","").strip()
     guard(token and os.environ.get("BEILEYS47_V40_APPROVED")=="yes",
@@ -230,16 +247,28 @@ def main():
     state=game_state(token)
     status=game_status(state)
     count=players(state)
-    if status not in ("started","running","stopped") or (status!="stopped" and count!=0):
+    operator_override=os.environ.get("BEILEYS47_V41_ONE_TIME_KICK_ONE_PLAYER")=="yes"
+    # Override is specifically for this one owner-authorized push workflow:
+    # scheduled retries MUST NOT drop a player from an ongoing game.
+    guard(not operator_override or
+          (os.environ.get("GITHUB_EVENT_NAME")=="push"
+           and os.environ.get("BEILEYS47_V41_ONE_TIME_RESTART")=="yes"),
+          "One-time override is only allowed in approved push-based V41 workflow")
+    if not permitted_restart(status,count,operator_override):
        record(status="WAITING_FOR_IDLE",players_reported=count,
               proposed_safe_site=site,no_server_restart=True)
-       print("V40 WAIT: player connected or unknown, no Nitrado changes")
+       print("V40 WAIT: too many players or unknown; no Nitrado changes")
        return
     time.sleep(2)
     again=game_state(token)
     guard(game_status(again)==status and
-          (status=="stopped" or players(again)==0),
-          "Player appeared or state changed; do not interrupt game")
+          ensure_no_new_players(status,count,players(again),operator_override),
+          "Player joined or server state changed; do not interrupt game")
+    if count==1 and operator_override:
+       record(status="OWNER_AUTHORIZED_ONE_PLAYER_RESTART_PENDING",
+              reported_player_count=count,proposed_safe_site=site,
+              original_config_backup_created=True)
+       print("V41 OPERATOR AUTHORIZED: orderly stop/restart with one player online")
     was_running=status!="stopped"
     stopped=False
     changes=[]
@@ -271,7 +300,8 @@ def main():
              original_truck_event_preserved=True,
              original_truck_may_exist_elsewhere=True,
              CE_respawn_engine_not_verified_in_game=True,
-             server_status=game_status(game_state(token)))
+             server_status=game_status(game_state(token)),
+             operator_authorized_one_player_restart=bool(count==1 and operator_override))
       print("V40 LIVE CONFIG SUCCESS: dedicated Dolnik rescue M3S, 100% parts, Field Backpack 64 cargo; CE in-game spawn pending verification")
     except Exception:
       if changes and not success:
