@@ -26,3 +26,18 @@ What success does **not** prove: all 25 assets physically render on PlayStation,
 - `config/v33/BEILEYS47_ZONE47_25_NOT_LIVE.json` is source design, but after V35 installer succeeds the **new** file is live on Nitrado.
 - The V35 workflow produces `deploy/v35/LIVE_DEPLOY_RESULT.json` and private rollback archive. Consult the specific run for verified status.
 - Console runtime visual acceptance remains a separate check.
+
+## VERIFIED LIVE RESULT — 1 November 2026
+
+- [V35 actual Nitrado installation GitHub run 41309552433](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41309552433) **SUCCESS**, including protected live-install job. The log explicitly states: `V35 INSTALL SUCCESS: 25 new ZONA47 objects registered, P1 retained, no wipe`.
+- [Independent read-only V35/V29/V21/V20 audit run 41309830380](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41309830380) **SUCCESS**:
+  - Nitrado status `started`
+  - V35 file **registered** in current gameplay spawner list.
+  - New V35 scene **25 objects**, byte-decoded JSON **exactly matches reviewed versioned 25-object file**.
+  - Old V29 P1 retained: **26 total ZONA47 objects** represented in installed registered scenes.
+  - V16 scenery, Dolnik tents, special economy, weather and events still verified.
+  - V20 unlimited sprint configured and enabled; 6 V21 in-game notices present.
+- [Private backup artifact 13084193435](https://github.com/kekko98kekko-dev/beileys47-dayz-server/actions/runs/41309552433/artifacts/13084193435) from installation; configuration files only, retained seven days. **Not a full Nitrado world-persistence backup.**
+- No wipe or manipulation of player storage performed by V35.
+- **Runtime still unverified:** even after both remote checks, whether all 26 objects appear with correct ground pivot, doors, collisions and acceptable PS4/PS5 frame-rate must be tested in game. The experimental design has no automated gameplay acceptance. Do not claim 100% project completion until these and other remaining game features are verified.
+
