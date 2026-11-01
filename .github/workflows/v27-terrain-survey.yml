@@ -1,0 +1,27 @@
+name: BEILEYS47 | V27 real terrain sample and model-catalog audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v27-terrain-survey.yml"
+permissions:
+  contents: read
+jobs:
+  sample:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - run: python -m py_compile scripts/v27_zone47_real_heights.py
+      - run: python scripts/v27_zone47_real_heights.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V27_ZONE47_ELEVATION_CANDIDATES
+          path: deploy/v27/ZONE47_REAL_ELEVATION_CANDIDATES.json
+          retention-days: 14
+          if-no-files-found: ignore
