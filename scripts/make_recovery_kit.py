@@ -248,6 +248,8 @@ SOURCE_PATHS = [
     "scripts/v23_vehicle_consistency.py",
     "scripts/test_v23_vehicle_consistency.py",
     ".github/workflows/v23-vehicle-ce.yml",
+    "scripts/v24_elevation_source_probe.py",
+    ".github/workflows/v24-elevation-probe.yml",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
