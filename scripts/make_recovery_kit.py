@@ -303,6 +303,10 @@ SOURCE_PATHS = [
     "scripts/v42_full_m3s_lumber_racks.py",
     ".github/workflows/v43-dolnik-readonly.yml",
     "scripts/v43_dolnik_readonly_audit.py",
+    ".github/workflows/v44-single-dolnik-truck.yml",
+    "docs/BEILEYS47_V44_ONE_ORIGINAL_M3S_REALITY.md",
+    "scripts/test_v44_single_original_dolnik_truck.py",
+    "scripts/v44_single_original_dolnik_truck.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
