@@ -262,6 +262,8 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V29_P1_GUARDBOX.md",
     "scripts/test_v29_zone47_p1_pilot.py",
     "scripts/v29_zone47_p1_pilot.py",
+    ".github/workflows/v30-live-terrain-audit.yml",
+    "scripts/v30_live_prop_ground_audit.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
