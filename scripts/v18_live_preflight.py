@@ -6,6 +6,7 @@ from pathlib import Path
 from nitrado_snapshot import resolve_mission,download_one,NitradoError,SERVICE_ID
 from deploy_beileys47_v15 import game_state,game_status,players
 from v20_unlimited_sprint import setting_state
+from v21_safe_discovery_messages import MESSAGES as V21_NOTICES
 
 REQUIRED=(
 "cfggameplay.json","custom/beileys47_v16_three_hotspots.json",
@@ -63,6 +64,7 @@ def evaluate(gs,raw):
       "convoy_nominal":events.find("event[@name='StaticMilitaryConvoy']/nominal").text,
       "weather_fog_max":weather.find("fog/limits").get("max"),
       "messages_count":len(messages.findall("message")),
+      "v21_messages_exactly_present":all(sum(m.findtext("text")==text and int(m.findtext("repeat","0"))==repeat for m in messages.findall("message"))==1 for repeat,text in V21_NOTICES),
       "night_multiplier":settings.get("config",{}).get("serverNightTimeAcceleration"),
       "v20_sprint_settings":{k:gp["PlayerData"]["StaminaData"].get(k) for k in
         ("sprintStaminaModifierErc","sprintStaminaModifierCro","staminaKgToStaminaPercentPenalty")},
