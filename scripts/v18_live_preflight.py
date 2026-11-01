@@ -5,6 +5,7 @@ import hashlib,json,os,posixpath,sys,xml.etree.ElementTree as ET
 from pathlib import Path
 from nitrado_snapshot import resolve_mission,download_one,NitradoError,SERVICE_ID
 from deploy_beileys47_v15 import game_state,game_status,players
+from v20_unlimited_sprint import setting_state
 
 REQUIRED=(
 "cfggameplay.json","custom/beileys47_v16_three_hotspots.json",
@@ -63,6 +64,11 @@ def evaluate(gs,raw):
       "weather_fog_max":weather.find("fog/limits").get("max"),
       "messages_count":len(messages.findall("message")),
       "night_multiplier":settings.get("config",{}).get("serverNightTimeAcceleration"),
+      "v20_sprint_settings":{k:gp["PlayerData"]["StaminaData"].get(k) for k in
+        ("sprintStaminaModifierErc","sprintStaminaModifierCro","staminaKgToStaminaPercentPenalty")},
+      "v20_movement_settings":{k:gp["PlayerData"]["MovementData"].get(k) for k in
+        ("timeToSprint","timeToStrafeSprint")},
+      "gameplay_json_switch":setting_state(gs),
       "password_appears_blank":hints,"public_join_confirmed_by_console":False,
       "ps5_placement_verified":False,"player_persistence_verified":False}
 def main():
