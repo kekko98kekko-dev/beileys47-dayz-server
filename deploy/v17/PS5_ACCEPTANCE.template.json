@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "checks": {
+    "ps5_connect": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "zona47_visual": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "bunker_access": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "dolnik_two_tents": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "loot_zona47": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "loot_bunker": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "loot_dolnik": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "infected_zona47": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "infected_bunker": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "infected_dolnik": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "night_cycle": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "surface_stash_persistence": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "buried_stash_persistence": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "vehicle_persistence": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    },
+    "performance": {
+      "result": "not_tested",
+      "observation": "",
+      "evidence_ref": ""
+    }
+  }
+}
