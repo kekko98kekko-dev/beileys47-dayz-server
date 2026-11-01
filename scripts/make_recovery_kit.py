@@ -273,6 +273,11 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V32_RELOCATED_ZONE47.md",
     "scripts/test_v32_zone47_clearance_solver.py",
     "scripts/v32_zone47_clearance_solver.py",
+    ".github/workflows/v33-persist-zone47-plan.yml",
+    ".github/workflows/v34-rpt-readonly.yml",
+    "config/v33/BEILEYS47_ZONE47_25_NOT_LIVE.json",
+    "config/v33/QUALITY_GATES_NOT_PS5_TESTED.json",
+    "scripts/v34_rpt_spawner_readonly.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
