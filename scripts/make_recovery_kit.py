@@ -301,6 +301,8 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V42_FULL_LOGS_PLANKS.md",
     "scripts/test_v42_full_m3s_lumber_racks.py",
     "scripts/v42_full_m3s_lumber_racks.py",
+    ".github/workflows/v43-dolnik-readonly.yml",
+    "scripts/v43_dolnik_readonly_audit.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
