@@ -1,0 +1,28 @@
+name: BEILEYS47 | V43 read-only comprehensive M3S + lifetime audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v43-dolnik-readonly.yml"
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v43_dolnik_readonly_audit.py
+      - run: python scripts/v43_dolnik_readonly_audit.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V43_LIVE_ITEM_CLASS_AUDIT
+          path: deploy/v43/DOLNIK_FINAL_LOADOUT_PREFLIGHT.json
+          retention-days: 3
+          if-no-files-found: ignore
