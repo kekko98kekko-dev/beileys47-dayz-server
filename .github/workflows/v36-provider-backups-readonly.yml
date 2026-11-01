@@ -1,0 +1,45 @@
+name: BEILEYS47 | V36 live Nitrado provider backup inventory (GET only)
+on:
+  pull_request:
+    paths:
+      - "scripts/v36_nitrado_backups_readonly.py"
+      - "scripts/test_v36_nitrado_backups_readonly.py"
+      - ".github/workflows/v36-provider-backups-readonly.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v36-provider-backups-readonly.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v36_nitrado_backups_readonly.py scripts/test_v36_nitrado_backups_readonly.py
+      - run: python scripts/test_v36_nitrado_backups_readonly.py
+  live-get:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: GET backup inventory/restore_possible only; NEVER restore or wipe
+        run: python scripts/v36_nitrado_backups_readonly.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V36_BACKUP_AVAILABILITY_METADATA_ONLY
+          path: deploy/v36/PROVIDER_BACKUP_AVAILABILITY.json
+          retention-days: 7
+          if-no-files-found: ignore
