@@ -1,0 +1,379 @@
+{
+  "Objects": [
+    {
+      "name": "Land_Mil_Fortified_Nest_Small",
+      "pos": [
+        9073.184,
+        302.4164,
+        7827.2417
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Mil_Fortified_Nest_Small",
+      "pos": [
+        9061.184,
+        303.3894,
+        7848.0263
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Wreck_hb02_aban1_blue",
+      "pos": [
+        9046.7295,
+        303.9374,
+        7835.0622
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_WoodenCrate",
+      "pos": [
+        9050.5622,
+        298.607,
+        7726.4237
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_WoodenCrate",
+      "pos": [
+        9030.2058,
+        300.1257,
+        7729.6821
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_WoodenCrate",
+      "pos": [
+        8975.5263,
+        309.8018,
+        7864.3897
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Container_1Aoh",
+      "pos": [
+        8960.5,
+        310.4565,
+        7868.416
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        8954.9737,
+        310.788,
+        7855.9878
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Mil_Barracks6_Old",
+      "pos": [
+        9024.0981,
+        299.9073,
+        7764.2609
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_WoodenCrate",
+      "pos": [
+        9028.9904,
+        302.9599,
+        7790.7154
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_WoodenCrate",
+      "pos": [
+        9004.7679,
+        304.1389,
+        7783.3494
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        8996.4378,
+        303.062,
+        7764.4571
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Garage_Office",
+      "pos": [
+        8958.9833,
+        310.3648,
+        7819.0429
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Container_1Bo",
+      "pos": [
+        8942.2872,
+        311.3877,
+        7835.9615
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Container_1Bo",
+      "pos": [
+        8930.7968,
+        311.7187,
+        7825.8634
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        8936.4308,
+        311.4073,
+        7814.1051
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Mil_GuardHouse3",
+      "pos": [
+        8944.2083,
+        308.5315,
+        7766.634
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_WoodenCrate",
+      "pos": [
+        8961.7346,
+        306.5114,
+        7765.2058
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_WoodenCrate",
+      "pos": [
+        8927.45,
+        310.0435,
+        7766.1962
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        8941.8064,
+        309.2235,
+        7782.7942
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        8947.3782,
+        307.3073,
+        7750.6077
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Mil_Fortified_Nest_Watchtower",
+      "pos": [
+        8980.0122,
+        306.5928,
+        7692.6199
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Mil_Fortified_Nest_Small",
+      "pos": [
+        8965.218,
+        306.8241,
+        7700.2442
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_WoodenCrate",
+      "pos": [
+        8886.718,
+        311.2257,
+        7836.2102
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    },
+    {
+      "name": "Land_Roadblock_Table",
+      "pos": [
+        8874.0577,
+        311.0254,
+        7838.1384
+      ],
+      "ypr": [
+        120,
+        0,
+        0
+      ],
+      "scale": 1.0,
+      "enableCEPersistency": false
+    }
+  ]
+}

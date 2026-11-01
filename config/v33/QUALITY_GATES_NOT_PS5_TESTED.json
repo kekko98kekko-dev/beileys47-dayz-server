@@ -1,0 +1,137 @@
+{
+  "stage": "V32",
+  "purpose": "geometric layout resolution, not console acceptance",
+  "site_center": [
+    9000,
+    7800
+  ],
+  "footprint_metres": [
+    240,
+    220
+  ],
+  "p1_preserved": true,
+  "existing_live_p1_count": 1,
+  "candidate_new_objects": 25,
+  "visual_clearance_conflicts": 0,
+  "unresolved_original_v31_conflicts": 7,
+  "subordinate_props_relodged": 7,
+  "relocations": [
+    {
+      "id": "barracks_02",
+      "old_pos": [
+        9024.9904,
+        302.9331,
+        7786.7154
+      ],
+      "new_pos": [
+        9028.9904,
+        302.9599,
+        7790.7154
+      ],
+      "shift_m": 5.66,
+      "new_relief_m": 2.0
+    },
+    {
+      "id": "barracks_03",
+      "old_pos": [
+        9010.7679,
+        303.2274,
+        7777.3494
+      ],
+      "new_pos": [
+        9004.7679,
+        304.1389,
+        7783.3494
+      ],
+      "shift_m": 8.49,
+      "new_relief_m": 1.858
+    },
+    {
+      "id": "barracks_04",
+      "old_pos": [
+        9012.4378,
+        300.9369,
+        7764.4571
+      ],
+      "new_pos": [
+        8996.4378,
+        303.062,
+        7764.4571
+      ],
+      "shift_m": 16.0,
+      "new_relief_m": 2.707
+    },
+    {
+      "id": "hq_02",
+      "old_pos": [
+        8957.7346,
+        306.9465,
+        7765.2058
+      ],
+      "new_pos": [
+        8961.7346,
+        306.5114,
+        7765.2058
+      ],
+      "shift_m": 4.0,
+      "new_relief_m": 2.012
+    },
+    {
+      "id": "hq_03",
+      "old_pos": [
+        8929.45,
+        309.8798,
+        7766.1962
+      ],
+      "new_pos": [
+        8927.45,
+        310.0435,
+        7766.1962
+      ],
+      "shift_m": 2.0,
+      "new_relief_m": 1.417
+    },
+    {
+      "id": "hq_04",
+      "old_pos": [
+        8941.8064,
+        309.067,
+        7776.7942
+      ],
+      "new_pos": [
+        8941.8064,
+        309.2235,
+        7782.7942
+      ],
+      "shift_m": 6.0,
+      "new_relief_m": 1.339
+    },
+    {
+      "id": "hq_05",
+      "old_pos": [
+        8945.3782,
+        307.7613,
+        7754.6077
+      ],
+      "new_pos": [
+        8947.3782,
+        307.3073,
+        7750.6077
+      ],
+      "shift_m": 4.47,
+      "new_relief_m": 1.951
+    }
+  ],
+  "max_subordinate_shift_m": 16.0,
+  "bbox_x_span_m": 199.13,
+  "bbox_z_span_m": 175.8,
+  "all_26_classnames_assigned": true,
+  "actual_terrain_y_per_position": true,
+  "PS4_PS5_model_footprint_validated": false,
+  "traversable_routes_checked": false,
+  "vanilla_map_collision_checked": false,
+  "full_world_backup_tested": false,
+  "deployment_allowed": false,
+  "nitrado_api_calls": 0,
+  "reason_no_auto_deploy": "P1 still lacks PS5 model contact/physics evidence; interior and large structures may not match visual circles"
+}
