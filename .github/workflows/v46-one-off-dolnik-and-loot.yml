@@ -1,0 +1,36 @@
+name: BEILEYS47 | V46 ONE-TIME owner-approved Dolnik + ground cleanup
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v46-one-off-dolnik-and-loot.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  one-restart:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V46_ONE_OFF: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v44_single_original_dolnik_truck.py scripts/v45_safe_loot_ttl.py scripts/v46_one_off_truck_and_loot_restart.py scripts/test_v46_one_off_truck_and_loot_restart.py
+      - run: python scripts/test_v46_one_off_truck_and_loot_restart.py
+      - name: One owner-authorized normal server restart to install complete Dolnik CE truck and clean loose loot TTL
+        run: python scripts/v46_one_off_truck_and_loot_restart.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V46_PRIVATE_ORIGINAL_CONFIG_AND_ONE_RESTART_RESULT
+          path: |
+            deploy/v46/ONE_RESTART_FINAL_RESULT.json
+            deploy/v46/PRIVATE_ALL_ORIGINAL_XML.zip
+          retention-days: 7
+          if-no-files-found: ignore
