@@ -11,7 +11,8 @@ from v21_safe_discovery_messages import MESSAGES as V21_NOTICES
 REQUIRED=(
 "cfggameplay.json","custom/beileys47_v16_three_hotspots.json",
 "custom/beileys47_dolnik_military_base_v9.json",
-"custom/beileys47_v29_zone47_p1_guardbox.json","db/types.xml",
+"custom/beileys47_v29_zone47_p1_guardbox.json",
+"custom/beileys47_v35_zone47_full_25.json","db/types.xml",
 "cfgspawnabletypes.xml","db/events.xml","cfgweather.xml",
 "mapgrouppos.xml","mapgroupproto.xml","db/messages.xml",
 "env/zombie_territories.xml","cfgeventspawns.xml",
@@ -25,6 +26,8 @@ def evaluate(gs,raw):
     scene=json.loads(raw["custom/beileys47_v16_three_hotspots.json"])
     dolnik=json.loads(raw["custom/beileys47_dolnik_military_base_v9.json"])
     p1=json.loads(raw["custom/beileys47_v29_zone47_p1_guardbox.json"])
+    v35=json.loads(raw["custom/beileys47_v35_zone47_full_25.json"])
+    versioned_v35=json.loads(Path("config/v33/BEILEYS47_ZONE47_25_NOT_LIVE.json").read_text(encoding="utf-8"))
     types=ET.fromstring(raw["db/types.xml"])
     spawn=ET.fromstring(raw["cfgspawnabletypes.xml"])
     events=ET.fromstring(raw["db/events.xml"])
@@ -56,6 +59,11 @@ def evaluate(gs,raw):
       "v16_scene_props":len(scene.get("Objects",[])),
       "v29_p1_registered":"custom/beileys47_v29_zone47_p1_guardbox.json" in gp["WorldsData"]["objectSpawnersArr"],
       "v29_p1_scene_count":len(p1.get("Objects",[])),
+      "v35_registered":"custom/beileys47_v35_zone47_full_25.json" in gp["WorldsData"]["objectSpawnersArr"],
+      "v35_scene_count":len(v35.get("Objects",[])),
+      "v35_exactly_matches_versioned_25":v35==versioned_v35,
+      "v35_total_zone47_scene_objects":len(v35.get("Objects",[]))+len(p1.get("Objects",[])),
+
       "v29_p1_exact_guardbox":any(
         o.get("name")=="Land_Mil_GuardBox_Green"
         and len(o.get("pos",[]))==3
