@@ -1,0 +1,4 @@
+BEILEYS47 V15 START AUTHORIZATION — 2026-11-01
+The owner explicitly instructed in the conversation to complete V15 installation in this session.
+Verified V15 deployment GitHub run 41294393297: seven configs uploaded with readback SHA checks; server was already stopped and no restart was issued.
+This marker triggers a guarded one-time Nitrado restart/start of stopped service 20113048, then polls for running state. If already running, no restart. No wipe or configuration changes.
