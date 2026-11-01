@@ -73,6 +73,25 @@ def patch(old,events_blob):
         "New zones inconsistent")
     require(new.replace(payload,b"",1)==old,"Other territory XML bytes changed")
     return new,len(all_zones)
+def already_installed(blob):
+    """Exactly-once idempotence; 1/2 or mismatched zones must not pass silently."""
+    root=ET.fromstring(blob)
+    if root.tag!="territory-type":raise NitradoError("Unexpected XML root on check")
+    zones=[z for t in root.findall("territory") for z in t.findall("zone")]
+    found=0
+    for name,x,z,dmin,dmax,r in ZONES:
+        hits=[a for a in zones if a.get("name")==name and
+          a.get("x")==f"{x:.1f}" and a.get("z")==f"{z:.1f}"]
+        if len(hits)>1:raise NitradoError("Duplicate V37 zone, manual recovery")
+        if hits:
+            a=hits[0]
+            require(a.get("dmin")==str(dmin) and a.get("dmax")==str(dmax)
+              and a.get("r")==str(r) and a.get("smin")=="0" and a.get("smax")=="0",
+              "Existing V37 zone settings differ")
+            found+=1
+    if found==1:raise NitradoError("Partial V37 application; refuse new deployment")
+    return found==len(ZONES)
+
 def backup(old):
     BACKUP.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(BACKUP,"w",zipfile.ZIP_DEFLATED) as z:
@@ -83,6 +102,13 @@ def backup(old):
             sha(z.read("dayzOffline.enoch/"+FILE))==sha(old),
             "Original XML backup corrupt")
 def main():
+    # The fixed-term rental expires on 30 November 2026. End unattended
+    # scheduled retries after that instead of attempting to modify an unknown
+    # future owner/server.
+    import datetime as dt
+    if os.getenv("GITHUB_EVENT_NAME")=="schedule" and dt.datetime.now(dt.timezone.utc).date()>dt.date(2026,11,30):
+        write_report(status="RENTAL_WINDOW_ENDED_NO_ACTION")
+        return
     token=os.getenv("NITRADO_API_TOKEN","").strip()
     require(token and os.getenv("BEILEYS47_V37_APPROVED")=="yes",
             "Missing Nitrado access or approved flag")
@@ -93,6 +119,11 @@ def main():
     gp=json.loads(download_one(token,posixpath.join(mission,CFG)))
     require("custom/beileys47_v35_zone47_full_25.json"
       in gp["WorldsData"]["objectSpawnersArr"],"V35 full area not active")
+    if already_installed(original):
+        write_report(status="ALREADY_INSTALLED_NO_ACTION",current_xml_sha=sha(original),
+            new_zones=2,no_server_restart=True)
+        print("V38 PASS: both V37 patrol zones already installed, nothing changed")
+        return
     new,baseline_count=patch(original,events)
     backup(original)
     state=game_state(token)
