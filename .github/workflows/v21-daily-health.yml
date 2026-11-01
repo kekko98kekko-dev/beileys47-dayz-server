@@ -1,0 +1,52 @@
+name: BEILEYS47 | Daily read-only server health (no wipe)
+on:
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-daily-read-only-health
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile and independently retrieve actual live Nitrado configs, no writes
+        run: |
+          python -m py_compile scripts/v18_live_preflight.py
+          python scripts/v18_live_preflight.py
+      - name: Check V20 gameplay and V16 world stability without claiming PS5 test
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("deploy/v18/LIVE_PREFLIGHT.json"))
+          assert d["status"] in {"started","running"}, "Server not in running state"
+          assert d["v16_registered"] and d["v16_scene_props"] == 32
+          assert d["dolnik_tents"] == 2
+          assert d["gameplay_json_switch"] == "enabled"
+          assert d["v20_sprint_settings"]["sprintStaminaModifierErc"] == 0
+          assert d["v20_sprint_settings"]["sprintStaminaModifierCro"] == 0
+          assert d["v20_sprint_settings"]["staminaKgToStaminaPercentPenalty"] == 0
+          assert d["v20_movement_settings"]["timeToSprint"] == 0.01
+          assert d["v20_movement_settings"]["timeToStrafeSprint"] == 0.01
+          assert d["med_tent_lootmax"] == "10"
+          assert d["mil_tent_lootmax"] == "8"
+          assert d["rare_objects"]["GunCaseKeys_Orange"]["nominal"] == 2
+          assert d["night_multiplier"] in {"8",8,"8.0"}
+          print("V21 daily Nitrado: mission baseline OK; game-world/PS5 backup still require manual tests.")
+          PY
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_DAILY_READONLY_INVARIANTS
+          path: deploy/v18/LIVE_PREFLIGHT.json
+          retention-days: 3
+          if-no-files-found: ignore
