@@ -1,0 +1,29 @@
+name: BEILEYS47 | Headless public Livonia map height probe
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/v25-livonia-browser.yml"
+permissions:
+  contents: read
+jobs:
+  terrain-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Inspect public Livonia terrain data requests without any Nitrado or account access
+        run: node scripts/v25_dzpage_network_probe.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V25_LIVONIA_BROWSER_PUBLIC_SOURCE
+          path: deploy/v25/
+          retention-days: 3
+          if-no-files-found: ignore
