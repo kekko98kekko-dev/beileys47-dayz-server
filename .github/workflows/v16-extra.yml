@@ -1,0 +1,26 @@
+name: BEILEYS47 | V16 extra config retrieval
+on:
+  push:
+    paths:
+      - "scripts/v16_read_extra.py"
+      - ".github/workflows/v16-extra.yml"
+permissions:
+  contents: read
+jobs:
+  read:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch additional mission files only, never write
+        run: python scripts/v16_read_extra.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V16_EXTRA
+          path: v16_extra/BEILEYS47_V16_EXTRA.zip
+          retention-days: 3
