@@ -227,6 +227,13 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V18_ORANGE_KEY_CHANGE.md",
     "scripts/test_v18_orange_key_fix.py",
     "scripts/v18_orange_key_fix.py",
+    ".github/workflows/v19-plank-inspection.yml",
+    ".github/workflows/v19-release-evidence.yml",
+    "docs/BEILEYS47_V19_ALL_NINE_FEATURES.md",
+    "scripts/test_v19_plank_maintenance.py",
+    "scripts/test_v19_release_gate.py",
+    "scripts/v19_plank_maintenance.py",
+    "scripts/v19_release_gate.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
