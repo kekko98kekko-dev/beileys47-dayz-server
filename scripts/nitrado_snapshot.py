@@ -211,11 +211,25 @@ def download_one(token, path):
 def probe(token):
     path = resolve_mission(token)
     print("Nitrado mission directory discovered and file-list API working.")
-    print("Mission folder:", path)
+    print("Mission folder resolved (remote path deliberately hidden in logs).")
     print("No file downloaded or changed in probe mode.")
 
 def snapshot(token, output):
     mission_root = resolve_mission(token)
+    # Verify that the folder returned by the API really contains DayZ config files.
+    # A valid HTTP 200 on an empty/nonexistent directory is not sufficient.
+    try:
+        base_entries = entries_at(token, mission_root)
+        base_names = {entry_name(entry) for entry in base_entries}
+        expected = {"cfggameplay.json", "cfgweather.xml", "cfgeconomycore.xml"}
+        print("Diagnostic: mission listing contains", len(base_entries), "entries; "
+              "expected config files present:", len(expected & base_names), "/", len(expected))
+        if not expected & base_names:
+            raise NitradoError("The discovered mission folder does not list any core config file; "
+                               "no download attempted. Verify the Nitrado bookmark/mission path.")
+    except NitradoError as exc:
+        print("Diagnostic: mission listing failed:", str(exc))
+        raise
     result = {}
     failed = {}
     for rel in TARGETS:
@@ -226,7 +240,9 @@ def snapshot(token, output):
             print("OK:", rel, "-", len(blob), "bytes")
         except NitradoError as exc:
             failed[rel] = str(exc)
-            print("MISSING/ERROR:", rel, "-", type(exc).__name__)
+            # Errors are constructed locally and never expose token, URL, response body
+            # or other credentials. Show actionable cause in GitHub Actions logs.
+            print("MISSING/ERROR:", rel, "-", str(exc))
     if len(result) < 8:
         raise NitradoError(
             f"Snapshot incomplete ({len(result)}/{len(TARGETS)}). No ZIP produced: "
