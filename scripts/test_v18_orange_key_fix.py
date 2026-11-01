@@ -31,6 +31,6 @@ def main():
                                   b'<nominal>999</nominal><min>0</min><usage'))
     expect_blocked(before.replace(b'<nominal>2</nominal><min>1</min></type>',
                                   b'<nominal>0</nominal><min>0</min></type>',1))
-    expect_blocked(before.replace(b'</types>',before.split(b'<type name="GunCaseKeys_Orange">')[1].split(b'</type>')[0]+b'</types>'))
+    expect_blocked(before.replace(b'</types>', b'<type name="GunCaseKeys_Orange"><nominal>0</nominal><min>0</min><usage name="Military"/></type></types>'))
     print("PASS: V18 orange key minimal byte patch, idempotency and fail-closed invariants")
 if __name__=="__main__":main()
