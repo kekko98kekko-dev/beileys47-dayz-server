@@ -285,6 +285,10 @@ SOURCE_PATHS = [
     ".github/workflows/v36-provider-backups-readonly.yml",
     "scripts/test_v36_nitrado_backups_readonly.py",
     "scripts/v36_nitrado_backups_readonly.py",
+    ".github/workflows/v37-zone47-infected.yml",
+    "docs/BEILEYS47_V37_VANILLA_ALTERNATIVES.md",
+    "scripts/test_v37_zone47_infected_patches.py",
+    "scripts/v37_zone47_infected_patches.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
