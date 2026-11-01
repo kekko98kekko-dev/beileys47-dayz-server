@@ -185,6 +185,41 @@ SOURCE_PATHS = [
     "mission/v11_gameplay/db_event_VehicleTruck01_FRAGMENT.xml",
     "mission/v11_gameplay/db_types_PileOfWoodenPlanks_FRAGMENT.xml",
     "scripts/test_v11_gameplay.py",
+    ".github/workflows/nitrado-readonly.yml",
+    ".github/workflows/v15-deploy.yml",
+    ".github/workflows/v15-preflight.yml",
+    ".github/workflows/v15-start.yml",
+    ".github/workflows/v16-deploy.yml",
+    ".github/workflows/v16-extra.yml",
+    ".github/workflows/v16-live-audit.yml",
+    ".github/workflows/v16-night.yml",
+    ".github/workflows/v17-ps5-offline-tests.yml",
+    ".github/workflows/weekly-community-events.yml",
+    "deploy/v15/DEPLOY_RESULT.json",
+    "deploy/v15/GO_LIVE.txt",
+    "deploy/v15/START_SERVER_NOW.txt",
+    "deploy/v15/START_WORKFLOW_RESULT.json",
+    "deploy/v15/vehicle_changes_b64.txt",
+    "deploy/v16/EXTRA_RUN.json",
+    "deploy/v16/GO_LIVE.txt",
+    "deploy/v16/LIVE_AUDIT_WORKFLOW.json",
+    "deploy/v16/NIGHT_WORKFLOW.json",
+    "deploy/v16/WORKFLOW_RESULT.json",
+    "deploy/v17/PS5_ACCEPTANCE.template.json",
+    "docs/BEILEYS47_V15_LIVE_STATUS.md",
+    "docs/BEILEYS47_V16_VERIFIED_AND_LIMITATIONS.md",
+    "docs/BEILEYS47_V17_PS5_ACCEPTANCE.md",
+    "docs/NITRADO_API_SETUP_BEILEYS47.md",
+    "mission/v14_dolnik_clean/beileys47_dolnik_2_tende_v14.json",
+    "scripts/deploy_beileys47_v15.py",
+    "scripts/deploy_beileys47_v16.py",
+    "scripts/nitrado_snapshot.py",
+    "scripts/start_beileys47_after_v15.py",
+    "scripts/test_v17_ps5_acceptance.py",
+    "scripts/v16_audit_live.py",
+    "scripts/v16_night.py",
+    "scripts/v16_read_extra.py",
+    "scripts/v17_ps5_acceptance.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
@@ -263,7 +298,7 @@ IMPORTANT:
   the world persistence database.
 * Its official Bohemia baseline is pinned to October 16, 2026; you MUST
   verify compatibility with the currently installed DayZ game version.
-* These files were NOT tested on PS5/PS4 and were NOT deployed.
+* Some historical sources powered live V15/V16 deployment, but this ZIP is NOT\n  a readback of current live Nitrado mission/persistence. PS5 runtime remains untested.
 * Do not upload the recovery ZIP to Nitrado. Extract only the reviewed
   mission XML/JSON files, individually, after backing up server files.
 * Keep a separate private local copy of live Nitrado files/backup if
