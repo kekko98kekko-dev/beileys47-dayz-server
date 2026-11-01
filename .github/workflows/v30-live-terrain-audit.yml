@@ -1,0 +1,29 @@
+name: BEILEYS47 | V30 live object-to-terrain altitude audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v30-live-terrain-audit.yml"
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - run: python -m py_compile scripts/v30_live_prop_ground_audit.py
+      - run: python scripts/v30_live_prop_ground_audit.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V30_REAL_HEIGHT_COMPARISON
+          path: deploy/v30/LIVE_PROP_HEIGHT_DIAGNOSTIC.json
+          retention-days: 7
+          if-no-files-found: ignore
