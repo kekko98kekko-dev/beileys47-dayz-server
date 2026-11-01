@@ -107,7 +107,7 @@
           "terrain_y": 302.4164,
           "z": 7827.2417,
           "local_12m_ground_relief_m": 1.248,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -119,7 +119,7 @@
           "terrain_y": 303.3894,
           "z": 7848.0263,
           "local_12m_ground_relief_m": 0.514,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -131,7 +131,7 @@
           "terrain_y": 302.7723,
           "z": 7822.7058,
           "local_12m_ground_relief_m": 1.022,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -143,7 +143,7 @@
           "terrain_y": 303.9374,
           "z": 7835.0622,
           "local_12m_ground_relief_m": 1.534,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -155,7 +155,7 @@
           "terrain_y": 298.607,
           "z": 7726.4237,
           "local_12m_ground_relief_m": 2.519,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -167,7 +167,7 @@
           "terrain_y": 300.1257,
           "z": 7729.6821,
           "local_12m_ground_relief_m": 2.347,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -179,7 +179,7 @@
           "terrain_y": 309.8018,
           "z": 7864.3897,
           "local_12m_ground_relief_m": 0.878,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -191,7 +191,7 @@
           "terrain_y": 310.4565,
           "z": 7868.416,
           "local_12m_ground_relief_m": 0.542,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -203,7 +203,7 @@
           "terrain_y": 310.788,
           "z": 7855.9878,
           "local_12m_ground_relief_m": 0.494,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -215,7 +215,7 @@
           "terrain_y": 299.9073,
           "z": 7764.2609,
           "local_12m_ground_relief_m": 2.306,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -227,7 +227,7 @@
           "terrain_y": 302.9331,
           "z": 7786.7154,
           "local_12m_ground_relief_m": 2.082,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -239,7 +239,7 @@
           "terrain_y": 303.2274,
           "z": 7777.3494,
           "local_12m_ground_relief_m": 2.146,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -251,7 +251,7 @@
           "terrain_y": 300.9369,
           "z": 7764.4571,
           "local_12m_ground_relief_m": 2.366,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -263,7 +263,7 @@
           "terrain_y": 310.3648,
           "z": 7819.0429,
           "local_12m_ground_relief_m": 1.588,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -275,7 +275,7 @@
           "terrain_y": 311.3877,
           "z": 7835.9615,
           "local_12m_ground_relief_m": 0.417,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -287,7 +287,7 @@
           "terrain_y": 311.7187,
           "z": 7825.8634,
           "local_12m_ground_relief_m": 0.341,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -299,7 +299,7 @@
           "terrain_y": 311.4073,
           "z": 7814.1051,
           "local_12m_ground_relief_m": 1.046,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -311,7 +311,7 @@
           "terrain_y": 308.5315,
           "z": 7766.634,
           "local_12m_ground_relief_m": 1.726,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -323,7 +323,7 @@
           "terrain_y": 306.9465,
           "z": 7765.2058,
           "local_12m_ground_relief_m": 2.03,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -335,7 +335,7 @@
           "terrain_y": 309.8798,
           "z": 7766.1962,
           "local_12m_ground_relief_m": 1.334,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -347,7 +347,7 @@
           "terrain_y": 309.067,
           "z": 7776.7942,
           "local_12m_ground_relief_m": 1.375,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -359,7 +359,7 @@
           "terrain_y": 307.7613,
           "z": 7754.6077,
           "local_12m_ground_relief_m": 2.055,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -371,7 +371,7 @@
           "terrain_y": 306.5928,
           "z": 7692.6199,
           "local_12m_ground_relief_m": 1.922,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -383,7 +383,7 @@
           "terrain_y": 306.8241,
           "z": 7700.2442,
           "local_12m_ground_relief_m": 2.063,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -395,7 +395,7 @@
           "terrain_y": 311.2257,
           "z": 7836.2102,
           "local_12m_ground_relief_m": 0.584,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -407,7 +407,7 @@
           "terrain_y": 311.0254,
           "z": 7838.1384,
           "local_12m_ground_relief_m": 0.826,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         }
@@ -430,7 +430,7 @@
           "terrain_y": 356.5953,
           "z": 3926.816,
           "local_12m_ground_relief_m": 3.17,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -442,7 +442,7 @@
           "terrain_y": 359.6798,
           "z": 3938.816,
           "local_12m_ground_relief_m": 2.016,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -454,7 +454,7 @@
           "terrain_y": 357.152,
           "z": 3942.6725,
           "local_12m_ground_relief_m": 2.466,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -466,7 +466,7 @@
           "terrain_y": 358.7468,
           "z": 3953.2705,
           "local_12m_ground_relief_m": 1.434,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -478,7 +478,7 @@
           "terrain_y": 329.0225,
           "z": 3949.4378,
           "local_12m_ground_relief_m": 5.863,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -490,7 +490,7 @@
           "terrain_y": 330.6611,
           "z": 3969.7942,
           "local_12m_ground_relief_m": 5.508,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -502,7 +502,7 @@
           "terrain_y": 362.9607,
           "z": 4024.4737,
           "local_12m_ground_relief_m": 2.068,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -514,7 +514,7 @@
           "terrain_y": 361.9677,
           "z": 4039.5,
           "local_12m_ground_relief_m": 3.149,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -526,7 +526,7 @@
           "terrain_y": 359.053,
           "z": 4045.0263,
           "local_12m_ground_relief_m": 4.165,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -538,7 +538,7 @@
           "terrain_y": 343.3363,
           "z": 3975.9019,
           "local_12m_ground_relief_m": 5.4,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -550,7 +550,7 @@
           "terrain_y": 350.0674,
           "z": 3975.0096,
           "local_12m_ground_relief_m": 3.034,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -562,7 +562,7 @@
           "terrain_y": 348.9046,
           "z": 3989.2321,
           "local_12m_ground_relief_m": 4.409,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -574,7 +574,7 @@
           "terrain_y": 344.189,
           "z": 3987.5622,
           "local_12m_ground_relief_m": 5.127,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -586,7 +586,7 @@
           "terrain_y": 354.3892,
           "z": 4041.0167,
           "local_12m_ground_relief_m": 3.421,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -598,7 +598,7 @@
           "terrain_y": 354.4513,
           "z": 4057.7128,
           "local_12m_ground_relief_m": 3.156,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -610,7 +610,7 @@
           "terrain_y": 351.5091,
           "z": 4069.2032,
           "local_12m_ground_relief_m": 3.292,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -622,7 +622,7 @@
           "terrain_y": 350.4334,
           "z": 4063.5692,
           "local_12m_ground_relief_m": 3.174,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -634,7 +634,7 @@
           "terrain_y": 340.3704,
           "z": 4055.7917,
           "local_12m_ground_relief_m": 4.764,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -646,7 +646,7 @@
           "terrain_y": 340.9254,
           "z": 4042.2654,
           "local_12m_ground_relief_m": 4.693,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -658,7 +658,7 @@
           "terrain_y": 339.5511,
           "z": 4070.55,
           "local_12m_ground_relief_m": 5.411,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -670,7 +670,7 @@
           "terrain_y": 343.9222,
           "z": 4058.1936,
           "local_12m_ground_relief_m": 4.549,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -682,7 +682,7 @@
           "terrain_y": 336.8902,
           "z": 4054.6218,
           "local_12m_ground_relief_m": 3.9,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -694,7 +694,7 @@
           "terrain_y": 315.5024,
           "z": 4019.9878,
           "local_12m_ground_relief_m": 5.23,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -706,7 +706,7 @@
           "terrain_y": 318.793,
           "z": 4034.782,
           "local_12m_ground_relief_m": 4.99,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -718,7 +718,7 @@
           "terrain_y": 343.3996,
           "z": 4113.282,
           "local_12m_ground_relief_m": 3.394,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -730,7 +730,7 @@
           "terrain_y": 340.8611,
           "z": 4125.9423,
           "local_12m_ground_relief_m": 2.705,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         }
@@ -753,7 +753,7 @@
           "terrain_y": 279.1611,
           "z": 2887.0,
           "local_12m_ground_relief_m": 3.249,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -765,7 +765,7 @@
           "terrain_y": 272.7779,
           "z": 2911.0,
           "local_12m_ground_relief_m": 3.571,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -777,7 +777,7 @@
           "terrain_y": 277.9686,
           "z": 2891.0,
           "local_12m_ground_relief_m": 3.408,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -789,7 +789,7 @@
           "terrain_y": 274.0389,
           "z": 2907.0,
           "local_12m_ground_relief_m": 2.719,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -801,7 +801,7 @@
           "terrain_y": 298.4373,
           "z": 2811.0,
           "local_12m_ground_relief_m": 4.052,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -813,7 +813,7 @@
           "terrain_y": 297.9096,
           "z": 2824.0,
           "local_12m_ground_relief_m": 5.011,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -825,7 +825,7 @@
           "terrain_y": 283.5487,
           "z": 2968.0,
           "local_12m_ground_relief_m": 3.95,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -837,7 +837,7 @@
           "terrain_y": 285.336,
           "z": 2979.0,
           "local_12m_ground_relief_m": 2.921,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -849,7 +849,7 @@
           "terrain_y": 287.8164,
           "z": 2971.0,
           "local_12m_ground_relief_m": 2.936,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -861,7 +861,7 @@
           "terrain_y": 287.8919,
           "z": 2857.0,
           "local_12m_ground_relief_m": 4.132,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -873,7 +873,7 @@
           "terrain_y": 281.4288,
           "z": 2876.0,
           "local_12m_ground_relief_m": 3.08,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -885,7 +885,7 @@
           "terrain_y": 282.2636,
           "z": 2875.0,
           "local_12m_ground_relief_m": 3.936,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -897,7 +897,7 @@
           "terrain_y": 286.6125,
           "z": 2863.0,
           "local_12m_ground_relief_m": 5.033,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -909,7 +909,7 @@
           "terrain_y": 284.9034,
           "z": 2937.0,
           "local_12m_ground_relief_m": 5.352,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -921,7 +921,7 @@
           "terrain_y": 291.0005,
           "z": 2960.0,
           "local_12m_ground_relief_m": 1.372,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -933,7 +933,7 @@
           "terrain_y": 290.6492,
           "z": 2957.0,
           "local_12m_ground_relief_m": 3.131,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -945,7 +945,7 @@
           "terrain_y": 288.5009,
           "z": 2944.0,
           "local_12m_ground_relief_m": 4.296,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -957,7 +957,7 @@
           "terrain_y": 279.1794,
           "z": 2899.0,
           "local_12m_ground_relief_m": 3.08,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -969,7 +969,7 @@
           "terrain_y": 281.1926,
           "z": 2891.0,
           "local_12m_ground_relief_m": 7.1,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -981,7 +981,7 @@
           "terrain_y": 281.6043,
           "z": 2906.0,
           "local_12m_ground_relief_m": 7.34,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -993,7 +993,7 @@
           "terrain_y": 280.7376,
           "z": 2909.0,
           "local_12m_ground_relief_m": 7.655,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -1005,7 +1005,7 @@
           "terrain_y": 284.7954,
           "z": 2888.0,
           "local_12m_ground_relief_m": 8.646,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -1017,7 +1017,7 @@
           "terrain_y": 311.467,
           "z": 2817.0,
           "local_12m_ground_relief_m": 5.049,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -1029,7 +1029,7 @@
           "terrain_y": 309.4332,
           "z": 2831.0,
           "local_12m_ground_relief_m": 5.099,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -1041,7 +1041,7 @@
           "terrain_y": 301.3895,
           "z": 2988.0,
           "local_12m_ground_relief_m": 4.036,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         },
@@ -1053,7 +1053,7 @@
           "terrain_y": 304.0945,
           "z": 2996.0,
           "local_12m_ground_relief_m": 3.042,
-          "ground_y_source": "DZPage public Livonia 4096² float32 game-derived raster",
+          "ground_y_source": "DZPage public Livonia 2048² float32 game-derived raster",
           "object_origin_y_not_determined": true,
           "ready_for_PS5_spawn": false
         }
