@@ -315,6 +315,9 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V46_ONE_RESTART_SAFETY.md",
     "scripts/test_v46_one_off_truck_and_loot_restart.py",
     "scripts/v46_one_off_truck_and_loot_restart.py",
+    ".github/workflows/v47-live-safety-audit.yml",
+    "docs/BEILEYS47_V47_LIVE_SEMANTIC_VERIFICATION.md",
+    "scripts/v47_live_readonly_safety.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
