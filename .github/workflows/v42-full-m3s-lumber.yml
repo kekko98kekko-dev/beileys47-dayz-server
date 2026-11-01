@@ -1,0 +1,53 @@
+name: BEILEYS47 | V42 fill M3S plank and log racks to 100 percent
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v42-full-m3s-lumber.yml"
+  pull_request:
+    paths:
+      - "scripts/v42_full_m3s_lumber_racks.py"
+      - "scripts/test_v42_full_m3s_lumber_racks.py"
+      - ".github/workflows/v42-full-m3s-lumber.yml"
+  schedule:
+    - cron: "29 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  offline-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v42_full_m3s_lumber_racks.py scripts/test_v42_full_m3s_lumber_racks.py
+      - run: python scripts/test_v42_full_m3s_lumber_racks.py
+  install-when-idle:
+    needs: offline-tests
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V42_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/v42_full_m3s_lumber_racks.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V42_FULL_LUMBER_RACKS_AND_PRIVATE_BACKUP
+          path: |
+            deploy/v42/LIVE_LUMBER_RACKS.json
+            deploy/v42/PRIVATE_BEFORE_LUMBER_RACKS.zip
+          retention-days: 7
+          if-no-files-found: ignore
