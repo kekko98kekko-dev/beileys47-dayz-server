@@ -77,107 +77,167 @@ def entry_name(entry):
     return str(entry.get("name") or posixpath.basename(str(entry.get("path", "")).rstrip("/")))
 
 def resolve_mission(token):
-    """Discover the mission using authenticated Nitrado metadata, never passwords."""
-    # Nitrado usually places console missions under /games/<account>/noftp/.
-    # API root "/" may be inaccessible even with a valid service-scope token.
+    """Resolve the REAL mission by verifying its contents, not just its name.
+
+    Nitrado may return a successful empty file listing for a nonexistent path.
+    Never accept that as proof that a game mission exists.
+    """
     roots = ["/", "/games", "/dayzps_missions", "/games/dayzps_missions"]
+    candidate_missions = []
     metadata_found = False
+    bookmarks_count = 0
+    username_ok = False
+
+    def add_candidate(p):
+        if (isinstance(p, str) and p.startswith("/") and ".." not in p
+                and len(p) < 512):
+            p = posixpath.normpath(p)
+            if posixpath.basename(p) == MISSION:
+                candidate_missions.append(p)
+            else:
+                roots.append(p)
+
+    def add_base(base):
+        if not isinstance(base, str) or not base.startswith("/") or ".." in base:
+            return
+        base = posixpath.normpath(base)
+        add_candidate(base)
+        add_candidate(base + "/dayzps_missions")
+        add_candidate(base + "/dayzps_missions/" + MISSION)
+        add_candidate(base + "/" + MISSION)
+
     try:
         info = call_api(token, f"/services/{SERVICE_ID}/gameservers")
-        game = info.get("gameserver", {})
-        if isinstance(game, dict):
+        gs = info.get("gameserver") or {}
+        if isinstance(gs, dict):
             metadata_found = True
-            username = game.get("username")
-            if isinstance(username, str) and username.isascii() and (
-                    username.replace("_", "").replace("-", "").isalnum()):
-                for base in (f"/games/{username}/noftp", f"/games/{username}/ftproot",
-                             f"/games/{username}"):
-                    roots.extend([base, base + "/dayzps_missions",
-                                  base + "/dayzps_missions/" + MISSION])
-            specific = game.get("game_specific") or {}
-            gamepath = specific.get("path") if isinstance(specific, dict) else None
-            if isinstance(gamepath, str) and gamepath.startswith("/games/") and ".." not in gamepath:
-                base = gamepath.rstrip("/")
-                roots.extend([base, base + "/dayzps_missions",
-                              base + "/dayzps_missions/" + MISSION,
-                              posixpath.dirname(base) + "/dayzps_missions",
-                              posixpath.dirname(base) + "/dayzps_missions/" + MISSION])
+            username = gs.get("username")
+            if (isinstance(username, str) and username.isascii()
+                    and username.replace("_", "").replace("-", "").isalnum()):
+                username_ok = True
+                add_base(f"/games/{username}")
+                add_base(f"/games/{username}/noftp")
+                add_base(f"/games/{username}/ftproot")
+            gsdata = gs.get("game_specific") or {}
+            if isinstance(gsdata, dict):
+                gp = gsdata.get("path")
+                if isinstance(gp, str) and gp.startswith("/"):
+                    add_base(gp)
+                    add_base(posixpath.dirname(gp.rstrip("/")))
     except NitradoError as exc:
-        # Only an HTTP error number is printed; never a token or private path.
-        print("Diagnostic: gameserver metadata not accessible:", str(exc))
+        print("Diagnostic: gameserver metadata access:", str(exc), flush=True)
 
-    bookmarks_count = 0
     try:
-        bookmarks = call_api(
-            token, f"/services/{SERVICE_ID}/gameservers/file_server/bookmarks"
-        ).get("bookmarks", [])
+        raw = call_api(token, f"/services/{SERVICE_ID}/gameservers/file_server/bookmarks")
+        bookmarks = raw.get("bookmarks", [])
         if isinstance(bookmarks, dict):
             bookmarks = list(bookmarks.values())
-        for bk in bookmarks if isinstance(bookmarks, list) else []:
-            if isinstance(bk, dict):
-                p = bk.get("path")
-                if isinstance(p, str) and p.startswith("/"):
-                    bookmarks_count += 1
-                    roots.extend([p, p.rstrip("/") + "/dayzps_missions",
-                                  p.rstrip("/") + "/dayzps_missions/" + MISSION])
-            elif isinstance(bk, str) and bk.startswith("/"):
+        for bm in bookmarks if isinstance(bookmarks, list) else []:
+            bp = bm if isinstance(bm, str) else (
+                bm.get("path") if isinstance(bm, dict) else None
+            )
+            if isinstance(bp, str) and bp.startswith("/"):
                 bookmarks_count += 1
-                roots.append(bk)
+                add_base(bp)
     except NitradoError as exc:
-        print("Diagnostic: bookmarks not accessible:", str(exc))
+        print("Diagnostic: bookmarks access:", str(exc), flush=True)
 
-    pending = [(r, 0) for r in dict.fromkeys(roots)]
-    seen = set()
-    success_lists = 0
-    failed_lists = 0
-    directory_entries = 0
-    file_entries = 0
-    last_api_error = None
-    while pending and len(seen) < 140:
-        here, depth = pending.pop(0)
-        if here in seen or depth > 7 or not here.startswith("/"):
-            continue
-        seen.add(here)
+    candidate_missions = list(dict.fromkeys(candidate_missions))
+    # Stage A: verify likely full mission paths from metadata/bookmarks.
+    # Keep logs credential-free: do not print server username, full path or token.
+    listing_ok = 0
+    listing_empty = 0
+    listing_fail = 0
+    token_issue_codes = {}
+    checked = set()
+
+    def check_candidate(path):
+        nonlocal listing_ok, listing_empty, listing_fail
+        if path in checked:
+            return False
+        checked.add(path)
         try:
-            entries = entries_at(token, here)
-            success_lists += 1
-        except NitradoError as exc:
-            failed_lists += 1
-            last_api_error = str(exc)
-            continue
-        # Avoid accepting an empty/nonexistent path just because its basename is correct.
-        if posixpath.basename(here.rstrip("/")) == MISSION:
-            print("Diagnostic: mission found; API metadata:",
-                  metadata_found, "bookmarks:", bookmarks_count)
-            return here
-        for entry in entries:
-            name = entry_name(entry)
-            if name == MISSION and is_dir(entry):
-                resolved = entry.get("path") or safe_dir(here, name)
-                print("Diagnostic: mission found; directory listings:", success_lists)
-                return str(resolved)
-            if is_dir(entry):
-                directory_entries += 1
-                if name in {"games", "game", "noftp", "ftproot", "dayzps_missions",
-                            "missions", "dayz", "server"} or (
-                    here.rstrip("/") == "/games" and depth < 2
-                ) or (depth < 3 and name.lower().startswith("dayz")):
-                    sub = entry.get("path") or safe_dir(here, name)
-                    pending.append((str(sub), depth + 1))
-            else:
-                file_entries += 1
+            entries = entries_at(token, path)
+            names = {entry_name(x) for x in entries}
+            if "cfggameplay.json" in names and "cfgweather.xml" in names:
+                listing_ok += 1
+                return True
+            listing_empty += 1
+        except NitradoError:
+            listing_fail += 1
+        # Some Nitrado servers return an empty listing even for a real directory.
+        # Try a read-only download token for the exact known configuration path.
+        try:
+            payload = download_one(token, posixpath.join(path, "cfggameplay.json"))
+            data = json.loads(payload.decode("utf-8-sig"))
+            if isinstance(data, dict) and "WorldsData" in data and "PlayerData" in data:
+                print("Diagnostic: mission confirmed by valid JSON download.", flush=True)
+                return True
+        except (NitradoError, ValueError, UnicodeError) as exc:
+            # No signed URLs or access tokens are ever logged.
+            kind = str(exc) if isinstance(exc, NitradoError) else type(exc).__name__
+            code = (kind[:100] if "HTTP " in kind else type(exc).__name__)
+            token_issue_codes[code] = token_issue_codes.get(code, 0) + 1
+        return False
 
-    print("Diagnostic: metadata_available=", metadata_found,
-          "bookmark_paths=", bookmarks_count,
-          "directory_list_successes=", success_lists,
-          "directory_list_failures=", failed_lists,
-          "directories_seen=", directory_entries,
-          "non_directories_seen=", file_entries)
-    if last_api_error:
-        print("Diagnostic: last list API error:", last_api_error)
+    for path in candidate_missions:
+        if check_candidate(path):
+            print("Diagnostic: verified mission from metadata/bookmarks.", flush=True)
+            return path
+
+    # Stage B: traverse only directory entries exposed by Nitrado. No player
+    # persistence, server logs or unnecessary backup directories are opened.
+    pending = [(x, 0) for x in dict.fromkeys(roots)]
+    walked = set()
+    listed_nonempty = 0
+    while pending and len(walked) < 130:
+        parent, depth = pending.pop(0)
+        if (parent in walked or depth > 7 or
+                not isinstance(parent, str) or not parent.startswith("/")):
+            continue
+        walked.add(parent)
+        if posixpath.basename(parent.rstrip("/")) == MISSION:
+            if check_candidate(parent):
+                print("Diagnostic: verified mission from directory traversal.", flush=True)
+                return parent
+            continue
+        try:
+            entries = entries_at(token, parent)
+        except NitradoError:
+            listing_fail += 1
+            continue
+        if entries:
+            listed_nonempty += 1
+        for e in entries:
+            name = entry_name(e)
+            if not name or name in (".", "..") or "/" in name:
+                continue
+            if name == MISSION:
+                sub = e.get("path") or posixpath.join(parent, name)
+                if check_candidate(str(sub)):
+                    print("Diagnostic: verified mission from directory listing.", flush=True)
+                    return str(sub)
+            elif is_dir(e) and (
+                    name.lower() in {"games", "game", "noftp", "ftproot",
+                                     "dayzps_missions", "missions", "dayz", "server"}
+                    or (parent.rstrip("/") == "/games" and depth < 3)
+                    or (depth < 3 and name.lower().startswith("dayz"))
+            ):
+                pending.append((str(e.get("path") or posixpath.join(parent, name)), depth + 1))
+
+    print("Diagnostic: metadata available:", metadata_found,
+          "; valid username:", username_ok,
+          "; bookmarks:", bookmarks_count,
+          "; candidate paths checked:", len(checked),
+          "; candidate directory listings nonempty:", listing_ok,
+          "; candidate empty or incorrect:", listing_empty,
+          "; listings rejected:", listing_fail,
+          "; navigable directory listings:", listed_nonempty,
+          "; download failures:", token_issue_codes,
+          flush=True)
     raise NitradoError(
-        "Mission directory dayzOffline.enoch not found with current API access. "
-        "No server file was modified. Check diagnostics above."
+        "Cannot identify a real DayZ mission with readable cfggameplay.json. "
+        "Probe did not confirm download access. No files were modified."
     )
 
 
@@ -210,7 +270,7 @@ def download_one(token, path):
 
 def probe(token):
     path = resolve_mission(token)
-    print("Nitrado mission directory discovered and file-list API working.")
+    print("Nitrado mission verified by real configuration content.")
     print("Mission folder resolved (remote path deliberately hidden in logs).")
     print("No file downloaded or changed in probe mode.")
 
