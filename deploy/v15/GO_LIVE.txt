@@ -7,3 +7,5 @@ Not guaranteed: instant truck replacement, 15-day persistence refill, bunker/cus
 This marker triggers the guarded V15 workflow ONCE.
 
 Retry V15 after first preflight exposed a truncated staged vehicle patch; repaired asset is 2636 chars. Authorization unchanged.
+
+Retry 2026-11-01: removed obsolete JerryCan cargo from two Offroad_02 variants; final manifest validation checks the corrected result. Owner's one-session deployment authorization remains effective. No wipe planned.
