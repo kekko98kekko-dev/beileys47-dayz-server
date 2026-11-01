@@ -289,6 +289,8 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V37_VANILLA_ALTERNATIVES.md",
     "scripts/test_v37_zone47_infected_patches.py",
     "scripts/v37_zone47_infected_patches.py",
+    ".github/workflows/v39-truck-audit.yml",
+    "scripts/v39_truck_live_audit.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
