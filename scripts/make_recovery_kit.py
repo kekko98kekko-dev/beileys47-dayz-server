@@ -297,6 +297,10 @@ SOURCE_PATHS = [
     "scripts/v40_dolnik_truck_rescue.py",
     ".github/workflows/v41-operator-truck-restart-once.yml",
     "docs/BEILEYS47_V41_OWNER_APPROVED_RESTART.md",
+    ".github/workflows/v42-full-m3s-lumber.yml",
+    "docs/BEILEYS47_V42_FULL_LOGS_PLANKS.md",
+    "scripts/test_v42_full_m3s_lumber_racks.py",
+    "scripts/v42_full_m3s_lumber_racks.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
