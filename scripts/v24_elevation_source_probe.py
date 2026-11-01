@@ -54,6 +54,17 @@ def main():
                 text=data.decode("utf-8","replace")
                 keywords=["heightmap","terrainheight","heightdata","surfacey","enoch","livonia","heighttile","terrain.bin","height.bin"]
                 item["keyword_counts"]={k:len(re.findall(k,text,re.I)) for k in keywords if re.search(k,text,re.I)}
+                item["keyword_context"]={}
+                for key in ("heightmap","surfacey","enoch","terrainheight","livonia"):
+                    hits=list(re.finditer(key,text,re.I))[:4]
+                    if hits:
+                        item["keyword_context"][key]=[
+                          text[max(0,m.start()-95):min(len(text),m.end()+140)].replace("\\n"," ") for m in hits
+                        ]
+                # Only public, first-party filenames for height/terrain assets.
+                item["candidate_network_paths"]=[
+                    x for x in dict.fromkeys(re.findall(r'/[A-Za-z0-9_./-]{6,110}',text))
+                    if any(z in x.lower() for z in ("height","enoch","terrain","livonia"))][:20]
                 # Do not copy source JS; record candidate URL-shaped strings only.
                 candidates=re.findall(r'["\x27]([^"\x27]{4,200}(?:height|terrain|enoch|livonia)[^"\x27]{0,100})["\x27]',text,re.I)
                 item["candidate_asset_strings"]=[s for s in dict.fromkeys(candidates) if
