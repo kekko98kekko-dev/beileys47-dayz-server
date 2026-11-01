@@ -1,0 +1,50 @@
+name: BEILEYS47 | V37 install console vanilla infected ZONA47
+on:
+  pull_request:
+    paths:
+      - "scripts/v37_zone47_infected_patches.py"
+      - "scripts/test_v37_zone47_infected_patches.py"
+      - ".github/workflows/v37-zone47-infected.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v37-zone47-infected.yml"
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-WORLD-EDIT-V37
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v37_zone47_infected_patches.py scripts/test_v37_zone47_infected_patches.py
+      - run: python scripts/test_v37_zone47_infected_patches.py
+  guarded-live:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 26
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V37_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/v37_zone47_infected_patches.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V37_PRIVATE_XML_ROLLBACK_AND_REPORT
+          path: |
+            deploy/v37/LIVE_RESULT.json
+            deploy/v37/private_zombie_territories_before_v37.zip
+          retention-days: 7
+          if-no-files-found: ignore
