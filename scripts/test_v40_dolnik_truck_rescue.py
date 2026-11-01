@@ -3,7 +3,7 @@
 import xml.etree.ElementTree as ET
 import numpy as np
 from pathlib import Path
-from v40_dolnik_truck_rescue import (make,parse,installed,select_nearby_site,
+from v40_dolnik_truck_rescue import (permitted_restart,ensure_no_new_players,make,parse,installed,select_nearby_site,
     TRUCK,BAG,GIFT,OLD,REQUIRED_PARTS,NitradoError,ORIG)
 ROOT=Path(__file__).resolve().parents[1]
 def fake_files():
@@ -30,6 +30,19 @@ def fake_files():
     return {"db/events.xml":events,"cfgeventspawns.xml":positions,
         "cfgspawnabletypes.xml":ET.tostring(xml)}
 def main():
+    # Normal hourly retries do not disconnect players. Owner approves only
+    # one explicitly targeted restart when 0 or 1 player is connected.
+    assert permitted_restart("started",0,False)
+    assert not permitted_restart("started",1,False)
+    assert permitted_restart("started",1,True)
+    assert not permitted_restart("started",2,True)
+    assert not permitted_restart("started",None,True)
+    assert not permitted_restart("restarting",1,True)
+    assert permitted_restart("stopped",None,True)
+    assert ensure_no_new_players("started",1,1,True)
+    assert ensure_no_new_players("started",1,0,True)
+    assert not ensure_no_new_players("started",0,1,True)
+    assert not ensure_no_new_players("started",1,2,True)
     files=fake_files()
     assert not installed(files)
     terrain=np.full((2048,2048),215.3,dtype=np.float32)
