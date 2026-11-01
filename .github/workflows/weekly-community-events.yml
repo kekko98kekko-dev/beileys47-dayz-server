@@ -1,0 +1,67 @@
+name: BEILEYS47 | Weekly community PvP challenges
+on:
+  schedule:
+    - cron: "0 19 * * 0"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/weekly-community-events.yml"
+permissions:
+  issues: write
+  contents: read
+jobs:
+  announce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Create at most one new event issue per ISO week
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python - <<'PY'
+          import datetime,json,os,urllib.request,urllib.error
+          today=datetime.datetime.now(datetime.timezone.utc)
+          year,week,_=today.isocalendar()
+          tag=f"BEILEYS47 WEEK {year}-W{week:02d}"
+          modes=[
+            ("ZONA 47 PvP Arena", "Fight for control of ZONA 47 around X7100 Z6965. Hold the center and survive the infected."),
+            ("Bunker Siege", "Fight over the fortified original bunker near X9022 Z7458, take the high-value loot and escape."),
+            ("Dolnik Survival Rescue", "Teams race to Dolnik's medical and military camps near X11490 Z460. Recover supplies and protect the extraction group.")
+          ]
+          title,objective=modes[week%len(modes)]
+          issue_title=f"{tag} | {title}"
+          api="https://api.github.com/repos/"+os.environ["GITHUB_REPOSITORY"]+"/issues"
+          headers={"Authorization":"Bearer "+os.environ["GITHUB_TOKEN"],
+                   "Accept":"application/vnd.github+json",
+                   "Content-Type":"application/json",
+                   "User-Agent":"BEILEYS47-weekly-events"}
+          with urllib.request.urlopen(urllib.request.Request(api+"?state=all&per_page=100",
+                     headers=headers),timeout=30) as res:
+              existing=json.load(res)
+          if any(x.get("title","").startswith(tag) for x in existing):
+              print("Event already announced for this ISO week; no duplicate.")
+          else:
+              body=f"""# BEILEYS47 | DayZ Survival War | Weekly Community Challenge
+
+          **Schedule:** Sundays, 19:00 UTC (20:00 in Italy during winter time).
+          **Map:** Livonia. **Platforms:** PS5 / PS4.
+
+          ## {title}
+          {objective}
+
+          Join with a squad or solo. Use the server's vanilla loot, trucks and special cases.
+          No cheating, harassment, or exploits.
+
+          **Rewards:** The loot found in the event areas is available through the game's economy.
+          An additional prize for winners can be organized manually by server admins.
+          Automated distribution to winners is NOT available on console through XML alone.
+
+          *This announcement is automatic. The game is not restarted and no loot is force-spawned by this workflow.*
+          """
+              req=urllib.request.Request(api,headers=headers,method="POST",
+                      data=json.dumps({"title":issue_title,"body":body}).encode())
+              with urllib.request.urlopen(req,timeout=30) as r:
+                  result=json.load(r)
+                  print("Weekly event published",result.get("html_url"))
+          PY
