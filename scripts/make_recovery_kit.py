@@ -243,6 +243,8 @@ SOURCE_PATHS = [
     "docs/BEILEYS47_V21_PREMIUM_LAUNCH.md",
     "scripts/test_v21_safe_discovery_messages.py",
     "scripts/v21_safe_discovery_messages.py",
+    "scripts/v22_economy_readonly.py",
+    ".github/workflows/v22-live-economy-readonly.yml",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",

@@ -1,0 +1,29 @@
+name: BEILEYS47 | V22 live economy and vehicle diagnostic (read-only)
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/v22-live-economy-readonly.yml"
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m py_compile scripts/v22_economy_readonly.py
+      - run: python scripts/v22_economy_readonly.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V22_ECONOMY_READONLY
+          path: deploy/v22/LIVE_ECONOMY_READONLY.json
+          retention-days: 2
+          if-no-files-found: ignore
