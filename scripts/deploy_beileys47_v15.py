@@ -287,9 +287,12 @@ def main():
             "Invalid mode: must be validate or deploy")
     gs = game_state(token)
     count = players(gs)
-    require(count == 0, "Player count unknown or nonzero: NO DEPLOY")
     status = game_status(gs)
     require(status in {"started","running","stopped"}, "Unexpected server status: " + status)
+    if status != "stopped":
+        require(count == 0, "Player count unknown or nonzero: NO DEPLOY")
+    else:
+        print("Server is already stopped; no players can be connected.", flush=True)
     stopped_by_us = status != "stopped"
     modified = []
     try:
