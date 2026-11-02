@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/v59-full-integrity-audit.yml"
+      - "scripts/v59_full_integrity_readonly.py"
   workflow_dispatch:
 permissions:
   contents: read
