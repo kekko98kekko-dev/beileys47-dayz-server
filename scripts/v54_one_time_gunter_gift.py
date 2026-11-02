@@ -142,8 +142,9 @@ def main():
         call_api(token,f"/services/{SERVICE_ID}/gameservers/backups/restore_possible"))
     require(provider["provider_backup_exists"] and provider["restore_possible"] is True,
             "Nitrado provider backups not confirmed")
+    owner_override=os.environ.get("BEILEYS47_V54_ALLOW_PLAYER_INTERRUPTION")=="yes"
     state,n=server(token)
-    if state not in ("started","running") or type(n) is not int or n!=0:
+    if state not in ("started","running") or (not owner_override and (type(n) is not int or n!=0)):
         report(status="BLOCKED_NEEDS_EMPTY_RUNNING_SERVER_NO_CHANGES",
                server_status=state,players=n,**details)
         return
