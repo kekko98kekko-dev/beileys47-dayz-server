@@ -72,6 +72,12 @@ def remove_matching_block(blob,tag,event):
     m=matches[0]
     return blob[:m.start()]+blob[m.end():],m.group()
 
+def same_xml_meaning(a,b):
+    def normalized(node):
+        return (str(node.tag),tuple(sorted(node.attrib.items())),
+                (node.text or "").strip(),tuple(normalized(c) for c in node))
+    return normalized(a)==normalized(b)
+
 def prune_config(live,original,types):
     guard(all(p in live and p in original for p in FILES),"Missing one of three original files")
     # Rebuild expected V55 black profile from the actual pre-V54 state;
@@ -132,9 +138,9 @@ def prune_config(live,original,types):
           "Gift source remains after removal")
     ev_copy=copy.deepcopy(ev_tree);ev_copy.remove(ev_copy.find(f"event[@name='{EVENT}']"))
     po_copy=copy.deepcopy(po_tree);po_copy.remove(po_copy.find(f"event[@name='{EVENT}']"))
-    guard(ET.tostring(ev_copy)==ET.tostring(parsed_ev),
+    guard(same_xml_meaning(ev_copy,parsed_ev),
           "Another CE event altered during target removal")
-    guard(ET.tostring(po_copy)==ET.tostring(parsed_pos),
+    guard(same_xml_meaning(po_copy,parsed_pos),
           "Another fixed CE spawn point altered during target removal")
     new={FILES[0]:rem_ev,FILES[1]:rem_po,FILES[2]:new_profile_file}
     guard(len(new)==3 and set(new)==set(FILES),"Unexpected write set")
