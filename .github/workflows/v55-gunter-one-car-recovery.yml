@@ -1,0 +1,50 @@
+name: BEILEYS47 | V55 recover missing Gunter one-car event NO SECOND REBOOT
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v55-gunter-one-car-recovery.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  unit-safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile and test rearm with single-event limits
+        run: |
+          python -m py_compile scripts/v53_gunter_gift.py scripts/v55_gunter_one_car_recovery.py scripts/test_v55_gunter_one_car_recovery.py
+          python scripts/test_v53_gunter_gift.py
+          python scripts/test_v55_gunter_one_car_recovery.py
+  live:
+    needs: unit-safety
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V55_APPROVED: "yes"
+      BEILEYS47_V55_PLAYER_INTERRUPT_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Owner-approved one restart, 365-day future restock without second reboot
+        run: python scripts/v55_gunter_one_car_recovery.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V55_ONE_CAR_RECOVERY_STATUS_WITH_PRIVATE_BACKUP
+          path: |
+            deploy/v55/GUNTER_DELIVERY_ATTEMPT.json
+            deploy/v55/PRIVATE_ORIGINAL_GUNTER_XML.zip
+          retention-days: 7
+          if-no-files-found: ignore
