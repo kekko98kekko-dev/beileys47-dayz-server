@@ -1,0 +1,33 @@
+name: BEILEYS47 V51 | READ-ONLY signed download 180-second diagnostic
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/v51-signed-download-diagnostic.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  diagnostic:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile diagnostic; no Nitrado mutation code
+        run: python -m py_compile scripts/v51_signed_download_readonly.py
+      - name: Compare failing infected XML signed-download vs gameplay JSON with 180s timeout
+        run: python scripts/v51_signed_download_readonly.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V51_READONLY_SIGNED_DOWNLOAD_DIAGNOSIS
+          path: deploy/v51/NITRADO_DOWNLOAD_DIAGNOSIS.json
+          retention-days: 7
+          if-no-files-found: ignore
