@@ -26,6 +26,7 @@ jobs:
           python scripts/test_v49_live_final_infected.py
   authorized-maintenance:
     needs: safety-check
+    if: false # Zone47 retired: do not add the two hotspot infected territories
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
