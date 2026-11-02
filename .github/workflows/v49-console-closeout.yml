@@ -1,0 +1,50 @@
+name: BEILEYS47 | V49 final console-closeout infected zones
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v49-console-closeout.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  safety-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile and test V37/V49 without server changes
+        run: |
+          python -m py_compile scripts/v37_zone47_infected_patches.py scripts/test_v37_zone47_infected_patches.py scripts/v49_live_final_infected.py scripts/test_v49_live_final_infected.py
+          python scripts/test_v37_zone47_infected_patches.py
+          python scripts/test_v49_live_final_infected.py
+  authorized-maintenance:
+    needs: safety-check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V49_APPROVED: "yes"
+      BEILEYS47_V49_PLAYER_INTERRUPTION_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: One-time install missing V37 infected pressure, preserving backups/players/world
+        run: python scripts/v49_live_final_infected.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V49_LIVE_REPORT_AND_INFECTED_ROLLBACK
+          path: |
+            deploy/v49/LIVE_RESULT.json
+            deploy/v49/PRIVATE_ORIGINAL_INFECTED_ZONES.zip
+          retention-days: 7
+          if-no-files-found: ignore
