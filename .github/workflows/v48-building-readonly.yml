@@ -1,0 +1,36 @@
+name: BEILEYS47 | V48 READ-ONLY live gameplay building preflight
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v48-building-readonly.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Python syntax and offline no-side-effect tests
+        run: |
+          python -m py_compile scripts/v48_build_anywhere_preview.py scripts/test_v48_build_anywhere_preview.py scripts/v48_live_readonly_preflight.py
+          python scripts/test_v48_build_anywhere_preview.py
+      - name: GET-only live config preflight — no shutdown, no uploads
+        run: python scripts/v48_live_readonly_preflight.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V48_READONLY_PREFLIGHT
+          path: deploy/v48/LIVE_PREFLIGHT.json
+          retention-days: 7
+          if-no-files-found: ignore
