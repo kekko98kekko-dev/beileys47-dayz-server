@@ -1,0 +1,49 @@
+name: BEILEYS47 | V57 REMOVE physically broken Zone47 26 props and 2 infected zones
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v57-remove-bugged-zone47.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  safety-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test isolated removal, backup-safe code and syntax
+        run: |
+          python -m py_compile scripts/v57_remove_bugged_zone47.py scripts/test_v57_remove_bugged_zone47.py
+          python scripts/test_v57_remove_bugged_zone47.py
+  guarded-live-removal:
+    needs: safety-tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V57_REMOVE_ZONE47_APPROVED: "yes"
+      BEILEYS47_V57_ALLOW_PLAYER_DISCONNECT: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Back up live world references, remove ONLY Zone47 refs and two infected patches, restart and verify
+        run: python scripts/v57_remove_bugged_zone47.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V57_ZONE47_REMOVAL_AND_PRIVATE_ROLLBACK
+          path: |
+            deploy/v57/ZONE47_REMOVAL_LIVE_RESULT.json
+            deploy/v57/PRIVATE_ORIGINAL_ZONE47_CONFIG.zip
+          retention-days: 7
+          if-no-files-found: ignore
