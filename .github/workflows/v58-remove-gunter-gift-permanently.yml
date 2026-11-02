@@ -1,0 +1,56 @@
+name: BEILEYS47 | V58 Remove all Gunter gift CE config and restore original car profile
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v58-remove-gunter-gift-permanently.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  offline-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test complete removal and exact baseline profile recovery
+        run: |
+          python -m py_compile scripts/v58_remove_gunter_gift_permanently.py scripts/test_v58_remove_gunter_gift_permanently.py
+          python scripts/test_v58_remove_gunter_gift_permanently.py
+  guarded-live-removal:
+    needs: offline-test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V58_REMOVE_GUNTER_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch PRIVATE verified pre-gift rollback artifact from V54 (read-only)
+        uses: actions/download-artifact@v4
+        with:
+          name: BEILEYS47_V54_ONE_TIME_RESULT_WITH_PRIVATE_ORIGINAL_ROLLBACK
+          run-id: 41440782545
+          github-token: ${{ github.token }}
+          path: deploy/v58/v54_original
+      - name: Remove Gunter gift CE event and fixed position, restore original black car class, restart
+        run: python scripts/v58_remove_gunter_gift_permanently.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V58_GUNTER_REMOVAL_PROOF_WITH_PRIVATE_ROLLBACK
+          path: |
+            deploy/v58/GUNTER_REMOVAL_RESULT.json
+            deploy/v58/PRIVATE_PRE_REMOVAL_BACKUP.zip
+          retention-days: 7
+          if-no-files-found: ignore
