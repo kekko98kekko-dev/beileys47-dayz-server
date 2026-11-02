@@ -118,6 +118,8 @@ def patch(before, live_types):
         guard(all(abs(float(p.get(k))-v)<0.005 for k,v in
                   (("x",X),("z",Z),("a",YAW))),
               "Existing event at different location")
+        ok, _=patch_for_postread(before)
+        guard(ok, "Existing V53 event present but Gunter cargo is incomplete; refuse false success")
         return None, {"status":"ALREADY_CONFIGURED_NO_EDIT"}
     site=validate_location(positions)
     vanilla=event_template(events)
