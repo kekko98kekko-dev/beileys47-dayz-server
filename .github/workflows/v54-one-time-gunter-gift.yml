@@ -32,6 +32,7 @@ jobs:
     env:
       NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
       BEILEYS47_V54_APPROVED: "yes"
+      BEILEYS47_V54_ALLOW_PLAYER_INTERRUPTION: "yes" # Explicit owner instruction: restart even with players
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
