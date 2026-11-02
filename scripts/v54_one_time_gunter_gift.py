@@ -184,7 +184,7 @@ def main():
         time.sleep(SETTLE_SECONDS)
         now,n=server(token)
         require(now in ("started","running"),"Server not running after gift boot")
-        if type(n) is not int or n!=0:
+        if not owner_override and (type(n) is not int or n!=0):
             report(status="IMPORTANT_DISARM_BLOCKED_BY_CONNECTED_PLAYERS",
                    players=n,server_status=now,
                    restock_delay_seconds=RESTOCK_SECONDS,
