@@ -61,6 +61,12 @@ def output(result):
           "warnings",len(result["warnings"]),
           "optional_read_errors",len(result.get("optional_read_errors",{})),
           flush=True)
+    for key in ("duplicate_spawnable_profiles","active_world_scenes",
+                "deprecated_message_text","event_nominal_gt_max_details",
+                "unused_event_position_names"):
+        print("V59 DIAG",key,
+              json.dumps(result.get("observations",{}).get(key,[]),
+                         ensure_ascii=False)[:2600],flush=True)
     for finding in (result["critical_findings"]+result["warnings"])[:25]:
         print("V59 FINDING:",finding["severity"],finding["code"],
               finding.get("count",""),flush=True)
@@ -148,6 +154,16 @@ def analyze(blobs,provider,server,optional_errors):
     chk("unique_ce_event_names",not unique(evnames))
     chk("unique_event_position_groups",not unique(posnames))
     chk("unique_spawnable_profile_names",not unique(profiles))
+    duplicate_profiles=[]
+    for name in unique(profiles):
+        blocks=[ET.tostring(q,encoding="utf-8") for q in spawnprofiles.findall("type")
+                if q.get("name")==name]
+        duplicate_profiles.append({
+            "name":name,"count":len(blocks),
+            "all_duplicate_definitions_identical":len(set(blocks))==1,
+            "distinct_definitions":len(set(blocks))
+        })
+    observations["duplicate_spawnable_profiles"]=duplicate_profiles
     itemset=set(names)
     eventset=set(evnames)
     poss=set(posnames)
@@ -177,6 +193,11 @@ def analyze(blobs,provider,server,optional_errors):
     odd_count=[e.get("name") for e in evs
                if None not in (getint(e,"nominal"),getint(e,"max"))
                and getint(e,"nominal")>getint(e,"max")]
+    observations["event_nominal_gt_max_details"]=[
+        {"event":e.get("name"),"nominal":getint(e,"nominal"),
+         "min":getint(e,"min"),"max":getint(e,"max"),"active":e.findtext("active")}
+        for e in evs if e.get("name") in odd_count
+    ][:25]
     if odd_count:warn("events_nominal_above_max",
                      "Event target above max; engine may cap it",len(odd_count))
     invalid_type=[]
@@ -201,6 +222,7 @@ def analyze(blobs,provider,server,optional_errors):
     chk("active_custom_vehicle_events_have_point_and_types",not custom_bad,
         "Active BEILEYS47 vehicle event lost point or classname: "+str(custom_bad))
     unknown_spawns=[n for n in posnames if n not in eventset]
+    observations["unused_event_position_names"]=unknown_spawns[:15]
     if unknown_spawns:warn("positions_without_corresponding_event",
         "Unused event position names; may be legitimate legacy definitions",len(unknown_spawns))
     observations["ce_counts"]={
@@ -242,6 +264,12 @@ def analyze(blobs,provider,server,optional_errors):
     message_doc=parse(blobs["db/messages.xml"])
     contents="\n".join((a.text or "") for m in message_doc.findall("message")
                        for a in m.iter())
+    observations["deprecated_message_text"]=[
+        " ".join((t.text or "") for t in m.iter()).strip()[:210]
+        for m in message_doc.findall("message")
+        if re.search(r"\bzona[\s_-]*47\b|gunter\s*gift",
+          " ".join((t.text or "") for t in m.iter()),re.I)
+    ][:8]
     if re.search(r"\bzona[\s_-]*47\b|gunter\s*gift",contents,re.I):
         warn("outdated_in_game_messages",
              "Server message may mention removed Zone47 or personal Gunter gift")
