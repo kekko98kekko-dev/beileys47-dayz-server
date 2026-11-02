@@ -343,6 +343,9 @@ SOURCE_PATHS = [
     ".github/workflows/v54-one-time-gunter-gift.yml",
     "scripts/test_v54_one_time_gunter_gift.py",
     "scripts/v54_one_time_gunter_gift.py",
+    ".github/workflows/v55-gunter-one-car-recovery.yml",
+    "scripts/test_v55_gunter_one_car_recovery.py",
+    "scripts/v55_gunter_one_car_recovery.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
