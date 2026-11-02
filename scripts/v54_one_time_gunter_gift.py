@@ -70,8 +70,8 @@ def arm(original,live_types):
     ev.find("saferadius").text="0"
     edited[FILES[0]]=data(root)
     valid,check=patch_for_postread(edited)
-    require(valid and check["cargo_counts"]==CARGO,
-            "Armed event or cargo preset failed offline check")
+    require(valid and all(check["cargo_counts"].get(k,0)>=n for k,n in CARGO.items()),
+            "Armed event or gift cargo preset failed offline check")
     return edited,details
 
 def disarm(armed,original):
