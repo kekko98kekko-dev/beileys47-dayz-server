@@ -54,6 +54,23 @@ def main():
         raise AssertionError("Nearest vehicle collision guard failed")
     except Exception as ex:
         assert "too close" in str(ex)
+    # Existing special cargo must survive this temporary gift, with no duplicate
+    # kit when the gift quantity is already present.
+    custom=dict(before)
+    root=parse(custom[FILES[2]])
+    p=root.find(f"type[@name='{CAR}']")
+    oldg=ET.SubElement(p,"cargo",{"chance":"1.00"})
+    ET.SubElement(oldg,"item",{"name":"TireRepairKit","chance":"1.00"})
+    extra=ET.SubElement(p,"cargo",{"chance":"0.33"})
+    ET.SubElement(extra,"item",{"name":"CustomExistingGear","chance":"0.66"})
+    custom[FILES[2]]=data(root)
+    custom_edited,custom_detail=patch(custom,types)
+    assert custom_detail["existing_cargo_entries_preserved"]==2
+    assert custom_detail["gift_entries_added"]["TireRepairKit"]==0
+    pc=parse(custom_edited[FILES[2]]).find(f"type[@name='{CAR}']")
+    assert sum(i.get("name")=="TireRepairKit" for i in pc.findall("./cargo/item"))==1
+    assert sum(i.get("name")=="CustomExistingGear" for i in pc.findall("./cargo/item"))==1
+    assert patch_for_postread(custom_edited)[0] is True
     bad=dict(before)
     bad[FILES[2]]=bad[FILES[2]].replace(
         b'<type name="Truck_01_Covered" />',
