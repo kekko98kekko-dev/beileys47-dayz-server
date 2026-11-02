@@ -349,6 +349,9 @@ SOURCE_PATHS = [
     ".github/workflows/v56-gunter-max-safe-restock.yml",
     "scripts/test_v56_gunter_max_safe_restock.py",
     "scripts/v56_gunter_max_safe_restock.py",
+    ".github/workflows/v57-remove-bugged-zone47.yml",
+    "scripts/test_v57_remove_bugged_zone47.py",
+    "scripts/v57_remove_bugged_zone47.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
