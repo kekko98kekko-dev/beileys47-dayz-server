@@ -25,6 +25,7 @@ jobs:
           python scripts/test_v53_gunter_gift.py
           python scripts/test_v55_gunter_one_car_recovery.py
   live:
+    if: false # retired per owner request, no re-arming gift Gunter
     needs: unit-safety
     runs-on: ubuntu-24.04
     timeout-minutes: 30
