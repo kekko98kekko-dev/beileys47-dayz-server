@@ -3,9 +3,6 @@ on:
   schedule:
     - cron: "0 19 * * 0"
   workflow_dispatch:
-  push:
-    paths:
-      - ".github/workflows/weekly-community-events.yml"
 permissions:
   issues: write
   contents: read
@@ -25,8 +22,8 @@ jobs:
           year,week,_=today.isocalendar()
           tag=f"BEILEYS47 WEEK {year}-W{week:02d}"
           modes=[
-            ("ZONA 47 PvP Arena", "Fight for control of ZONA 47 around X7100 Z6965. Hold the center and survive the infected."),
-            ("Bunker Siege", "Fight over the fortified original bunker near X9022 Z7458, take the high-value loot and escape."),
+            ("Western Patrol Skirmish", "Explore the existing western infected patrol region around X7100 Z6965. Hold a safe vantage point and extract; no custom fortress is promised."),
+            ("Military Patrol Hunt", "Search the existing infected military patrol region around X9022 Z7458. Loot and survive; no custom bunker is claimed."),
             ("Dolnik Survival Rescue", "Teams race to Dolnik's medical and military camps near X11490 Z460. Recover supplies and protect the extraction group."),
             ("Convoy Scavenger", "Hunt vanilla military convoys across Livonia, recover rare supplies and extract safely. No guaranteed event spawns.")
           ]
