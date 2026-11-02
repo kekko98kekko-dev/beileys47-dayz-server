@@ -150,8 +150,8 @@ def main():
         return
     time.sleep(2)
     state2,n2=server(token)
-    require(state2==state and type(n2) is int and n2==0,
-            "New players appeared; no changes")
+    require(state2==state and (owner_override or (type(n2) is int and n2==0)),
+            "Unapproved player or server-state change; no changes")
     report(status="BACKUP_READY_PRE_ARM",
            provider_backup_records=provider["backup_count"],**details)
     last=[armed]
