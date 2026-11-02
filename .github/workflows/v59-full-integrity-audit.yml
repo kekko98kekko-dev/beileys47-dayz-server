@@ -1,0 +1,54 @@
+name: BEILEYS47 | V59 deep server integrity audit READ ONLY
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v59-full-integrity-audit.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  deep-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile deep audit and dependency chain
+        run: |
+          python -m py_compile scripts/v59_full_integrity_readonly.py scripts/v50_full_live_audit.py scripts/v44_single_original_dolnik_truck.py
+      - name: GET-only all active Object Spawners, CE, events, loot, backups, weather, kit and vehicle checks
+        run: python scripts/v59_full_integrity_readonly.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V59_EXPANDED_LIVE_AUDIT_NO_CHANGES
+          path: deploy/v59/EXPANDED_SERVER_AUDIT.json
+          retention-days: 30
+          if-no-files-found: ignore
+  rpt-readonly:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read available RPT error logs as aggregate counts, never player identifiers
+        run: python scripts/v34_rpt_spawner_readonly.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V59_RPT_ERROR_COUNTS
+          path: deploy/v34/RPT_ERROR_COUNTS_ONLY.json
+          retention-days: 30
+          if-no-files-found: ignore
