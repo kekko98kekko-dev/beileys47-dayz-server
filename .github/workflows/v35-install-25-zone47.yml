@@ -27,7 +27,7 @@ jobs:
       - run: python scripts/test_v35_install_25_zone47.py
   protected-live-install:
     needs: offline-test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: false # Zone47 retired: protect against reinstallation of 25 broken world props
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
