@@ -33,7 +33,7 @@ REQ_PARTS = {
 }
 CARGO = {
     "CanisterGasoline": 1, "TireRepairKit": 1, "CarRadiator": 1,
-    "WaterBottle": 2, "AliceBag_Green": 1,
+    "Canteen": 2, "AliceBag_Green": 1,
     "BakedBeansCan": 2, "TacticalBaconCan": 2
 }
 OUT = Path("deploy/v53/GUNTER_GIFT_LIVE_RESULT.json")
@@ -171,7 +171,7 @@ def patch(before, live_types):
         for _ in range(count):
             g=ET.SubElement(profile,"cargo",{"chance":"1.00"})
             attrs={"name":classname,"chance":"1.00"}
-            if classname in ("CanisterGasoline","WaterBottle"):
+            if classname in ("CanisterGasoline","Canteen"):
                 attrs.update({"quantmin":"100","quantmax":"100"})
             ET.SubElement(g,"item", attrs)
     changed={p:data(roots[p]) for p in FILES}
