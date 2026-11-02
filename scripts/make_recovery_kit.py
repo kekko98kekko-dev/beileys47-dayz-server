@@ -352,6 +352,9 @@ SOURCE_PATHS = [
     ".github/workflows/v57-remove-bugged-zone47.yml",
     "scripts/test_v57_remove_bugged_zone47.py",
     "scripts/v57_remove_bugged_zone47.py",
+    ".github/workflows/v58-remove-gunter-gift-permanently.yml",
+    "scripts/test_v58_remove_gunter_gift_permanently.py",
+    "scripts/v58_remove_gunter_gift_permanently.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
