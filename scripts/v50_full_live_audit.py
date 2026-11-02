@@ -86,13 +86,22 @@ def review(blobs,server,provider=None):
           proto.find("group[@name='Land_Medical_Tent_Big']").get("lootmax")=="10" and
           proto.find("group[@name='Land_Mil_Tent_Big2_4']") is not None and
           proto.find("group[@name='Land_Mil_Tent_Big2_4']").get("lootmax")=="8",
-      "v35_25_props_registered":"custom/beileys47_v35_zone47_full_25.json" in active and
+      "v57_bugged_zone47_26_props_disabled":
+          "custom/beileys47_v35_zone47_full_25.json" not in active and
+          "custom/beileys47_v29_zone47_p1_guardbox.json" not in active and
           len(v35.get("Objects",[]))==25,
       "v16_original_infected_territories":all(x in zone_index for x in (
           ("InfectedArmy","7100.0","6965.0"),
           ("InfectedArmy","9022.5","7457.9"),
           ("InfectedMedic","11490.0","461.0"))),
-      "v49_two_more_infected_territories":infected,
+      "v57_zone47_infected_territories_retired":
+          not infected and all(
+              (name,f"{x:.1f}",f"{z:.1f}") not in zone_index
+              for name,x,z,*rest in (
+                  ("InfectedArmy",8960.0,7810.0),
+                  ("InfectedArmy",9040.0,7730.0)
+              )
+          ),
       "v20_unlimited_sprint_configured":
           all(st.get(k)==0 for k in ("sprintStaminaModifierErc",
                                       "sprintStaminaModifierCro",
@@ -117,7 +126,7 @@ def review(blobs,server,provider=None):
     expected=['pending_gameplay_check: physically find truck & inspect fuel and cargo',
       'pending_gameplay_check: physical stacking of crates/barrels/fences',
       'pending_gameplay_check: fresh spawn inventory / actual Dolnik positioning',
-      'pending_gameplay_check: position/navmesh of infected and 26 new world props',
+      'retired_zone47_bugged_26_props_and_two_infected_patches: new manual map design pending',
       'pending_gameplay_check: loot, key interactions, PS4/PS5 performance and persistence',
       'not_supported_vanilla_console: true scripted roaming hordes',
       'not_supported_vanilla_console: fridge cooling or winner-specific auto item payouts',
