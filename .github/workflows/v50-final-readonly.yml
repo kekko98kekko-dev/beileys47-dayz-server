@@ -1,0 +1,34 @@
+name: BEILEYS47 | V50 final live release audit GET ONLY
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v50-final-readonly.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile read-only final audit
+        run: python -m py_compile scripts/v50_full_live_audit.py scripts/v37_zone47_infected_patches.py scripts/v44_single_original_dolnik_truck.py
+      - name: GET-only Nitrado scene/gameplay/CE/backup cross-validation
+        run: python scripts/v50_full_live_audit.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V50_INDEPENDENT_LIVE_RELEASE_AUDIT
+          path: deploy/v50/INDEPENDENT_LIVE_RELEASE_AUDIT.json
+          retention-days: 7
+          if-no-files-found: ignore
