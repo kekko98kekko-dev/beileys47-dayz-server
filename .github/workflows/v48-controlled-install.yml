@@ -1,0 +1,49 @@
+name: BEILEYS47 | V48 ONE-SHOT guarded balanced Build Anywhere
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v48-controlled-install.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  safety-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Static compilation and offline safety tests, no network
+        run: |
+          python -m py_compile scripts/v48_build_anywhere_preview.py scripts/test_v48_build_anywhere_preview.py scripts/v48_guarded_live_install.py scripts/test_v48_guarded_live_install.py
+          python scripts/test_v48_build_anywhere_preview.py
+          python scripts/test_v48_guarded_live_install.py
+  guarded-live:
+    needs: safety-check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V48_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Deploy only with verified SHA, zero players, backup, and exact semantic checks
+        run: python scripts/v48_guarded_live_install.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V48_LIVE_REPORT_AND_EXACT_GAMEPLAY_ROLLBACK
+          path: |
+            deploy/v48/CONTROLLED_INSTALL_STATUS.json
+            deploy/v48/PRIVATE_ORIGINAL_CF_GGAMEPLAY.zip
+          retention-days: 7
+          if-no-files-found: ignore
