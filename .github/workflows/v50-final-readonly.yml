@@ -1,9 +1,10 @@
-name: BEILEYS47 | V50 final live release audit GET ONLY
+name: BEILEYS47 | read-only audit (V57 Zone47 retired)
 on:
   push:
     branches: [main]
     paths:
       - ".github/workflows/v50-final-readonly.yml"
+      - "scripts/v50_full_live_audit.py"
   workflow_dispatch:
 permissions:
   contents: read
