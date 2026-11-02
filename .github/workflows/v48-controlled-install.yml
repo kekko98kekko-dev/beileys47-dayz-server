@@ -1,4 +1,4 @@
-name: BEILEYS47 | V48 ONE-SHOT guarded balanced Build Anywhere
+name: BEILEYS47 | V48 ONE-SHOT authorized restart with players
 on:
   push:
     branches: [main]
@@ -31,12 +31,13 @@ jobs:
     env:
       NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
       BEILEYS47_V48_APPROVED: "yes"
+      BEILEYS47_V48_ALLOW_PLAYER_INTERRUPTION: "yes"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Deploy only with verified SHA, zero players, backup, and exact semantic checks
+      - name: Owner-authorized player interruption only with exact backup, baseline SHA and semantic checks
         run: python scripts/v48_guarded_live_install.py
       - if: always()
         uses: actions/upload-artifact@v4
