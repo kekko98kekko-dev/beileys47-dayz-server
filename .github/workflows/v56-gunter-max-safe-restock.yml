@@ -24,6 +24,7 @@ jobs:
           python -m py_compile scripts/v56_gunter_max_safe_restock.py scripts/test_v56_gunter_max_safe_restock.py
           python scripts/test_v56_gunter_max_safe_restock.py
   guarded-nitrado-update:
+    if: false # retired per owner request, no re-arming gift Gunter
     needs: tests
     runs-on: ubuntu-24.04
     timeout-minutes: 20
