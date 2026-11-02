@@ -1,0 +1,49 @@
+name: BEILEYS47 | V54 single-use Gunter 2 then automatically disable spawn
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v54-one-time-gunter-gift.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  offline-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Mandatory no-repeating-spawn and cargo rollback validation
+        run: |
+          python -m py_compile scripts/v53_gunter_gift.py scripts/v54_one_time_gunter_gift.py scripts/test_v53_gunter_gift.py scripts/test_v54_one_time_gunter_gift.py
+          python scripts/test_v53_gunter_gift.py
+          python scripts/test_v54_one_time_gunter_gift.py
+  one-time-gift:
+    needs: offline-tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NITRADO_API_TOKEN: \${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V54_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: One-time car gift, protected startup, 110s CE initialization, disarm and restart
+        run: python scripts/v54_one_time_gunter_gift.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V54_ONE_TIME_RESULT_WITH_PRIVATE_ORIGINAL_ROLLBACK
+          path: |
+            deploy/v54/ONE_TIME_GUNTER_RESULT.json
+            deploy/v54/PRIVATE_ORIGINAL_XML_BEFORE_GIFT.zip
+          retention-days: 7
+          if-no-files-found: ignore
