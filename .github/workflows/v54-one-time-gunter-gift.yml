@@ -25,6 +25,7 @@ jobs:
           python scripts/test_v53_gunter_gift.py
           python scripts/test_v54_one_time_gunter_gift.py
   one-time-gift:
+    if: false # retired per owner request, no re-arming gift Gunter
     # Preserve previous profile cargo; only add missing contents for this single gift.
     needs: offline-tests
     runs-on: ubuntu-24.04
