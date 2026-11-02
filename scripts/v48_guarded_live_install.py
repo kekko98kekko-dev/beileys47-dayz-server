@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """BEILEYS47 V48: ONE guarded build placement config install on Nitrado.
 
-No world/storage edits, no wipes, no scheduled retries. STOP if any players
-are online, source SHA differs from independent live audit or gameplay disabled.
+No world/storage edits, no wipes, no scheduled retries. The owner expressly
+authorizes one forced stop/restart EVEN WHILE PLAYERS ARE ONLINE for V48.
+Fail closed if player count is unknown, source SHA differs from the independent
+live audit, gameplay is disabled, or backup verification fails.
 Backup the exact original cfggameplay.json before changing the file.
 """
 from __future__ import annotations
@@ -47,10 +49,15 @@ def make_backup(original):
 def health(token):
     gs=game_state(token)
     return game_status(gs),players(gs),setting_state(gs)
+def known_player_count(count):
+    return isinstance(count,int) and not isinstance(count,bool) and count>=0
+def player_restart_authorized():
+    return os.getenv("BEILEYS47_V48_ALLOW_PLAYER_INTERRUPTION")=="yes"
 def main():
     token=os.getenv("NITRADO_API_TOKEN","").strip()
-    need(token and os.getenv("BEILEYS47_V48_APPROVED")=="yes",
-         "No API secret or explicit V48 approval")
+    need(token and os.getenv("BEILEYS47_V48_APPROVED")=="yes"
+         and player_restart_authorized(),
+         "Missing token or explicit V48 player-interruption permission")
     mission=resolve_mission(token)
     remote=posixpath.join(mission,REL)
     original=download_one(token,remote)
@@ -68,21 +75,24 @@ def main():
         report(status="BLOCKED_GAMEPLAY_SETTING_NOT_CONFIRMED",settings=enabled)
         print("V48 NO ACTION: gameplay JSON is not confirmed enabled",flush=True)
         return
-    if current_status not in ("started","running") or count!=0:
-        report(status="WAITING_FOR_IDLE_NO_CHANGES",server_status=current_status,
+    if current_status not in ("started","running") or not known_player_count(count):
+        report(status="BLOCKED_UNKNOWN_SERVER_OR_PLAYER_STATUS",server_status=current_status,
                players_online=count,original_sha256=observed)
-        print("V48 NO ACTION: server not running idle with known player count 0",
+        print("V48 NO ACTION: server/player status unknown",
               "status:",current_status,"players:",count,flush=True)
         return
+    print("V48 OWNER AUTHORIZED PLAYER INTERRUPT; online players at preflight:",count,flush=True)
     time.sleep(2)
     status2,count2,enabled2=health(token)
-    if status2!=current_status or count2!=0 or enabled2!="enabled":
-        report(status="PLAYER_OR_GAMEPLAY_STATE_CHANGED_NO_ACTION")
-        print("V48 NO ACTION: second idle preflight failed",flush=True)
+    if status2!=current_status or not known_player_count(count2) or enabled2!="enabled":
+        report(status="GAMEPLAY_OR_SERVER_STATE_CHANGED_NO_ACTION")
+        print("V48 NO ACTION: second safety preflight failed",flush=True)
         return
+    print("V48 second preflight passed; forced shutdown authorized with players:",count2,flush=True)
     make_backup(original)
     report(status="BACKUP_VERIFIED_PRE_STOP",original_sha256=observed,
-           candidate_sha256=digest(candidate),changed_keys=changed)
+           candidate_sha256=digest(candidate),changed_keys=changed,
+           player_interruption_authorized=True,players_before_stop=count2)
     stopped=False; restarted=False; upload_attempted=False; installed=False
     try:
         request_api_post(token,f"/services/{SERVICE_ID}/gameservers/stop")
@@ -109,14 +119,15 @@ def main():
                uploaded_sha256=digest(candidate),live_sha256=digest(remote_after),
                raw_hash_same_as_candidate=digest(remote_after)==digest(candidate),
                fields_changed=changed,server_status=health(token)[0],
+               player_interruption_authorized=True,players_before_stop=count2,
                no_container_stacking_claim=True)
-        print("V48 LIVE SUCCESS: 5 balanced building switches verified after restart, no wipe.",flush=True)
+        print("V48 LIVE SUCCESS: 5 balanced building switches verified after forced restart, no wipe.",flush=True)
     except Exception as exc:
         if upload_attempted and not installed:
             try:
                 gs=game_state(token)
                 if game_status(gs) in ("started","running"):
-                    need(players(gs)==0,"Player connected; defer rollback to manual maintenance")
+                    need(known_player_count(players(gs)),"Unknown player count; defer rollback to manual maintenance")
                     request_api_post(token,f"/services/{SERVICE_ID}/gameservers/stop")
                     wait_status(token,{"stopped"},attempts=55)
                     stopped=True
