@@ -25,6 +25,7 @@ jobs:
           python scripts/test_v53_gunter_gift.py
   guarded-live:
     needs: offline-safety
+    if: false # Superseded by V54 one-time gift; never enable persistent V53 event
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
