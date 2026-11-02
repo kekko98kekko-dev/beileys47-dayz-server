@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """V48 protected installer OFFLINE regression checks; never calls Nitrado."""
-import hashlib,json,zipfile
+import hashlib,json,os,zipfile
+from unittest.mock import patch
 from pathlib import Path
 import v48_guarded_live_install as deploy
 from v48_build_anywhere_preview import apply_preview
@@ -28,6 +29,18 @@ def main():
     assert deploy.exact_semantics(new,json.dumps(json.loads(new),separators=(",",":")).encode())
     assert not deploy.exact_semantics(raw,new)
     assert deploy.REL=="cfggameplay.json"
+    assert deploy.known_player_count(0)
+    assert deploy.known_player_count(1)
+    assert deploy.known_player_count(10)
+    assert not deploy.known_player_count(None)
+    assert not deploy.known_player_count(True)
+    assert not deploy.known_player_count(-1)
+    with patch.dict(os.environ, {"BEILEYS47_V48_ALLOW_PLAYER_INTERRUPTION":"yes"}):
+        assert deploy.player_restart_authorized()
+    with patch.dict(os.environ, {"BEILEYS47_V48_ALLOW_PLAYER_INTERRUPTION":"no"}):
+        assert not deploy.player_restart_authorized()
+    with patch.dict(os.environ, {"BEILEYS47_V48_ALLOW_PLAYER_INTERRUPTION":""}):
+        assert not deploy.player_restart_authorized()
     deploy.make_backup(raw)
     with zipfile.ZipFile(deploy.BACKUP) as z:
         assert z.testzip() is None
@@ -35,5 +48,5 @@ def main():
         assert copy==raw
         assert hashlib.sha256(copy).hexdigest() in z.read("SHA256.txt").decode()
     deploy.BACKUP.unlink()
-    print("V48 installer OFFLINE guard tests PASS; no Nitrado calls")
+    print("V48 forced restart authorization + offline backup guards PASS; no Nitrado calls")
 if __name__=="__main__":main()
