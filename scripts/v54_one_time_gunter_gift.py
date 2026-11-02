@@ -153,7 +153,7 @@ def main():
             "New players appeared; no changes")
     report(status="BACKUP_READY_PRE_ARM",
            provider_backup_records=provider["backup_count"],**details)
-    last=[None]
+    last=[armed]
     stopped_now=False
     did_restart=False
     phase="NOT_STARTED"
@@ -169,7 +169,6 @@ def main():
             upload_file(token,remote[rel],armed[rel])
             require(sha(download_one(token,remote[rel]))==sha(armed[rel]),
                     "Arm readback failed "+rel)
-        last.append(armed)
         phase="ARMED_CONFIG"
         start(token)
         stopped_now=False
@@ -201,11 +200,11 @@ def main():
         for rel in FILES:
             require(sha(download_one(token,remote[rel]))==sha(armed[rel]),
                     "Concurrent edit just before disarm "+rel)
+        last.append(disabled)
         for rel in (FILES[0],FILES[2]):
             upload_file(token,remote[rel],disabled[rel])
             require(sha(download_one(token,remote[rel]))==sha(disabled[rel]),
                     "Disarm write/readback failed "+rel)
-        last.append(disabled)
         phase="DISARM_CONFIG_WRITTEN"
         start(token)
         stopped_now=False
