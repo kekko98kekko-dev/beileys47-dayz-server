@@ -110,8 +110,8 @@ def restore_if_possible(token,remote,expected,original,modified,was_running):
     # Caller invokes this ONLY after an error. Refuse to overwrite concurrent edits.
     status,count=server(token)
     if status in ("started","running"):
-        require(type(count) is int and count==0,
-                "Players joined: automatic rollback not safe")
+        require(os.environ.get("BEILEYS47_V54_ALLOW_PLAYER_INTERRUPTION")=="yes" or (type(count) is int and count==0),
+                "Players joined: automatic rollback not authorized")
         stop(token)
     else:require(status=="stopped","Unknown server state, no rollback")
     for rel in reversed(FILES):
