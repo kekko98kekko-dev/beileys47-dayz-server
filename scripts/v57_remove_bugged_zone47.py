@@ -104,7 +104,7 @@ def patch_infected(blob):
           "Custom V49 territory group differs from deployment")
     seen=0
     target_span=None
-    for m in re.finditer(rb"<territory\b[^>]*>.*?</territory>",blob,re.DOTALL):
+    for m in re.finditer(rb"<territory(?=[\s>])[^>]*>.*?</territory>",blob,re.DOTALL):
         try:g=ET.fromstring(m.group())
         except ET.ParseError:continue
         members=[zone_tuple(z) for z in g.findall("zone")]
