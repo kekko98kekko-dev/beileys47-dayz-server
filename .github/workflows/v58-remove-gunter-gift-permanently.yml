@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Test complete removal, semantic XML checks and exact baseline profile recovery
+      - name: Test original class restoration and safe rejection of repeated removal
         run: |
           python -m py_compile scripts/v58_remove_gunter_gift_permanently.py scripts/test_v58_remove_gunter_gift_permanently.py
           python scripts/test_v58_remove_gunter_gift_permanently.py
