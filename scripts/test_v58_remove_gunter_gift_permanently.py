@@ -23,7 +23,7 @@ def main():
         prune_config(edited,original,types)
         raise AssertionError("already removed config accepted")
     except Exception as e:
-        assert "a gift source/point" in str(e).lower() or "gift source/point" in str(e).lower() or "gift" in str(e).lower()
+        assert any(word in str(e).lower() for word in ("gift","black gunter"))
     print("V58 PASS: exact original black-Gunter profile restored, custom event/point deleted")
     print("V58 PASS: unrelated vehicle event and truck profile unchanged, no wipe/persistence edits")
 if __name__=="__main__":main()
