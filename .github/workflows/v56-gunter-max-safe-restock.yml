@@ -1,0 +1,48 @@
+name: BEILEYS47 | V56 Gunter 68-year maximum safe CE restock NO RESTART
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v56-gunter-max-safe-restock.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile and test exact XML edit and signed integer limits
+        run: |
+          python -m py_compile scripts/v56_gunter_max_safe_restock.py scripts/test_v56_gunter_max_safe_restock.py
+          python scripts/test_v56_gunter_max_safe_restock.py
+  guarded-nitrado-update:
+    needs: tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V56_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Update only live Gunter event restock with original ZIP and readback
+        run: python scripts/v56_gunter_max_safe_restock.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V56_GUNTER_RESTOCK_ONLY_WITH_PRIVATE_ROLLBACK
+          path: |
+            deploy/v56/GUNTER_RESTOCK_68Y_RESULT.json
+            deploy/v56/PRIVATE_ORIGINAL_EVENTS_XML.zip
+          retention-days: 7
+          if-no-files-found: ignore
