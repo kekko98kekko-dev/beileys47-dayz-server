@@ -27,7 +27,7 @@ jobs:
       - run: python scripts/test_v29_zone47_p1_pilot.py
   guarded-pilot:
     needs: validate
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: false # Zone47 retired at owner's request; do not reinstall P1 automatically
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
