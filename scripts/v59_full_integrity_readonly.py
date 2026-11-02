@@ -32,6 +32,10 @@ PRESERVE_SCENES=(
     "custom/beileys47_v16_three_hotspots.json",
     "custom/beileys47_dolnik_military_base_v9.json",
 )
+# Exact names also duplicated in the official Bohemia Livonia cfgspawnabletypes.xml.
+# Do not "repair" them, or remove distinct official attachment presets.
+OFFICIAL_LIVONIA_DUPLICATES={"ZmbM_usSoldier_Heavy_Woodland","PM73Rak","R12"}
+
 ROOT_TAGS={
     "db/types.xml":"types","db/events.xml":"events",
     "cfgeventspawns.xml":"eventposdef","cfgspawnabletypes.xml":"spawnabletypes",
@@ -111,9 +115,19 @@ def analyze(blobs,provider,server,optional_errors):
         all(p in refs for p in PRESERVE_SCENES))
     extra_scenes=[p for p in refs if p not in PRESERVE_SCENES]
     observations["active_world_scenes"]=list(refs)
-    if extra_scenes:warn("additional_registered_scenes",
-       "Unrelated scene registrations require runtime altitude/interaction checks",
-       len(extra_scenes))
+    # Historical label: this tiny X7100/Z6965 Radunin outpost is NOT
+    # the removed 26-prop central experimental Zone47 X9000/Z7800.
+    known_alias="custom/beileys47_hotspot_zone47.json"
+    alias_objects=(json.loads(blobs[known_alias]).get("Objects",[])
+                   if known_alias in blobs else [])
+    alias_safe=(extra_scenes==[known_alias] and len(alias_objects)==9
+                and all(7000<float(o["pos"][0])<7200 and
+                        6850<float(o["pos"][2])<7100 for o in alias_objects))
+    observations["historical_radunin_alias_not_removed_zone47"]=alias_safe
+    if extra_scenes and not alias_safe:
+        warn("additional_registered_scenes",
+             "Unexpected active Object Spawner scene, verify geometry",
+             len(extra_scenes))
     for p in refs:
         chk("active_scene_file_exists_"+p,p in blobs,
             "Registered Object Spawner JSON missing from current mission: "+p)
@@ -153,7 +167,9 @@ def analyze(blobs,provider,server,optional_errors):
     chk("unique_ce_item_names",not unique(names))
     chk("unique_ce_event_names",not unique(evnames))
     chk("unique_event_position_groups",not unique(posnames))
-    chk("unique_spawnable_profile_names",not unique(profiles))
+    chk("known_official_livonia_spawnable_duplicates_only",
+        set(unique(profiles)).issubset(OFFICIAL_LIVONIA_DUPLICATES),
+        "Unexpected repeated spawnable profile names beyond upstream defaults")
     duplicate_profiles=[]
     for name in unique(profiles):
         blocks=[ET.tostring(q,encoding="utf-8") for q in spawnprofiles.findall("type")
@@ -198,8 +214,9 @@ def analyze(blobs,provider,server,optional_errors):
          "min":getint(e,"min"),"max":getint(e,"max"),"active":e.findtext("active")}
         for e in evs if e.get("name") in odd_count
     ][:25]
-    if odd_count:warn("events_nominal_above_max",
-                     "Event target above max; engine may cap it",len(odd_count))
+    # Bohemia vanilla animal, tree and static event definitions intentionally
+    # use nominal above the per-event max field. Not a bug in isolation.
+    observations["official_livonia_nominal_gt_max_can_be_normal"]=True
     invalid_type=[]
     odd_type=[]
     for e in items.findall("type"):
@@ -223,8 +240,13 @@ def analyze(blobs,provider,server,optional_errors):
         "Active BEILEYS47 vehicle event lost point or classname: "+str(custom_bad))
     unknown_spawns=[n for n in posnames if n not in eventset]
     observations["unused_event_position_names"]=unknown_spawns[:15]
-    if unknown_spawns:warn("positions_without_corresponding_event",
-        "Unused event position names; may be legitimate legacy definitions",len(unknown_spawns))
+    # Official Bohemia Livonia cfgeventspawns.xml includes an empty
+    # VehicleTransitBus group even when events.xml defines no such event.
+    unexpected_positions=set(unknown_spawns)-{"VehicleTransitBus"}
+    if unexpected_positions:
+        warn("new_positions_without_event",
+             "Unexpected event-position group names; read-only follow-up",
+             len(unexpected_positions))
     observations["ce_counts"]={
         "item_types":len(names),"events":len(evs),
         "spawn_position_event_groups":len(posnames),"spawnable_profiles":len(profiles),
@@ -270,9 +292,9 @@ def analyze(blobs,provider,server,optional_errors):
         if re.search(r"\bzona[\s_-]*47\b|gunter\s*gift",
           " ".join((t.text or "") for t in m.iter()),re.I)
     ][:8]
-    if re.search(r"\bzona[\s_-]*47\b|gunter\s*gift",contents,re.I):
-        warn("outdated_in_game_messages",
-             "Server message may mention removed Zone47 or personal Gunter gift")
+    old_messages=re.search(r"\bzona[\s_-]*47\b|gunter\s*gift",contents,re.I)
+    chk("no_retired_zone_or_gift_announcements",not old_messages,
+        "Some rotating messages advertise retired Zone47 or special Gunter event")
     observations["messages_count"]=len(message_doc.findall("message"))
     preset_paths=gp.get("PlayerData",{}).get("spawnGearPresetFiles",[])
     observations["starter_kit_refs"]=preset_paths
