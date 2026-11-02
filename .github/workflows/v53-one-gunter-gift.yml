@@ -1,0 +1,48 @@
+name: BEILEYS47 | V53 ONE Gunter 2 with supplies at requested position
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v53-one-gunter-gift.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  offline-safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile and run isolated XML regression tests before ANY writes
+        run: |
+          python -m py_compile scripts/v53_gunter_gift.py scripts/test_v53_gunter_gift.py
+          python scripts/test_v53_gunter_gift.py
+  guarded-live:
+    needs: offline-safety
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NITRADO_API_TOKEN: \${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V53_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Backup, run zero-player gate, install ONE black Gunter event and verify after restart
+        run: python scripts/v53_gunter_gift.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V53_GUNTER_LIVE_REPORT_AND_PRIVATE_XML_ROLLBACK
+          path: |
+            deploy/v53/GUNTER_GIFT_LIVE_RESULT.json
+            deploy/v53/PRIVATE_ORIGINAL_3XML.zip
+          retention-days: 7
+          if-no-files-found: ignore
