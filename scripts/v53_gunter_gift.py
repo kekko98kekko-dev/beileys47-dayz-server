@@ -150,9 +150,19 @@ def patch(before, live_types):
             found[name]=found.get(name,0)+1
     guard(all(found.get(name,0)>=n for name,n in REQ_PARTS.items()),
           "Gunter vehicle parts incomplete in original profile")
-    # There must not be an existing special Gunter cargo preset to destroy.
-    guard(len(profile.findall("cargo"))==0,
-          "Existing Gunter cargo customization found; preserve it; manual review")
+    # Preserve existing cargo and add ONLY missing gift quantities.
+    # V54 reverts the entire car profile to exact original bytes after gift boot.
+    existing={}
+    existing_entries=0
+    for group in profile.findall("cargo"):
+        for item in group.findall("item"):
+            key=item.get("name")
+            guard(isinstance(key,str) and key,
+                  "Malformed pre-existing Gunter cargo class")
+            existing[key]=existing.get(key,0)+1
+            existing_entries+=1
+    guard(existing_entries<=45,
+          "Existing Gunter already has over 45 cargo entries; do not overfill")
     groups=profile.findall("attachments")
     guard(12 <= len(groups) <= 24,
           "Unexpected vehicle attachment layout; manual review")
@@ -167,13 +177,18 @@ def patch(before, live_types):
         profile.insert(0,dmg)
     dmg.set("min","0.0")
     dmg.set("max","0.0")
+    added={}
     for classname,count in CARGO.items():
-        for _ in range(count):
+        n=max(0,count-existing.get(classname,0))
+        added[classname]=n
+        for _ in range(n):
             g=ET.SubElement(profile,"cargo",{"chance":"1.00"})
             attrs={"name":classname,"chance":"1.00"}
             if classname in ("CanisterGasoline","Canteen"):
                 attrs.update({"quantmin":"100","quantmax":"100"})
             ET.SubElement(g,"item", attrs)
+    guard(existing_entries+sum(added.values())<=55,
+          "Gunter configured cargo entries exceed conservative safe cap")
     changed={p:data(roots[p]) for p in FILES}
     # Other event profiles, event spawn positions and vehicle types untouched
     old_event=parse(before[FILES[0]])
@@ -197,7 +212,9 @@ def patch(before, live_types):
     guard(ET.tostring(old_types)==ET.tostring(new_types),
           "Another spawnable profile changed unexpectedly")
     return changed, {**site,
-         "configured_cargo_entries":sum(CARGO.values()),
+         "configured_cargo_entries":existing_entries+sum(added.values()),
+         "existing_cargo_entries_preserved":existing_entries,
+         "gift_entries_added":added,
          "configured_cargo":CARGO,
          "black_gunter_profile_modified_globally":True}
 
@@ -329,7 +346,7 @@ def patch_for_postread(blobs):
           and len(p.findall("pos"))==1
           and abs(float(p.find("pos").get("x"))-X)<0.005
           and abs(float(p.find("pos").get("z"))-Z)<0.005
-          and all(cargo.get(k)==n for k,n in CARGO.items()))
+          and all(cargo.get(k,0)>=n for k,n in CARGO.items()))
     return good,{"cargo_counts":cargo}
 
 if __name__=="__main__":
