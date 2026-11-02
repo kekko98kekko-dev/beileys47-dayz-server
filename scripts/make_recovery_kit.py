@@ -346,6 +346,9 @@ SOURCE_PATHS = [
     ".github/workflows/v55-gunter-one-car-recovery.yml",
     "scripts/test_v55_gunter_one_car_recovery.py",
     "scripts/v55_gunter_one_car_recovery.py",
+    ".github/workflows/v56-gunter-max-safe-restock.yml",
+    "scripts/test_v56_gunter_max_safe_restock.py",
+    "scripts/v56_gunter_max_safe_restock.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
