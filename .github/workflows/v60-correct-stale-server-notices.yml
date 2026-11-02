@@ -1,0 +1,48 @@
+name: BEILEYS47 | V60 correct misleading in-game zone messages safely
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v60-correct-stale-server-notices.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  safety-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile XML-only patch and test six-message invariants
+        run: |
+          python -m py_compile scripts/v60_correct_stale_server_messages.py scripts/test_v60_correct_stale_server_messages.py
+          python scripts/test_v60_correct_stale_server_messages.py
+  guarded-notice-correction:
+    needs: safety-tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V60_CORRECT_MESSAGES_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Update only 3 exact stale server notices with provider backup, rollback and one reboot
+        run: python scripts/v60_correct_stale_server_messages.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V60_NOTICE_CORRECTION_AND_PRIVATE_ROLLBACK
+          path: |
+            deploy/v60/MESSAGES_CORRECTION_RESULT.json
+            deploy/v60/PRIVATE_PRE_V60_MESSAGES.zip
+          retention-days: 7
+          if-no-files-found: ignore
