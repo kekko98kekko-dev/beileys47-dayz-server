@@ -337,6 +337,9 @@ SOURCE_PATHS = [
     "scripts/v49_live_final_infected.py",
     "scripts/v50_full_live_audit.py",
     "scripts/v51_signed_download_readonly.py",
+    ".github/workflows/v53-one-gunter-gift.yml",
+    "scripts/test_v53_gunter_gift.py",
+    "scripts/v53_gunter_gift.py",
 ]
 PREVIEW_PATHS = [
     "dist/stage1/beileys47-livonia-stage1.zip",
