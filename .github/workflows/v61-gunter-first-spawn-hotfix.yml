@@ -1,0 +1,48 @@
+name: BEILEYS47 | V61 Gunter first-spawn emergency hotfix
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v61-gunter-first-spawn-hotfix.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  offline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify guarded hotfix syntax
+        run: |
+          python -m py_compile scripts/v61_gunter_first_spawn_hotfix.py
+          PYTHONPATH=scripts python -c 'import v61_gunter_first_spawn_hotfix as m; assert m.X==8933.20 and m.Z==7211.91; assert m.EVENT.endswith("V59")'
+  guarded-live:
+    needs: offline
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V61_RESCUE_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate exact Gunter event, back up, set first restock zero, restart once, verify
+        run: python scripts/v61_gunter_first_spawn_hotfix.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V61_RESTOCK_ZERO_STATUS_AND_PRIVATE_ROLLBACK
+          path: |
+            deploy/v61/GUNTER_HOTFIX_RESULT.json
+            deploy/v61/PRIVATE_ORIGINAL_EVENTS_XML.zip
+          retention-days: 5
+          if-no-files-found: ignore
