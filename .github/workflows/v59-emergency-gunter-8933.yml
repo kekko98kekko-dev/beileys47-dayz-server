@@ -1,0 +1,46 @@
+name: BEILEYS47 | V59 ONE Gunter rescue 8933 7211 full kit
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v59-emergency-gunter-8933.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  offline-safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax and rescue request self-check (no Nitrado calls)
+        run: |
+          python -m py_compile scripts/v59_emergency_gunter_8933.py scripts/v53_gunter_gift.py
+          PYTHONPATH=scripts python -c 'import v59_emergency_gunter_8933 as m; assert m.X==8933.20 and m.Z==7211.91; assert "75_round_mag" in m.REQUIRED and m.EXTRA_COUNTS["75_round_mag"]==2'
+  guarded-live:
+    needs: offline-safety
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V59_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify source, backup, apply fixed CE spawn with kit, restart and read-back
+        run: python scripts/v59_emergency_gunter_8933.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V59_GUNTER_RESUE_REPORT
+          path: deploy/v59/GUNTER_8933_DEPLOY_RESULT.json
+          retention-days: 5
+          if-no-files-found: ignore
