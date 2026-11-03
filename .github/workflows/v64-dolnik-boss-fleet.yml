@@ -1,0 +1,48 @@
+name: BEILEYS47 | V64 Dolnik truck 4h plus boss M1025 + power camp
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v64-dolnik-boss-fleet.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: BEILEYS47-NITRADO-WORLD-CONFIG
+  cancel-in-progress: false
+jobs:
+  offline-safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate script and target data without server modifications
+        run: |
+          python -m py_compile scripts/v64_dolnik_fleet_boss.py
+          PYTHONPATH=scripts python -c 'import v64_dolnik_fleet_boss as v; assert v.MIL_X==11573.63 and v.MIL_Z==387.30 and v.CAMP_X==11559.57 and v.CAMP_Z==379.49'
+  guarded-deploy:
+    runs-on: ubuntu-24.04
+    needs: offline-safety
+    timeout-minutes: 35
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+      BEILEYS47_V64_APPROVED: "yes"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check full backups, modify limited configs, stop restart and verify
+        run: python scripts/v64_dolnik_fleet_boss.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V64_REPORT_AND_PRIVATE_RESTORE_XML
+          path: |
+            deploy/v64/DEPLOY_RESULT.json
+            deploy/v64/PRIVATE_ORIGINAL_CONFIG.zip
+          retention-days: 5
+          if-no-files-found: ignore
