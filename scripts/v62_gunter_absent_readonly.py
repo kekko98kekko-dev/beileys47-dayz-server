@@ -114,7 +114,7 @@ def main():
                     entries=entries_at(token,directory)
                 except NitradoError:continue
                 names=[entry_name(e) for e in entries if not is_dir(e)
-                       and re.fullmatch(r"[A-Za-z0-9_.-]{1,128}\\.(?:RPT|rpt)",entry_name(e))]
+                       and re.fullmatch(r"[A-Za-z0-9_.-]{1,128}\.(?:RPT|rpt)",entry_name(e))]
                 for name in sorted(set(names),reverse=True)[:2]:
                     try:
                         blob=download_one(token,posixpath.join(directory,name))
