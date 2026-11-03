@@ -1,0 +1,31 @@
+name: BEILEYS47 | V63 read-only before fleet change
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/v63-readonly-vehicles.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      NITRADO_API_TOKEN: ${{ secrets.NITRADO_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read live vehicle events and class availability, no writes
+        run: |
+          python -m py_compile scripts/v63_readonly_vehicles.py
+          python scripts/v63_readonly_vehicles.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BEILEYS47_V63_READONLY_AUDIT
+          path: deploy/v63/READONLY.json
+          retention-days: 3
+          if-no-files-found: ignore
